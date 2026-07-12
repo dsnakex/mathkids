@@ -4,6 +4,7 @@ import cpLessons from './cp.json'
 import ce1Lessons from './ce1.json'
 import ce2Lessons from './ce2.json'
 import cm1Lessons from './cm1.json'
+import cm2Lessons from './cm2.json'
 import { lessonsFileSchema, type Lesson } from './schema'
 
 const LESSONS: Lesson[] = [
@@ -11,6 +12,7 @@ const LESSONS: Lesson[] = [
   ...lessonsFileSchema.parse(ce1Lessons),
   ...lessonsFileSchema.parse(ce2Lessons),
   ...lessonsFileSchema.parse(cm1Lessons),
+  ...lessonsFileSchema.parse(cm2Lessons),
 ]
 
 const BY_ID = new Map<string, Lesson>(LESSONS.map((l) => [l.id, l]))

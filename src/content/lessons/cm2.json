@@ -1,0 +1,98 @@
+[
+  {
+    "id": "cm2.tres-grands-nombres",
+    "title": "Jusqu'au milliard",
+    "pages": [
+      { "emoji": "🔢", "text": "Après le million viennent les dizaines et centaines de millions, puis le milliard." },
+      { "emoji": "🧮", "text": "On lit par tranches de 3 chiffres : 1 250 000 000, c'est un milliard deux cent cinquante millions." }
+    ]
+  },
+  {
+    "id": "cm2.decimaux-millieme",
+    "title": "Décimaux au millième",
+    "pages": [
+      { "emoji": "📏", "text": "Après les dixièmes et centièmes viennent les millièmes : 2,375." },
+      { "emoji": "🔍", "text": "Pour comparer, on compare chiffre à chiffre après la virgule." }
+    ]
+  },
+  {
+    "id": "cm2.fractions-cm2",
+    "title": "Fractions avancées",
+    "pages": [
+      { "emoji": "🍰", "text": "On additionne des fractions de même dénominateur : 1/4 + 2/4 = 3/4." },
+      { "emoji": "📐", "text": "On sait encadrer une fraction entre deux entiers." }
+    ]
+  },
+  {
+    "id": "cm2.division-2-chiffres",
+    "title": "Diviser par deux chiffres",
+    "pages": [
+      { "emoji": "➗", "text": "On divise maintenant par des nombres à deux chiffres, comme 12 ou 25." },
+      { "emoji": "🎯", "text": "On cherche combien de fois le diviseur tient dans le nombre." }
+    ]
+  },
+  {
+    "id": "cm2.priorites",
+    "title": "Les priorités",
+    "pages": [
+      { "emoji": "⚠️", "text": "La multiplication et la division se calculent AVANT l'addition et la soustraction." },
+      { "emoji": "🧮", "text": "3 + 4 × 2 = 3 + 8 = 11, et non 14 !" }
+    ]
+  },
+  {
+    "id": "cm2.calcul-mental-expert",
+    "title": "Calcul mental expert",
+    "pages": [
+      { "emoji": "⚡", "text": "On combine toutes les stratégies pour calculer vite et juste." },
+      { "emoji": "🏆", "text": "Compléments à 1000, doubles, tables et divisions deviennent des réflexes." }
+    ]
+  },
+  {
+    "id": "cm2.pourcentages-echelles",
+    "title": "Pourcentages et échelles",
+    "pages": [
+      { "emoji": "％", "text": "Un pourcentage compare à 100. Une échelle compare une carte à la réalité." },
+      { "emoji": "🗺️", "text": "50 % de 200, c'est 100 ; on raisonne comme avec les fractions." }
+    ]
+  },
+  {
+    "id": "cm2.equations-complexes",
+    "title": "Équations à trous",
+    "pages": [
+      { "emoji": "🟰", "text": "On cherche un nombre inconnu pour que les deux côtés soient égaux." },
+      { "emoji": "🧩", "text": "On équilibre l'égalité comme une balance." }
+    ]
+  },
+  {
+    "id": "cm2.quantifier-proba",
+    "title": "Quantifier les chances",
+    "pages": [
+      { "emoji": "🎲", "text": "Sur un dé à 6 faces, 3 faces sont paires : on a 3 chances sur 6." },
+      { "emoji": "🧮", "text": "On compte les cas favorables sur le nombre total de cas." }
+    ]
+  },
+  {
+    "id": "cm2.problemes-complexes",
+    "title": "Problèmes complexes",
+    "pages": [
+      { "emoji": "📖", "text": "Les problèmes demandent plusieurs étapes et plusieurs opérations." },
+      { "emoji": "🪜", "text": "On décompose : que faut-il trouver d'abord ?" }
+    ]
+  },
+  {
+    "id": "cm2.aires-volumes",
+    "title": "Aires et volumes",
+    "pages": [
+      { "emoji": "🟦", "text": "L'aire d'un rectangle = longueur × largeur." },
+      { "emoji": "📦", "text": "Le volume d'un pavé = longueur × largeur × hauteur." }
+    ]
+  },
+  {
+    "id": "cm2.figures-coordonnees",
+    "title": "Figures et coordonnées",
+    "pages": [
+      { "emoji": "📍", "text": "On repère un point par ses coordonnées, comme sur une carte." },
+      { "emoji": "🔺", "text": "On reconnaît les triangles et quadrilatères par leurs propriétés." }
+    ]
+  }
+]

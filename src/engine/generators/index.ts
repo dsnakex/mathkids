@@ -323,6 +323,29 @@ function genMultiple(params: Params, rng: Rng): TrueFalseExercise {
   return { type: 'truefalse', prompt: `${n} est un multiple de ${base}.`, answer: n % base === 0 }
 }
 
+// CM2 : priorités opératoires (× avant +) et quantification de probabilités.
+function genPriorite(kind: 'input' | 'qcm', params: Params, rng: Rng): Exercise {
+  const max = num(params, 'max') ?? 10
+  const a = randInt(rng, 1, max)
+  const b = randInt(rng, 2, 9)
+  const c = randInt(rng, 2, 9)
+  const answer = a + b * c
+  const prompt = `Combien font ${a} + ${b} × ${c} ?`
+  if (kind === 'input') return { type: 'input', prompt, answer }
+  const pool = [(a + b) * c, a + b + c, a * b + c, answer + 1, answer - 1, b * c]
+  const { choices, correctIndex } = buildNumericChoices(rng, answer, pool, 4)
+  return { type: 'qcm', prompt, choices: choices.map(String), correctIndex }
+}
+
+function genProbaCount(_params: Params, rng: Rng): InputExercise {
+  const k = randInt(rng, 1, 5)
+  return {
+    type: 'input',
+    prompt: `Avec un dé à 6 faces, combien de faces montrent un nombre plus grand que ${k} ?`,
+    answer: 6 - k,
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Compléments à une cible (skill: complement) — input, qcm, truefalse.
 // ---------------------------------------------------------------------------
@@ -604,6 +627,10 @@ function genInput(params: Params, rng: Rng): Exercise {
       return genFraction('input', params, rng)
     case 'pourcentage':
       return genPourcentage('input', params, rng)
+    case 'priorite':
+      return genPriorite('input', params, rng)
+    case 'proba-compter':
+      return genProbaCount(params, rng)
     case 'ecrire-nombre':
       return genEcrireNombre(params, rng)
     case 'recomposer':
@@ -632,6 +659,8 @@ function genQcm(params: Params, rng: Rng): Exercise {
       return genFraction('qcm', params, rng)
     case 'pourcentage':
       return genPourcentage('qcm', params, rng)
+    case 'priorite':
+      return genPriorite('qcm', params, rng)
     case 'decimal-compare':
       return genDecimalCompare(params, rng)
     case 'decimal-add':
