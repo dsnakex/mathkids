@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="MathKids">
+  <rect width="512" height="512" rx="112" fill="#2E7D5B" />
+  <circle cx="372" cy="150" r="46" fill="#E9B44C" />
+  <g fill="#FDFAF0">
+    <rect x="148" y="232" width="216" height="48" rx="24" />
+    <rect x="232" y="148" width="48" height="216" rx="24" />
+  </g>
+</svg>

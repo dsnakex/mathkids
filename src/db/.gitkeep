@@ -1,0 +1,1 @@
+# Schéma Dexie et accès IndexedDB (jamais de Dexie direct dans les composants).

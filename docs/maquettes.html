@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MathKids — Maquettes v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primaire:#3B82F6; --succes:#22C55E; --or:#FACC15; --erreur:#FB7185;
+    --fond:#FDF6EC; --texte:#1E293B;
+    --cp:#22C55E; --ce1:#F97316; --ce2:#8B5CF6; --cm1:#14B8A6; --cm2:#E11D48;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Baloo 2',sans-serif;}
+  body{background:#E8DFD3;color:var(--texte);display:flex;flex-direction:column;align-items:center;padding:16px;}
+  .demo-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px;max-width:420px;}
+  .demo-nav button{border:none;background:#fff;border-radius:12px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.08);}
+  .demo-nav button.on{background:var(--texte);color:#fff;}
+  .phone{width:390px;max-width:100%;height:760px;background:var(--fond);border-radius:32px;box-shadow:0 12px 40px rgba(0,0,0,.25);overflow:hidden;position:relative;display:flex;flex-direction:column;}
+  .screen{display:none;flex-direction:column;height:100%;overflow-y:auto;}
+  .screen.on{display:flex;}
+  .btn{display:block;border:none;cursor:pointer;border-radius:20px;font-family:inherit;font-weight:800;text-align:center;}
+  .btn-big{background:var(--primaire);color:#fff;font-size:20px;padding:16px;box-shadow:0 5px 0 #1D4ED8;width:100%;}
+  .btn-big:active{transform:translateY(3px);box-shadow:0 2px 0 #1D4ED8;}
+  .coin{color:#B45309;background:var(--or);border-radius:999px;padding:2px 10px;font-weight:800;font-size:14px;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;}
+  .mascotte{font-size:56px;line-height:1;}
+  h1{font-size:26px;font-weight:800;}
+  h2{font-size:20px;font-weight:800;}
+
+  /* 1. Profils */
+  #profils{align-items:center;justify-content:center;gap:20px;padding:24px;text-align:center;}
+  .grille-profils{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+  .carte-profil{background:#fff;border-radius:24px;padding:18px;width:130px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.07);border:3px solid transparent;}
+  .carte-profil:hover{border-color:var(--primaire);}
+  .carte-profil .avatar{font-size:52px;}
+  .carte-profil .nom{font-weight:800;font-size:18px;margin-top:6px;}
+  .carte-profil .niveau{font-size:13px;color:#fff;border-radius:999px;padding:1px 10px;display:inline-block;margin-top:4px;font-weight:700;}
+  .ajout{background:none;border:3px dashed #C4B8A5;color:#8B7E6A;font-size:40px;border-radius:24px;width:130px;cursor:pointer;}
+  .lien-parent{background:none;border:none;color:#8B7E6A;font-size:14px;cursor:pointer;text-decoration:underline;}
+
+  /* 2. Carte */
+  #carte{background:linear-gradient(#BEE9FF 0%, #DFF7E8 45%, #FDF0D5 100%);}
+  .chemin{position:relative;flex:1;padding:10px 0 30px;}
+  .etape{position:absolute;width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 rgba(0,0,0,.15);cursor:pointer;background:#fff;}
+  .etape .etoiles{position:absolute;bottom:-14px;font-size:13px;letter-spacing:-1px;}
+  .etape.faite{background:var(--succes);}
+  .etape.encours{background:var(--or);animation:pulse 1.6s infinite;}
+  .etape.bloquee{background:#D6CBBB;filter:grayscale(1);opacity:.75;}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  .bulle-mascotte{position:absolute;left:16px;bottom:18px;display:flex;align-items:flex-end;gap:6px;}
+  .bulle-mascotte p{background:#fff;border-radius:16px 16px 16px 4px;padding:10px 12px;font-size:14px;font-weight:700;max-width:180px;box-shadow:0 3px 0 rgba(0,0,0,.08);}
+
+  /* 3. Leçon */
+  #lecon{padding:20px;gap:14px;}
+  .zone-anim{background:#fff;border-radius:24px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;box-shadow:inset 0 0 0 3px #F0E4D2;}
+  .tarte{width:170px;height:170px;border-radius:50%;background:conic-gradient(var(--or) 0 50%, #FDE8C8 50% 100%);border:6px solid #B45309;position:relative;}
+  .tarte::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:#B45309;transform:translateX(-50%);}
+  .bulle-lecon{display:flex;gap:10px;align-items:flex-start;}
+  .bulle-lecon p{background:#fff;border-radius:4px 18px 18px 18px;padding:12px 14px;font-size:17px;font-weight:700;box-shadow:0 3px 0 rgba(0,0,0,.08);}
+  .audio{border:none;background:var(--primaire);color:#fff;border-radius:50%;width:44px;height:44px;font-size:20px;cursor:pointer;flex:none;}
+
+  /* 4. Exercice */
+  #exercice{padding:20px;gap:16px;}
+  .jauge{flex:1;height:14px;background:#EADFCB;border-radius:999px;margin:0 12px;overflow:hidden;}
+  .jauge div{width:45%;height:100%;background:var(--succes);border-radius:999px;}
+  .consigne{display:flex;gap:10px;align-items:center;}
+  .consigne p{font-size:20px;font-weight:800;}
+  .grande-question{background:#fff;border-radius:24px;padding:28px;text-align:center;font-size:44px;font-weight:800;box-shadow:0 4px 0 rgba(0,0,0,.07);}
+  .reponses{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .reponses .btn{background:#fff;color:var(--texte);font-size:32px;padding:20px;box-shadow:0 5px 0 #E2D5BE;border:3px solid transparent;}
+  .reponses .btn:hover{border-color:var(--primaire);}
+  .feedback{background:#EAFBF0;border:3px solid var(--succes);border-radius:20px;padding:12px;text-align:center;font-weight:800;color:#15803D;font-size:18px;}
+
+  /* 5. Fin de session */
+  #fin{align-items:center;justify-content:center;gap:18px;padding:26px;text-align:center;}
+  .grosses-etoiles{font-size:64px;letter-spacing:-6px;}
+  .gain{background:#fff;border-radius:20px;padding:14px 22px;font-size:18px;font-weight:800;box-shadow:0 4px 0 rgba(0,0,0,.07);}
+  .badge-new{background:var(--or);border-radius:20px;padding:14px 22px;font-weight:800;box-shadow:0 4px 0 #CA8A04;}
+
+  /* 6. Boutique */
+  #boutique{padding:20px;gap:16px;}
+  .apercu{display:flex;align-items:center;gap:16px;background:#fff;border-radius:24px;padding:16px;box-shadow:0 4px 0 rgba(0,0,0,.07);}
+  .apercu .avatar{font-size:64px;}
+  .rayon{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .article{background:#fff;border-radius:18px;padding:12px;text-align:center;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.07);border:3px solid transparent;}
+  .article:hover{border-color:var(--or);}
+  .article .obj{font-size:34px;}
+  .article .prix{font-size:13px;font-weight:800;color:#B45309;}
+  .article.possede{border-color:var(--succes);}
+
+  /* 7. Parent */
+  #parent{padding:20px;gap:14px;background:#F4EFE6;}
+  .ligne-maitrise{background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 3px 0 rgba(0,0,0,.05);}
+  .ligne-maitrise .entete{display:flex;justify-content:space-between;font-weight:800;font-size:15px;margin-bottom:6px;}
+  .barre{height:12px;background:#EADFCB;border-radius:999px;overflow:hidden;}
+  .barre div{height:100%;border-radius:999px;}
+  .alerte{background:#FEF2F2;border:2px solid var(--erreur);border-radius:16px;padding:12px 14px;font-size:14px;font-weight:700;color:#BE123C;}
+</style>
+</head>
+<body>
+
+<nav class="demo-nav">
+  <button data-s="profils" class="on">1. Profils</button>
+  <button data-s="carte">2. Carte</button>
+  <button data-s="lecon">3. Leçon</button>
+  <button data-s="exercice">4. Exercice</button>
+  <button data-s="fin">5. Fin</button>
+  <button data-s="boutique">6. Boutique</button>
+  <button data-s="parent">7. Parent</button>
+</nav>
+
+<div class="phone">
+
+  <!-- 1. CHOIX DU PROFIL -->
+  <section class="screen on" id="profils">
+    <div class="mascotte">🦊</div>
+    <h1>Qui joue aujourd'hui ?</h1>
+    <div class="grille-profils">
+      <div class="carte-profil" onclick="go('carte')">
+        <div class="avatar">🐰</div><div class="nom">Léa</div>
+        <span class="niveau" style="background:var(--ce1)">CE1</span>
+      </div>
+      <div class="carte-profil" onclick="go('carte')">
+        <div class="avatar">🐸</div><div class="nom">Tom</div>
+        <span class="niveau" style="background:var(--cm1)">CM1</span>
+      </div>
+      <button class="ajout">+</button>
+    </div>
+    <button class="lien-parent" onclick="go('parent')">🔒 Espace parent</button>
+  </section>
+
+  <!-- 2. CARTE DE L'ÎLE -->
+  <section class="screen" id="carte">
+    <div class="topbar">
+      <b style="color:var(--ce1)">🏝️ Île du CE1 — Calcul</b>
+      <span><span class="coin">🪙 145</span> ⭐ 23</span>
+    </div>
+    <div class="chemin">
+      <div class="etape faite" style="left:40px;top:20px" onclick="go('fin')">➕<span class="etoiles">⭐⭐⭐</span></div>
+      <div class="etape faite" style="left:170px;top:90px" onclick="go('fin')">➖<span class="etoiles">⭐⭐</span></div>
+      <div class="etape faite" style="left:280px;top:190px" onclick="go('fin')">🔢<span class="etoiles">⭐⭐⭐</span></div>
+      <div class="etape encours" style="left:160px;top:280px" onclick="go('lecon')">✖️</div>
+      <div class="etape bloquee" style="left:50px;top:380px">🍰</div>
+      <div class="etape bloquee" style="left:180px;top:470px">📏</div>
+      <div class="bulle-mascotte">
+        <span style="font-size:44px">🦊</span>
+        <p>On apprend la table de 2 aujourd'hui ?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LEÇON -->
+  <section class="screen" id="lecon">
+    <div class="topbar"><b>Leçon · Les moitiés</b><button class="audio" onclick="lire('Une moitié, c est quand on partage en deux parts égales')">🔊</button></div>
+    <div class="zone-anim">
+      <div class="tarte"></div>
+      <p style="font-size:18px;font-weight:800;text-align:center">La tarte est coupée en <b style="color:#B45309">2 parts égales</b>.<br>Chaque part est <b>une moitié</b> !</p>
+    </div>
+    <div class="bulle-lecon">
+      <span style="font-size:40px">🦊</span>
+      <p>Partager en 2 parts égales, c'est trouver la moitié.</p>
+    </div>
+    <button class="btn btn-big" onclick="go('exercice')">J'ai compris !</button>
+  </section>
+
+  <!-- 4. EXERCICE -->
+  <section class="screen" id="exercice">
+    <div class="topbar" style="padding:0">
+      <span style="font-size:22px">🦊</span>
+      <div class="jauge"><div></div></div>
+      <span style="font-weight:800">4/9</span>
+    </div>
+    <div class="consigne">
+      <button class="audio" onclick="lire('Quelle est la moitié de 8 ?')">🔊</button>
+      <p>Quelle est la moitié de 8 ?</p>
+    </div>
+    <div class="grande-question">8 ➗ 2 = ?</div>
+    <div class="reponses">
+      <button class="btn" onclick="bravo(this)">4</button>
+      <button class="btn" onclick="oups(this)">6</button>
+      <button class="btn" onclick="oups(this)">2</button>
+      <button class="btn" onclick="oups(this)">16</button>
+    </div>
+    <div class="feedback" id="fb" style="visibility:hidden">Bravo ! 🎉</div>
+    <button class="btn btn-big" onclick="go('fin')">Continuer</button>
+  </section>
+
+  <!-- 5. FIN DE SESSION -->
+  <section class="screen" id="fin">
+    <div class="mascotte">🦊🎉</div>
+    <h1>Super séance, Léa !</h1>
+    <div class="grosses-etoiles">⭐⭐⭐</div>
+    <div class="gain">🪙 +12 pièces</div>
+    <div class="badge-new">🏅 Nouveau badge<br><b>« Reine des moitiés »</b></div>
+    <button class="btn btn-big" style="background:var(--succes);box-shadow:0 5px 0 #15803D" onclick="go('boutique')">Dépenser mes pièces</button>
+    <button class="lien-parent" onclick="go('carte')">Retour à l'île</button>
+  </section>
+
+  <!-- 6. BOUTIQUE -->
+  <section class="screen" id="boutique">
+    <div class="topbar"><h2>La boutique</h2><span class="coin">🪙 157</span></div>
+    <div class="apercu">
+      <div class="avatar">🐰</div>
+      <div><b style="font-size:18px">Léa</b><br><span style="font-size:14px;color:#8B7E6A">porte : 🎀 + 🕶️</span></div>
+    </div>
+    <h2 style="font-size:16px">Accessoires</h2>
+    <div class="rayon">
+      <div class="article possede"><div class="obj">🎀</div><div class="prix">Possédé ✔</div></div>
+      <div class="article possede"><div class="obj">🕶️</div><div class="prix">Possédé ✔</div></div>
+      <div class="article"><div class="obj">🎩</div><div class="prix">🪙 50</div></div>
+      <div class="article"><div class="obj">👑</div><div class="prix">🪙 120</div></div>
+      <div class="article"><div class="obj">🧣</div><div class="prix">🪙 40</div></div>
+      <div class="article"><div class="obj">🛹</div><div class="prix">🪙 200</div></div>
+    </div>
+    <h2 style="font-size:16px">Fonds d'écran</h2>
+    <div class="rayon">
+      <div class="article"><div class="obj">🌋</div><div class="prix">🪙 80</div></div>
+      <div class="article"><div class="obj">🏰</div><div class="prix">🪙 80</div></div>
+      <div class="article"><div class="obj">🚀</div><div class="prix">🪙 100</div></div>
+    </div>
+    <button class="btn btn-big" onclick="go('carte')">Retour à l'île</button>
+  </section>
+
+  <!-- 7. TABLEAU PARENT -->
+  <section class="screen" id="parent">
+    <div class="topbar"><h2>👨‍👩‍👧 Espace parent — Léa (CE1)</h2></div>
+    <p style="font-size:13px;color:#8B7E6A">Cette semaine : 4 sessions · 52 minutes</p>
+    <div class="ligne-maitrise">
+      <div class="entete"><span>Nombres</span><span style="color:#15803D">82 %</span></div>
+      <div class="barre"><div style="width:82%;background:var(--succes)"></div></div>
+    </div>
+    <div class="ligne-maitrise">
+      <div class="entete"><span>Calcul</span><span style="color:#B45309">61 %</span></div>
+      <div class="barre"><div style="width:61%;background:var(--or)"></div></div>
+    </div>
+    <div class="ligne-maitrise">
+      <div class="entete"><span>Problèmes</span><span style="color:#BE123C">38 %</span></div>
+      <div class="barre"><div style="width:38%;background:var(--erreur)"></div></div>
+    </div>
+    <div class="ligne-maitrise">
+      <div class="entete"><span>Grandeurs et mesures</span><span style="color:#15803D">74 %</span></div>
+      <div class="barre"><div style="width:74%;background:var(--succes)"></div></div>
+    </div>
+    <div class="alerte">⚠️ Léa bloque sur « problèmes à 2 étapes » : la leçon lui sera reproposée à la prochaine session.</div>
+    <button class="btn btn-big" style="background:#64748B;box-shadow:0 5px 0 #475569">Exporter la progression (JSON)</button>
+    <button class="lien-parent" onclick="go('profils')">← Retour aux profils</button>
+  </section>
+</div>
+
+<script>
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.demo-nav button').forEach(b=>b.classList.toggle('on', b.dataset.s===id));
+}
+document.querySelectorAll('.demo-nav button').forEach(b=>b.onclick=()=>go(b.dataset.s));
+function bravo(btn){
+  btn.style.borderColor='var(--succes)';btn.style.background='#EAFBF0';
+  const fb=document.getElementById('fb');fb.style.visibility='visible';
+  fb.textContent='Bravo ! 🎉';fb.style.borderColor='var(--succes)';fb.style.background='#EAFBF0';fb.style.color='#15803D';
+}
+function oups(btn){
+  btn.style.borderColor='var(--erreur)';btn.style.background='#FEF2F2';
+  const fb=document.getElementById('fb');fb.style.visibility='visible';
+  fb.textContent='Presque ! La moitié de 8, c\'est 4 : regarde, 4 + 4 = 8 😊';
+  fb.style.borderColor='var(--erreur)';fb.style.background='#FEF2F2';fb.style.color='#BE123C';
+}
+function lire(t){
+  const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';speechSynthesis.speak(u);
+}
+</script>
+</body>
+</html>
