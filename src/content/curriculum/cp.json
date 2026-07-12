@@ -1,0 +1,309 @@
+{
+  "id": "cp",
+  "name": "CP",
+  "domains": [
+    {
+      "id": "nombres",
+      "name": "Nombres",
+      "notions": [
+        {
+          "id": "nombres-jusqu-20",
+          "name": "Les nombres jusqu'à 20",
+          "prerequisites": [],
+          "lesson": "cp.nombres-jusqu-20",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "compter", "max": 5 } }] },
+            { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "compter", "max": 10 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "lire-nombre", "max": 16 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "ecrire-nombre", "max": 20 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger", "max": 20 } }] }
+          ]
+        },
+        {
+          "id": "comparaison-jusqu-20",
+          "name": "Comparer et ranger jusqu'à 20",
+          "prerequisites": ["nombres-jusqu-20"],
+          "lesson": "cp.comparaison-jusqu-20",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "comparer", "max": 10 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger-croissant", "max": 20 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "encadrer", "max": 20 } }] }
+          ]
+        },
+        {
+          "id": "nombres-jusqu-100",
+          "name": "Les nombres jusqu'à 100",
+          "prerequisites": ["nombres-jusqu-20"],
+          "lesson": "cp.nombres-jusqu-100",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "lire-nombre", "max": 40 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "lire-nombre", "max": 69 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "ecrire-nombre", "max": 100 } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger", "max": 100 } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "tableau-nombres", "max": 100 } }] }
+          ]
+        },
+        {
+          "id": "decomposition-dizaines-unites",
+          "name": "Dizaines et unités",
+          "prerequisites": ["nombres-jusqu-100"],
+          "lesson": "cp.decomposition-dizaines-unites",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "grouper-dizaines", "max": 29 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "dizaines-unites", "max": 59 } }] },
+            { "level": 3, "generators": [{ "type": "gap", "params": { "skill": "decomposition", "max": 99 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "recomposer", "max": 99 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "associer-decomposition", "max": 99 } }] }
+          ]
+        },
+        {
+          "id": "comparaison-jusqu-100",
+          "name": "Comparer et ranger jusqu'à 100",
+          "prerequisites": ["nombres-jusqu-100", "comparaison-jusqu-20"],
+          "lesson": "cp.comparaison-jusqu-100",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 59 } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "comparer", "max": 100 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 100 } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger-croissant", "max": 100 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "encadrer-dizaines", "max": 100 } }] }
+          ]
+        },
+        {
+          "id": "droite-graduee",
+          "name": "La droite graduée",
+          "prerequisites": ["nombres-jusqu-100"],
+          "lesson": "cp.droite-graduee",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "lire-graduation", "max": 20, "pas": 1 } }] },
+            { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "placer-nombre", "max": 20, "pas": 1 } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "placer-nombre", "max": 100, "pas": 10 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "placer-nombre", "max": 100, "pas": 5 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "placer-droite", "max": 100, "pas": 10 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calcul",
+      "name": "Calcul",
+      "notions": [
+        {
+          "id": "complements-a-10",
+          "name": "Les compléments à 10",
+          "prerequisites": ["nombres-jusqu-20"],
+          "lesson": "cp.complements-a-10",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "complement", "cible": 10, "max": 5 } }] },
+            { "level": 2, "generators": [{ "type": "gap", "params": { "op": "+", "manquant": "operande", "cible": 10 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "complement", "cible": 10 } }] },
+            { "level": 4, "generators": [{ "type": "truefalse", "params": { "skill": "complement", "cible": 10 } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "+", "manquant": "operande", "cible": 10, "melange": true } }] }
+          ]
+        },
+        {
+          "id": "addition-jusqu-20",
+          "name": "Additionner jusqu'à 20",
+          "prerequisites": ["nombres-jusqu-20"],
+          "lesson": "cp.addition-jusqu-20",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "input", "params": { "op": "+", "max": 10, "manquant": "resultat" } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "op": "+", "max": 15, "manquant": "resultat" } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "op": "+", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "gap", "params": { "op": "+", "max": 20, "manquant": "operande" } }] },
+            { "level": 5, "generators": [{ "type": "input", "params": { "op": "+", "max": 20, "manquant": "resultat", "retenue": true } }] }
+          ]
+        },
+        {
+          "id": "soustraction-jusqu-20",
+          "name": "Soustraire jusqu'à 20",
+          "prerequisites": ["nombres-jusqu-20"],
+          "lesson": "cp.soustraction-jusqu-20",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "input", "params": { "op": "-", "max": 10, "manquant": "resultat" } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "op": "-", "max": 15, "manquant": "resultat" } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "op": "-", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "gap", "params": { "op": "-", "max": 20, "manquant": "operande" } }] },
+            { "level": 5, "generators": [{ "type": "input", "params": { "op": "-", "max": 20, "manquant": "resultat" } }] }
+          ]
+        },
+        {
+          "id": "doubles-moities",
+          "name": "Doubles et moitiés",
+          "prerequisites": ["addition-jusqu-20"],
+          "lesson": "cp.doubles-moities",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "double", "max": 5 } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "skill": "double", "max": 10 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "moitie", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "moitie", "max": 20 } }] },
+            { "level": 5, "generators": [{ "type": "truefalse", "params": { "skill": "double-moitie", "max": 20 } }] }
+          ]
+        },
+        {
+          "id": "addition-jusqu-100",
+          "name": "Additionner jusqu'à 100",
+          "prerequisites": ["addition-jusqu-20", "decomposition-dizaines-unites"],
+          "lesson": "cp.addition-jusqu-100",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "input", "params": { "op": "+", "max": 100, "manquant": "resultat", "kind": "dizaines-entieres" } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "op": "+", "max": 100, "manquant": "resultat", "retenue": false } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "+", "max": 100, "manquant": "resultat", "retenue": true } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "op": "+", "max": 100 } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "+", "max": 100, "manquant": "operande" } }] }
+          ]
+        },
+        {
+          "id": "soustraction-jusqu-100",
+          "name": "Soustraire jusqu'à 100",
+          "prerequisites": ["soustraction-jusqu-20", "decomposition-dizaines-unites"],
+          "lesson": "cp.soustraction-jusqu-100",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "input", "params": { "op": "-", "max": 100, "manquant": "resultat", "kind": "dizaines-entieres" } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "op": "-", "max": 100, "manquant": "resultat", "retenue": false } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "-", "max": 100, "manquant": "resultat", "retenue": true } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "op": "-", "max": 100 } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "-", "max": 100, "manquant": "operande" } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "problemes",
+      "name": "Résolution de problèmes",
+      "notions": [
+        {
+          "id": "problemes-additifs",
+          "name": "Problèmes d'addition (une étape)",
+          "prerequisites": ["addition-jusqu-20"],
+          "lesson": "cp.problemes-additifs",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "problem", "params": { "structure": "ajout", "etapes": 1, "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "problem", "params": { "structure": "ajout", "etapes": 1, "max": 20 } }] },
+            { "level": 3, "generators": [{ "type": "problem", "params": { "structure": "reunion", "etapes": 1, "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "problem", "params": { "structure": "ajout", "etapes": 1, "max": 100 } }] },
+            { "level": 5, "generators": [{ "type": "problem", "params": { "structure": "comparaison-plus", "etapes": 1, "max": 100 } }] }
+          ]
+        },
+        {
+          "id": "problemes-soustractifs",
+          "name": "Problèmes de soustraction (une étape)",
+          "prerequisites": ["soustraction-jusqu-20"],
+          "lesson": "cp.problemes-soustractifs",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "problem", "params": { "structure": "retrait", "etapes": 1, "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "problem", "params": { "structure": "retrait", "etapes": 1, "max": 20 } }] },
+            { "level": 3, "generators": [{ "type": "problem", "params": { "structure": "ecart", "etapes": 1, "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "problem", "params": { "structure": "retrait", "etapes": 1, "max": 100 } }] },
+            { "level": 5, "generators": [{ "type": "problem", "params": { "structure": "comparaison-moins", "etapes": 1, "max": 100 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grandeurs-mesures",
+      "name": "Grandeurs et mesures",
+      "notions": [
+        {
+          "id": "longueurs",
+          "name": "Comparer et mesurer des longueurs",
+          "prerequisites": [],
+          "lesson": "cp.longueurs",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "comparer-longueur" } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "plus-long" } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "mesurer-cm", "max": 10 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "mesurer-cm", "max": 20 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger-longueurs" } }] }
+          ]
+        },
+        {
+          "id": "monnaie",
+          "name": "La monnaie (euros)",
+          "prerequisites": ["nombres-jusqu-20"],
+          "lesson": "cp.monnaie",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "compter-euros", "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-pieces" } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "compter-euros", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "total-euros", "max": 50 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "payer-somme", "max": 20 } }] }
+          ]
+        },
+        {
+          "id": "temps",
+          "name": "Se repérer dans le temps",
+          "prerequisites": [],
+          "lesson": "cp.temps",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "jours-semaine" } }] },
+            { "level": 2, "generators": [{ "type": "dragdrop", "params": { "kind": "ordonner-jours" } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "lire-horloge", "precision": "heure" } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "lire-heure", "precision": "heure" } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "placer-heure", "precision": "heure" } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geometrie",
+      "name": "Espace et géométrie",
+      "notions": [
+        {
+          "id": "reperage-spatial",
+          "name": "Se repérer dans l'espace",
+          "prerequisites": [],
+          "lesson": "cp.reperage-spatial",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "positions", "vocab": ["gauche", "droite"] } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "positions", "vocab": ["dessus", "dessous"] } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "positions", "vocab": ["devant", "derriere"] } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "placer-position" } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "suivre-trajet" } }] }
+          ]
+        },
+        {
+          "id": "formes-planes",
+          "name": "Reconnaître les formes planes",
+          "prerequisites": [],
+          "lesson": "cp.formes-planes",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-forme", "formes": ["carre", "rond"] } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-forme", "formes": ["carre", "rectangle", "triangle"] } }] },
+            { "level": 3, "generators": [{ "type": "truefalse", "params": { "skill": "proprietes-forme" } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "trier-formes" } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "compter-cotes" } }] }
+          ]
+        },
+        {
+          "id": "solides",
+          "name": "Reconnaître les solides",
+          "prerequisites": ["formes-planes"],
+          "lesson": "cp.solides",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-solide", "solides": ["cube", "boule"] } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-solide", "solides": ["cube", "boule", "pave"] } }] },
+            { "level": 3, "generators": [{ "type": "truefalse", "params": { "skill": "solide-vs-forme" } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "trier-solides" } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "associer-objet-solide" } }] }
+          ]
+        },
+        {
+          "id": "quadrillage",
+          "name": "Se repérer sur un quadrillage",
+          "prerequisites": ["reperage-spatial"],
+          "lesson": "cp.quadrillage",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "reperer-case" } }] },
+            { "level": 2, "generators": [{ "type": "dragdrop", "params": { "kind": "placer-case" } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "reproduire-quadrillage", "taille": 3 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "reproduire-quadrillage", "taille": 4 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "reproduire-trace" } }] }
+          ]
+        }
+      ]
+    }
+  ]
+}
