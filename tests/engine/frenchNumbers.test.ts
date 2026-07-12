@@ -46,9 +46,23 @@ describe('enLettres (écriture des nombres en toutes lettres, 0..100)', () => {
     expect(enLettres(100)).toBe('cent')
   })
 
-  it('rejette les nombres hors intervalle [0, 100]', () => {
+  it('gère les centaines (100 à 999) avec l\'accord de « cent »', () => {
+    expect(enLettres(101)).toBe('cent un')
+    expect(enLettres(180)).toBe('cent quatre-vingts')
+    expect(enLettres(200)).toBe('deux cents') // pluriel quand rien ne suit
+    expect(enLettres(201)).toBe('deux cent un') // pas de « s » si un nombre suit
+    expect(enLettres(300)).toBe('trois cents')
+    expect(enLettres(342)).toBe('trois cent quarante-deux')
+    expect(enLettres(999)).toBe('neuf cent quatre-vingt-dix-neuf')
+  })
+
+  it('écrit mille', () => {
+    expect(enLettres(1000)).toBe('mille')
+  })
+
+  it('rejette les nombres hors intervalle [0, 1000]', () => {
     expect(() => enLettres(-1)).toThrow()
-    expect(() => enLettres(101)).toThrow()
+    expect(() => enLettres(1001)).toThrow()
     expect(() => enLettres(1.5)).toThrow()
   })
 })

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ce1.nombres-jusqu-1000",
+    "title": "Les nombres jusqu'à 1 000",
+    "pages": [
+      { "emoji": "💯", "text": "On compte par paquets : des centaines (100), des dizaines (10) et des unités (1)." },
+      { "emoji": "🔢", "text": "Dans 342, il y a 3 centaines, 4 dizaines et 2 unités : 300 + 40 + 2." }
+    ]
+  },
+  {
+    "id": "ce1.comparaison-jusqu-1000",
+    "title": "Comparer jusqu'à 1 000",
+    "pages": [
+      { "emoji": "🔍", "text": "Pour comparer, on regarde d'abord les centaines, puis les dizaines, puis les unités." },
+      { "emoji": "➡️", "text": "425 est plus grand que 419 : même centaine, mais 2 dizaines contre 1." }
+    ]
+  },
+  {
+    "id": "ce1.droite-graduee-1000",
+    "title": "La droite graduée",
+    "pages": [
+      { "emoji": "📏", "text": "Sur une grande droite graduée, les repères peuvent aller de 10 en 10 ou de 100 en 100." },
+      { "emoji": "📍", "text": "On compte les repères depuis 0 pour lire ou placer un nombre." }
+    ]
+  },
+  {
+    "id": "ce1.fractions-partage",
+    "title": "Moitié et quart",
+    "pages": [
+      { "emoji": "🍰", "text": "Partager en 2 parts égales, c'est prendre la moitié. La moitié de 8, c'est 4." },
+      { "emoji": "🍕", "text": "Partager en 4 parts égales, c'est prendre le quart. Le quart de 8, c'est 2." }
+    ]
+  },
+  {
+    "id": "ce1.addition-posee",
+    "title": "L'addition posée",
+    "pages": [
+      { "emoji": "➕", "text": "On aligne les unités sous les unités, les dizaines sous les dizaines." },
+      { "emoji": "🔄", "text": "On ajoute colonne par colonne ; si ça dépasse 9, on pose une retenue." }
+    ]
+  },
+  {
+    "id": "ce1.soustraction-posee",
+    "title": "La soustraction posée",
+    "pages": [
+      { "emoji": "➖", "text": "On aligne bien les chiffres, puis on enlève colonne par colonne." },
+      { "emoji": "🧩", "text": "Si on ne peut pas enlever, on emprunte une dizaine à la colonne d'à côté." }
+    ]
+  },
+  {
+    "id": "ce1.sens-multiplication",
+    "title": "Multiplier, c'est répéter",
+    "pages": [
+      { "emoji": "✖️", "text": "3 × 4, c'est 4 + 4 + 4 : on additionne 3 fois le nombre 4." },
+      { "emoji": "🍱", "text": "Multiplier aide à compter vite des paquets identiques." }
+    ]
+  },
+  {
+    "id": "ce1.tables-multiplication",
+    "title": "Les tables de 2 à 5",
+    "pages": [
+      { "emoji": "🧠", "text": "Connaître les tables par cœur rend le calcul rapide." },
+      { "emoji": "🔁", "text": "La table de 2, c'est les doubles. La table de 5 se termine par 0 ou 5." }
+    ]
+  },
+  {
+    "id": "ce1.calcul-mental",
+    "title": "Calcul mental",
+    "pages": [
+      { "emoji": "⚡", "text": "Pour aller vite : compléments à 10, doubles, moitiés et petites tables." },
+      { "emoji": "🎯", "text": "On cherche la stratégie la plus simple avant de calculer." }
+    ]
+  },
+  {
+    "id": "ce1.problemes-deux-etapes",
+    "title": "Problèmes à deux étapes",
+    "pages": [
+      { "emoji": "📖", "text": "Certains problèmes demandent deux calculs : on résout d'abord une partie." },
+      { "emoji": "🪜", "text": "Le schéma en barres aide à voir ce qu'on connaît et ce qu'on cherche." }
+    ]
+  },
+  {
+    "id": "ce1.longueurs-m-cm",
+    "title": "Mètres et centimètres",
+    "pages": [
+      { "emoji": "📏", "text": "On mesure les petites longueurs en centimètres (cm), les grandes en mètres (m)." },
+      { "emoji": "🔁", "text": "1 mètre, c'est 100 centimètres." }
+    ]
+  },
+  {
+    "id": "ce1.monnaie-rendu",
+    "title": "Rendre la monnaie",
+    "pages": [
+      { "emoji": "💶", "text": "Pour payer, on additionne pièces et billets." },
+      { "emoji": "🧾", "text": "Rendre la monnaie, c'est calculer ce qu'il reste après avoir payé." }
+    ]
+  },
+  {
+    "id": "ce1.heures-demies",
+    "title": "Lire l'heure",
+    "pages": [
+      { "emoji": "🕐", "text": "La petite aiguille montre l'heure, la grande montre les minutes." },
+      { "emoji": "🕜", "text": "Quand la grande aiguille est sur le 6, il est « et demie »." }
+    ]
+  },
+  {
+    "id": "ce1.angle-droit",
+    "title": "L'angle droit",
+    "pages": [
+      { "emoji": "📐", "text": "Un angle droit, c'est le coin d'un carré : on peut le vérifier avec une équerre." },
+      { "emoji": "🔷", "text": "Le carré et le rectangle ont 4 angles droits." }
+    ]
+  },
+  {
+    "id": "ce1.symetrie-axiale",
+    "title": "La symétrie",
+    "pages": [
+      { "emoji": "🦋", "text": "Une figure est symétrique si un pli la partage en deux moitiés identiques." },
+      { "emoji": "🪞", "text": "L'axe de symétrie agit comme un miroir." }
+    ]
+  }
+]

@@ -1,0 +1,231 @@
+{
+  "id": "ce1",
+  "name": "CE1",
+  "domains": [
+    {
+      "id": "nombres",
+      "name": "Nombres",
+      "notions": [
+        {
+          "id": "nombres-jusqu-1000",
+          "name": "Les nombres jusqu'à 1 000",
+          "prerequisites": [],
+          "lesson": "ce1.nombres-jusqu-1000",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "lire-nombre", "max": 199 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "lire-nombre", "max": 599 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "ecrire-nombre", "max": 999 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "lire-graduation", "max": 1000, "pas": 100 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger", "max": 1000 } }] }
+          ]
+        },
+        {
+          "id": "comparaison-jusqu-1000",
+          "name": "Comparer et ranger jusqu'à 1 000",
+          "prerequisites": ["nombres-jusqu-1000"],
+          "lesson": "ce1.comparaison-jusqu-1000",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 199 } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "comparer", "max": 1000 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 1000 } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger-croissant", "max": 1000 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 1000 } }] }
+          ]
+        },
+        {
+          "id": "droite-graduee-1000",
+          "name": "La droite graduée jusqu'à 1 000",
+          "prerequisites": ["nombres-jusqu-1000"],
+          "lesson": "ce1.droite-graduee-1000",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "lire-graduation", "max": 100, "pas": 10 } }] },
+            { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "lire-graduation", "max": 500, "pas": 50 } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "lire-graduation", "max": 1000, "pas": 100 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "lire-graduation", "max": 1000, "pas": 50 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger", "max": 1000 } }] }
+          ]
+        },
+        {
+          "id": "fractions-partage",
+          "name": "Premières fractions (moitié, quart)",
+          "prerequisites": [],
+          "lesson": "ce1.fractions-partage",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "moitie", "max": 20 } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "skill": "moitie", "max": 40 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "quart", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "quart", "max": 40 } }] },
+            { "level": 5, "generators": [{ "type": "truefalse", "params": { "skill": "double-moitie", "max": 40 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calcul",
+      "name": "Calcul",
+      "notions": [
+        {
+          "id": "addition-posee",
+          "name": "L'addition posée",
+          "prerequisites": [],
+          "lesson": "ce1.addition-posee",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "input", "params": { "op": "+", "max": 100, "manquant": "resultat", "retenue": false } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "op": "+", "max": 1000, "manquant": "resultat", "retenue": false } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "+", "max": 1000, "manquant": "resultat", "retenue": true } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "op": "+", "max": 1000 } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "+", "max": 1000, "manquant": "operande" } }] }
+          ]
+        },
+        {
+          "id": "soustraction-posee",
+          "name": "La soustraction posée",
+          "prerequisites": [],
+          "lesson": "ce1.soustraction-posee",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "input", "params": { "op": "-", "max": 100, "manquant": "resultat" } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "op": "-", "max": 1000, "manquant": "resultat", "retenue": false } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "-", "max": 1000, "manquant": "resultat", "retenue": true } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "op": "-", "max": 1000 } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "-", "max": 1000, "manquant": "operande" } }] }
+          ]
+        },
+        {
+          "id": "sens-multiplication",
+          "name": "Le sens de la multiplication",
+          "prerequisites": [],
+          "lesson": "ce1.sens-multiplication",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "op": "×", "table": 2 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "op": "×", "table": 5 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "×", "tables": [2, 5] } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "×", "tables": [2, 3, 4, 5] } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "×", "tables": [2, 3, 4, 5] } }] }
+          ]
+        },
+        {
+          "id": "tables-multiplication",
+          "name": "Les tables de 2 à 5",
+          "prerequisites": ["sens-multiplication"],
+          "lesson": "ce1.tables-multiplication",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "op": "×", "table": 2 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "op": "×", "table": 3 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "×", "table": 4 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "×", "table": 5 } }] },
+            { "level": 5, "generators": [{ "type": "input", "params": { "op": "×", "tables": [2, 3, 4, 5] } }] }
+          ]
+        },
+        {
+          "id": "calcul-mental",
+          "name": "Calcul mental",
+          "prerequisites": ["addition-posee"],
+          "lesson": "ce1.calcul-mental",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "complement", "cible": 10, "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "skill": "double", "max": 20 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "moitie", "max": 40 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "+", "max": 100, "manquant": "resultat", "retenue": false } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "op": "×", "tables": [2, 5] } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "problemes",
+      "name": "Résolution de problèmes",
+      "notions": [
+        {
+          "id": "problemes-deux-etapes",
+          "name": "Problèmes à une ou deux étapes",
+          "prerequisites": ["addition-posee"],
+          "lesson": "ce1.problemes-deux-etapes",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "problem", "params": { "structure": "ajout", "etapes": 1, "max": 100 } }] },
+            { "level": 2, "generators": [{ "type": "problem", "params": { "structure": "retrait", "etapes": 1, "max": 100 } }] },
+            { "level": 3, "generators": [{ "type": "problem", "params": { "structure": "reunion", "etapes": 2, "max": 100 } }] },
+            { "level": 4, "generators": [{ "type": "problem", "params": { "structure": "ajout-retrait", "etapes": 2, "max": 1000 } }] },
+            { "level": 5, "generators": [{ "type": "problem", "params": { "structure": "comparaison", "etapes": 2, "max": 1000 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grandeurs-mesures",
+      "name": "Grandeurs et mesures",
+      "notions": [
+        {
+          "id": "longueurs-m-cm",
+          "name": "Longueurs (m et cm)",
+          "prerequisites": [],
+          "lesson": "ce1.longueurs-m-cm",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "comparer-longueur" } }] },
+            { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "mesurer-cm", "max": 20 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "convertir-m-cm" } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "mesurer-cm", "max": 30 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger-longueurs" } }] }
+          ]
+        },
+        {
+          "id": "monnaie-rendu",
+          "name": "La monnaie (rendre)",
+          "prerequisites": [],
+          "lesson": "ce1.monnaie-rendu",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "compter-euros", "max": 20 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-pieces" } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "total-euros", "max": 50 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "rendre-monnaie", "max": 20 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "payer-somme", "max": 50 } }] }
+          ]
+        },
+        {
+          "id": "heures-demies",
+          "name": "Lire l'heure (et demie)",
+          "prerequisites": [],
+          "lesson": "ce1.heures-demies",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "lire-horloge", "precision": "heure" } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "lire-heure", "precision": "heure" } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "lire-horloge", "precision": "demie" } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "lire-heure", "precision": "demie" } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "placer-heure", "precision": "demie" } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geometrie",
+      "name": "Espace et géométrie",
+      "notions": [
+        {
+          "id": "angle-droit",
+          "name": "L'angle droit",
+          "prerequisites": [],
+          "lesson": "ce1.angle-droit",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-angle-droit" } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "angle-droit" } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "proprietes-carre-rectangle" } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "trier-quadrilateres" } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "reperer-angle-droit" } }] }
+          ]
+        },
+        {
+          "id": "symetrie-axiale",
+          "name": "La symétrie axiale",
+          "prerequisites": [],
+          "lesson": "ce1.symetrie-axiale",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-symetrie" } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "axe-symetrie" } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "completer-symetrie", "taille": 3 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "completer-symetrie", "taille": 4 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "placer-symetrique" } }] }
+          ]
+        }
+      ]
+    }
+  ]
+}

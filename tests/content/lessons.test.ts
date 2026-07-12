@@ -1,12 +1,14 @@
-import { cp } from '@/content/curricula'
+import { CURRICULA } from '@/content/curricula'
 import { allNotions } from '@/content/graph'
 import { getLesson, LESSONS } from '@/content/lessons'
 
-describe('leçons CP', () => {
-  it('chaque notion du CP référence une leçon existante', () => {
-    for (const notion of allNotions(cp)) {
-      const lesson = getLesson(notion.lesson)
-      expect(lesson, `leçon manquante pour ${notion.id} (${notion.lesson})`).toBeDefined()
+describe('leçons', () => {
+  it('chaque notion (tous niveaux) référence une leçon existante', () => {
+    for (const curriculum of Object.values(CURRICULA)) {
+      for (const notion of allNotions(curriculum)) {
+        const lesson = getLesson(notion.lesson)
+        expect(lesson, `leçon manquante pour ${notion.id} (${notion.lesson})`).toBeDefined()
+      }
     }
   })
 

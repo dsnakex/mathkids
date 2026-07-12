@@ -35,17 +35,9 @@ const DIZAINES: Record<number, string> = {
   6: 'soixante',
 }
 
-/**
- * Rend un entier de 0 à 100 en toutes lettres.
- * @throws si `n` n'est pas un entier de l'intervalle [0, 100].
- */
-export function enLettres(n: number): string {
-  if (!Number.isInteger(n) || n < 0 || n > 100) {
-    throw new RangeError(`enLettres attend un entier de 0 à 100 (reçu : ${n})`)
-  }
-
+// Rend un entier de 0 à 99 en toutes lettres (brique interne).
+function sousCent(n: number): string {
   if (n <= 19) return JUSQU_A_19[n]
-  if (n === 100) return 'cent'
 
   // 20..69 : dizaine régulière + unité, avec « et un » pour les 21, 31, 41, 51, 61.
   if (n < 70) {
@@ -67,4 +59,25 @@ export function enLettres(n: number): string {
   const reste = n - 80 // 0..19
   if (reste === 0) return 'quatre-vingts'
   return `quatre-vingt-${JUSQU_A_19[reste]}`
+}
+
+/**
+ * Rend un entier de 0 à 1000 en toutes lettres.
+ * @throws si `n` n'est pas un entier de l'intervalle [0, 1000].
+ */
+export function enLettres(n: number): string {
+  if (!Number.isInteger(n) || n < 0 || n > 1000) {
+    throw new RangeError(`enLettres attend un entier de 0 à 1000 (reçu : ${n})`)
+  }
+
+  if (n < 100) return sousCent(n)
+  if (n === 1000) return 'mille'
+
+  // 100..999 : centaines + reste. « cent » ne prend un « s » que s'il n'est pas
+  // suivi d'un nombre (200 = « deux cents », mais 201 = « deux cent un »).
+  const hundreds = Math.floor(n / 100)
+  const reste = n % 100
+  if (reste === 0) return hundreds === 1 ? 'cent' : `${sousCent(hundreds)} cents`
+  const prefix = hundreds === 1 ? 'cent' : `${sousCent(hundreds)} cent`
+  return `${prefix} ${sousCent(reste)}`
 }

@@ -131,6 +131,55 @@ function genArithmeticGap(op: '+' | '-', params: Params, rng: Rng): GapExercise 
 }
 
 // ---------------------------------------------------------------------------
+// Multiplication (op ×, tables) et quart (fraction-partage) — ajouts CE1.
+// ---------------------------------------------------------------------------
+
+function numArray(p: Params, k: string): number[] | undefined {
+  const v = p[k]
+  return Array.isArray(v) ? v.filter((x): x is number => typeof x === 'number') : undefined
+}
+
+function buildProduct(params: Params, rng: Rng): Equation {
+  const table = num(params, 'table')
+  const tables = numArray(params, 'tables')
+  const bmax = num(params, 'bmax') ?? 10
+  const a =
+    table !== undefined ? table : tables && tables.length > 0 ? pick(rng, tables) : randInt(rng, 2, 9)
+  const b = randInt(rng, 1, bmax)
+  return { a, b, c: a * b }
+}
+
+function genMultInput(params: Params, rng: Rng): InputExercise {
+  const { a, b, c } = buildProduct(params, rng)
+  return { type: 'input', prompt: `Combien font ${a} × ${b} ?`, answer: c }
+}
+
+function genMultQcm(params: Params, rng: Rng): QcmExercise {
+  const { a, b, c } = buildProduct(params, rng)
+  const pool = [c + a, c - a, c + b, c - b, (a + 1) * b, a * (b + 1), c + 1, c - 1]
+  const { choices, correctIndex } = buildNumericChoices(rng, c, pool, 4)
+  return { type: 'qcm', prompt: `Combien font ${a} × ${b} ?`, choices: choices.map(String), correctIndex }
+}
+
+function genMultGap(params: Params, rng: Rng): GapExercise {
+  const { a, b, c } = buildProduct(params, rng)
+  const blankLeft = rng() < 0.5
+  const prompt = blankLeft ? `? × ${b} = ${c}` : `${a} × ? = ${c}`
+  return { type: 'gap', prompt, answer: blankLeft ? a : b }
+}
+
+function genQuart(kind: 'input' | 'qcm', params: Params, rng: Rng): Exercise {
+  const max = num(params, 'max') ?? 40
+  const quart = randInt(rng, 1, Math.floor(max / 4))
+  const n = quart * 4 // seulement des nombres divisibles par 4
+  const prompt = `Quel est le quart de ${n} ?`
+  if (kind === 'input') return { type: 'input', prompt, answer: quart }
+  const pool = [n / 2, quart + 1, quart - 1, quart + 2, n]
+  const { choices, correctIndex } = buildNumericChoices(rng, quart, pool, 4)
+  return { type: 'qcm', prompt, choices: choices.map(String), correctIndex }
+}
+
+// ---------------------------------------------------------------------------
 // Compléments à une cible (skill: complement) — input, qcm, truefalse.
 // ---------------------------------------------------------------------------
 
@@ -357,8 +406,12 @@ function genVisual(params: Params, rng: Rng): Exercise {
       return genCount(params, rng)
     case 'lire-graduation':
       return genNumberline(params, rng)
-    case 'lire-horloge':
-      return genClock(params, rng)
+    case 'lire-horloge': {
+      // Seules les heures entières sont gérées (les demi-heures viendront plus tard).
+      const precision = str(params, 'precision')
+      if (precision === undefined || precision === 'heure') return genClock(params, rng)
+      break
+    }
   }
   throw new UnsupportedSpecError('visual', params)
 }
@@ -392,6 +445,7 @@ function genDragdrop(params: Params, rng: Rng): Exercise {
 function genInput(params: Params, rng: Rng): Exercise {
   const op = str(params, 'op')
   if (op === '+' || op === '-') return genArithmeticInput(op, params, rng)
+  if (op === '×') return genMultInput(params, rng)
   switch (str(params, 'skill')) {
     case 'complement':
       return genComplementInput(params, rng)
@@ -399,6 +453,8 @@ function genInput(params: Params, rng: Rng): Exercise {
       return genDouble('input', params, rng)
     case 'moitie':
       return genMoitie('input', params, rng)
+    case 'quart':
+      return genQuart('input', params, rng)
     case 'ecrire-nombre':
       return genEcrireNombre(params, rng)
     case 'recomposer':
@@ -410,6 +466,7 @@ function genInput(params: Params, rng: Rng): Exercise {
 function genQcm(params: Params, rng: Rng): Exercise {
   const op = str(params, 'op')
   if (op === '+' || op === '-') return genArithmeticQcm(op, params, rng)
+  if (op === '×') return genMultQcm(params, rng)
   switch (str(params, 'skill')) {
     case 'plus-grand':
       return genPlusGrand(params, rng)
@@ -419,6 +476,8 @@ function genQcm(params: Params, rng: Rng): Exercise {
       return genDouble('qcm', params, rng)
     case 'moitie':
       return genMoitie('qcm', params, rng)
+    case 'quart':
+      return genQuart('qcm', params, rng)
     case 'lire-nombre':
       return genLireNombre(params, rng)
     case 'dizaines-unites':
@@ -430,6 +489,7 @@ function genQcm(params: Params, rng: Rng): Exercise {
 function genGap(params: Params, rng: Rng): Exercise {
   const op = str(params, 'op')
   if (op === '+' || op === '-') return genArithmeticGap(op, params, rng)
+  if (op === '×') return genMultGap(params, rng)
   if (str(params, 'skill') === 'decomposition') return genDecomposition(params, rng)
   throw new UnsupportedSpecError('gap', params)
 }
