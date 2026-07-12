@@ -56,13 +56,18 @@ describe('enLettres (écriture des nombres en toutes lettres, 0..100)', () => {
     expect(enLettres(999)).toBe('neuf cent quatre-vingt-dix-neuf')
   })
 
-  it('écrit mille', () => {
+  it('gère les milliers (1000 à 10000), « mille » invariable', () => {
     expect(enLettres(1000)).toBe('mille')
+    expect(enLettres(1234)).toBe('mille deux cent trente-quatre')
+    expect(enLettres(2000)).toBe('deux mille')
+    expect(enLettres(2345)).toBe('deux mille trois cent quarante-cinq')
+    expect(enLettres(9999)).toBe('neuf mille neuf cent quatre-vingt-dix-neuf')
+    expect(enLettres(10000)).toBe('dix mille')
   })
 
-  it('rejette les nombres hors intervalle [0, 1000]', () => {
+  it('rejette les nombres hors intervalle [0, 10000]', () => {
     expect(() => enLettres(-1)).toThrow()
-    expect(() => enLettres(1001)).toThrow()
+    expect(() => enLettres(10001)).toThrow()
     expect(() => enLettres(1.5)).toThrow()
   })
 })

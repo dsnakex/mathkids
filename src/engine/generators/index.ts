@@ -179,6 +179,55 @@ function genQuart(kind: 'input' | 'qcm', params: Params, rng: Rng): Exercise {
   return { type: 'qcm', prompt, choices: choices.map(String), correctIndex }
 }
 
+// Division exacte (partage) — ajout CE2. On garantit un quotient entier.
+function buildQuotient(params: Params, rng: Rng): Equation {
+  const divisor = num(params, 'divisor')
+  const divisors = numArray(params, 'divisors')
+  const bmax = num(params, 'bmax') ?? 10
+  const b =
+    divisor !== undefined
+      ? divisor
+      : divisors && divisors.length > 0
+        ? pick(rng, divisors)
+        : randInt(rng, 2, 9)
+  const c = randInt(rng, 1, bmax)
+  return { a: b * c, b, c }
+}
+
+function genDivInput(params: Params, rng: Rng): InputExercise {
+  const { a, b, c } = buildQuotient(params, rng)
+  return { type: 'input', prompt: `Combien font ${a} ÷ ${b} ?`, answer: c }
+}
+
+function genDivQcm(params: Params, rng: Rng): QcmExercise {
+  const { a, b, c } = buildQuotient(params, rng)
+  const pool = [c + 1, c - 1, c + 2, c - 2, b, a, c + b]
+  const { choices, correctIndex } = buildNumericChoices(rng, c, pool, 4)
+  return { type: 'qcm', prompt: `Combien font ${a} ÷ ${b} ?`, choices: choices.map(String), correctIndex }
+}
+
+function genDivGap(params: Params, rng: Rng): GapExercise {
+  const { a, b, c } = buildQuotient(params, rng)
+  const blankLeft = rng() < 0.5
+  const prompt = blankLeft ? `? ÷ ${b} = ${c}` : `${a} ÷ ? = ${c}`
+  return { type: 'gap', prompt, answer: blankLeft ? a : b }
+}
+
+// Fraction générique d'une quantité (num/den de n) — ajout CE2 (1/3, 3/4…).
+function genFraction(kind: 'input' | 'qcm', params: Params, rng: Rng): Exercise {
+  const numerator = num(params, 'num') ?? 1
+  const den = num(params, 'den') ?? 2
+  const max = num(params, 'max') ?? 40
+  const parts = randInt(rng, 1, Math.floor(max / den))
+  const n = parts * den // n divisible par le dénominateur
+  const answer = parts * numerator // (n / den) × num
+  const prompt = `Combien font ${numerator}/${den} de ${n} ?`
+  if (kind === 'input') return { type: 'input', prompt, answer }
+  const pool = [n / den, n, answer + 1, answer - 1, answer + numerator]
+  const { choices, correctIndex } = buildNumericChoices(rng, answer, pool, 4)
+  return { type: 'qcm', prompt, choices: choices.map(String), correctIndex }
+}
+
 // ---------------------------------------------------------------------------
 // Compléments à une cible (skill: complement) — input, qcm, truefalse.
 // ---------------------------------------------------------------------------
@@ -446,6 +495,7 @@ function genInput(params: Params, rng: Rng): Exercise {
   const op = str(params, 'op')
   if (op === '+' || op === '-') return genArithmeticInput(op, params, rng)
   if (op === '×') return genMultInput(params, rng)
+  if (op === '÷') return genDivInput(params, rng)
   switch (str(params, 'skill')) {
     case 'complement':
       return genComplementInput(params, rng)
@@ -455,6 +505,8 @@ function genInput(params: Params, rng: Rng): Exercise {
       return genMoitie('input', params, rng)
     case 'quart':
       return genQuart('input', params, rng)
+    case 'fraction':
+      return genFraction('input', params, rng)
     case 'ecrire-nombre':
       return genEcrireNombre(params, rng)
     case 'recomposer':
@@ -467,6 +519,7 @@ function genQcm(params: Params, rng: Rng): Exercise {
   const op = str(params, 'op')
   if (op === '+' || op === '-') return genArithmeticQcm(op, params, rng)
   if (op === '×') return genMultQcm(params, rng)
+  if (op === '÷') return genDivQcm(params, rng)
   switch (str(params, 'skill')) {
     case 'plus-grand':
       return genPlusGrand(params, rng)
@@ -478,6 +531,8 @@ function genQcm(params: Params, rng: Rng): Exercise {
       return genMoitie('qcm', params, rng)
     case 'quart':
       return genQuart('qcm', params, rng)
+    case 'fraction':
+      return genFraction('qcm', params, rng)
     case 'lire-nombre':
       return genLireNombre(params, rng)
     case 'dizaines-unites':
@@ -490,6 +545,7 @@ function genGap(params: Params, rng: Rng): Exercise {
   const op = str(params, 'op')
   if (op === '+' || op === '-') return genArithmeticGap(op, params, rng)
   if (op === '×') return genMultGap(params, rng)
+  if (op === '÷') return genDivGap(params, rng)
   if (str(params, 'skill') === 'decomposition') return genDecomposition(params, rng)
   throw new UnsupportedSpecError('gap', params)
 }

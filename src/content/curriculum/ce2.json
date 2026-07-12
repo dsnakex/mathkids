@@ -1,0 +1,205 @@
+{
+  "id": "ce2",
+  "name": "CE2",
+  "domains": [
+    {
+      "id": "nombres",
+      "name": "Nombres",
+      "notions": [
+        {
+          "id": "nombres-jusqu-10000",
+          "name": "Les nombres jusqu'à 10 000",
+          "prerequisites": [],
+          "lesson": "ce2.nombres-jusqu-10000",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "lire-nombre", "max": 1999 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "lire-nombre", "max": 4999 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "ecrire-nombre", "max": 9999 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "lire-graduation", "max": 10000, "pas": 1000 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger", "max": 10000 } }] }
+          ]
+        },
+        {
+          "id": "comparaison-jusqu-10000",
+          "name": "Comparer jusqu'à 10 000",
+          "prerequisites": ["nombres-jusqu-10000"],
+          "lesson": "ce2.comparaison-jusqu-10000",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 1999 } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "comparer", "max": 10000 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 10000 } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger-croissant", "max": 10000 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 10000 } }] }
+          ]
+        },
+        {
+          "id": "fractions-simples",
+          "name": "Fractions simples (½, ⅓, ¼, ¾)",
+          "prerequisites": [],
+          "lesson": "ce2.fractions-simples",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "moitie", "max": 40 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "fraction", "num": 1, "den": 4, "max": 40 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "fraction", "num": 1, "den": 3, "max": 30 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "fraction", "num": 3, "den": 4, "max": 40 } }] },
+            { "level": 5, "generators": [{ "type": "truefalse", "params": { "skill": "double-moitie", "max": 40 } }] }
+          ]
+        },
+        {
+          "id": "ecriture-virgule-monnaie",
+          "name": "L'écriture à virgule (monnaie)",
+          "prerequisites": [],
+          "lesson": "ce2.ecriture-virgule-monnaie",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "compter-euros-centimes", "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "lire-prix-virgule" } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "total-euros-centimes", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "convertir-centimes" } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "payer-somme-centimes", "max": 20 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calcul",
+      "name": "Calcul",
+      "notions": [
+        {
+          "id": "tables-jusqu-9",
+          "name": "Les tables jusqu'à 9",
+          "prerequisites": [],
+          "lesson": "ce2.tables-jusqu-9",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "op": "×", "table": 6 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "op": "×", "table": 7 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "×", "table": 8 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "×", "table": 9 } }] },
+            { "level": 5, "generators": [{ "type": "input", "params": { "op": "×", "tables": [6, 7, 8, 9] } }] }
+          ]
+        },
+        {
+          "id": "multiplication-posee",
+          "name": "La multiplication posée",
+          "prerequisites": ["tables-jusqu-9"],
+          "lesson": "ce2.multiplication-posee",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "input", "params": { "op": "×", "table": 4, "bmax": 9 } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "op": "×", "table": 6, "bmax": 20 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "×", "table": 7, "bmax": 50 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "×", "tables": [6, 7, 8, 9], "bmax": 99 } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "×", "tables": [2, 3, 4, 5, 6, 7, 8, 9] } }] }
+          ]
+        },
+        {
+          "id": "division-partage",
+          "name": "La division (partage)",
+          "prerequisites": ["tables-jusqu-9"],
+          "lesson": "ce2.division-partage",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "op": "÷", "divisors": [2, 3] } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "op": "÷", "divisors": [4, 5] } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "÷", "divisors": [2, 3, 4, 5] } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "÷", "divisors": [6, 7, 8, 9] } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "÷", "divisors": [2, 3, 4, 5, 6, 7, 8, 9] } }] }
+          ]
+        },
+        {
+          "id": "calcul-mental-ce2",
+          "name": "Calcul mental",
+          "prerequisites": ["tables-jusqu-9"],
+          "lesson": "ce2.calcul-mental-ce2",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "complement", "cible": 100, "max": 100 } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "skill": "double", "max": 50 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "moitie", "max": 100 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "×", "tables": [2, 5] } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "op": "÷", "divisors": [2, 5] } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "problemes",
+      "name": "Résolution de problèmes",
+      "notions": [
+        {
+          "id": "problemes-multiplicatifs",
+          "name": "Problèmes multiplicatifs",
+          "prerequisites": ["tables-jusqu-9"],
+          "lesson": "ce2.problemes-multiplicatifs",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "problem", "params": { "structure": "multiplication", "etapes": 1, "max": 50 } }] },
+            { "level": 2, "generators": [{ "type": "problem", "params": { "structure": "partage", "etapes": 1, "max": 50 } }] },
+            { "level": 3, "generators": [{ "type": "problem", "params": { "structure": "multiplication", "etapes": 2, "max": 100 } }] },
+            { "level": 4, "generators": [{ "type": "problem", "params": { "structure": "mixte", "etapes": 2, "max": 100 } }] },
+            { "level": 5, "generators": [{ "type": "problem", "params": { "structure": "mixte", "etapes": 2, "max": 1000 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grandeurs-mesures",
+      "name": "Grandeurs et mesures",
+      "notions": [
+        {
+          "id": "perimetre",
+          "name": "Le périmètre",
+          "prerequisites": [],
+          "lesson": "ce2.perimetre",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "perimetre-carre" } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "skill": "perimetre-carre", "max": 20 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "perimetre-rectangle", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "mesurer-perimetre" } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "comparer-perimetre" } }] }
+          ]
+        },
+        {
+          "id": "durees-h-min",
+          "name": "Les durées (heures et minutes)",
+          "prerequisites": [],
+          "lesson": "ce2.durees-h-min",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "lire-horloge", "precision": "heure" } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "duree", "precision": "demie" } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "duree", "precision": "quart" } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "calcul-duree", "max": 60 } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "placer-heure", "precision": "quart" } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geometrie",
+      "name": "Espace et géométrie",
+      "notions": [
+        {
+          "id": "cercle",
+          "name": "Le cercle",
+          "prerequisites": [],
+          "lesson": "ce2.cercle",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-cercle" } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "rayon-diametre" } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "centre-rayon" } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "tracer-cercle" } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "placer-centre" } }] }
+          ]
+        },
+        {
+          "id": "solides-patrons",
+          "name": "Cube et pavé (patrons)",
+          "prerequisites": [],
+          "lesson": "ce2.solides-patrons",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-solide", "solides": ["cube", "pave"] } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "faces-cube" } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "compter-faces" } }] },
+            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "associer-patron" } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "reconnaitre-patron" } }] }
+          ]
+        }
+      ]
+    }
+  ]
+}

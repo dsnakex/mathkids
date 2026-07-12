@@ -61,18 +61,9 @@ function sousCent(n: number): string {
   return `quatre-vingt-${JUSQU_A_19[reste]}`
 }
 
-/**
- * Rend un entier de 0 à 1000 en toutes lettres.
- * @throws si `n` n'est pas un entier de l'intervalle [0, 1000].
- */
-export function enLettres(n: number): string {
-  if (!Number.isInteger(n) || n < 0 || n > 1000) {
-    throw new RangeError(`enLettres attend un entier de 0 à 1000 (reçu : ${n})`)
-  }
-
+// Rend un entier de 0 à 999 en toutes lettres (brique interne).
+function sousMille(n: number): string {
   if (n < 100) return sousCent(n)
-  if (n === 1000) return 'mille'
-
   // 100..999 : centaines + reste. « cent » ne prend un « s » que s'il n'est pas
   // suivi d'un nombre (200 = « deux cents », mais 201 = « deux cent un »).
   const hundreds = Math.floor(n / 100)
@@ -80,4 +71,23 @@ export function enLettres(n: number): string {
   if (reste === 0) return hundreds === 1 ? 'cent' : `${sousCent(hundreds)} cents`
   const prefix = hundreds === 1 ? 'cent' : `${sousCent(hundreds)} cent`
   return `${prefix} ${sousCent(reste)}`
+}
+
+/**
+ * Rend un entier de 0 à 10000 en toutes lettres.
+ * @throws si `n` n'est pas un entier de l'intervalle [0, 10000].
+ */
+export function enLettres(n: number): string {
+  if (!Number.isInteger(n) || n < 0 || n > 10000) {
+    throw new RangeError(`enLettres attend un entier de 0 à 10000 (reçu : ${n})`)
+  }
+
+  if (n < 1000) return sousMille(n)
+  if (n === 10000) return 'dix mille'
+
+  // 1000..9999 : milliers + reste. « mille » est invariable (jamais de « s »).
+  const thousands = Math.floor(n / 1000)
+  const reste = n % 1000
+  const prefix = thousands === 1 ? 'mille' : `${sousMille(thousands)} mille`
+  return reste === 0 ? prefix : `${prefix} ${sousMille(reste)}`
 }

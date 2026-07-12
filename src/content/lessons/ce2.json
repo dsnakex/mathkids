@@ -1,0 +1,106 @@
+[
+  {
+    "id": "ce2.nombres-jusqu-10000",
+    "title": "Les nombres jusqu'à 10 000",
+    "pages": [
+      { "emoji": "🔢", "text": "On ajoute une nouvelle colonne : les milliers (1 000), à gauche des centaines." },
+      { "emoji": "🧮", "text": "Dans 2 345, il y a 2 milliers, 3 centaines, 4 dizaines et 5 unités." }
+    ]
+  },
+  {
+    "id": "ce2.comparaison-jusqu-10000",
+    "title": "Comparer jusqu'à 10 000",
+    "pages": [
+      { "emoji": "🔍", "text": "On compare d'abord les milliers, puis les centaines, les dizaines, les unités." },
+      { "emoji": "➡️", "text": "3 200 est plus grand que 2 900 : il a plus de milliers." }
+    ]
+  },
+  {
+    "id": "ce2.fractions-simples",
+    "title": "Les fractions simples",
+    "pages": [
+      { "emoji": "🍰", "text": "Le tiers, c'est partager en 3 parts égales : le tiers de 9, c'est 3." },
+      { "emoji": "🍕", "text": "Les trois quarts, c'est 3 parts sur 4 : les trois quarts de 8, c'est 6." }
+    ]
+  },
+  {
+    "id": "ce2.ecriture-virgule-monnaie",
+    "title": "L'écriture à virgule",
+    "pages": [
+      { "emoji": "💶", "text": "3 € et 50 centimes s'écrit 3,50 € : la virgule sépare les euros des centimes." },
+      { "emoji": "🪙", "text": "100 centimes font 1 euro." }
+    ]
+  },
+  {
+    "id": "ce2.tables-jusqu-9",
+    "title": "Les tables jusqu'à 9",
+    "pages": [
+      { "emoji": "🧠", "text": "On apprend maintenant les tables de 6, 7, 8 et 9." },
+      { "emoji": "🔁", "text": "Astuce : 6 × 9 = 9 × 6, l'ordre ne change pas le résultat." }
+    ]
+  },
+  {
+    "id": "ce2.multiplication-posee",
+    "title": "La multiplication posée",
+    "pages": [
+      { "emoji": "✖️", "text": "Pour multiplier un grand nombre par un chiffre, on multiplie chaque colonne." },
+      { "emoji": "🔄", "text": "On n'oublie pas les retenues, comme dans l'addition posée." }
+    ]
+  },
+  {
+    "id": "ce2.division-partage",
+    "title": "La division (partage)",
+    "pages": [
+      { "emoji": "➗", "text": "Diviser, c'est partager en parts égales : 12 ÷ 3, c'est 12 partagé en 3, soit 4." },
+      { "emoji": "🍪", "text": "La division est le contraire de la multiplication : 3 × 4 = 12, donc 12 ÷ 3 = 4." }
+    ]
+  },
+  {
+    "id": "ce2.calcul-mental-ce2",
+    "title": "Calcul mental",
+    "pages": [
+      { "emoji": "⚡", "text": "On s'entraîne aux compléments à 100, aux doubles et aux tables." },
+      { "emoji": "🎯", "text": "Diviser par 2, c'est prendre la moitié ; par 5, c'est plus rapide en passant par 10." }
+    ]
+  },
+  {
+    "id": "ce2.problemes-multiplicatifs",
+    "title": "Problèmes multiplicatifs",
+    "pages": [
+      { "emoji": "📖", "text": "Quand on répète des paquets identiques, on multiplie. Quand on partage, on divise." },
+      { "emoji": "🪜", "text": "Le schéma en barres aide à choisir la bonne opération." }
+    ]
+  },
+  {
+    "id": "ce2.perimetre",
+    "title": "Le périmètre",
+    "pages": [
+      { "emoji": "📐", "text": "Le périmètre, c'est la longueur du tour d'une figure." },
+      { "emoji": "🟦", "text": "Pour un carré, on additionne ses 4 côtés (ou côté × 4)." }
+    ]
+  },
+  {
+    "id": "ce2.durees-h-min",
+    "title": "Les durées",
+    "pages": [
+      { "emoji": "🕐", "text": "Une heure a 60 minutes. La grande aiguille fait un tour en une heure." },
+      { "emoji": "🕜", "text": "Un quart d'heure, c'est 15 minutes ; une demi-heure, 30 minutes." }
+    ]
+  },
+  {
+    "id": "ce2.cercle",
+    "title": "Le cercle",
+    "pages": [
+      { "emoji": "⭕", "text": "Tous les points du cercle sont à la même distance du centre." },
+      { "emoji": "📏", "text": "Cette distance, c'est le rayon ; le diamètre traverse le cercle (deux rayons)." }
+    ]
+  },
+  {
+    "id": "ce2.solides-patrons",
+    "title": "Cube et pavé",
+    "pages": [
+      { "emoji": "🧊", "text": "Le cube a 6 faces carrées identiques ; le pavé a 6 faces rectangulaires." },
+      { "emoji": "📦", "text": "Un patron est le dessin à plat qui, plié, forme le solide." }
+    ]
+  }
+]
