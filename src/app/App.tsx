@@ -9,6 +9,7 @@ import { SessionScreen } from '@/features/session/SessionScreen'
 import { SessionEnd } from '@/features/session/SessionEnd'
 import { ShopScreen } from '@/features/shop/ShopScreen'
 import { ParentScreen } from '@/features/parent/ParentScreen'
+import { InstallPrompt } from '@/app/InstallPrompt'
 
 // Point d'entrée de l'app. Navigation par « écran » pilotée par le store :
 // profils → carte → (leçon) → session → fin → carte ; carte ↔ boutique.
@@ -42,6 +43,7 @@ export default function App() {
       {screen === 'end' && <SessionEnd />}
       {screen === 'shop' && <ShopScreen />}
       {screen === 'parent' && <ParentScreen />}
+      <InstallPrompt />
     </>
   )
 }
