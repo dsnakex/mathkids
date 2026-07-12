@@ -75,6 +75,7 @@ interface AppState {
   finishMission: (answers: PlacementAnswer[]) => Promise<void>
   skipMission: () => Promise<void>
   selectStep: (notionId: string) => Promise<void>
+  quitSession: () => Promise<void>
   lessonDone: () => Promise<void>
   startSession: (profileId: string) => Promise<void>
   answerCurrent: (firstTryCorrect: boolean) => Promise<void>
@@ -213,6 +214,14 @@ export const useAppStore = create<AppState>((set, get) => ({
       // Nouvelle notion : on montre d'abord la leçon.
       set({ pendingNotionId: notionId, screen: 'lesson' })
     }
+  },
+
+  async quitSession() {
+    // Abandon sans pénalité : on GARDE les réponses déjà données (la maîtrise a
+    // été mise à jour à chaque réponse), on sauvegarde puis on revient à la carte.
+    const { profileId, progress } = get()
+    if (profileId) await saveLearnerProgress(profileId, progress)
+    await get().goMap()
   },
 
   async lessonDone() {

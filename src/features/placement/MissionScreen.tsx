@@ -79,6 +79,8 @@ export function MissionScreen() {
       total={quiz.length}
       profileName={name}
       onContinue={onContinue}
+      onQuit={skipMission}
+      quitReassurance="Pas de souci, tu pourras refaire la mission plus tard."
     />
   )
 }

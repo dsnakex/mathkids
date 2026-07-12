@@ -11,6 +11,7 @@ export function SessionScreen() {
   const answerCurrent = useAppStore((s) => s.answerCurrent)
   const profileId = useAppStore((s) => s.profileId)
   const profiles = useAppStore((s) => s.profiles)
+  const quitSession = useAppStore((s) => s.quitSession)
 
   const item = session[index]
   if (!item) return null
@@ -24,6 +25,8 @@ export function SessionScreen() {
       total={session.length}
       profileName={name}
       onContinue={answerCurrent}
+      onQuit={quitSession}
+      quitReassurance="Ta progression est gardée : tes bonnes réponses comptent !"
     />
   )
 }

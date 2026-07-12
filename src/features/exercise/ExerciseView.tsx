@@ -1,6 +1,7 @@
 import { useRef, useState, type ReactNode } from 'react'
 import type { Exercise } from '@/engine/generators/types'
 import { AudioButton } from '@/components/AudioButton'
+import { Button } from '@/components/Button'
 import { NekoSushi } from '@/components/NekoSushi'
 import { speak } from '@/utils/speech'
 import { consigne, correctAnswerText, spokenPrompt } from './present'
@@ -17,16 +18,29 @@ type ExerciseViewProps = {
   profileName: string
   /** Appelé quand l'enfant passe à la suite ; `firstTryCorrect` = 1er essai réussi. */
   onContinue: (firstTryCorrect: boolean) => void
+  /** Optionnel : bouton « quitter » (revenir à la carte, abandonne la série). */
+  onQuit?: () => void
+  /** Message rassurant affiché dans la confirmation de pause. */
+  quitReassurance?: string
 }
 
 // Écran d'un exercice (turn 10 des maquettes). Gère localement la sélection, le
 // feedback (neutre / bonne réponse / erreur douce) et le réessai. Le résultat
 // du PREMIER essai est remonté au parent pour l'adaptation et le score.
-export function ExerciseView({ exercise, index, total, profileName, onContinue }: ExerciseViewProps) {
+export function ExerciseView({
+  exercise,
+  index,
+  total,
+  profileName,
+  onContinue,
+  onQuit,
+  quitReassurance = 'Ta progression est gardée !',
+}: ExerciseViewProps) {
   const [status, setStatus] = useState<AnswerStatus>('neutral')
   const [selected, setSelected] = useState<number | null>(null)
   const [input, setInput] = useState('')
   const [resetKey, setResetKey] = useState(0) // remonte OrderPad à chaque essai
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false)
   const firstTry = useRef<boolean | null>(null)
 
   const commit = (correct: boolean) => {
@@ -46,8 +60,35 @@ export function ExerciseView({ exercise, index, total, profileName, onContinue }
     <main className="relative flex min-h-full flex-col gap-3.5 bg-cream p-5 font-sans text-ink">
       {status === 'correct' ? <Confetti /> : null}
 
-      {/* En-tête : mascotte + jauge « bol de riz » + progression. */}
+      {/* Confirmation « pause » (quitter, adaptée à l'enfant, sans pénalité). */}
+      {onQuit && showQuitConfirm ? (
+        <div className="absolute inset-0 z-40 grid place-items-center bg-black/30 p-6">
+          <div className="flex max-w-xs flex-col items-center gap-4 rounded-card-lg bg-card p-6 text-center shadow-candy">
+            <NekoSushi variant="chef" size={64} />
+            <p className="text-[20px] font-extrabold">Tu veux faire une pause ?</p>
+            <p className="text-base font-bold text-muted">{quitReassurance}</p>
+            <div className="flex flex-col items-center gap-2">
+              <PrimaryButton onClick={onQuit}>Oui, pause 🥢</PrimaryButton>
+              <Button variant="ghost" onClick={() => setShowQuitConfirm(false)}>
+                Je continue !
+              </Button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {/* En-tête : quitter + mascotte + jauge « bol de riz » + progression. */}
       <div className="flex items-center gap-2.5">
+        {onQuit ? (
+          <button
+            type="button"
+            onClick={() => setShowQuitConfirm(true)}
+            aria-label="Quitter"
+            className="grid h-8 w-8 flex-none place-items-center rounded-full bg-card text-lg font-extrabold text-muted shadow-candy-sm transition-transform active:translate-y-[1px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40"
+          >
+            <span aria-hidden="true">✕</span>
+          </button>
+        ) : null}
         <NekoSushi variant="chef" size={42} />
         <span aria-hidden="true" className="text-xl">🍚</span>
         <div

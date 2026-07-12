@@ -77,6 +77,33 @@ describe('ExerciseView — saisie numérique', () => {
   })
 })
 
+describe('ExerciseView — quitter (pause)', () => {
+  it('le bouton ✕ demande confirmation avant de quitter, sans quitter par accident', () => {
+    const onQuit = vi.fn()
+    render(
+      <ExerciseView exercise={qcm} index={0} total={5} profileName="Léa" onContinue={vi.fn()} onQuit={onQuit} />,
+    )
+    fireEvent.click(screen.getByRole('button', { name: /quitter/i }))
+    // Confirmation adaptée à l'enfant, rassurante.
+    expect(screen.getByText(/tu veux faire une pause/i)).toBeInTheDocument()
+    expect(onQuit).not.toHaveBeenCalled()
+
+    // On peut revenir en arrière (continuer) sans quitter.
+    fireEvent.click(screen.getByRole('button', { name: /je continue/i }))
+    expect(onQuit).not.toHaveBeenCalled()
+
+    // Puis confirmer la pause quitte réellement.
+    fireEvent.click(screen.getByRole('button', { name: /quitter/i }))
+    fireEvent.click(screen.getByRole('button', { name: /oui, pause/i }))
+    expect(onQuit).toHaveBeenCalledTimes(1)
+  })
+
+  it('n\'affiche pas de bouton quitter sans onQuit', () => {
+    render(<ExerciseView exercise={qcm} index={0} total={5} profileName="Léa" onContinue={vi.fn()} />)
+    expect(screen.queryByRole('button', { name: /quitter/i })).toBeNull()
+  })
+})
+
 describe('ExerciseView — ranger (ordre croissant)', () => {
   const order = { type: 'order' as const, prompt: 'Range…', values: [5, 2, 8], answer: [2, 5, 8] }
 

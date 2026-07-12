@@ -61,6 +61,19 @@ describe('store — orchestration d\'une session', () => {
     expect(st.reward?.coins).toBe(0)
   })
 
+  it('quitter en cours de séance sauvegarde les réponses déjà données', async () => {
+    const p = await createProfile({ name: 'Léa', character: 'maki', level: 'cp' })
+    await useAppStore.getState().startSession(p.id)
+    // On répond à quelques questions puis on quitte.
+    await useAppStore.getState().answerCurrent(true)
+    await useAppStore.getState().answerCurrent(true)
+    await useAppStore.getState().quitSession()
+
+    expect(useAppStore.getState().screen).toBe('map')
+    const saved = await loadLearnerProgress(p.id)
+    expect(Object.keys(saved.mastery).length).toBeGreaterThan(0) // la progression est gardée
+  })
+
   it('reprend la progression sauvegardée à la session suivante (persistance)', async () => {
     const p = await createProfile({ name: 'Léa', character: 'maki', level: 'cp' })
     await useAppStore.getState().startSession(p.id)
