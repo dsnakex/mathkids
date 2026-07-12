@@ -346,6 +346,75 @@ function genProbaCount(_params: Params, rng: Rng): InputExercise {
   }
 }
 
+// Périmètres, aires et volumes (CE2 → CM2). Arithmétique simple, réponse entière.
+const GEOMETRY_SKILLS = new Set([
+  'perimetre-carre',
+  'perimetre-rectangle',
+  'aire-carre',
+  'aire-rectangle',
+  'aire-triangle',
+  'volume-pave',
+])
+
+function genGeometry(kind: 'input' | 'qcm', skill: string, params: Params, rng: Rng): Exercise {
+  const max = num(params, 'max') ?? 12
+  let prompt: string
+  let answer: number
+  let pool: number[]
+  switch (skill) {
+    case 'perimetre-carre': {
+      const s = randInt(rng, 2, max)
+      answer = 4 * s
+      prompt = `Quel est le périmètre d'un carré de côté ${s} cm ?`
+      pool = [s * s, 2 * s, 3 * s, answer + 1, answer - 1]
+      break
+    }
+    case 'perimetre-rectangle': {
+      const l = randInt(rng, 2, max)
+      const w = randInt(rng, 1, l)
+      answer = 2 * (l + w)
+      prompt = `Quel est le périmètre d'un rectangle de ${l} cm sur ${w} cm ?`
+      pool = [l * w, l + w, 2 * l + w, answer + 1, answer - 1]
+      break
+    }
+    case 'aire-carre': {
+      const s = randInt(rng, 2, max)
+      answer = s * s
+      prompt = `Quelle est l'aire d'un carré de côté ${s} cm ?`
+      pool = [4 * s, 2 * s, answer + 1, answer - 1, answer + s]
+      break
+    }
+    case 'aire-rectangle': {
+      const l = randInt(rng, 2, max)
+      const w = randInt(rng, 1, l)
+      answer = l * w
+      prompt = `Quelle est l'aire d'un rectangle de ${l} cm sur ${w} cm ?`
+      pool = [2 * (l + w), l + w, answer + 1, answer - 1, answer + w]
+      break
+    }
+    case 'aire-triangle': {
+      const b = randInt(rng, 2, max)
+      const h = 2 * randInt(rng, 1, Math.max(1, Math.floor(max / 2))) // hauteur paire → aire entière
+      answer = (b * h) / 2
+      prompt = `Quelle est l'aire d'un triangle de base ${b} cm et de hauteur ${h} cm ?`
+      pool = [b * h, b + h, answer + 1, answer - 1, answer + b]
+      break
+    }
+    default: {
+      // volume-pave
+      const l = randInt(rng, 1, max)
+      const w = randInt(rng, 1, max)
+      const h = randInt(rng, 1, max)
+      answer = l * w * h
+      prompt = `Quel est le volume d'un pavé de ${l} × ${w} × ${h} cm ?`
+      pool = [l + w + h, l * w, answer + 1, answer - 1, l * h]
+    }
+  }
+  if (kind === 'input') return { type: 'input', prompt, answer }
+  const { choices, correctIndex } = buildNumericChoices(rng, answer, pool, 4)
+  return { type: 'qcm', prompt, choices: choices.map(String), correctIndex }
+}
+
 // ---------------------------------------------------------------------------
 // Compléments à une cible (skill: complement) — input, qcm, truefalse.
 // ---------------------------------------------------------------------------
@@ -614,7 +683,9 @@ function genInput(params: Params, rng: Rng): Exercise {
   if (op === '+' || op === '-') return genArithmeticInput(op, params, rng)
   if (op === '×') return genMultInput(params, rng)
   if (op === '÷') return genDivInput(params, rng)
-  switch (str(params, 'skill')) {
+  const skill = str(params, 'skill')
+  if (skill && GEOMETRY_SKILLS.has(skill)) return genGeometry('input', skill, params, rng)
+  switch (skill) {
     case 'complement':
       return genComplementInput(params, rng)
     case 'double':
@@ -644,7 +715,9 @@ function genQcm(params: Params, rng: Rng): Exercise {
   if (op === '+' || op === '-') return genArithmeticQcm(op, params, rng)
   if (op === '×') return genMultQcm(params, rng)
   if (op === '÷') return genDivQcm(params, rng)
-  switch (str(params, 'skill')) {
+  const skill = str(params, 'skill')
+  if (skill && GEOMETRY_SKILLS.has(skill)) return genGeometry('qcm', skill, params, rng)
+  switch (skill) {
     case 'plus-grand':
       return genPlusGrand(params, rng)
     case 'complement':
