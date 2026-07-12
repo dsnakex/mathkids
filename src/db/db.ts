@@ -19,6 +19,10 @@ export interface ProfileRecord {
   coins: number // grains de riz dorés
   stars: number // étoiles cumulées
   createdAt: number
+  // Champs de gamification (Phase 5). Optionnels : les anciens profils valent [].
+  badges?: string[] // badges obtenus (ids)
+  owned?: string[] // articles de la boutique possédés (ids)
+  playDays?: string[] // jours de jeu distincts (clé « AAAA-MM-JJ »), pour l'assiduité
 }
 
 /** Progression d'une notion pour un profil (maîtrise + rappel espacé éventuel). */

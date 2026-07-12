@@ -40,12 +40,13 @@ export interface ComposeOptions {
   rng: Rng
   total?: number // nombre d'exercices visé (défaut 10)
   targetTier?: number
+  currentNotionId?: string // impose la notion « en cours » (choix depuis la carte)
 }
 
 // --- Prédicats sur les notions -----------------------------------------------
 
 /** Une notion est jouable si au moins un de ses paliers a un générateur supporté. */
-function isNotionGeneratable(notion: Notion): boolean {
+export function isNotionGeneratable(notion: Notion): boolean {
   return notion.tiers.some((t) => t.generators.some(canGenerate))
 }
 
@@ -212,7 +213,12 @@ export function composeSession(
   const targetTier = opts.targetTier ?? DEFAULT_TARGET_TIER
   const { rng, now } = opts
 
-  const current = currentNotion(curriculum, progress, targetTier)
+  // Notion imposée (choix depuis la carte) si elle est jouable ; sinon choix auto.
+  const forced = opts.currentNotionId
+    ? allNotions(curriculum).find((n) => n.id === opts.currentNotionId && isNotionGeneratable(n)) ??
+      null
+    : null
+  const current = forced ?? currentNotion(curriculum, progress, targetTier)
   const reviews = reviewNotions(curriculum, progress, now)
   const discoveries = discoveryNotions(curriculum, progress, targetTier)
 

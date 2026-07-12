@@ -51,6 +51,11 @@ export async function addRewards(id: string, coins: number, stars: number): Prom
     })
 }
 
+/** Met à jour partiellement un profil (récompenses, badges, achats…). */
+export async function updateProfile(id: string, patch: Partial<ProfileRecord>): Promise<void> {
+  await db.profiles.update(id, patch)
+}
+
 /** Supprime un profil et toute sa progression (transaction atomique). */
 export async function deleteProfile(id: string): Promise<void> {
   await db.transaction('rw', db.profiles, db.progress, async () => {

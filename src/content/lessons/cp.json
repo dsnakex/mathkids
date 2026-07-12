@@ -1,0 +1,170 @@
+[
+  {
+    "id": "cp.nombres-jusqu-20",
+    "title": "Les nombres jusqu'à 20",
+    "pages": [
+      { "emoji": "🍣", "text": "Pour compter, on avance de 1 en 1 : 1, 2, 3, 4… Chaque objet compte pour un nombre." },
+      { "emoji": "🔢", "text": "Après 10, on continue : onze, douze, treize… jusqu'à vingt. Chaque nombre a un nom et une écriture." }
+    ]
+  },
+  {
+    "id": "cp.comparaison-jusqu-20",
+    "title": "Comparer et ranger",
+    "pages": [
+      { "emoji": "⚖️", "text": "Comparer, c'est dire qui est le plus grand. 8 est plus grand que 5 : il y a plus de choses." },
+      { "emoji": "➡️", "text": "Ranger, c'est mettre du plus petit au plus grand : 2, 5, 8, comme une file bien ordonnée." }
+    ]
+  },
+  {
+    "id": "cp.nombres-jusqu-100",
+    "title": "Les nombres jusqu'à 100",
+    "pages": [
+      { "emoji": "🔟", "text": "Après vingt, il y a trente, quarante, cinquante… On compte les paquets de dix." },
+      { "emoji": "💯", "text": "Dix paquets de dix, cela fait cent. Tu peux compter très loin !" }
+    ]
+  },
+  {
+    "id": "cp.decomposition-dizaines-unites",
+    "title": "Dizaines et unités",
+    "pages": [
+      { "emoji": "📦", "text": "Un paquet de 10, c'est une dizaine. Les objets tout seuls, ce sont les unités." },
+      { "emoji": "🧮", "text": "Dans 47, il y a 4 dizaines et 7 unités : 40 + 7 = 47." }
+    ]
+  },
+  {
+    "id": "cp.comparaison-jusqu-100",
+    "title": "Comparer jusqu'à 100",
+    "pages": [
+      { "emoji": "🔍", "text": "Pour comparer deux nombres, on regarde d'abord les dizaines. 62 est plus grand que 58." },
+      { "emoji": "🟰", "text": "Si les dizaines sont pareilles, on regarde les unités : 54 est plus grand que 51." }
+    ]
+  },
+  {
+    "id": "cp.droite-graduee",
+    "title": "La droite graduée",
+    "pages": [
+      { "emoji": "📏", "text": "La droite graduée est une règle avec des repères. Chaque trait est un nombre." },
+      { "emoji": "📍", "text": "Pour placer un nombre, on compte les traits depuis le 0. Plus on va à droite, plus c'est grand." }
+    ]
+  },
+  {
+    "id": "cp.complements-a-10",
+    "title": "Les compléments à 10",
+    "pages": [
+      { "emoji": "🖐️", "text": "Le complément à 10, c'est ce qu'il manque pour aller jusqu'à 10." },
+      { "emoji": "🤝", "text": "7 et 3 vont ensemble : 7 + 3 = 10. Connais-les par cœur, ils aident beaucoup !" }
+    ]
+  },
+  {
+    "id": "cp.addition-jusqu-20",
+    "title": "Additionner jusqu'à 20",
+    "pages": [
+      { "emoji": "➕", "text": "Additionner, c'est réunir : 6 sushis et 5 sushis, cela fait 11 sushis en tout." },
+      { "emoji": "🧠", "text": "Astuce : pour 8 + 5, va d'abord à 10 (8 + 2), puis ajoute le reste (+ 3). 8 + 5 = 13." }
+    ]
+  },
+  {
+    "id": "cp.soustraction-jusqu-20",
+    "title": "Soustraire jusqu'à 20",
+    "pages": [
+      { "emoji": "➖", "text": "Soustraire, c'est enlever : tu as 12 sushis, tu en manges 4, il en reste 8." },
+      { "emoji": "🔙", "text": "Tu peux aussi reculer sur la droite graduée : de 12, recule de 4, tu arrives à 8." }
+    ]
+  },
+  {
+    "id": "cp.doubles-moities",
+    "title": "Doubles et moitiés",
+    "pages": [
+      { "emoji": "👯", "text": "Le double, c'est deux fois la même chose : le double de 4, c'est 4 + 4 = 8." },
+      { "emoji": "✂️", "text": "La moitié, c'est partager en deux parts égales : la moitié de 8, c'est 4." }
+    ]
+  },
+  {
+    "id": "cp.addition-jusqu-100",
+    "title": "Additionner jusqu'à 100",
+    "pages": [
+      { "emoji": "📦", "text": "Pour additionner de grands nombres, ajoute d'abord les dizaines, puis les unités." },
+      { "emoji": "🔄", "text": "Parfois 10 unités font une dizaine de plus : c'est la retenue. 28 + 15 = 43." }
+    ]
+  },
+  {
+    "id": "cp.soustraction-jusqu-100",
+    "title": "Soustraire jusqu'à 100",
+    "pages": [
+      { "emoji": "📦", "text": "Pour soustraire, enlève d'abord les dizaines, puis les unités." },
+      { "emoji": "🧩", "text": "Parfois il faut casser une dizaine en 10 unités pour pouvoir enlever. Vas-y doucement." }
+    ]
+  },
+  {
+    "id": "cp.problemes-additifs",
+    "title": "Problèmes d'addition",
+    "pages": [
+      { "emoji": "📖", "text": "Lis bien l'histoire. Quand on ajoute ou qu'on réunit des choses, on fait une addition." },
+      { "emoji": "🔑", "text": "Cherche la question, choisis les bons nombres, puis calcule. N'oublie pas ce que tu comptes !" }
+    ]
+  },
+  {
+    "id": "cp.problemes-soustractifs",
+    "title": "Problèmes de soustraction",
+    "pages": [
+      { "emoji": "📖", "text": "Quand on enlève, qu'il reste, ou qu'on cherche l'écart, on fait une soustraction." },
+      { "emoji": "🔑", "text": "Repère bien ce que l'histoire demande avant de calculer. Prends ton temps." }
+    ]
+  },
+  {
+    "id": "cp.longueurs",
+    "title": "Les longueurs",
+    "pages": [
+      { "emoji": "📏", "text": "Pour comparer des longueurs, on aligne les objets au même départ. Le plus long dépasse." },
+      { "emoji": "📐", "text": "On mesure avec la règle en centimètres (cm). On part bien du 0." }
+    ]
+  },
+  {
+    "id": "cp.monnaie",
+    "title": "La monnaie",
+    "pages": [
+      { "emoji": "💶", "text": "On paie en euros. Il y a des pièces (1 €, 2 €) et des billets (5 €, 10 €)." },
+      { "emoji": "🧾", "text": "Pour payer, on additionne la valeur des pièces et des billets." }
+    ]
+  },
+  {
+    "id": "cp.temps",
+    "title": "Se repérer dans le temps",
+    "pages": [
+      { "emoji": "📅", "text": "La semaine a 7 jours : lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche." },
+      { "emoji": "🕐", "text": "Sur l'horloge, la petite aiguille montre l'heure. À 3 heures, elle pointe le 3." }
+    ]
+  },
+  {
+    "id": "cp.reperage-spatial",
+    "title": "Se repérer dans l'espace",
+    "pages": [
+      { "emoji": "🧭", "text": "On utilise des mots pour dire où sont les choses : à gauche, à droite, dessus, dessous." },
+      { "emoji": "👀", "text": "Devant, derrière, à côté… ces mots aident à décrire une position." }
+    ]
+  },
+  {
+    "id": "cp.formes-planes",
+    "title": "Les formes planes",
+    "pages": [
+      { "emoji": "🔷", "text": "Le carré a 4 côtés égaux. Le rectangle a des côtés longs et courts. Le triangle a 3 côtés." },
+      { "emoji": "⭕", "text": "Le cercle est tout rond, sans coin ni côté droit." }
+    ]
+  },
+  {
+    "id": "cp.solides",
+    "title": "Les solides",
+    "pages": [
+      { "emoji": "🧊", "text": "Les solides prennent de la place. Le cube a 6 faces carrées, comme un dé." },
+      { "emoji": "⚽", "text": "La boule est ronde et roule. Le pavé ressemble à une boîte." }
+    ]
+  },
+  {
+    "id": "cp.quadrillage",
+    "title": "Le quadrillage",
+    "pages": [
+      { "emoji": "🔲", "text": "Un quadrillage est fait de cases. On peut repérer une case par sa ligne et sa colonne." },
+      { "emoji": "🎯", "text": "Pour reproduire un dessin, on regarde bien dans quelles cases il se trouve." }
+    ]
+  }
+]

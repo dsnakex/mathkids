@@ -1,10 +1,17 @@
-// Écran de fin de séance : félicitations, étoiles gagnées, grains de riz.
-// Version Phase 4 (la boutique et la carte du monde arrivent en Phase 5).
+// Écran de fin de séance : félicitations, étoiles, grains de riz et badges
+// éventuellement gagnés. On repart ensuite vers la carte de l'île.
 
 import { useAppStore } from '@/app/store'
+import { cp } from '@/content/curricula'
+import { allNotions } from '@/content/graph'
 import { Button } from '@/components/Button'
 import { NekoSushi } from '@/components/NekoSushi'
 import { Confetti } from '@/features/exercise/Confetti'
+import { badgeLabel } from '@/features/rewards/badges'
+
+const NOTION_NAMES: Record<string, string> = Object.fromEntries(
+  allNotions(cp).map((n) => [n.id, n.name]),
+)
 
 export function SessionEnd() {
   const reward = useAppStore((s) => s.reward)
@@ -12,8 +19,9 @@ export function SessionEnd() {
   const session = useAppStore((s) => s.session)
   const profiles = useAppStore((s) => s.profiles)
   const profileId = useAppStore((s) => s.profileId)
+  const earnedBadges = useAppStore((s) => s.earnedBadges)
   const replay = useAppStore((s) => s.replay)
-  const goProfiles = useAppStore((s) => s.goProfiles)
+  const goMap = useAppStore((s) => s.goMap)
 
   const name = profiles.find((p) => p.id === profileId)?.name ?? ''
   const stars = reward?.stars ?? 1
@@ -21,7 +29,7 @@ export function SessionEnd() {
   const total = session.length
 
   return (
-    <main className="relative flex min-h-full flex-col items-center justify-center gap-5 bg-cream p-6 text-center font-sans text-ink">
+    <main className="relative flex min-h-full flex-col items-center justify-center gap-5 bg-gradient-to-b from-cream to-[#FAE4D6] p-6 text-center font-sans text-ink">
       <Confetti />
 
       <div className="mk-pulse">
@@ -46,10 +54,26 @@ export function SessionEnd() {
         🍚 +{coins} grains de riz dorés
       </div>
 
+      {earnedBadges.length > 0 ? (
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-lg font-extrabold text-success-text">Nouveau badge !</p>
+          <ul className="flex flex-wrap justify-center gap-2">
+            {earnedBadges.map((id) => (
+              <li
+                key={id}
+                className="rounded-full bg-success-soft px-3 py-1 text-base font-extrabold text-success-text"
+              >
+                {badgeLabel(id, NOTION_NAMES)}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
       <div className="mt-2 flex flex-col items-center gap-2">
-        <Button onClick={replay}>Rejouer une séance 🥢</Button>
-        <Button variant="ghost" onClick={goProfiles}>
-          Retour aux profils
+        <Button onClick={goMap}>Retour à la carte 🗺️</Button>
+        <Button variant="ghost" onClick={replay}>
+          Rejouer une séance 🥢
         </Button>
       </div>
     </main>
