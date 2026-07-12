@@ -3,30 +3,40 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      // Palette « Nature / aventure » validée — voir docs/DESIGN.md §2
-      // et docs/design-handoff/README.md (design tokens).
+      // Palette « Chats-Sushis » (neko-sushi) validée v2 — voir docs/DESIGN.md §2
+      // et docs/design-handoff/README.md. Source unique de vérité des couleurs :
+      // changer une valeur ici re-skinne toute l'app.
       colors: {
-        sand: { DEFAULT: '#F7F1E1', dark: '#F1EAD6' },
-        card: { DEFAULT: '#FDFAF0', alt: '#FBF6E8' },
-        ink: '#2C3A2E',
-        muted: '#7C755F',
-        primary: { DEFAULT: '#2E7D5B', dark: '#1D5940' },
-        gold: { DEFAULT: '#E9B44C', dark: '#B8842A' },
-        success: { DEFAULT: '#5F9E38', dark: '#A9C487' },
-        error: { DEFAULT: '#DA9078', dark: '#E0BAA8' },
-        track: '#E5DCC3',
-        locked: '#CFC7B0',
-        hairline: '#BCB194', // bordures discrètes (ex. bouton « ajouter » en pointillés)
-        // Accent par niveau scolaire (l'enfant reconnaît « son île »)
-        cp: '#5F9E38',
-        ce1: '#C96F3B',
-        ce2: '#7D5BA6',
-        cm1: '#1E8E9E',
-        cm2: '#B4527A',
+        cream: { DEFAULT: '#FCF7EE', parent: '#F6EFDD' }, // fond « riz crème »
+        card: '#FFFFFF',
+        ink: '#4A4038', // texte principal
+        muted: { DEFAULT: '#847C6C', dark: '#5F594C' }, // texte secondaire (+ relief)
+        primary: { DEFAULT: '#C25A38', dark: '#8E3F24' }, // action, saumon foncé
+        gold: { DEFAULT: '#F5DFA0', text: '#6B4A0E', dark: '#C0A458' }, // riz doré, badges
+        success: {
+          DEFAULT: '#4E9A5F',
+          soft: '#EDF5E2',
+          text: '#3E6B24',
+          dark: '#A9C487',
+        },
+        error: {
+          DEFAULT: '#E2A69B', // gingembre rosé, jamais rouge agressif
+          soft: '#FAECE8',
+          text: '#9A5244',
+          dark: '#E5C3BA',
+        },
+        track: { DEFAULT: '#E3D5BC', border: '#D9C9A8', fill: '#FFFDF7' }, // jauge bol de riz
+        hairline: '#D3C6AC', // bordures discrètes (bouton « ajouter » en pointillés)
+        prix: '#8E5A22', // prix boutique
+        // Accents par niveau / monde de restaurant
+        cp: '#D9704C', // Bar à sushis
+        ce1: { DEFAULT: '#4E9A5F', dark: '#357043' }, // Monde des Makis
+        ce2: '#8A9A2F', // Jardin à thé matcha
+        cm1: '#C98A3B', // Monde des Ramens
+        cm2: '#C4699E', // Grand Banquet
       },
       fontFamily: {
         // Baloo 2 self-hostée via @fontsource-variable/baloo-2 (offline).
-        // Le nom de famille exposé par le paquet est « Baloo 2 Variable ».
         sans: [
           '"Baloo 2 Variable"',
           '"Baloo 2"',
@@ -37,16 +47,18 @@ export default {
       },
       borderRadius: {
         card: '24px',
-        btn: '20px',
+        'card-lg': '28px',
+        btn: '24px',
+        'btn-sm': '18px',
       },
       boxShadow: {
-        // Relief « bonbon » : 0 5px 0 <couleur foncée>. La variante « -pressed »
-        // (2px) sert à l'état enfoncé du bouton (translate-y-[3px]).
-        candy: '0 5px 0 #D9CEAE',
-        'candy-pressed': '0 2px 0 #D9CEAE',
-        'candy-primary': '0 5px 0 #1D5940',
-        'candy-primary-pressed': '0 2px 0 #1D5940',
-        'candy-gold': '0 5px 0 #B8842A',
+        // Relief « bonbon » : 0 5px 0 <couleur foncée> ; « -pressed » = état enfoncé.
+        candy: '0 5px 0 #E8DCC4',
+        'candy-pressed': '0 2px 0 #E8DCC4',
+        'candy-sm': '0 4px 0 #E8DCC4',
+        'candy-primary': '0 5px 0 #8E3F24',
+        'candy-primary-pressed': '0 2px 0 #8E3F24',
+        'candy-gold': '0 5px 0 #C0A458',
       },
     },
   },

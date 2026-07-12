@@ -3,8 +3,8 @@ import { ProfileSelect } from '@/features/profile/ProfileSelect'
 import type { Profile } from '@/features/profile/ProfileCard'
 
 const PROFILES: Profile[] = [
-  { id: 'lea', name: 'Léa', avatar: '🐰', level: 'ce1' },
-  { id: 'tom', name: 'Tom', avatar: '🐸', level: 'cm1' },
+  { id: 'lea', name: 'Léa', character: 'maki', level: 'ce1' },
+  { id: 'tom', name: 'Tom', character: 'temaki', level: 'cm1' },
 ]
 
 describe('ProfileSelect', () => {

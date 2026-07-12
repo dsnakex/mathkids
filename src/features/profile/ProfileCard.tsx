@@ -1,9 +1,10 @@
 import { LevelChip, type Level } from '@/components/LevelChip'
+import { NekoSushi, type NekoVariant } from '@/components/NekoSushi'
 
 export type Profile = {
   id: string
   name: string
-  avatar: string // emoji placeholder (illustrations dédiées en Phase 2)
+  character: NekoVariant // le chat-sushi de l'enfant (avatar)
   level: Level
 }
 
@@ -12,7 +13,7 @@ type ProfileCardProps = {
   onSelect: (id: string) => void
 }
 
-// Carte d'un profil enfant : avatar, prénom, pastille de niveau.
+// Carte d'un profil enfant : avatar chat-sushi, prénom, pastille de niveau.
 // Toute la carte est cliquable (grande cible tactile).
 export function ProfileCard({ profile, onSelect }: ProfileCardProps) {
   return (
@@ -20,12 +21,10 @@ export function ProfileCard({ profile, onSelect }: ProfileCardProps) {
       type="button"
       onClick={() => onSelect(profile.id)}
       aria-label={`Jouer avec le profil de ${profile.name}`}
-      className="w-[132px] rounded-card bg-card p-[18px] text-center shadow-candy transition-transform active:translate-y-[3px] active:shadow-candy-pressed focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40"
+      className="w-[134px] rounded-card bg-card p-[18px] text-center shadow-candy transition-transform active:translate-y-[3px] active:shadow-candy-pressed focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40"
     >
-      <span className="block text-[52px] leading-none" aria-hidden="true">
-        {profile.avatar}
-      </span>
-      <span className="mt-1.5 block text-[19px] font-extrabold text-ink">
+      <NekoSushi variant={profile.character} size={84} className="mx-auto" />
+      <span className="mt-1 block text-[19px] font-extrabold text-ink">
         {profile.name}
       </span>
       <LevelChip level={profile.level} className="mt-1.5" />
