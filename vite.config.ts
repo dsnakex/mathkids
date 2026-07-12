@@ -15,7 +15,7 @@ export default defineConfig({
       // Precache de tout le shell + contenu (JSON bundlé) + police : l'app
       // fonctionne 100 % hors ligne après la première visite.
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,woff2,json}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'],
         cleanupOutdatedCaches: true,
         navigateFallback: '/index.html',
       },
@@ -34,9 +34,10 @@ export default defineConfig({
         background_color: '#FCF7EE',
         theme_color: '#C25A38',
         icons: [
-          { src: 'icons/icon.svg', sizes: '192x192', type: 'image/svg+xml', purpose: 'any' },
-          { src: 'icons/icon.svg', sizes: '512x512', type: 'image/svg+xml', purpose: 'any' },
-          { src: 'icons/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' },
+          { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: 'icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'icons/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
         ],
       },
     }),
