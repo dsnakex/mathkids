@@ -301,7 +301,7 @@ function genCount(params: Params, rng: Rng): QcmExercise {
   const { choices, correctIndex } = buildNumericChoices(rng, objects, pool, 4)
   return {
     type: 'qcm',
-    prompt: 'Combien vois-tu de sushis ?',
+    prompt: 'Combien vois-tu de boules de riz ?',
     choices: choices.map(String),
     correctIndex,
     visual: { kind: 'count', objects },

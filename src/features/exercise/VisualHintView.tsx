@@ -8,7 +8,7 @@ function Count({ objects }: { objects: number }) {
   return (
     <div aria-hidden="true" className="flex max-w-[280px] flex-wrap justify-center gap-1 text-[28px]">
       {Array.from({ length: objects }, (_, i) => (
-        <span key={i}>🍣</span>
+        <span key={i}>🍙</span>
       ))}
     </div>
   )
