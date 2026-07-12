@@ -1,0 +1,106 @@
+[
+  {
+    "id": "cm1.grands-nombres",
+    "title": "Les grands nombres",
+    "pages": [
+      { "emoji": "🔢", "text": "Après les milliers viennent les dizaines et centaines de milliers, puis le million." },
+      { "emoji": "🧮", "text": "On regroupe les chiffres par tranches de 3 pour lire plus facilement : 1 250 000." }
+    ]
+  },
+  {
+    "id": "cm1.nombres-decimaux",
+    "title": "Les nombres décimaux",
+    "pages": [
+      { "emoji": "📏", "text": "La virgule sépare la partie entière des dixièmes, centièmes, millièmes." },
+      { "emoji": "🔍", "text": "3,5 est plus grand que 3,2 : même partie entière, mais plus de dixièmes." }
+    ]
+  },
+  {
+    "id": "cm1.fractions-cm1",
+    "title": "Fractions et décimaux",
+    "pages": [
+      { "emoji": "🍰", "text": "Une fraction partage l'unité : 1/2, 1/3, 1/4 sont des parts égales." },
+      { "emoji": "🔁", "text": "Certaines fractions s'écrivent aussi en décimal : 1/2 = 0,5 ; 1/4 = 0,25." }
+    ]
+  },
+  {
+    "id": "cm1.operations-posees",
+    "title": "Les quatre opérations",
+    "pages": [
+      { "emoji": "🧮", "text": "On sait poser l'addition, la soustraction, la multiplication et la division." },
+      { "emoji": "🎯", "text": "On aligne bien les chiffres et on n'oublie pas les retenues." }
+    ]
+  },
+  {
+    "id": "cm1.calcul-decimaux",
+    "title": "Calculer avec les décimaux",
+    "pages": [
+      { "emoji": "➕", "text": "Pour additionner des décimaux, on aligne les virgules l'une sous l'autre." },
+      { "emoji": "📏", "text": "2,5 + 1,3 = 3,8 : on ajoute les dixièmes, puis les unités." }
+    ]
+  },
+  {
+    "id": "cm1.multiples-diviseurs",
+    "title": "Multiples et diviseurs",
+    "pages": [
+      { "emoji": "🔢", "text": "12 est un multiple de 3 car 3 × 4 = 12. On dit aussi que 3 divise 12." },
+      { "emoji": "🔎", "text": "Les multiples de 5 se terminent par 0 ou 5." }
+    ]
+  },
+  {
+    "id": "cm1.calcul-mental-cm1",
+    "title": "Calcul mental",
+    "pages": [
+      { "emoji": "⚡", "text": "On combine tables, compléments, doubles et moitiés pour aller vite." },
+      { "emoji": "🎯", "text": "Choisir la bonne stratégie fait gagner du temps." }
+    ]
+  },
+  {
+    "id": "cm1.pourcentages",
+    "title": "Les pourcentages",
+    "pages": [
+      { "emoji": "％", "text": "50 %, c'est la moitié ; 25 %, c'est le quart ; 100 %, c'est le tout." },
+      { "emoji": "🧮", "text": "50 % de 40, c'est 20. 25 % de 40, c'est 10." }
+    ]
+  },
+  {
+    "id": "cm1.proportionnalite-simple",
+    "title": "La proportionnalité",
+    "pages": [
+      { "emoji": "⚖️", "text": "Deux fois plus d'objets, deux fois plus cher : c'est proportionnel." },
+      { "emoji": "1️⃣", "text": "On peut passer par l'unité : le prix d'un objet, puis multiplier." }
+    ]
+  },
+  {
+    "id": "cm1.egalites-a-trous",
+    "title": "Le signe = ",
+    "pages": [
+      { "emoji": "🟰", "text": "Le signe = veut dire « la même chose des deux côtés », pas « le résultat »." },
+      { "emoji": "🧩", "text": "Dans 4 + 3 = ? + 2, le trou vaut 5 car les deux côtés font 7." }
+    ]
+  },
+  {
+    "id": "cm1.vocabulaire-proba",
+    "title": "Certain, possible, impossible",
+    "pages": [
+      { "emoji": "🎲", "text": "Certain : ça arrive à coup sûr. Impossible : ça n'arrive jamais." },
+      { "emoji": "🤔", "text": "Possible : ça peut arriver, mais pas toujours." }
+    ]
+  },
+  {
+    "id": "cm1.aires",
+    "title": "Les aires",
+    "pages": [
+      { "emoji": "🟦", "text": "L'aire, c'est la surface couverte par une figure." },
+      { "emoji": "🔲", "text": "On peut la mesurer en comptant des carreaux identiques." }
+    ]
+  },
+  {
+    "id": "cm1.droites-perpendiculaires",
+    "title": "Perpendiculaires et parallèles",
+    "pages": [
+      { "emoji": "📐", "text": "Deux droites perpendiculaires se croisent en formant un angle droit." },
+      { "emoji": "🛤️", "text": "Deux droites parallèles ne se croisent jamais, comme des rails." }
+    ]
+  }
+]

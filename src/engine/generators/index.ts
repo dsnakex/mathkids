@@ -13,7 +13,7 @@
 
 import type { GeneratorSpec } from '@/content/schema'
 import { enLettres } from './frenchNumbers'
-import { mulberry32, randInt, pick, sample, buildNumericChoices, type Rng } from './rng'
+import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
 import type {
   Exercise,
   GapExercise,
@@ -48,6 +48,16 @@ const rangeInclusive = (lo: number, hi: number): number[] => {
   const out: number[] = []
   for (let i = lo; i <= hi; i++) out.push(i)
   return out
+}
+
+// `k` entiers distincts dans [lo, hi] sans matérialiser toute la plage (utile
+// pour les grands nombres : jusqu'au million au CM1).
+function distinctInts(rng: Rng, lo: number, hi: number, k: number): number[] {
+  const span = hi - lo + 1
+  if (span <= 1000) return sample(rng, rangeInclusive(lo, hi), Math.min(k, span))
+  const seen = new Set<number>()
+  while (seen.size < Math.min(k, span)) seen.add(randInt(rng, lo, hi))
+  return [...seen]
 }
 
 // Inverse dizaines/unités (23 → 32) : distracteur typique de lecture de nombre.
@@ -229,6 +239,91 @@ function genFraction(kind: 'input' | 'qcm', params: Params, rng: Rng): Exercise 
 }
 
 // ---------------------------------------------------------------------------
+// CM1 : décimaux (QCM), pourcentages, égalités à trous, probabilités, multiples.
+// ---------------------------------------------------------------------------
+
+// Décimaux manipulés en DIXIÈMES (entiers) pour éviter les erreurs de virgule
+// flottante ; affichés avec la virgule française.
+const formatDec = (tenths: number): string => `${Math.floor(tenths / 10)},${tenths % 10}`
+
+function genDecimalCompare(params: Params, rng: Rng): QcmExercise {
+  const max = num(params, 'max') ?? 10
+  const values = sample(rng, rangeInclusive(1, max * 10), 4) // dixièmes distincts
+  const correct = Math.max(...values)
+  return {
+    type: 'qcm',
+    prompt: 'Quel nombre décimal est le plus grand ?',
+    choices: values.map(formatDec),
+    correctIndex: values.indexOf(correct),
+  }
+}
+
+function genDecimalAdd(params: Params, rng: Rng): QcmExercise {
+  const max = num(params, 'max') ?? 10
+  const t1 = randInt(rng, 1, max * 10)
+  const t2 = randInt(rng, 1, max * 10)
+  const sum = t1 + t2
+  const pool = [sum + 1, sum - 1, sum + 10, sum - 10, t1, t2]
+  const { choices, correctIndex } = buildNumericChoices(rng, sum, pool, 4)
+  return {
+    type: 'qcm',
+    prompt: `Combien font ${formatDec(t1)} + ${formatDec(t2)} ?`,
+    choices: choices.map(formatDec),
+    correctIndex,
+  }
+}
+
+function genPourcentage(kind: 'input' | 'qcm', params: Params, rng: Rng): Exercise {
+  const pct = num(params, 'pct') ?? 50
+  const max = num(params, 'max') ?? 100
+  const step = pct === 25 ? 4 : pct === 50 ? 2 : 1 // n divisible → réponse entière
+  const n = randInt(rng, 1, Math.floor(max / step)) * step
+  const answer = (n * pct) / 100
+  const prompt = `Combien font ${pct}% de ${n} ?`
+  if (kind === 'input') return { type: 'input', prompt, answer }
+  const pool = [n, answer + 1, answer - 1, answer + 2, answer * 2].filter((v) => Number.isInteger(v))
+  const { choices, correctIndex } = buildNumericChoices(rng, answer, pool, 4)
+  return { type: 'qcm', prompt, choices: choices.map(String), correctIndex }
+}
+
+function genEgalite(params: Params, rng: Rng): GapExercise {
+  const max = num(params, 'max') ?? 20
+  const a = randInt(rng, 1, max)
+  const b = randInt(rng, 1, max)
+  const sum = a + b
+  const d = randInt(rng, 0, sum) // opérande connue à droite
+  return { type: 'gap', prompt: `${a} + ${b} = ? + ${d}`, answer: sum - d }
+}
+
+const PROBA_LABELS = ['certain', 'possible', 'impossible']
+
+function genProbaVocab(_params: Params, rng: Rng): QcmExercise {
+  // Scénarios sur un dé à 6 faces, à réponse connue.
+  const scenarios: Array<{ prompt: string; correct: string }> = [
+    { prompt: `Avec un dé à 6 faces, obtenir un ${randInt(rng, 1, 6)} :`, correct: 'possible' },
+    { prompt: `Avec un dé à 6 faces, obtenir un ${randInt(rng, 7, 9)} :`, correct: 'impossible' },
+    { prompt: 'Avec un dé à 6 faces, obtenir un nombre entre 1 et 6 :', correct: 'certain' },
+    { prompt: 'Avec un dé à 6 faces, obtenir un nombre plus grand que 6 :', correct: 'impossible' },
+  ]
+  const scenario = pick(rng, scenarios)
+  const choices = shuffle(rng, PROBA_LABELS)
+  return {
+    type: 'qcm',
+    prompt: scenario.prompt,
+    choices,
+    correctIndex: choices.indexOf(scenario.correct),
+  }
+}
+
+function genMultiple(params: Params, rng: Rng): TrueFalseExercise {
+  const base = num(params, 'base') ?? pick(rng, [2, 3, 4, 5])
+  const k = randInt(rng, 1, 10)
+  const showTrue = rng() < 0.5
+  const n = showTrue ? base * k : base * k + randInt(rng, 1, base - 1)
+  return { type: 'truefalse', prompt: `${n} est un multiple de ${base}.`, answer: n % base === 0 }
+}
+
+// ---------------------------------------------------------------------------
 // Compléments à une cible (skill: complement) — input, qcm, truefalse.
 // ---------------------------------------------------------------------------
 
@@ -315,7 +410,7 @@ function genDoubleMoitieTrueFalse(params: Params, rng: Rng): TrueFalseExercise {
 function genPlusGrand(params: Params, rng: Rng): QcmExercise {
   const max = num(params, 'max') ?? 20
   const nChoices = Math.min(4, max + 1)
-  const nums = sample(rng, rangeInclusive(0, max), nChoices)
+  const nums = distinctInts(rng, 0, max, nChoices)
   const correct = Math.max(...nums) // unique car les tirages sont distincts
   return {
     type: 'qcm',
@@ -472,7 +567,7 @@ function genVisual(params: Params, rng: Rng): Exercise {
 function genOrder(params: Params, rng: Rng): OrderExercise {
   const max = num(params, 'max') ?? 20
   const count = Math.min(4, max + 1)
-  const values = sample(rng, rangeInclusive(0, max), count)
+  const values = distinctInts(rng, 0, max, count)
   return {
     type: 'order',
     prompt: 'Range du plus petit au plus grand.',
@@ -507,6 +602,8 @@ function genInput(params: Params, rng: Rng): Exercise {
       return genQuart('input', params, rng)
     case 'fraction':
       return genFraction('input', params, rng)
+    case 'pourcentage':
+      return genPourcentage('input', params, rng)
     case 'ecrire-nombre':
       return genEcrireNombre(params, rng)
     case 'recomposer':
@@ -533,6 +630,14 @@ function genQcm(params: Params, rng: Rng): Exercise {
       return genQuart('qcm', params, rng)
     case 'fraction':
       return genFraction('qcm', params, rng)
+    case 'pourcentage':
+      return genPourcentage('qcm', params, rng)
+    case 'decimal-compare':
+      return genDecimalCompare(params, rng)
+    case 'decimal-add':
+      return genDecimalAdd(params, rng)
+    case 'proba-vocab':
+      return genProbaVocab(params, rng)
     case 'lire-nombre':
       return genLireNombre(params, rng)
     case 'dizaines-unites':
@@ -546,7 +651,9 @@ function genGap(params: Params, rng: Rng): Exercise {
   if (op === '+' || op === '-') return genArithmeticGap(op, params, rng)
   if (op === '×') return genMultGap(params, rng)
   if (op === '÷') return genDivGap(params, rng)
-  if (str(params, 'skill') === 'decomposition') return genDecomposition(params, rng)
+  const skill = str(params, 'skill')
+  if (skill === 'decomposition') return genDecomposition(params, rng)
+  if (skill === 'egalite') return genEgalite(params, rng)
   throw new UnsupportedSpecError('gap', params)
 }
 
@@ -558,6 +665,8 @@ function genTrueFalse(params: Params, rng: Rng): Exercise {
       return genComplementTrueFalse(params, rng)
     case 'double-moitie':
       return genDoubleMoitieTrueFalse(params, rng)
+    case 'multiple':
+      return genMultiple(params, rng)
   }
   throw new UnsupportedSpecError('truefalse', params)
 }

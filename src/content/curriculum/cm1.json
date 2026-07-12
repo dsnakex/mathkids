@@ -1,0 +1,217 @@
+{
+  "id": "cm1",
+  "name": "CM1",
+  "domains": [
+    {
+      "id": "nombres",
+      "name": "Nombres",
+      "notions": [
+        {
+          "id": "grands-nombres",
+          "name": "Les grands nombres (jusqu'au million)",
+          "prerequisites": [],
+          "lesson": "cm1.grands-nombres",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 9999 } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "comparer", "max": 100000 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "plus-grand", "max": 1000000 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "lire-graduation", "max": 1000000, "pas": 100000 } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger", "max": 100000 } }] }
+          ]
+        },
+        {
+          "id": "nombres-decimaux",
+          "name": "Les nombres décimaux",
+          "prerequisites": [],
+          "lesson": "cm1.nombres-decimaux",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "decimal-compare", "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "decimal-compare", "max": 50 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 10 } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 20 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "decimal-compare", "max": 100 } }] }
+          ]
+        },
+        {
+          "id": "fractions-cm1",
+          "name": "Fractions et fractions décimales",
+          "prerequisites": [],
+          "lesson": "cm1.fractions-cm1",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "moitie", "max": 40 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "fraction", "num": 1, "den": 3, "max": 30 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "fraction", "num": 1, "den": 4, "max": 40 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "fraction", "num": 3, "den": 4, "max": 40 } }] },
+            { "level": 5, "generators": [{ "type": "truefalse", "params": { "skill": "double-moitie", "max": 40 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calcul",
+      "name": "Calcul",
+      "notions": [
+        {
+          "id": "operations-posees",
+          "name": "Les quatre opérations posées",
+          "prerequisites": [],
+          "lesson": "cm1.operations-posees",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "input", "params": { "op": "+", "max": 10000, "manquant": "resultat", "retenue": false } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "op": "-", "max": 10000, "manquant": "resultat", "retenue": true } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "op": "×", "table": 7, "bmax": 50 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "÷", "divisors": [2, 3, 4, 5, 6, 7, 8, 9] } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "op": "×", "tables": [6, 7, 8, 9] } }] }
+          ]
+        },
+        {
+          "id": "calcul-decimaux",
+          "name": "Calculer avec les décimaux",
+          "prerequisites": ["nombres-decimaux"],
+          "lesson": "cm1.calcul-decimaux",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 20 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "decimal-compare", "max": 50 } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 50 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 100 } }] }
+          ]
+        },
+        {
+          "id": "multiples-diviseurs",
+          "name": "Multiples et diviseurs",
+          "prerequisites": [],
+          "lesson": "cm1.multiples-diviseurs",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "truefalse", "params": { "skill": "multiple", "base": 2 } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "multiple", "base": 3 } }] },
+            { "level": 3, "generators": [{ "type": "truefalse", "params": { "skill": "multiple", "base": 5 } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "op": "÷", "divisors": [2, 3, 4, 5] } }] },
+            { "level": 5, "generators": [{ "type": "truefalse", "params": { "skill": "multiple", "base": 9 } }] }
+          ]
+        },
+        {
+          "id": "calcul-mental-cm1",
+          "name": "Calcul mental",
+          "prerequisites": [],
+          "lesson": "cm1.calcul-mental-cm1",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "complement", "cible": 100, "max": 100 } }] },
+            { "level": 2, "generators": [{ "type": "input", "params": { "skill": "double", "max": 100 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "moitie", "max": 100 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "×", "tables": [6, 7, 8, 9] } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "op": "÷", "divisors": [6, 7, 8, 9] } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "proportionnalite",
+      "name": "Proportionnalité",
+      "notions": [
+        {
+          "id": "pourcentages",
+          "name": "Les pourcentages usuels",
+          "prerequisites": [],
+          "lesson": "cm1.pourcentages",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "pourcentage", "pct": 50, "max": 100 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "pourcentage", "pct": 25, "max": 100 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "pourcentage", "pct": 50, "max": 200 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "pourcentage", "pct": 25, "max": 200 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "pourcentage", "pct": 100, "max": 100 } }] }
+          ]
+        },
+        {
+          "id": "proportionnalite-simple",
+          "name": "Situations de proportionnalité",
+          "prerequisites": ["pourcentages"],
+          "lesson": "cm1.proportionnalite-simple",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "pourcentage", "pct": 50, "max": 80 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "pourcentage", "pct": 100, "max": 80 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "pourcentage", "pct": 25, "max": 80 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "op": "×", "table": 4, "bmax": 20 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "pourcentage", "pct": 50, "max": 200 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "algebre",
+      "name": "Pensée algébrique et informatique",
+      "notions": [
+        {
+          "id": "egalites-a-trous",
+          "name": "Le signe = et les égalités à trous",
+          "prerequisites": [],
+          "lesson": "cm1.egalites-a-trous",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "gap", "params": { "skill": "egalite", "max": 10 } }] },
+            { "level": 2, "generators": [{ "type": "gap", "params": { "skill": "egalite", "max": 20 } }] },
+            { "level": 3, "generators": [{ "type": "gap", "params": { "op": "+", "max": 20, "manquant": "operande" } }] },
+            { "level": 4, "generators": [{ "type": "gap", "params": { "skill": "egalite", "max": 50 } }] },
+            { "level": 5, "generators": [{ "type": "gap", "params": { "skill": "egalite", "max": 100 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "probabilites",
+      "name": "Probabilités",
+      "notions": [
+        {
+          "id": "vocabulaire-proba",
+          "name": "Certain, possible, impossible",
+          "prerequisites": [],
+          "lesson": "cm1.vocabulaire-proba",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "proba-vocab" } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "proba-vocab" } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "proba-vocab" } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "proba-vocab" } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "proba-vocab" } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grandeurs-mesures",
+      "name": "Grandeurs et mesures",
+      "notions": [
+        {
+          "id": "aires",
+          "name": "Les aires",
+          "prerequisites": [],
+          "lesson": "cm1.aires",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "comparer-aire" } }] },
+            { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "compter-carreaux" } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "aire-rectangle", "max": 20 } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "unite-aire" } }] },
+            { "level": 5, "generators": [{ "type": "input", "params": { "skill": "aire-carre", "max": 12 } }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geometrie",
+      "name": "Espace et géométrie",
+      "notions": [
+        {
+          "id": "droites-perpendiculaires",
+          "name": "Perpendiculaires et parallèles",
+          "prerequisites": [],
+          "lesson": "cm1.droites-perpendiculaires",
+          "tiers": [
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-perpendiculaires" } }] },
+            { "level": 2, "generators": [{ "type": "truefalse", "params": { "skill": "paralleles" } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-paralleles" } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "tracer-perpendiculaire" } }] },
+            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "trier-droites" } }] }
+          ]
+        }
+      ]
+    }
+  ]
+}

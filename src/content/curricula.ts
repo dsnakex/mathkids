@@ -1,6 +1,7 @@
 import cpData from './curriculum/cp.json'
 import ce1Data from './curriculum/ce1.json'
 import ce2Data from './curriculum/ce2.json'
+import cm1Data from './curriculum/cm1.json'
 import { curriculumSchema, type Curriculum, type LevelId, type Notion } from './schema'
 
 // Charge et VALIDE chaque curriculum au chargement du module (fail-fast) : si un
@@ -9,9 +10,10 @@ import { curriculumSchema, type Curriculum, type LevelId, type Notion } from './
 export const cp: Curriculum = curriculumSchema.parse(cpData)
 export const ce1: Curriculum = curriculumSchema.parse(ce1Data)
 export const ce2: Curriculum = curriculumSchema.parse(ce2Data)
+export const cm1: Curriculum = curriculumSchema.parse(cm1Data)
 
-// Les niveaux CM1 → CM2 seront ajoutés en poursuivant la Phase 7.
-export const CURRICULA = { cp, ce1, ce2 } satisfies Partial<Record<LevelId, Curriculum>>
+// Le niveau CM2 sera ajouté en poursuivant la Phase 7.
+export const CURRICULA = { cp, ce1, ce2, cm1 } satisfies Partial<Record<LevelId, Curriculum>>
 
 /** Niveaux effectivement disponibles (avec contenu), dans l'ordre scolaire. */
 export const AVAILABLE_LEVELS = Object.keys(CURRICULA) as LevelId[]
