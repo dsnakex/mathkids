@@ -8,6 +8,7 @@ import { LessonScreen } from '@/features/lesson/LessonScreen'
 import { SessionScreen } from '@/features/session/SessionScreen'
 import { SessionEnd } from '@/features/session/SessionEnd'
 import { ShopScreen } from '@/features/shop/ShopScreen'
+import { ParentScreen } from '@/features/parent/ParentScreen'
 
 // Point d'entrée de l'app. Navigation par « écran » pilotée par le store :
 // profils → carte → (leçon) → session → fin → carte ; carte ↔ boutique.
@@ -17,6 +18,7 @@ export default function App() {
   const init = useAppStore((s) => s.init)
   const selectProfile = useAppStore((s) => s.selectProfile)
   const goCreate = useAppStore((s) => s.goCreate)
+  const goParent = useAppStore((s) => s.goParent)
 
   useEffect(() => {
     void init()
@@ -26,7 +28,12 @@ export default function App() {
     <>
       <NekoSushiSprites />
       {screen === 'profiles' && (
-        <ProfileSelect profiles={profiles} onSelect={selectProfile} onAddProfile={goCreate} />
+        <ProfileSelect
+          profiles={profiles}
+          onSelect={selectProfile}
+          onAddProfile={goCreate}
+          onOpenParent={goParent}
+        />
       )}
       {screen === 'create' && <ProfileCreate />}
       {screen === 'map' && <MapScreen />}
@@ -34,6 +41,7 @@ export default function App() {
       {screen === 'session' && <SessionScreen />}
       {screen === 'end' && <SessionEnd />}
       {screen === 'shop' && <ShopScreen />}
+      {screen === 'parent' && <ParentScreen />}
     </>
   )
 }

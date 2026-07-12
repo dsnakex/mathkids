@@ -90,6 +90,7 @@ Modèle simple et robuste (pas de ML) :
 - **Révision espacée** : les notions acquises reviennent en rappel à J+2, J+7, J+30 (algorithme type Leitner). Une erreur en rappel fait redescendre la maîtrise.
 - **Session type (10-15 min)** : 1 notion en cours (60 %), 1 rappel (25 %), 1 découverte ou jeu (15 %).
 - Les **prérequis** entre notions forment un graphe : on ne propose pas les décimaux si les fractions simples ne sont pas acquises.
+- **Positionnement initial** : le niveau scolaire (CP→CM2) est choisi par le parent à la création du profil — jamais imposé par défaut. Au premier lancement, le chef propose une **« mission découverte »** optionnelle : 8-12 questions adaptatives (montée si réussite, arrêt rapide si erreurs) habillées en jeu — aucune étoile perdue, que des encouragements, refusable et rejouable depuis l'espace parent. Résultat : scores de maîtrise pré-remplis, premières étapes du monde déjà débloquées si acquises, notions fragiles du niveau précédent ajoutées aux rappels. Si la mission est refusée, l'enfant démarre à la première étape de son niveau.
 
 ## 6. Leçons interactives
 

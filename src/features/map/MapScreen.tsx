@@ -61,6 +61,7 @@ export function MapScreen() {
   const selectStep = useAppStore((s) => s.selectStep)
   const goShop = useAppStore((s) => s.goShop)
   const goProfiles = useAppStore((s) => s.goProfiles)
+  const goParent = useAppStore((s) => s.goParent)
   const [steps, setSteps] = useState<MapStep[]>([])
 
   const profile = profiles.find((p) => p.id === profileId)
@@ -106,9 +107,14 @@ export function MapScreen() {
 
       <div className="mt-auto flex flex-col items-center gap-2 pt-2">
         <Button onClick={goShop}>Le comptoir du chef 🍚</Button>
-        <Button variant="ghost" onClick={goProfiles}>
-          Changer de joueur
-        </Button>
+        <div className="flex gap-4">
+          <Button variant="ghost" onClick={goProfiles}>
+            Changer de joueur
+          </Button>
+          <Button variant="ghost" onClick={goParent}>
+            🏮 Parent
+          </Button>
+        </div>
       </div>
     </main>
   )

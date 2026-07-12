@@ -83,6 +83,15 @@ Une première version existe déjà : `docs/maquettes.html`. Deux options pour i
 
 **Vérification** : par niveau, faire relire la progression à un enseignant si possible ; tests verts.
 
+## Phase 7bis — Choix du niveau + mission découverte
+
+**Objectif** : chaque enfant démarre au bon endroit (voir docs/SPECIFICATIONS.md §5 « Positionnement initial »).
+
+**Prompt :**
+> Implémente le positionnement initial décrit dans docs/SPECIFICATIONS.md §5 : (1) le choix du niveau scolaire (CP→CM2) à la création du profil — vérifie qu'aucun profil ne démarre au CP par défaut ; (2) la « mission découverte » optionnelle au premier lancement : le chef propose 8-12 questions adaptatives (réutilise les générateurs et le score de maîtrise du moteur), habillage festif, aucune étoile perdue, refusable, rejouable depuis l'espace parent ; à la fin, pré-remplis les scores de maîtrise, débloque les étapes acquises sur le tapis roulant et ajoute les notions fragiles du niveau précédent aux rappels. Tests unitaires sur l'algorithme de positionnement (moteur pur, sans React).
+
+**Vérification** : créer un profil CE2 → la mission propose des questions CE2 puis descend au CE1 en cas d'erreurs ; refuser la mission → départ à la première étape ; le tapis roulant reflète le résultat.
+
 ## Phase 8 — Diffusion
 
 **Objectif** : app en ligne, partageable.

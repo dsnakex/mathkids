@@ -33,7 +33,7 @@ import { loadLearnerProgress, saveLearnerProgress } from '@/db/progress'
 /** Nombre d'exercices par séance (~10 min au CP). */
 export const SESSION_LENGTH = 10
 
-type Screen = 'profiles' | 'create' | 'map' | 'lesson' | 'session' | 'end' | 'shop'
+type Screen = 'profiles' | 'create' | 'map' | 'lesson' | 'session' | 'end' | 'shop' | 'parent'
 
 interface AppState {
   screen: Screen
@@ -46,12 +46,15 @@ interface AppState {
   progress: LearnerProgress
   reward: SessionReward | null
   earnedBadges: string[] // badges gagnés à la dernière séance (affichés à la fin)
+  sessionStartedAt: number // horodatage de début de séance (pour le temps passé)
 
   init: () => Promise<void>
   goCreate: () => void
   goProfiles: () => Promise<void>
   goMap: () => Promise<void>
   goShop: () => void
+  goParent: () => void
+  refreshProfiles: () => Promise<void>
   addProfile: (input: NewProfile) => Promise<void>
   removeProfile: (id: string) => Promise<void>
   selectProfile: (id: string) => void
@@ -96,6 +99,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   progress: emptyProgress(),
   reward: null,
   earnedBadges: [],
+  sessionStartedAt: 0,
 
   async init() {
     set({ profiles: await listProfiles(), screen: 'profiles' })
@@ -115,6 +119,14 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   goShop() {
     set({ screen: 'shop' })
+  },
+
+  goParent() {
+    set({ screen: 'parent' })
+  },
+
+  async refreshProfiles() {
+    set({ profiles: await listProfiles() })
   },
 
   async addProfile(input) {
@@ -139,7 +151,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       // Notion déjà commencée : on va droit à la session (leçon accessible via la carte).
       const session = makeSession(progress, notionId)
       if (session.length === 0) return set({ screen: 'map' })
-      set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session' })
+      set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session', sessionStartedAt: Date.now() })
     } else {
       // Nouvelle notion : on montre d'abord la leçon.
       set({ pendingNotionId: notionId, screen: 'lesson' })
@@ -153,7 +165,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     const progress = await loadLearnerProgress(profileId)
     const session = makeSession(progress, pendingNotionId)
     if (session.length === 0) return set({ screen: 'map' })
-    set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session' })
+    set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session', sessionStartedAt: Date.now() })
   },
 
   async startSession(profileId) {
@@ -172,11 +184,12 @@ export const useAppStore = create<AppState>((set, get) => ({
       reward: null,
       earnedBadges: [],
       screen: 'session',
+      sessionStartedAt: Date.now(),
     })
   },
 
   async answerCurrent(firstTryCorrect) {
-    const { session, index, progress, correctCount, profileId } = get()
+    const { session, index, progress, correctCount, profileId, sessionStartedAt } = get()
     const item = session[index]
     if (!item || !profileId) return
 
@@ -208,11 +221,14 @@ export const useAppStore = create<AppState>((set, get) => ({
       sessionStars: reward.stars,
       distinctPlayDays: playDays.length,
     })
+    const elapsedSec = sessionStartedAt > 0 ? Math.round((Date.now() - sessionStartedAt) / 1000) : 0
     await updateProfile(profileId, {
       coins: (profile?.coins ?? 0) + reward.coins,
       stars: (profile?.stars ?? 0) + reward.stars,
       badges: [...(profile?.badges ?? []), ...earnedBadges],
       playDays,
+      sessions: (profile?.sessions ?? 0) + 1,
+      totalSeconds: (profile?.totalSeconds ?? 0) + elapsedSec,
     })
 
     set({

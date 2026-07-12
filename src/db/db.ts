@@ -23,6 +23,9 @@ export interface ProfileRecord {
   badges?: string[] // badges obtenus (ids)
   owned?: string[] // articles de la boutique possédés (ids)
   playDays?: string[] // jours de jeu distincts (clé « AAAA-MM-JJ »), pour l'assiduité
+  // Suivi pour le tableau parent (Phase 6).
+  sessions?: number // nombre de séances terminées
+  totalSeconds?: number // temps total passé, en secondes
 }
 
 /** Progression d'une notion pour un profil (maîtrise + rappel espacé éventuel). */
