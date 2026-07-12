@@ -14,6 +14,7 @@ type ProfileSelectProps = {
   onSelect?: (id: string) => void
   onAddProfile?: () => void
   onOpenParent?: () => void
+  onAbout?: () => void
 }
 
 // Écran d'accueil de l'app : choix du profil (« Qui joue aujourd'hui ? »).
@@ -24,6 +25,7 @@ export function ProfileSelect({
   onSelect = () => {},
   onAddProfile = () => {},
   onOpenParent = () => {},
+  onAbout = () => {},
 }: ProfileSelectProps) {
   return (
     <main className="flex min-h-full flex-col items-center justify-center gap-4 bg-cream p-6 text-center font-sans text-ink">
@@ -53,9 +55,14 @@ export function ProfileSelect({
         </li>
       </ul>
 
-      <Button variant="ghost" onClick={onOpenParent} className="mt-1">
-        <span aria-hidden="true">🏮</span> Espace parent
-      </Button>
+      <div className="mt-1 flex flex-wrap justify-center gap-4">
+        <Button variant="ghost" onClick={onOpenParent}>
+          <span aria-hidden="true">🏮</span> Espace parent
+        </Button>
+        <Button variant="ghost" onClick={onAbout}>
+          <span aria-hidden="true">ℹ️</span> À propos
+        </Button>
+      </div>
     </main>
   )
 }

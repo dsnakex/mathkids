@@ -119,4 +119,6 @@ Avant chaque nouvelle notion : une leçon courte (1-3 écrans) avec animation ou
 
 ## 10. Hors périmètre (v1)
 
-Comptes en ligne, synchronisation multi-appareils, mode multijoueur, contenu au-delà du CM2, application native (App Store/Play Store).
+Comptes en ligne, synchronisation multi-appareils, mode multijoueur, contenu au-delà du CM2, application native (App Store/Play Store), maternelle.
+
+Piste v2 étudiée — **monde Grande Section (5-6 ans)** : nombres jusqu'à 10, décompositions, comparaison de collections, formes et suites. Contraintes spécifiques : zéro texte (audio partout), réponses par manipulation uniquement (toucher/glisser des objets), sessions de 5 min, cibles très larges. À n'envisager qu'après le déploiement complet CP-CM2 ; la PS et la MS restent hors périmètre (usage tablette peu adapté à 3-4 ans).

@@ -45,6 +45,7 @@ type Screen =
   | 'shop'
   | 'parent'
   | 'mission'
+  | 'about'
 
 interface AppState {
   screen: Screen
@@ -65,6 +66,7 @@ interface AppState {
   goMap: () => Promise<void>
   goShop: () => void
   goParent: () => void
+  goAbout: () => void
   refreshProfiles: () => Promise<void>
   addProfile: (input: NewProfile) => Promise<void>
   removeProfile: (id: string) => Promise<void>
@@ -147,6 +149,10 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   goParent() {
     set({ screen: 'parent' })
+  },
+
+  goAbout() {
+    set({ screen: 'about' })
   },
 
   async refreshProfiles() {

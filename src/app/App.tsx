@@ -10,6 +10,7 @@ import { SessionEnd } from '@/features/session/SessionEnd'
 import { ShopScreen } from '@/features/shop/ShopScreen'
 import { ParentScreen } from '@/features/parent/ParentScreen'
 import { MissionScreen } from '@/features/placement/MissionScreen'
+import { AboutScreen } from '@/features/about/AboutScreen'
 import { InstallPrompt } from '@/app/InstallPrompt'
 
 // Point d'entrée de l'app. Navigation par « écran » pilotée par le store :
@@ -21,6 +22,7 @@ export default function App() {
   const selectProfile = useAppStore((s) => s.selectProfile)
   const goCreate = useAppStore((s) => s.goCreate)
   const goParent = useAppStore((s) => s.goParent)
+  const goAbout = useAppStore((s) => s.goAbout)
 
   useEffect(() => {
     void init()
@@ -35,6 +37,7 @@ export default function App() {
           onSelect={selectProfile}
           onAddProfile={goCreate}
           onOpenParent={goParent}
+          onAbout={goAbout}
         />
       )}
       {screen === 'create' && <ProfileCreate />}
@@ -45,6 +48,7 @@ export default function App() {
       {screen === 'shop' && <ShopScreen />}
       {screen === 'parent' && <ParentScreen />}
       {screen === 'mission' && <MissionScreen />}
+      {screen === 'about' && <AboutScreen />}
       <InstallPrompt />
     </>
   )
