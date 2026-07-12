@@ -167,7 +167,9 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   async removeProfile(id) {
     await deleteProfile(id)
-    set({ profiles: await listProfiles() })
+    const profiles = await listProfiles()
+    // Si on vient de supprimer le profil actif, on l'oublie.
+    set({ profiles, profileId: get().profileId === id ? null : get().profileId })
   },
 
   selectProfile(id) {

@@ -91,10 +91,12 @@ function Dashboard() {
   const goProfiles = useAppStore((s) => s.goProfiles)
   const refreshProfiles = useAppStore((s) => s.refreshProfiles)
   const startMission = useAppStore((s) => s.startMission)
+  const removeProfile = useAppStore((s) => s.removeProfile)
 
   const [selectedId, setSelectedId] = useState(storeProfileId ?? profiles[0]?.id ?? '')
   const [progress, setProgress] = useState<LearnerProgress>({ mastery: {}, reviews: {} })
   const [message, setMessage] = useState<string | null>(null)
+  const [confirmDelete, setConfirmDelete] = useState(false)
 
   const profile = profiles.find((p) => p.id === selectedId)
 
@@ -157,7 +159,10 @@ function Dashboard() {
             <button
               key={p.id}
               type="button"
-              onClick={() => setSelectedId(p.id)}
+              onClick={() => {
+                setSelectedId(p.id)
+                setConfirmDelete(false)
+              }}
               className={`rounded-full px-3 py-1 text-base font-extrabold ${
                 p.id === selectedId ? 'bg-primary text-white' : 'bg-card text-ink shadow-candy-sm'
               }`}
@@ -221,6 +226,46 @@ function Dashboard() {
                 Relancer la mission découverte
               </Button>
             </div>
+          </section>
+
+          <section className="flex flex-col gap-2 rounded-card border-2 border-error bg-error-soft p-4">
+            <h2 className="text-lg font-extrabold text-error-text">Supprimer le profil</h2>
+            {confirmDelete ? (
+              <>
+                <p className="text-base font-bold text-error-text">
+                  La progression de {profile.name} sera <strong>définitivement effacée</strong>. Cette
+                  action est irréversible. Pense à l'exporter d'abord si tu veux la garder.
+                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <Button variant="ghost" onClick={onExport}>
+                    Exporter d'abord (JSON)
+                  </Button>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      await removeProfile(profile.id)
+                      const remaining = useAppStore.getState().profiles
+                      setConfirmDelete(false)
+                      setMessage(null)
+                      if (remaining.length === 0) await goProfiles()
+                      else setSelectedId(remaining[0].id)
+                    }}
+                    className="rounded-btn-sm bg-error px-4 py-2 text-base font-extrabold text-error-text shadow-candy-sm transition-transform active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40"
+                  >
+                    Oui, supprimer {profile.name}
+                  </button>
+                  <Button variant="ghost" onClick={() => setConfirmDelete(false)}>
+                    Annuler
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <div>
+                <Button variant="ghost" onClick={() => setConfirmDelete(true)}>
+                  Supprimer {profile.name}
+                </Button>
+              </div>
+            )}
           </section>
         </>
       ) : (
