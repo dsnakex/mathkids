@@ -19,6 +19,7 @@ import {
 } from '@/engine/session'
 import { recordAnswer, sessionReward, type SessionReward } from '@/features/session/runner'
 import { newlyEarnedBadges } from '@/features/rewards/badges'
+import { applyPlacement, type PlacementAnswer } from '@/features/placement/placement'
 import { buy } from '@/features/shop/shopModel'
 import type { ProfileRecord } from '@/db/db'
 import {
@@ -34,7 +35,16 @@ import { loadLearnerProgress, saveLearnerProgress } from '@/db/progress'
 /** Nombre d'exercices par séance (~10 min au CP). */
 export const SESSION_LENGTH = 10
 
-type Screen = 'profiles' | 'create' | 'map' | 'lesson' | 'session' | 'end' | 'shop' | 'parent'
+type Screen =
+  | 'profiles'
+  | 'create'
+  | 'map'
+  | 'lesson'
+  | 'session'
+  | 'end'
+  | 'shop'
+  | 'parent'
+  | 'mission'
 
 interface AppState {
   screen: Screen
@@ -59,6 +69,9 @@ interface AppState {
   addProfile: (input: NewProfile) => Promise<void>
   removeProfile: (id: string) => Promise<void>
   selectProfile: (id: string) => void
+  startMission: (profileId: string) => void
+  finishMission: (answers: PlacementAnswer[]) => Promise<void>
+  skipMission: () => Promise<void>
   selectStep: (notionId: string) => Promise<void>
   lessonDone: () => Promise<void>
   startSession: (profileId: string) => Promise<void>
@@ -141,8 +154,9 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   async addProfile(input) {
+    // À la création, on propose la « mission découverte » (positionnement).
     const created = await createProfile(input)
-    set({ profiles: await listProfiles(), profileId: created.id, screen: 'map' })
+    set({ profiles: await listProfiles(), profileId: created.id, screen: 'mission' })
   },
 
   async removeProfile(id) {
@@ -152,6 +166,29 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   selectProfile(id) {
     set({ profileId: id, screen: 'map' })
+  },
+
+  startMission(profileId) {
+    set({ profileId, screen: 'mission' })
+  },
+
+  async finishMission(answers) {
+    const { profileId } = get()
+    if (!profileId) return
+    // Fusionne le positionnement avec la progression existante (les notions
+    // réussies deviennent acquises).
+    const placed = applyPlacement(answers)
+    const existing = await loadLearnerProgress(profileId)
+    const merged = {
+      mastery: { ...existing.mastery, ...placed.mastery },
+      reviews: { ...existing.reviews, ...placed.reviews },
+    }
+    await saveLearnerProgress(profileId, merged)
+    await get().goMap()
+  },
+
+  async skipMission() {
+    await get().goMap()
   },
 
   async selectStep(notionId) {

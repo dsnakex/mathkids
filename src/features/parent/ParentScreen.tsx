@@ -90,6 +90,7 @@ function Dashboard() {
   const storeProfileId = useAppStore((s) => s.profileId)
   const goProfiles = useAppStore((s) => s.goProfiles)
   const refreshProfiles = useAppStore((s) => s.refreshProfiles)
+  const startMission = useAppStore((s) => s.startMission)
 
   const [selectedId, setSelectedId] = useState(storeProfileId ?? profiles[0]?.id ?? '')
   const [progress, setProgress] = useState<LearnerProgress>({ mastery: {}, reviews: {} })
@@ -208,6 +209,18 @@ function Dashboard() {
               </label>
             </div>
             {message ? <p className="text-base font-bold text-success-text">{message}</p> : null}
+          </section>
+
+          <section className="flex flex-col gap-2 rounded-card bg-card p-4 shadow-candy-sm">
+            <h2 className="text-lg font-extrabold">Positionnement</h2>
+            <p className="text-base font-bold text-muted">
+              Relance la « mission découverte » pour réévaluer le niveau de {profile.name}.
+            </p>
+            <div>
+              <Button variant="ghost" onClick={() => startMission(profile.id)}>
+                Relancer la mission découverte
+              </Button>
+            </div>
           </section>
         </>
       ) : (
