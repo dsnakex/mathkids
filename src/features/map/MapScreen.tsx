@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react'
 import { useAppStore } from '@/app/store'
-import { cp } from '@/content/curricula'
+import { curriculumFor } from '@/content/curricula'
 import { loadLearnerProgress } from '@/db/progress'
 import { NekoSushi, type NekoVariant } from '@/components/NekoSushi'
 import { Button } from '@/components/Button'
@@ -68,20 +68,21 @@ export function MapScreen() {
 
   useEffect(() => {
     if (!profileId) return
+    const curriculum = curriculumFor(profile?.level ?? 'cp')
     let alive = true
     loadLearnerProgress(profileId).then((progress) => {
-      if (alive) setSteps(mapSteps(cp, progress))
+      if (alive) setSteps(mapSteps(curriculum, progress))
     })
     return () => {
       alive = false
     }
-  }, [profileId])
+  }, [profileId, profile?.level])
 
   return (
     <main className="flex min-h-full flex-col gap-4 bg-gradient-to-b from-[#FDF3E4] via-[#FAE4D6] to-[#FDF6EA] p-5 font-sans text-ink">
       {/* Topbar : monde, riz, étoiles, boutique. */}
       <header className="flex items-center gap-2">
-        <LevelChip level="cp" />
+        <LevelChip level={profile?.level ?? 'cp'} />
         <span className="ml-auto rounded-full bg-gold px-3 py-1 text-base font-extrabold text-gold-text">
           🍚 {profile?.coins ?? 0}
         </span>
@@ -91,7 +92,7 @@ export function MapScreen() {
       </header>
 
       <div>
-        <h1 className="text-center text-[24px] font-extrabold">L'île du CP 🍣</h1>
+        <h1 className="text-center text-[24px] font-extrabold">Ton île 🍣</h1>
         <p className="text-center text-base font-bold text-muted">
           Choisis une étape, {profile?.name ?? ''} !
         </p>

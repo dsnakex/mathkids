@@ -6,8 +6,9 @@
 // enregistrement des réponses (runner) → récompenses, badges et persistance.
 
 import { create } from 'zustand'
-import { cp } from '@/content/curricula'
+import { curriculumFor } from '@/content/curricula'
 import { allNotions } from '@/content/graph'
+import type { Curriculum } from '@/content/schema'
 import { isNotionAcquired } from '@/engine/adaptive'
 import { mulberry32 } from '@/engine/generators/rng'
 import {
@@ -70,8 +71,8 @@ const emptyProgress = (): LearnerProgress => ({ mastery: {}, reviews: {} })
 
 const dayKey = (): string => new Date().toISOString().slice(0, 10)
 
-function acquiredNotionIds(progress: LearnerProgress): string[] {
-  return allNotions(cp)
+function acquiredNotionIds(curriculum: Curriculum, progress: LearnerProgress): string[] {
+  return allNotions(curriculum)
     .map((n) => n.id)
     .filter((id) => {
       const m = progress.mastery[id]
@@ -79,13 +80,23 @@ function acquiredNotionIds(progress: LearnerProgress): string[] {
     })
 }
 
-function makeSession(progress: LearnerProgress, currentNotionId?: string): SessionExercise[] {
-  return composeSession(cp, progress, {
+function makeSession(
+  curriculum: Curriculum,
+  progress: LearnerProgress,
+  currentNotionId?: string,
+): SessionExercise[] {
+  return composeSession(curriculum, progress, {
     now: Date.now(),
     rng: mulberry32(Date.now() >>> 0),
     total: SESSION_LENGTH,
     currentNotionId,
   })
+}
+
+/** Curriculum du profil courant (selon son niveau scolaire). */
+function curriculumOf(profiles: ProfileRecord[], profileId: string | null): Curriculum {
+  const profile = profiles.find((p) => p.id === profileId)
+  return curriculumFor(profile?.level ?? 'cp')
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -144,12 +155,13 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   async selectStep(notionId) {
-    const { profileId } = get()
+    const { profileId, profiles } = get()
     if (!profileId) return
+    const curriculum = curriculumOf(profiles, profileId)
     const progress = await loadLearnerProgress(profileId)
     if (progress.mastery[notionId]) {
       // Notion déjà commencée : on va droit à la session (leçon accessible via la carte).
-      const session = makeSession(progress, notionId)
+      const session = makeSession(curriculum, progress, notionId)
       if (session.length === 0) return set({ screen: 'map' })
       set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session', sessionStartedAt: Date.now() })
     } else {
@@ -159,18 +171,20 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   async lessonDone() {
-    const { pendingNotionId, profileId } = get()
+    const { pendingNotionId, profileId, profiles } = get()
     set({ pendingNotionId: null })
     if (!pendingNotionId || !profileId) return set({ screen: 'map' })
+    const curriculum = curriculumOf(profiles, profileId)
     const progress = await loadLearnerProgress(profileId)
-    const session = makeSession(progress, pendingNotionId)
+    const session = makeSession(curriculum, progress, pendingNotionId)
     if (session.length === 0) return set({ screen: 'map' })
     set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session', sessionStartedAt: Date.now() })
   },
 
   async startSession(profileId) {
+    const curriculum = curriculumOf(get().profiles, profileId)
     const progress = await loadLearnerProgress(profileId)
-    const session = makeSession(progress)
+    const session = makeSession(curriculum, progress)
     if (session.length === 0) {
       set({ profiles: await listProfiles(), screen: 'map' })
       return
@@ -217,7 +231,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     const playDays = [...new Set([...(profile?.playDays ?? []), dayKey()])]
     const earnedBadges = newlyEarnedBadges({
       owned: profile?.badges ?? [],
-      acquiredNotionIds: acquiredNotionIds(out.progress),
+      acquiredNotionIds: acquiredNotionIds(curriculumOf(get().profiles, profileId), out.progress),
       sessionStars: reward.stars,
       distinctPlayDays: playDays.length,
     })

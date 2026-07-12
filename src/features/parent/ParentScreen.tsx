@@ -5,7 +5,7 @@
 
 import { useEffect, useMemo, useState, type ChangeEvent } from 'react'
 import { useAppStore } from '@/app/store'
-import { cp } from '@/content/curricula'
+import { curriculumFor } from '@/content/curricula'
 import { mulberry32 } from '@/engine/generators/rng'
 import type { LearnerProgress } from '@/engine/session'
 import { loadLearnerProgress } from '@/db/progress'
@@ -106,8 +106,12 @@ function Dashboard() {
     }
   }, [selectedId, profiles])
 
-  const domains = useMemo(() => domainMastery(cp, progress), [progress])
-  const difficulties = useMemo(() => notionsInDifficulty(cp, progress), [progress])
+  const curriculum = useMemo(() => curriculumFor(profile?.level ?? 'cp'), [profile?.level])
+  const domains = useMemo(() => domainMastery(curriculum, progress), [curriculum, progress])
+  const difficulties = useMemo(
+    () => notionsInDifficulty(curriculum, progress),
+    [curriculum, progress],
+  )
 
   const onExport = async () => {
     if (!profile) return

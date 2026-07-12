@@ -3,8 +3,7 @@
 
 import { useState } from 'react'
 import { useAppStore } from '@/app/store'
-import { cp } from '@/content/curricula'
-import { allNotions } from '@/content/graph'
+import { findNotion } from '@/content/curricula'
 import { getLesson } from '@/content/lessons'
 import { AudioButton } from '@/components/AudioButton'
 import { Button } from '@/components/Button'
@@ -16,7 +15,7 @@ export function LessonScreen() {
   const lessonDone = useAppStore((s) => s.lessonDone)
   const [page, setPage] = useState(0)
 
-  const notion = allNotions(cp).find((n) => n.id === pendingNotionId)
+  const notion = pendingNotionId ? findNotion(pendingNotionId) : undefined
   const lesson = notion ? getLesson(notion.lesson) : undefined
 
   if (!lesson) {

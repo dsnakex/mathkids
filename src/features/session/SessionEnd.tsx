@@ -2,16 +2,11 @@
 // éventuellement gagnés. On repart ensuite vers la carte de l'île.
 
 import { useAppStore } from '@/app/store'
-import { cp } from '@/content/curricula'
-import { allNotions } from '@/content/graph'
+import { ALL_NOTION_NAMES } from '@/content/curricula'
 import { Button } from '@/components/Button'
 import { NekoSushi } from '@/components/NekoSushi'
 import { Confetti } from '@/features/exercise/Confetti'
 import { badgeLabel } from '@/features/rewards/badges'
-
-const NOTION_NAMES: Record<string, string> = Object.fromEntries(
-  allNotions(cp).map((n) => [n.id, n.name]),
-)
 
 export function SessionEnd() {
   const reward = useAppStore((s) => s.reward)
@@ -63,7 +58,7 @@ export function SessionEnd() {
                 key={id}
                 className="rounded-full bg-success-soft px-3 py-1 text-base font-extrabold text-success-text"
               >
-                {badgeLabel(id, NOTION_NAMES)}
+                {badgeLabel(id, ALL_NOTION_NAMES)}
               </li>
             ))}
           </ul>
