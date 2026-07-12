@@ -19,10 +19,10 @@
 
 Une première version existe déjà : `docs/maquettes.html`. Deux options pour itérer : **Claude Design** sur claude.ai (exploration visuelle par conversation, puis transfert à Claude Code — voie A du DESIGN.md §6) ou Claude Code directement avec le prompt ci-dessous.
 
-**✅ PHASE 1 TERMINÉE (voie A)** : design validé — direction « Nature/aventure », 7 écrans + état bonne réponse. Le handoff Claude Design est dans `docs/design-handoff/` (README.md = design tokens et specs par écran ; MathKids Maquettes.dc.html = maquettes de référence, turn 2 = les 7 écrans validés). La palette finale est reportée dans docs/DESIGN.md §2.
+**✅ DESIGN VALIDÉ (voie A, v2 — univers « Chats-Sushis », juillet 2026)** : remplace la direction « Nature/aventure » v1. Handoff dans `docs/design-handoff/` : README.md (design tokens + specs par écran), MathKids Maquettes.dc.html (turn 9 = 7 écrans validés, turn 10 = 3 états de l'exercice, turn 8 = personnages SVG ; turns 1-7 = historique à ne pas implémenter), neko-sushi-sprites.svg (personnages prêts à convertir en composants React). Palette reportée dans docs/DESIGN.md §2.
 
-**Prompt pour implémenter le design (après Phase 0) :**
-> Lis docs/design-handoff/README.md et le turn 2 de docs/design-handoff/MathKids Maquettes.dc.html. Transpose ce design en composants React + config Tailwind (design tokens du README : couleurs, rayons, reliefs, typographie Baloo 2 self-hostée) selon docs/ARCHITECTURE.md. Ce sont des références design, pas du code de production : recrée proprement. Commence par le thème Tailwind et les composants de base (Button, Card, pastilles, jauge), puis l'écran de choix du profil.
+**Prompt pour (re)lancer l'implémentation du design :**
+> Le design a changé : univers kawaii « chats-sushis » (v2). Relis docs/DESIGN.md et docs/design-handoff/README.md (référence : turns 9, 10 et 8 du fichier de maquettes ; ignore les turns 1-7). Mets à jour la config Tailwind avec les nouveaux tokens, remplace tout ce qui reste de l'ancien thème nature/aventure, puis : (1) composant `<NekoSushi>` d'après neko-sushi-sprites.svg avec ses variantes et expressions, (2) composants de base (Button relief, Card, pastilles, jauge bol de riz, bouton audio patte), (3) écran de choix du profil, (4) police Baloo 2 via le paquet npm @fontsource/baloo-2 (embarquée au build, zéro requête en ligne). Ce sont des références design, pas du code de production : recrée proprement, et commit quand les tests passent.
 
 **Prompt (voie B) :**
 > Améliore docs/maquettes.html (7 écrans cliquables décrits dans docs/DESIGN.md) selon mes retours : [vos retours ici]. Respecte la palette et la typographie du document.

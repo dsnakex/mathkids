@@ -25,9 +25,1687 @@ a{color:#2a6fdb}a:hover{color:#1d54ab}
 .dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
 .dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
 @keyframes mkpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+@keyframes mkblink{0%,86%,100%{transform:scaleY(1)}92%{transform:scaleY(.12)}}
 @keyframes mkfall{0%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(820px) rotate(360deg)}}
 </style>
 </helmet>
+
+<section class="dv-turn" id="t10" data-screen-label="Turn 10 — Exercice : les 3 états">
+<div class="dv-thd"><a class="dv-tid" href="#t10">10</a><span class="dv-tname">Exercice — les 3 états (neutre · bonne réponse · erreur douce), complète le parcours validé <a class="dv-oid" href="#9a">9a</a></span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="10a">
+  <div class="dv-olabel"><a class="dv-oid" href="#10a">10a</a>Mêmes tokens et personnages SVG que <a class="dv-oid" href="#9a">9a</a> — seuls les états changent</div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <!-- NEUTRE -->
+  <div class="dv-card" data-screen-label="10a Exercice neutre" style="background:#FCF7EE;padding:20px;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg style="width:42px;height:47px;flex:none"><use href="#ns-chef"/></svg>
+      <span style="font-size:20px;flex:none">🍚</span>
+      <div style="flex:1;height:18px;background:#E3D5BC;border-radius:999px;overflow:hidden;border:2px solid #D9C9A8"><div style="width:44%;height:100%;background:#FFFDF7;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A4038">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#C25A38;border-radius:50%;width:52px;height:52px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none;position:relative">
+        <span style="position:absolute;left:17px;top:20px;width:18px;height:13px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:14px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:23px;top:9px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:32px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;right:5px;top:6px;color:#fff;font-size:13px;font-weight:800">♪</span>
+      </button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A4038">Partage les 8 sushis en 2 assiettes égales !</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:22px 20px 20px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.06)">
+      <div style="font-size:48px;font-weight:800;color:#4A4038;line-height:1.1">8 ÷ 2 = ?</div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:14px">
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">4</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">16</button>
+    </div>
+    <p style="margin:auto 0 0;text-align:center;font-size:17px;font-weight:700;color:#847C6C">Touche ta réponse 🐾</p>
+  </div>
+
+  <!-- BONNE RÉPONSE -->
+  <div class="dv-card" data-screen-label="10a Exercice bonne réponse" style="background:#FCF7EE;padding:20px;gap:14px;position:relative">
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:34px">
+      <span style="position:absolute;left:30px;top:-20px;width:12px;height:12px;background:#F5DFA0;border-radius:3px;animation:mkfall 3.2s linear infinite"></span>
+      <span style="position:absolute;left:340px;top:-20px;width:10px;height:10px;background:#4E9A5F;border-radius:50%;animation:mkfall 2.7s linear infinite;animation-delay:-1.1s"></span>
+      <span style="position:absolute;left:90px;top:-20px;width:11px;height:11px;background:#F0977C;border-radius:3px;animation:mkfall 3.6s linear infinite;animation-delay:-2.2s"></span>
+      <span style="position:absolute;left:300px;top:-20px;width:12px;height:12px;background:#C4699E;border-radius:3px;animation:mkfall 2.9s linear infinite;animation-delay:-0.6s"></span>
+      <span style="position:absolute;left:200px;top:-20px;width:10px;height:10px;background:#C98A3B;border-radius:50%;animation:mkfall 3.4s linear infinite;animation-delay:-1.7s"></span>
+      <span style="position:absolute;left:150px;top:-20px;width:9px;height:9px;background:#8FBF6B;border-radius:3px;animation:mkfall 3.8s linear infinite;animation-delay:-0.9s"></span>
+      <span style="position:absolute;left:260px;top:-20px;width:10px;height:10px;background:#F5DFA0;border-radius:3px;animation:mkfall 3.3s linear infinite;animation-delay:-2.9s"></span>
+      <span style="position:absolute;left:120px;top:-20px;width:11px;height:11px;background:#E2A69B;border-radius:50%;animation:mkfall 3s linear infinite;animation-delay:-1.4s"></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg style="width:42px;height:47px;flex:none"><use href="#ns-chef"/></svg>
+      <span style="font-size:20px;flex:none">🍚</span>
+      <div style="flex:1;height:18px;background:#E3D5BC;border-radius:999px;overflow:hidden;border:2px solid #D9C9A8"><div style="width:55%;height:100%;background:#FFFDF7;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A4038">5/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#C25A38;border-radius:50%;width:52px;height:52px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none;position:relative">
+        <span style="position:absolute;left:17px;top:20px;width:18px;height:13px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:14px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:23px;top:9px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:32px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;right:5px;top:6px;color:#fff;font-size:13px;font-weight:800">♪</span>
+      </button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A4038">Partage les 8 sushis en 2 assiettes égales !</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:22px 20px 20px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.06)">
+      <div style="font-size:48px;font-weight:800;color:#4A4038;line-height:1.1">8 ÷ 2 = <b style="color:#3E6B24">4</b></div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:14px">
+        <div style="background:#EDF5E2;border:2px solid #4E9A5F;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+        <div style="background:#EDF5E2;border:2px solid #4E9A5F;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid #4E9A5F;background:#EDF5E2;color:#3E6B24;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #A9C487;cursor:pointer">4 ✓</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer;opacity:.5">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer;opacity:.5">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer;opacity:.5">16</button>
+    </div>
+    <div style="background:#EDF5E2;border:3px solid #4E9A5F;border-radius:24px;padding:12px 14px;display:flex;gap:10px;align-items:center">
+      <div style="position:relative;flex:none;animation:mkpulse 1.6s ease-in-out infinite">
+        <span style="position:absolute;left:-8px;top:-4px;font-size:13px">✨</span>
+        <svg style="width:40px;height:45px;display:block"><use href="#ns-chef"/></svg>
+      </div>
+      <p style="margin:0;font-size:18px;font-weight:800;color:#3E6B24">Miam, bravo Léa ! 4 + 4 = 8, tu as trouvé la moitié ! ⭐</p>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;margin-top:auto">Continuer 🥢</button>
+  </div>
+
+  <!-- ERREUR DOUCE -->
+  <div class="dv-card" data-screen-label="10a Exercice erreur douce" style="background:#FCF7EE;padding:20px;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg style="width:42px;height:47px;flex:none"><use href="#ns-chef"/></svg>
+      <span style="font-size:20px;flex:none">🍚</span>
+      <div style="flex:1;height:18px;background:#E3D5BC;border-radius:999px;overflow:hidden;border:2px solid #D9C9A8"><div style="width:44%;height:100%;background:#FFFDF7;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A4038">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#C25A38;border-radius:50%;width:52px;height:52px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none;position:relative">
+        <span style="position:absolute;left:17px;top:20px;width:18px;height:13px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:14px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:23px;top:9px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:32px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;right:5px;top:6px;color:#fff;font-size:13px;font-weight:800">♪</span>
+      </button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A4038">Partage les 8 sushis en 2 assiettes égales !</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:22px 20px 20px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.06)">
+      <div style="font-size:48px;font-weight:800;color:#4A4038;line-height:1.1">8 ÷ 2 = ?</div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:14px">
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">4</button>
+      <button style="border:3px solid #E2A69B;background:#FAECE8;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E5C3BA;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:24px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FAECE8;border:3px solid #E2A69B;border-radius:24px;padding:12px 14px;display:flex;gap:10px;align-items:center">
+      <svg style="width:38px;height:42px;flex:none"><use href="#ns-chef"/></svg>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9A5244">Presque ! Mets 4 sushis dans chaque assiette : 4 + 4 = 8 🍣</p>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;margin-top:auto">Réessayer 🐾</button>
+  </div>
+  </div>
+</div>
+</div>
+<p class="dv-next">Le parcours complet des 7 écrans validés est en <a class="dv-oid" href="#9a">9a</a>. À essayer : « mets à jour le handoff Claude Code avec l'univers chats-sushis »</p>
+</section>
+
+<section class="dv-turn" id="t9" data-screen-label="Turn 9 — Les 7 écrans chats-sushis">
+<div class="dv-thd"><a class="dv-tid" href="#t9">9</a><span class="dv-tname">Les 7 écrans — univers chats-sushis avec les personnages SVG de <a class="dv-oid" href="#8a">8a</a> (390×760)</span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="9a">
+  <div class="dv-olabel"><a class="dv-oid" href="#9a">9a</a>Parcours complet : profils → carte → leçon → exercice → fin → boutique → parent</div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;max-width:1650px">
+
+  <!-- 9a·1 PROFILS -->
+  <div class="dv-card" data-screen-label="9a Choix du profil" style="background:#FCF7EE;padding:24px;align-items:center;justify-content:center;gap:18px;text-align:center">
+    <svg style="width:96px;height:107px"><use href="#ns-chef"/></svg>
+    <h1 style="margin:0;font-size:28px;font-weight:800;color:#4A4038">Qui joue aujourd'hui ?</h1>
+    <p style="margin:-8px 0 0;font-size:17px;font-weight:700;color:#847C6C">Choisis ton chat-sushi !</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <div style="background:#fff;border-radius:24px;padding:14px 12px;width:134px;box-sizing:border-box;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">
+        <svg style="width:84px;height:80px"><use href="#ns-maki"/></svg>
+        <div style="font-weight:800;font-size:19px;color:#4A4038;margin-top:4px">Léa</div>
+        <span style="font-size:16px;color:#fff;background:#4E9A5F;border-radius:999px;padding:2px 12px;display:inline-block;margin-top:6px;font-weight:700">CE1</span>
+      </div>
+      <div style="background:#fff;border-radius:24px;padding:14px 12px;width:134px;box-sizing:border-box;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">
+        <svg style="width:80px;height:83px"><use href="#ns-temaki"/></svg>
+        <div style="font-weight:800;font-size:19px;color:#4A4038;margin-top:4px">Tom</div>
+        <span style="font-size:16px;color:#fff;background:#C98A3B;border-radius:999px;padding:2px 12px;display:inline-block;margin-top:6px;font-weight:700">CM1</span>
+      </div>
+      <button style="background:none;border:3px dashed #D3C6AC;color:#847C6C;font-size:44px;border-radius:24px;width:134px;min-height:150px;cursor:pointer;font-family:inherit">+</button>
+    </div>
+    <button style="background:none;border:none;color:#847C6C;font-size:18px;font-weight:700;cursor:pointer;text-decoration:underline;font-family:inherit;margin-top:10px;padding:12px">🏮 Espace parent</button>
+  </div>
+
+  <!-- 9a·2 CARTE -->
+  <div class="dv-card" data-screen-label="9a Carte du monde" style="background:linear-gradient(#FDF3E4 0%,#FAE4D6 50%,#FDF6EA 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#4E9A5F;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍣 Monde des Makis</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🍚 145</span>
+        <span style="background:#E4EFD9;color:#3E6B24;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">⭐ 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:334px;top:8px;font-size:26px;opacity:.8">🏮</span>
+      <span style="position:absolute;left:16px;top:238px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:344px;top:334px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:112px;top:52px;width:96px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:228px;top:142px;width:92px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(62deg)"></div>
+      <div style="position:absolute;left:212px;top:282px;width:104px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:96px;top:392px;width:96px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(55deg)"></div>
+      <div style="position:absolute;left:22px;top:0;width:100px;text-align:center">
+        <svg style="width:94px;height:90px;display:block;margin:0 auto"><use href="#ns-nigiri"/></svg>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐⭐</div>
+      </div>
+      <div style="position:absolute;left:168px;top:70px;width:100px;text-align:center">
+        <svg style="width:92px;height:88px;display:block;margin:0 auto"><use href="#ns-maki"/></svg>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐</div>
+      </div>
+      <div style="position:absolute;left:256px;top:182px;width:100px;text-align:center">
+        <svg style="width:94px;height:90px;display:block;margin:0 auto"><use href="#ns-tamago"/></svg>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐⭐</div>
+      </div>
+      <div style="position:absolute;left:134px;top:288px;width:110px;text-align:center;animation:mkpulse 1.8s ease-in-out infinite">
+        <span style="position:absolute;right:2px;top:-6px;font-size:16px">✨</span>
+        <svg style="width:96px;height:100px;display:block;margin:0 auto"><use href="#ns-temaki"/></svg>
+        <div style="background:#F5DFA0;color:#6B4A0E;font-weight:800;font-size:15px;border-radius:999px;padding:2px 10px;display:inline-block;margin-top:2px;box-shadow:0 2px 0 #C0A458">✖️ La table de 2</div>
+      </div>
+      <div style="position:absolute;left:28px;top:416px;width:100px;text-align:center;opacity:.9">
+        <span style="position:absolute;right:0;top:-8px;font-size:15px;color:#8B8272;font-weight:800">💤</span>
+        <svg style="width:92px;height:84px;display:block;margin:0 auto"><use href="#ns-onigiri"/></svg>
+      </div>
+      <div style="position:absolute;left:162px;top:494px;width:100px;text-align:center;opacity:.9">
+        <span style="position:absolute;right:0;top:-8px;font-size:15px;color:#8B8272;font-weight:800">💤</span>
+        <svg style="width:88px;height:84px;display:block;margin:0 auto"><use href="#ns-maki-dodo"/></svg>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 20px">
+      <svg style="width:88px;height:98px;flex:none"><use href="#ns-chef"/></svg>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#4A4038;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">Miam ! Le chat-temaki t'attend pour la table de 2 !</p>
+    </div>
+  </div>
+
+  <!-- 9a·3 LEÇON -->
+  <div class="dv-card" data-screen-label="9a Leçon les moitiés" style="background:#FCF7EE;padding:20px;gap:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <b style="font-size:20px;color:#4A4038">Leçon · Les moitiés</b>
+      <button style="border:none;background:#C25A38;border-radius:50%;width:52px;height:52px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none;position:relative">
+        <span style="position:absolute;left:17px;top:20px;width:18px;height:13px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:14px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:23px;top:9px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:32px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;right:5px;top:6px;color:#fff;font-size:13px;font-weight:800">♪</span>
+      </button>
+    </div>
+    <div style="background:#fff;border-radius:24px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:20px;box-shadow:inset 0 0 0 3px #EFE4CC">
+      <svg viewBox="0 0 200 110" style="width:220px;height:121px">
+        <ellipse cx="100" cy="98" rx="90" ry="10" fill="#F3ECDD"/>
+        <g>
+          <circle cx="55" cy="55" r="40" fill="url(#gNori)"/>
+          <circle cx="55" cy="55" r="31" fill="url(#gRice)"/>
+          <circle cx="55" cy="55" r="12" fill="#8FBF6B"/><circle cx="55" cy="55" r="5" fill="#6FA34C"/>
+        </g>
+        <g>
+          <circle cx="148" cy="55" r="40" fill="url(#gNori)"/>
+          <circle cx="148" cy="55" r="31" fill="url(#gRice)"/>
+          <circle cx="148" cy="55" r="12" fill="#8FBF6B"/><circle cx="148" cy="55" r="5" fill="#6FA34C"/>
+        </g>
+        <path d="M101 8 v94" stroke="#C25A38" stroke-width="4" stroke-dasharray="8 7" stroke-linecap="round"/>
+      </svg>
+      <p style="margin:0;font-size:19px;font-weight:700;text-align:center;color:#4A4038">Le grand maki est coupé en <b style="color:#C25A38">2 parts égales</b>.<br>Chaque part est <b>une moitié</b> !</p>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start">
+      <svg style="width:60px;height:67px;flex:none"><use href="#ns-chef"/></svg>
+      <p style="margin:0;background:#fff;border-radius:6px 22px 22px 22px;padding:12px 14px;font-size:18px;font-weight:700;color:#4A4038;box-shadow:0 3px 0 rgba(0,0,0,.08)">Partager en 2 parts égales, c'est trouver la moitié !</p>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer">J'ai compris !</button>
+  </div>
+
+  <!-- 9a·4 EXERCICE -->
+  <div class="dv-card" data-screen-label="9a Exercice" style="background:#FCF7EE;padding:20px;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg style="width:42px;height:47px;flex:none"><use href="#ns-chef"/></svg>
+      <span style="font-size:20px;flex:none">🍚</span>
+      <div style="flex:1;height:18px;background:#E3D5BC;border-radius:999px;overflow:hidden;border:2px solid #D9C9A8"><div style="width:44%;height:100%;background:#FFFDF7;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A4038">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#C25A38;border-radius:50%;width:52px;height:52px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none;position:relative">
+        <span style="position:absolute;left:17px;top:20px;width:18px;height:13px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:14px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:23px;top:9px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:32px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;right:5px;top:6px;color:#fff;font-size:13px;font-weight:800">♪</span>
+      </button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A4038">Partage les 8 sushis en 2 assiettes égales !</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:18px 20px 16px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.06)">
+      <div style="font-size:44px;font-weight:800;color:#4A4038;line-height:1.1">8 ÷ 2 = ?</div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:12px">
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">4</button>
+      <button style="border:3px solid #E2A69B;background:#FAECE8;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E5C3BA;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FAECE8;border:3px solid #E2A69B;border-radius:24px;padding:12px 14px;display:flex;gap:10px;align-items:center">
+      <svg style="width:38px;height:42px;flex:none"><use href="#ns-chef"/></svg>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9A5244">Presque ! Mets 4 sushis dans chaque assiette : 4 + 4 = 8 🍣</p>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;margin-top:auto">Continuer 🥢</button>
+  </div>
+
+  <!-- 9a·5 FIN DE SESSION -->
+  <div class="dv-card" data-screen-label="9a Fin de session" style="background:linear-gradient(#FCF7EE 0%,#FAE4D6 100%);padding:26px;align-items:center;justify-content:center;gap:16px;text-align:center;position:relative;overflow:hidden">
+    <span style="position:absolute;left:30px;top:-20px;width:12px;height:12px;background:#F5DFA0;border-radius:3px;animation:mkfall 3.2s linear infinite"></span>
+    <span style="position:absolute;left:340px;top:-20px;width:10px;height:10px;background:#4E9A5F;border-radius:50%;animation:mkfall 2.7s linear infinite;animation-delay:-1.1s"></span>
+    <span style="position:absolute;left:90px;top:-20px;width:11px;height:11px;background:#F0977C;border-radius:3px;animation:mkfall 3.6s linear infinite;animation-delay:-2.2s"></span>
+    <span style="position:absolute;left:300px;top:-20px;width:12px;height:12px;background:#C4699E;border-radius:3px;animation:mkfall 2.9s linear infinite;animation-delay:-0.6s"></span>
+    <span style="position:absolute;left:200px;top:-20px;width:10px;height:10px;background:#C98A3B;border-radius:50%;animation:mkfall 3.4s linear infinite;animation-delay:-1.7s"></span>
+    <span style="position:absolute;left:150px;top:-20px;width:9px;height:9px;background:#8FBF6B;border-radius:3px;animation:mkfall 3.8s linear infinite;animation-delay:-0.9s"></span>
+    <span style="position:absolute;left:260px;top:-20px;width:10px;height:10px;background:#F5DFA0;border-radius:3px;animation:mkfall 3.3s linear infinite;animation-delay:-2.9s"></span>
+    <div style="position:relative;animation:mkpulse 2s ease-in-out infinite">
+      <span style="position:absolute;left:-22px;top:0;font-size:20px">✨</span>
+      <span style="position:absolute;right:-22px;top:10px;font-size:16px">✨</span>
+      <svg style="width:110px;height:122px"><use href="#ns-chef"/></svg>
+    </div>
+    <h1 style="margin:0;font-size:28px;font-weight:800;color:#4A4038">Miam, quelle séance, Léa !</h1>
+    <div style="font-size:60px;letter-spacing:-6px;line-height:1">⭐⭐⭐</div>
+    <div style="background:#fff;border-radius:20px;padding:12px 24px;font-size:20px;font-weight:800;color:#4A4038;box-shadow:0 4px 0 #E8DCC4">🍚 +12 grains de riz dorés</div>
+    <div style="background:#F5DFA0;border-radius:20px;padding:12px 24px;font-weight:800;font-size:19px;color:#6B4A0E;box-shadow:0 4px 0 #C0A458">🍽️ Assiette de collection<br><b>« Reine des moitiés »</b></div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px 26px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;width:100%">Dépenser mon riz doré</button>
+    <button style="background:none;border:none;color:#847C6C;font-size:18px;font-weight:700;cursor:pointer;text-decoration:underline;font-family:inherit;padding:8px">Retour au monde</button>
+  </div>
+
+  <!-- 9a·6 BOUTIQUE -->
+  <div class="dv-card" data-screen-label="9a Boutique du chat-sushi" style="background:#FCF7EE;padding:20px;gap:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2 style="margin:0;font-size:24px;font-weight:800;color:#4A4038">Le comptoir du chef</h2>
+      <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 14px;font-weight:800;font-size:18px">🍚 157</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:24px;padding:12px 16px;box-shadow:0 4px 0 #E8DCC4">
+      <svg style="width:74px;height:71px;flex:none"><use href="#ns-maki"/></svg>
+      <div style="text-align:left"><b style="font-size:20px;color:#4A4038">Léa · chat-maki calico</b><br><span style="font-size:16px;color:#847C6C;font-weight:700">garniture : avocat 🥑 + bandeau 🎀</span></div>
+    </div>
+    <h2 style="margin:0;font-size:18px;font-weight:800;color:#4A4038">Garnitures</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div style="background:#fff;border:3px solid #4E9A5F;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🥑</div><div style="font-size:15px;font-weight:800;color:#3E6B24">Possédé ✔</div></div>
+      <div style="background:#fff;border:3px solid transparent;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🍤</div><div style="font-size:16px;font-weight:800;color:#8E5A22">🍚 40</div></div>
+      <div style="background:#fff;border:3px solid transparent;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🍳</div><div style="font-size:16px;font-weight:800;color:#8E5A22">🍚 40</div></div>
+    </div>
+    <h2 style="margin:0;font-size:18px;font-weight:800;color:#4A4038">Accessoires</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div style="background:#fff;border:3px solid #4E9A5F;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🎀</div><div style="font-size:15px;font-weight:800;color:#3E6B24">Possédé ✔</div></div>
+      <div style="background:#fff;border:3px solid transparent;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🦸</div><div style="font-size:15px;font-weight:800;color:#4A4038">Cape de nori</div><div style="font-size:16px;font-weight:800;color:#8E5A22">🍚 80</div></div>
+      <div style="background:#fff;border:3px solid transparent;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🟢</div><div style="font-size:15px;font-weight:800;color:#4A4038">Wasabi rigolo</div><div style="font-size:16px;font-weight:800;color:#8E5A22">🍚 60</div></div>
+    </div>
+    <h2 style="margin:0;font-size:18px;font-weight:800;color:#4A4038">Fonds d'écran</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div style="background:#fff;border:3px solid transparent;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🏮</div><div style="font-size:16px;font-weight:800;color:#8E5A22">🍚 80</div></div>
+      <div style="background:#fff;border:3px solid transparent;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🌸</div><div style="font-size:16px;font-weight:800;color:#8E5A22">🍚 80</div></div>
+      <div style="background:#fff;border:3px solid transparent;border-radius:18px;padding:10px 8px;text-align:center;cursor:pointer;box-shadow:0 4px 0 #E8DCC4"><div style="font-size:30px">🗻</div><div style="font-size:16px;font-weight:800;color:#8E5A22">🍚 100</div></div>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:15px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;margin-top:auto">Retour au monde 🥢</button>
+  </div>
+
+  <!-- 9a·7 PARENT -->
+  <div class="dv-card" data-screen-label="9a Tableau de bord parent" style="background:#F6EFDD;padding:20px;gap:12px">
+    <h2 style="margin:0;font-size:21px;font-weight:800;color:#4A4038">🏮 Espace parent — Léa (CE1)</h2>
+    <p style="margin:0;font-size:16px;color:#847C6C;font-weight:700">Cette semaine : 4 sessions · 52 minutes</p>
+    <div style="background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 3px 0 rgba(0,0,0,.05)">
+      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:17px;margin-bottom:6px;color:#4A4038"><span>Nombres</span><span style="color:#3E6B24">82 %</span></div>
+      <div style="height:12px;background:#EFE4CC;border-radius:999px;overflow:hidden"><div style="width:82%;height:100%;background:#4E9A5F;border-radius:999px"></div></div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 3px 0 rgba(0,0,0,.05)">
+      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:17px;margin-bottom:6px;color:#4A4038"><span>Calcul</span><span style="color:#8E5A22">61 %</span></div>
+      <div style="height:12px;background:#EFE4CC;border-radius:999px;overflow:hidden"><div style="width:61%;height:100%;background:#E9B44C;border-radius:999px"></div></div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 3px 0 rgba(0,0,0,.05)">
+      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:17px;margin-bottom:6px;color:#4A4038"><span>Problèmes</span><span style="color:#9A5244">38 %</span></div>
+      <div style="height:12px;background:#EFE4CC;border-radius:999px;overflow:hidden"><div style="width:38%;height:100%;background:#E2A69B;border-radius:999px"></div></div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 3px 0 rgba(0,0,0,.05)">
+      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:17px;margin-bottom:6px;color:#4A4038"><span>Grandeurs et mesures</span><span style="color:#3E6B24">74 %</span></div>
+      <div style="height:12px;background:#EFE4CC;border-radius:999px;overflow:hidden"><div style="width:74%;height:100%;background:#4E9A5F;border-radius:999px"></div></div>
+    </div>
+    <div style="background:#FAECE8;border:2px solid #E2A69B;border-radius:16px;padding:10px 12px;display:flex;gap:10px;align-items:center">
+      <svg style="width:36px;height:40px;flex:none"><use href="#ns-chef"/></svg>
+      <p style="margin:0;font-size:16px;font-weight:700;color:#9A5244">Léa bloque sur « problèmes à 2 étapes » : le chef lui reproposera la leçon à la prochaine session.</p>
+    </div>
+    <button style="border:none;background:#847C6C;color:#fff;font-family:inherit;font-size:19px;font-weight:800;padding:15px;border-radius:20px;box-shadow:0 5px 0 #5F594C;cursor:pointer;margin-top:auto">Exporter la progression (JSON)</button>
+    <button style="background:none;border:none;color:#847C6C;font-size:17px;font-weight:700;cursor:pointer;text-decoration:underline;font-family:inherit;padding:6px">← Retour aux profils</button>
+  </div>
+
+  </div>
+</div>
+</div>
+<p class="dv-next">À essayer : « l'état bonne réponse version chats-sushis » · « mets à jour le handoff Claude Code »</p>
+</section>
+
+<section class="dv-turn" id="t8" data-screen-label="Turn 8 — Chats-sushis en SVG détaillé">
+<div class="dv-thd"><a class="dv-tid" href="#t8">8</a><span class="dv-tname">Chats-sushis redessinés en SVG (couches, dégradés doux, grains de riz, robes distinctes, expressions) — remplace les formes CSS de <a class="dv-oid" href="#7a">7a</a></span></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gFurRoux" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7C494"/><stop offset="1" stop-color="#EFA76C"/></linearGradient>
+    <linearGradient id="gFurGris" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D8CFC4"/><stop offset="1" stop-color="#C2B6A8"/></linearGradient>
+    <linearGradient id="gFurNoir" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E655F"/><stop offset="1" stop-color="#544C48"/></linearGradient>
+    <linearGradient id="gFurBlanc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDF8EC"/><stop offset="1" stop-color="#F3E8D2"/></linearGradient>
+    <linearGradient id="gRice" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3EBD8"/></linearGradient>
+    <linearGradient id="gSaumon" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7A483"/><stop offset="1" stop-color="#ED8560"/></linearGradient>
+    <linearGradient id="gTamago" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7D97E"/><stop offset="1" stop-color="#EFC75B"/></linearGradient>
+    <linearGradient id="gNori" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#57634F"/><stop offset="1" stop-color="#3F4A3B"/></linearGradient>
+    <linearGradient id="gNoriMuted" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7C8574"/><stop offset="1" stop-color="#636D5C"/></linearGradient>
+
+    <!-- chat-nigiri saumon, roux tigré, HEUREUX -->
+    <symbol id="ns-nigiri" viewBox="0 0 96 92">
+      <ellipse cx="48" cy="84" rx="40" ry="7" fill="#fff"/><ellipse cx="48" cy="83" rx="32" ry="4.5" fill="#F3ECDD"/>
+      <path d="M76 64 q16 -4 12 -18 q-2 -8 -11 -9" fill="none" stroke="#E09659" stroke-width="5.5" stroke-linecap="round"/>
+      <rect x="16" y="60" width="58" height="20" rx="10" fill="url(#gRice)" stroke="#EBDFC6"/>
+      <path d="M24 67 q3 -2.5 6 0 M35 73 q3 -2.5 6 0 M47 67 q3 -2.5 6 0 M58 72 q3 -2.5 6 0" fill="none" stroke="#E6D9BC" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="42" y="49" width="40" height="13" rx="6.5" fill="url(#gSaumon)"/>
+      <path d="M49 55 q4 -3 8 0 M59 55 q4 -3 8 0 M69 55 q4 -3 8 0" fill="none" stroke="#FBD0BC" stroke-width="2" stroke-linecap="round"/>
+      <path d="M14 24 L23 4 L33 22 Z" fill="url(#gFurRoux)"/><path d="M19 19 L23 10 L28 18 Z" fill="#F6B9AE"/>
+      <path d="M47 22 L57 4 L66 24 Z" fill="url(#gFurRoux)"/><path d="M52 18 L57 10 L61 19 Z" fill="#F6B9AE"/>
+      <ellipse cx="40" cy="42" rx="27" ry="23" fill="url(#gFurRoux)"/>
+      <path d="M34 25 q1 4 0 7 M40 24 q1 5 0 9 M46 25 q1 4 0 7" fill="none" stroke="#DE9257" stroke-width="3" stroke-linecap="round"/>
+      <path d="M16 40 q4 1 6 3 M64 40 q-4 1 -6 3" fill="none" stroke="#DE9257" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M27 41 q4.5 -6 9 0 M44 41 q4.5 -6 9 0" fill="none" stroke="#43322A" stroke-width="3" stroke-linecap="round"/>
+      <path d="M38 46 h5 l-2.5 3.5 Z" fill="#E2766B"/>
+      <path d="M35 51 q5.5 7 11 0 Z" fill="#8A5240"/><ellipse cx="40.5" cy="53" rx="3" ry="1.8" fill="#F0958D"/>
+      <ellipse cx="20" cy="49" rx="5" ry="3.2" fill="#F0958D" opacity=".55"/><ellipse cx="60" cy="49" rx="5" ry="3.2" fill="#F0958D" opacity=".55"/>
+      <path d="M12 43 q-6 -2 -10 -4 M12 47 q-6 0 -10 1 M68 43 q6 -2 10 -4 M68 47 q6 0 10 1" fill="none" stroke="rgba(122,82,64,.6)" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="30" cy="63" rx="7" ry="4.5" fill="url(#gFurRoux)" stroke="#E09659"/><path d="M27.5 61.5 v3 M31 61.5 v3" stroke="#E09659" stroke-width="1"/>
+      <ellipse cx="47" cy="63" rx="7" ry="4.5" fill="url(#gFurRoux)" stroke="#E09659"/><path d="M44.5 61.5 v3 M48 61.5 v3" stroke="#E09659" stroke-width="1"/>
+    </symbol>
+
+    <!-- chat-maki calico (avocat au centre), HEUREUX -->
+    <symbol id="ns-maki" viewBox="0 0 96 92">
+      <ellipse cx="46" cy="85" rx="38" ry="6.5" fill="#fff"/><ellipse cx="46" cy="84" rx="30" ry="4" fill="#F3ECDD"/>
+      <path d="M16 66 q-14 -4 -10 -17 q2 -7 10 -8" fill="none" stroke="#E09659" stroke-width="5.5" stroke-linecap="round"/>
+      <rect x="16" y="48" width="60" height="34" rx="13" fill="url(#gNori)"/>
+      <ellipse cx="46" cy="50" rx="27" ry="8.5" fill="url(#gRice)" stroke="#EBDFC6"/>
+      <path d="M28 49 q3 -2 6 0 M56 49 q3 -2 6 0" fill="none" stroke="#E6D9BC" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="46" cy="50" r="5.5" fill="#8FBF6B"/><circle cx="46" cy="50" r="2.4" fill="#6FA34C"/>
+      <path d="M18 22 L26 3 L36 20 Z" fill="#F0A468"/><path d="M23 17 L26 9 L31 16 Z" fill="#F6B9AE"/>
+      <path d="M52 20 L62 3 L70 22 Z" fill="url(#gFurBlanc)"/><path d="M57 16 L62 9 L65 17 Z" fill="#F6B9AE"/>
+      <ellipse cx="44" cy="32" rx="25" ry="21" fill="url(#gFurBlanc)"/>
+      <path d="M52 13 q10 1 14 9 q-6 4 -14 3 Z" fill="#F0A468"/>
+      <ellipse cx="28" cy="16" rx="7" ry="5" fill="#6B635E" opacity=".9"/>
+      <path d="M32 31 q4.5 -6 9 0 M50 31 q4.5 -6 9 0" fill="none" stroke="#43322A" stroke-width="3" stroke-linecap="round"/>
+      <path d="M42 36 h5 l-2.5 3.5 Z" fill="#E2766B"/>
+      <path d="M39 41 q5.5 7 11 0 Z" fill="#8A5240"/><ellipse cx="44.5" cy="43" rx="3" ry="1.8" fill="#F0958D"/>
+      <ellipse cx="25" cy="39" rx="5" ry="3.2" fill="#F0958D" opacity=".55"/><ellipse cx="63" cy="39" rx="5" ry="3.2" fill="#F0958D" opacity=".55"/>
+      <path d="M17 33 q-6 -2 -10 -4 M17 37 q-6 0 -10 1 M71 33 q6 -2 10 -4 M71 37 q6 0 10 1" fill="none" stroke="rgba(122,82,64,.55)" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="34" cy="50" rx="6.5" ry="4.2" fill="url(#gFurBlanc)" stroke="#E3D3B4"/><path d="M31.5 48.5 v3 M35 48.5 v3" stroke="#E3D3B4" stroke-width="1"/>
+      <ellipse cx="56" cy="50" rx="6.5" ry="4.2" fill="#F0A468" stroke="#DE9257"/><path d="M53.5 48.5 v3 M57 48.5 v3" stroke="#DE9257" stroke-width="1"/>
+    </symbol>
+
+    <!-- chat-tamago gris tigré, HEUREUX -->
+    <symbol id="ns-tamago" viewBox="0 0 96 92">
+      <ellipse cx="48" cy="84" rx="40" ry="7" fill="#fff"/><ellipse cx="48" cy="83" rx="32" ry="4.5" fill="#F3ECDD"/>
+      <path d="M76 64 q16 -4 12 -18 q-2 -8 -11 -9" fill="none" stroke="#A6988A" stroke-width="5.5" stroke-linecap="round"/>
+      <rect x="16" y="60" width="58" height="20" rx="10" fill="url(#gRice)" stroke="#EBDFC6"/>
+      <path d="M24 67 q3 -2.5 6 0 M35 73 q3 -2.5 6 0 M47 67 q3 -2.5 6 0 M58 72 q3 -2.5 6 0" fill="none" stroke="#E6D9BC" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="42" y="48" width="40" height="14" rx="7" fill="url(#gTamago)"/>
+      <path d="M50 55 h24" fill="none" stroke="#F9E7A8" stroke-width="2" stroke-linecap="round"/>
+      <rect x="58" y="45" width="9" height="22" rx="2.5" fill="url(#gNori)"/>
+      <path d="M14 24 L23 4 L33 22 Z" fill="url(#gFurGris)"/><path d="M19 19 L23 10 L28 18 Z" fill="#F6B9AE"/>
+      <path d="M47 22 L57 4 L66 24 Z" fill="url(#gFurGris)"/><path d="M52 18 L57 10 L61 19 Z" fill="#F6B9AE"/>
+      <ellipse cx="40" cy="42" rx="27" ry="23" fill="url(#gFurGris)"/>
+      <path d="M34 25 q1 4 0 7 M40 24 q1 5 0 9 M46 25 q1 4 0 7" fill="none" stroke="#A6988A" stroke-width="3" stroke-linecap="round"/>
+      <path d="M27 41 q4.5 -6 9 0 M44 41 q4.5 -6 9 0" fill="none" stroke="#43322A" stroke-width="3" stroke-linecap="round"/>
+      <path d="M38 46 h5 l-2.5 3.5 Z" fill="#E2766B"/>
+      <path d="M35 51 q5.5 7 11 0 Z" fill="#8A5240"/><ellipse cx="40.5" cy="53" rx="3" ry="1.8" fill="#F0958D"/>
+      <ellipse cx="20" cy="49" rx="5" ry="3.2" fill="#F0958D" opacity=".55"/><ellipse cx="60" cy="49" rx="5" ry="3.2" fill="#F0958D" opacity=".55"/>
+      <path d="M12 43 q-6 -2 -10 -4 M12 47 q-6 0 -10 1 M68 43 q6 -2 10 -4 M68 47 q6 0 10 1" fill="none" stroke="rgba(107,99,85,.6)" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="30" cy="63" rx="7" ry="4.5" fill="url(#gFurGris)" stroke="#A6988A"/><path d="M27.5 61.5 v3 M31 61.5 v3" stroke="#A6988A" stroke-width="1"/>
+      <ellipse cx="47" cy="63" rx="7" ry="4.5" fill="url(#gFurGris)" stroke="#A6988A"/><path d="M44.5 61.5 v3 M48 61.5 v3" stroke="#A6988A" stroke-width="1"/>
+    </symbol>
+
+    <!-- chat-temaki noir, ÉVEILLÉ (yeux dorés qui clignent) -->
+    <symbol id="ns-temaki" viewBox="0 0 96 100">
+      <ellipse cx="46" cy="93" rx="38" ry="6.5" fill="#fff"/><ellipse cx="46" cy="92" rx="30" ry="4" fill="#F3ECDD"/>
+      <path d="M70 62 q15 -3 13 -16 q-1 -8 -10 -10" fill="none" stroke="#544C48" stroke-width="5.5" stroke-linecap="round"/>
+      <path d="M20 48 L72 48 L49 90 Z" fill="url(#gNori)" stroke="url(#gNori)" stroke-width="4" stroke-linejoin="round"/>
+      <ellipse cx="46" cy="48" rx="27" ry="10" fill="url(#gRice)" stroke="#EBDFC6"/>
+      <path d="M30 47 q3 -2 6 0 M44 51 q3 -2 6 0 M56 46 q3 -2 6 0" fill="none" stroke="#E6D9BC" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M20 22 L28 3 L38 20 Z" fill="url(#gFurNoir)"/><path d="M25 17 L28 9 L33 16 Z" fill="#C99B94"/>
+      <path d="M52 20 L62 3 L70 22 Z" fill="url(#gFurNoir)"/><path d="M57 16 L62 9 L65 17 Z" fill="#C99B94"/>
+      <ellipse cx="44" cy="30" rx="24" ry="20" fill="url(#gFurNoir)"/>
+      <path d="M38 14 q1 4 0 6 M44 13 q1 5 0 8 M50 14 q1 4 0 6" fill="none" stroke="#453E3B" stroke-width="2.6" stroke-linecap="round"/>
+      <ellipse cx="44" cy="37" rx="10" ry="7" fill="#8A807A"/>
+      <ellipse cx="34" cy="29" rx="5" ry="6" fill="#F5D26B"><animate attributeName="ry" values="6;6;.7;6" keyTimes="0;.86;.92;1" dur="3.2s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="54" cy="29" rx="5" ry="6" fill="#F5D26B"><animate attributeName="ry" values="6;6;.7;6" keyTimes="0;.86;.92;1" dur="3.2s" repeatCount="indefinite"/></ellipse>
+      <circle cx="34" cy="29" r="2.4" fill="#2E2723"/><circle cx="54" cy="29" r="2.4" fill="#2E2723"/>
+      <circle cx="35.4" cy="27.4" r="1.1" fill="#fff"/><circle cx="55.4" cy="27.4" r="1.1" fill="#fff"/>
+      <path d="M41.5 34.5 h5 l-2.5 3.5 Z" fill="#E2766B"/>
+      <path d="M38 39.5 q3 4 6 0 q3 4 6 0" fill="none" stroke="#3B332F" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="26" cy="36" rx="4.5" ry="3" fill="#E58F86" opacity=".6"/><ellipse cx="62" cy="36" rx="4.5" ry="3" fill="#E58F86" opacity=".6"/>
+      <path d="M18 31 q-6 -2 -10 -4 M18 35 q-6 0 -10 1 M70 31 q6 -2 10 -4 M70 35 q6 0 10 1" fill="none" stroke="rgba(255,252,245,.55)" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="34" cy="49" rx="6.5" ry="4.2" fill="url(#gFurNoir)" stroke="#453E3B"/><path d="M31.5 47.5 v3 M35 47.5 v3" stroke="#8A807A" stroke-width="1"/>
+      <ellipse cx="56" cy="49" rx="6.5" ry="4.2" fill="url(#gFurNoir)" stroke="#453E3B"/><path d="M53.5 47.5 v3 M57 47.5 v3" stroke="#8A807A" stroke-width="1"/>
+    </symbol>
+
+    <!-- chat-onigiri crème, ENDORMI -->
+    <symbol id="ns-onigiri" viewBox="0 0 96 88">
+      <ellipse cx="48" cy="81" rx="38" ry="6.5" fill="#F1EBDD"/>
+      <path d="M20 76 q12 6 26 4" fill="none" stroke="#E3CFA6" stroke-width="5" stroke-linecap="round"/>
+      <path d="M24 18 L33 2 L41 16 Z" fill="#F1E1C6"/><path d="M29 14 L33 7 L37 13 Z" fill="#F2C4BC"/>
+      <path d="M55 16 L63 2 L72 18 Z" fill="#F1E1C6"/><path d="M60 13 L63 7 L67 14 Z" fill="#F2C4BC"/>
+      <path d="M48 6 Q52 6 54 10 L76 62 q2 6 -4 8 L24 70 q-6 -2 -4 -8 L42 10 Q44 6 48 6 Z" fill="url(#gRice)" stroke="#EBDFC6"/>
+      <path d="M34 58 q3 -2.5 6 0 M56 58 q3 -2.5 6 0 M45 64 q3 -2.5 6 0" fill="none" stroke="#E6D9BC" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="36" y="62" width="24" height="16" rx="3" fill="#8B917F"/>
+      <ellipse cx="38" cy="26" rx="5" ry="4" fill="#E3D2BC"/>
+      <path d="M31 34 q4 4.5 8 0 M57 34 q4 4.5 8 0" fill="none" stroke="#6B6355" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M45.5 40 h5 l-2.5 3.5 Z" fill="#C9A29A"/>
+      <path d="M42 45 q3 4 6 0 q3 4 6 0" fill="none" stroke="#8B8272" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="30" cy="42" rx="4.5" ry="3" fill="#E8C4BC" opacity=".7"/><ellipse cx="66" cy="42" rx="4.5" ry="3" fill="#E8C4BC" opacity=".7"/>
+      <path d="M24 37 q-6 -2 -9 -4 M24 41 q-6 0 -9 1 M72 37 q6 -2 9 -4 M72 41 q6 0 9 1" fill="none" stroke="rgba(107,99,85,.45)" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- chat-maki gris, ENDORMI -->
+    <symbol id="ns-maki-dodo" viewBox="0 0 96 92">
+      <ellipse cx="46" cy="85" rx="38" ry="6.5" fill="#F1EBDD"/>
+      <path d="M74 62 q3 12 -2 18" fill="none" stroke="#C4B49E" stroke-width="5" stroke-linecap="round"/>
+      <rect x="16" y="48" width="60" height="34" rx="13" fill="url(#gNoriMuted)"/>
+      <ellipse cx="46" cy="50" rx="27" ry="8.5" fill="#F3EDE0" stroke="#E5DCC8"/>
+      <path d="M20 24 L28 6 L37 22 Z" fill="url(#gFurGris)"/><path d="M25 19 L28 11 L32 18 Z" fill="#E0C0BA"/>
+      <path d="M52 22 L61 6 L69 24 Z" fill="url(#gFurGris)"/><path d="M57 18 L61 11 L64 19 Z" fill="#E0C0BA"/>
+      <ellipse cx="44" cy="33" rx="24" ry="20" fill="url(#gFurGris)"/>
+      <path d="M39 16 q1 4 0 6 M44 15 q1 5 0 8 M49 16 q1 4 0 6" fill="none" stroke="#A6988A" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M30 33 q4 4.5 8 0 M50 33 q4 4.5 8 0" fill="none" stroke="#6B6355" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M41.5 38 h5 l-2.5 3.5 Z" fill="#C9A29A"/>
+      <path d="M38 43 q3 4 6 0 q3 4 6 0" fill="none" stroke="#8B8272" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="26" cy="41" rx="4.5" ry="3" fill="#E8C4BC" opacity=".7"/><ellipse cx="62" cy="41" rx="4.5" ry="3" fill="#E8C4BC" opacity=".7"/>
+      <path d="M18 35 q-6 -2 -9 -4 M18 39 q-6 0 -9 1 M70 35 q6 -2 9 -4 M70 39 q6 0 9 1" fill="none" stroke="rgba(107,99,85,.45)" stroke-width="1.5" stroke-linecap="round"/>
+      <ellipse cx="34" cy="50" rx="6.5" ry="4.2" fill="url(#gFurGris)" stroke="#A6988A"/>
+      <ellipse cx="56" cy="50" rx="6.5" ry="4.2" fill="url(#gFurGris)" stroke="#A6988A"/>
+    </symbol>
+
+    <!-- CHEF chat-nigiri roux tigré, toque + tablier nori, ÉVEILLÉ (cligne) -->
+    <symbol id="ns-chef" viewBox="0 0 100 112">
+      <path d="M84 80 q16 -8 10 -22 q-3 -8 -12 -8" fill="none" stroke="#E09659" stroke-width="6" stroke-linecap="round"/>
+      <path d="M16 36 L27 12 L38 34 Z" fill="url(#gFurRoux)"/><path d="M22 30 L27 19 L32 29 Z" fill="#F6B9AE"/>
+      <path d="M62 34 L73 12 L84 36 Z" fill="url(#gFurRoux)"/><path d="M68 29 L73 19 L78 30 Z" fill="#F6B9AE"/>
+      <circle cx="38" cy="12" r="8" fill="#fff"/><circle cx="50" cy="9" r="9" fill="#fff"/><circle cx="62" cy="12" r="8" fill="#fff"/>
+      <rect x="34" y="12" width="32" height="15" rx="4" fill="#fff" stroke="#EEE3D2"/>
+      <rect x="34" y="25" width="32" height="5" rx="2" fill="#C25A38"/>
+      <ellipse cx="50" cy="82" rx="21" ry="13" fill="url(#gFurRoux)"/>
+      <rect x="18" y="88" width="64" height="19" rx="9.5" fill="url(#gRice)" stroke="#EBDFC6"/>
+      <path d="M26 94 q3 -2.5 6 0 M38 100 q3 -2.5 6 0 M52 94 q3 -2.5 6 0 M64 99 q3 -2.5 6 0" fill="none" stroke="#E6D9BC" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="42" y="86" width="16" height="26" rx="4" fill="url(#gNori)"/>
+      <ellipse cx="50" cy="53" rx="30" ry="25" fill="url(#gFurRoux)"/>
+      <path d="M44 33 q1 5 0 8 M50 32 q1 6 0 10 M56 33 q1 5 0 8" fill="none" stroke="#DE9257" stroke-width="3" stroke-linecap="round"/>
+      <path d="M23 50 q4 1 6 3 M77 50 q-4 1 -6 3" fill="none" stroke="#DE9257" stroke-width="2.4" stroke-linecap="round"/>
+      <ellipse cx="38" cy="53" rx="5" ry="6" fill="#43322A"><animate attributeName="ry" values="6;6;.8;6" keyTimes="0;.88;.93;1" dur="4s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="62" cy="53" rx="5" ry="6" fill="#43322A"><animate attributeName="ry" values="6;6;.8;6" keyTimes="0;.88;.93;1" dur="4s" repeatCount="indefinite"/></ellipse>
+      <circle cx="40" cy="51" r="1.8" fill="#fff"/><circle cx="36.5" cy="55" r="1" fill="#fff"/>
+      <circle cx="64" cy="51" r="1.8" fill="#fff"/><circle cx="60.5" cy="55" r="1" fill="#fff"/>
+      <path d="M47 61 h6 l-3 4 Z" fill="#E2766B"/>
+      <path d="M42 67 q4 5 8 0 q4 5 8 0" fill="none" stroke="#7A5240" stroke-width="2.2" stroke-linecap="round"/>
+      <ellipse cx="26" cy="63" rx="5.5" ry="3.5" fill="#F0958D" opacity=".55"/><ellipse cx="74" cy="63" rx="5.5" ry="3.5" fill="#F0958D" opacity=".55"/>
+      <path d="M19 55 q-8 -2 -13 -5 M19 60 q-8 0 -13 1 M81 55 q8 -2 13 -5 M81 60 q8 0 13 1" fill="none" stroke="rgba(122,82,64,.6)" stroke-width="1.8" stroke-linecap="round"/>
+      <ellipse cx="36" cy="90" rx="8" ry="5" fill="url(#gFurRoux)" stroke="#E09659"/><path d="M33 88 v3.5 M37 88 v3.5" stroke="#E09659" stroke-width="1"/>
+      <ellipse cx="64" cy="90" rx="8" ry="5" fill="url(#gFurRoux)" stroke="#E09659"/><path d="M61 88 v3.5 M65 88 v3.5" stroke="#E09659" stroke-width="1"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="dv-opts">
+<div class="dv-opt" id="8a">
+  <div class="dv-olabel"><a class="dv-oid" href="#8a">8a</a>Personnages SVG en couches — robes distinctes (roux tigré, calico, gris tigré, noir aux yeux dorés, crème) · expressions : heureux (yeux en arcs + bouche joyeuse), éveillé (yeux brillants qui clignent), endormi (arcs fermés)</div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <!-- 8a Carte -->
+  <div class="dv-card" data-screen-label="8a Carte du monde" style="background:linear-gradient(#FDF3E4 0%,#FAE4D6 50%,#FDF6EA 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#4E9A5F;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍣 Monde des Makis</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🍚 145</span>
+        <span style="background:#E4EFD9;color:#3E6B24;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">⭐ 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:334px;top:8px;font-size:26px;opacity:.8">🏮</span>
+      <span style="position:absolute;left:16px;top:238px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:344px;top:334px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:112px;top:52px;width:96px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:228px;top:142px;width:92px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(62deg)"></div>
+      <div style="position:absolute;left:212px;top:282px;width:104px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:96px;top:392px;width:96px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(55deg)"></div>
+
+      <div style="position:absolute;left:22px;top:0;width:100px;text-align:center">
+        <svg style="width:94px;height:90px;display:block;margin:0 auto"><use href="#ns-nigiri"/></svg>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐⭐</div>
+      </div>
+      <div style="position:absolute;left:168px;top:70px;width:100px;text-align:center">
+        <svg style="width:92px;height:88px;display:block;margin:0 auto"><use href="#ns-maki"/></svg>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐</div>
+      </div>
+      <div style="position:absolute;left:256px;top:182px;width:100px;text-align:center">
+        <svg style="width:94px;height:90px;display:block;margin:0 auto"><use href="#ns-tamago"/></svg>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐⭐</div>
+      </div>
+      <div style="position:absolute;left:134px;top:288px;width:110px;text-align:center;animation:mkpulse 1.8s ease-in-out infinite">
+        <span style="position:absolute;right:2px;top:-6px;font-size:16px">✨</span>
+        <svg style="width:96px;height:100px;display:block;margin:0 auto"><use href="#ns-temaki"/></svg>
+        <div style="background:#F5DFA0;color:#6B4A0E;font-weight:800;font-size:15px;border-radius:999px;padding:2px 10px;display:inline-block;margin-top:2px;box-shadow:0 2px 0 #C0A458">✖️ La table de 2</div>
+      </div>
+      <div style="position:absolute;left:28px;top:416px;width:100px;text-align:center;opacity:.9">
+        <span style="position:absolute;right:0;top:-8px;font-size:15px;color:#8B8272;font-weight:800">💤</span>
+        <svg style="width:92px;height:84px;display:block;margin:0 auto"><use href="#ns-onigiri"/></svg>
+      </div>
+      <div style="position:absolute;left:162px;top:494px;width:100px;text-align:center;opacity:.9">
+        <span style="position:absolute;right:0;top:-8px;font-size:15px;color:#8B8272;font-weight:800">💤</span>
+        <svg style="width:88px;height:84px;display:block;margin:0 auto"><use href="#ns-maki-dodo"/></svg>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 20px">
+      <svg style="width:88px;height:98px;flex:none"><use href="#ns-chef"/></svg>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#4A4038;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">Miam ! Le chat-temaki t'attend pour la table de 2 !</p>
+    </div>
+  </div>
+
+  <!-- 8a Exercice -->
+  <div class="dv-card" data-screen-label="8a Exercice" style="background:#FCF7EE;padding:20px;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg style="width:42px;height:47px;flex:none"><use href="#ns-chef"/></svg>
+      <span style="font-size:20px;flex:none">🍚</span>
+      <div style="flex:1;height:18px;background:#E3D5BC;border-radius:999px;overflow:hidden;border:2px solid #D9C9A8"><div style="width:44%;height:100%;background:#FFFDF7;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A4038">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#C25A38;border-radius:50%;width:52px;height:52px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none;position:relative">
+        <span style="position:absolute;left:17px;top:20px;width:18px;height:13px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:14px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:23px;top:9px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:32px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;right:5px;top:6px;color:#fff;font-size:13px;font-weight:800">♪</span>
+      </button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A4038">Partage les 8 sushis en 2 assiettes égales !</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:18px 20px 16px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.06)">
+      <div style="font-size:44px;font-weight:800;color:#4A4038;line-height:1.1">8 ÷ 2 = ?</div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:12px">
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">4</button>
+      <button style="border:3px solid #E2A69B;background:#FAECE8;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E5C3BA;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FAECE8;border:3px solid #E2A69B;border-radius:24px;padding:12px 14px;display:flex;gap:10px;align-items:center">
+      <svg style="width:38px;height:42px;flex:none"><use href="#ns-chef"/></svg>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9A5244">Presque ! Mets 4 sushis dans chaque assiette : 4 + 4 = 8 🍣</p>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;margin-top:auto">Continuer 🥢</button>
+  </div>
+  </div>
+</div>
+</div>
+<p class="dv-next">Les 3 expressions sont visibles sur la carte : heureux (nigiri, maki, tamago), éveillé qui cligne (temaki), endormi (onigiri, maki gris). À essayer : « décline les 7 écrans avec ces personnages » · « montre la planche des expressions pour chaque chat »</p>
+</section>
+
+<section class="dv-turn" id="t7" data-screen-label="Turn 7 — Chats-sushis vraiment félins">
+<div class="dv-thd"><a class="dv-tid" href="#t7">7</a><span class="dv-tname">Chats d'abord, sushi ensuite — oreilles triangulaires, moustaches, museau « ω », rayures, queue et pattes (corrige <a class="dv-oid" href="#6a">6a</a>)</span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="7a">
+  <div class="dv-olabel"><a class="dv-oid" href="#7a">7a</a>Chaque personnage est un chat lové dans son sushi : riz = lit, garniture = couverture ou costume</div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <!-- 7a Carte -->
+  <div class="dv-card" data-screen-label="7a Carte du monde tapis roulant" style="background:linear-gradient(#FDF3E4 0%,#FAE4D6 50%,#FDF6EA 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#4E9A5F;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍣 Monde des Makis</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🍚 145</span>
+        <span style="background:#E4EFD9;color:#3E6B24;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">⭐ 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:334px;top:8px;font-size:26px;opacity:.8">🏮</span>
+      <span style="position:absolute;left:16px;top:238px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:344px;top:334px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:112px;top:52px;width:96px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:228px;top:142px;width:92px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(62deg)"></div>
+      <div style="position:absolute;left:212px;top:282px;width:104px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:96px;top:392px;width:96px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(55deg)"></div>
+
+      <!-- étape 1 : chat-nigiri saumon (roux tigré), réussi -->
+      <div style="position:absolute;left:22px;top:0;width:96px;text-align:center">
+        <div style="position:relative;width:86px;height:84px;margin:0 auto">
+          <div style="position:absolute;left:3px;bottom:0;width:80px;height:14px;background:#fff;border-radius:50%;box-shadow:0 2px 0 #E0D5BE"></div>
+          <div style="position:absolute;right:0;bottom:18px;width:18px;height:18px;border:5px solid #D98F55;border-radius:50%;border-left-color:transparent;border-bottom-color:transparent;transform:rotate(35deg)"></div>
+          <div style="position:absolute;left:13px;bottom:7px;width:60px;height:20px;background:#FFFDF7;border-radius:10px"></div>
+          <div style="position:absolute;left:34px;bottom:22px;width:42px;height:14px;background:#F0977C;border-radius:8px"></div>
+          <div style="position:absolute;left:40px;bottom:26px;width:30px;height:2px;background:#F9C3AC;border-radius:2px"></div>
+          <div style="position:absolute;left:10px;top:4px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #F2B27E"></div>
+          <div style="position:absolute;left:14px;top:11px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+          <div style="position:absolute;left:38px;top:4px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #F2B27E"></div>
+          <div style="position:absolute;left:42px;top:11px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+          <div style="position:absolute;left:8px;top:18px;width:48px;height:40px;background:#F2B27E;border-radius:20px"></div>
+          <div style="position:absolute;left:22px;top:20px;width:3px;height:6px;background:#D98F55;border-radius:2px"></div>
+          <div style="position:absolute;left:28px;top:19px;width:3px;height:8px;background:#D98F55;border-radius:2px"></div>
+          <div style="position:absolute;left:34px;top:20px;width:3px;height:6px;background:#D98F55;border-radius:2px"></div>
+          <div style="position:absolute;left:17px;top:30px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:20px;top:32px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:37px;top:30px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:40px;top:32px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:10px;top:41px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:47px;top:41px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:29px;top:41px;width:6px;height:4px;background:#E2766B;border-radius:50%"></div>
+          <span style="position:absolute;left:24px;top:45px;width:16px;font-size:11px;line-height:1;font-weight:800;color:#7A5240">ω</span>
+          <div style="position:absolute;left:-3px;top:35px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-8deg)"></div>
+          <div style="position:absolute;left:-3px;top:41px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(6deg)"></div>
+          <div style="position:absolute;left:56px;top:35px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(8deg)"></div>
+          <div style="position:absolute;left:56px;top:41px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-6deg)"></div>
+          <div style="position:absolute;left:16px;bottom:9px;width:12px;height:8px;background:#F2B27E;border-radius:50%"></div>
+          <div style="position:absolute;left:32px;bottom:9px;width:12px;height:8px;background:#F2B27E;border-radius:50%"></div>
+        </div>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐⭐</div>
+      </div>
+
+      <!-- étape 2 : chat-maki (crème tacheté), réussi -->
+      <div style="position:absolute;left:168px;top:72px;width:96px;text-align:center">
+        <div style="position:relative;width:76px;height:84px;margin:0 auto">
+          <div style="position:absolute;left:0;bottom:0;width:76px;height:13px;background:#fff;border-radius:50%;box-shadow:0 2px 0 #E0D5BE"></div>
+          <div style="position:absolute;left:-6px;bottom:22px;width:18px;height:18px;border:5px solid #D9BE93;border-radius:50%;border-right-color:transparent;border-bottom-color:transparent;transform:rotate(-35deg)"></div>
+          <div style="position:absolute;left:9px;bottom:6px;width:58px;height:34px;background:#4A5545;border-radius:12px"></div>
+          <div style="position:absolute;left:12px;bottom:32px;width:52px;height:12px;background:#FFFDF7;border-radius:50%"></div>
+          <div style="position:absolute;left:12px;top:2px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #F5E9D6"></div>
+          <div style="position:absolute;left:16px;top:9px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+          <div style="position:absolute;left:38px;top:2px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #F5E9D6"></div>
+          <div style="position:absolute;left:42px;top:9px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+          <div style="position:absolute;left:10px;top:16px;width:48px;height:38px;background:#F5E9D6;border-radius:20px"></div>
+          <div style="position:absolute;left:14px;top:18px;width:10px;height:8px;background:#D9BE93;border-radius:50%"></div>
+          <div style="position:absolute;left:44px;top:30px;width:8px;height:6px;background:#D9BE93;border-radius:50%"></div>
+          <div style="position:absolute;left:19px;top:28px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:22px;top:30px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:38px;top:28px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:41px;top:30px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:12px;top:38px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:48px;top:38px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:30px;top:38px;width:6px;height:4px;background:#E2766B;border-radius:50%"></div>
+          <span style="position:absolute;left:25px;top:42px;width:16px;font-size:11px;line-height:1;font-weight:800;color:#7A5240">ω</span>
+          <div style="position:absolute;left:-2px;top:33px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-8deg)"></div>
+          <div style="position:absolute;left:-2px;top:39px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(6deg)"></div>
+          <div style="position:absolute;left:58px;top:33px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(8deg)"></div>
+          <div style="position:absolute;left:58px;top:39px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-6deg)"></div>
+          <div style="position:absolute;left:20px;bottom:12px;width:11px;height:7px;background:#F5E9D6;border-radius:50%"></div>
+          <div style="position:absolute;left:36px;bottom:12px;width:11px;height:7px;background:#F5E9D6;border-radius:50%"></div>
+        </div>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐</div>
+      </div>
+
+      <!-- étape 3 : chat-tamago (gris doux tigré), réussi -->
+      <div style="position:absolute;left:258px;top:182px;width:96px;text-align:center">
+        <div style="position:relative;width:86px;height:84px;margin:0 auto">
+          <div style="position:absolute;left:3px;bottom:0;width:80px;height:14px;background:#fff;border-radius:50%;box-shadow:0 2px 0 #E0D5BE"></div>
+          <div style="position:absolute;right:0;bottom:18px;width:18px;height:18px;border:5px solid #A8998A;border-radius:50%;border-left-color:transparent;border-bottom-color:transparent;transform:rotate(35deg)"></div>
+          <div style="position:absolute;left:13px;bottom:7px;width:60px;height:20px;background:#FFFDF7;border-radius:10px"></div>
+          <div style="position:absolute;left:34px;bottom:22px;width:42px;height:14px;background:#F2CF6B;border-radius:8px"></div>
+          <div style="position:absolute;left:50px;bottom:18px;width:10px;height:22px;background:#4A5545;border-radius:2px"></div>
+          <div style="position:absolute;left:10px;top:4px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #CFC4B4"></div>
+          <div style="position:absolute;left:14px;top:11px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+          <div style="position:absolute;left:38px;top:4px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #CFC4B4"></div>
+          <div style="position:absolute;left:42px;top:11px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+          <div style="position:absolute;left:8px;top:18px;width:48px;height:40px;background:#CFC4B4;border-radius:20px"></div>
+          <div style="position:absolute;left:22px;top:20px;width:3px;height:6px;background:#A8998A;border-radius:2px"></div>
+          <div style="position:absolute;left:28px;top:19px;width:3px;height:8px;background:#A8998A;border-radius:2px"></div>
+          <div style="position:absolute;left:34px;top:20px;width:3px;height:6px;background:#A8998A;border-radius:2px"></div>
+          <div style="position:absolute;left:17px;top:30px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:20px;top:32px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:37px;top:30px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:40px;top:32px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:10px;top:41px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:47px;top:41px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:29px;top:41px;width:6px;height:4px;background:#E2766B;border-radius:50%"></div>
+          <span style="position:absolute;left:24px;top:45px;width:16px;font-size:11px;line-height:1;font-weight:800;color:#6B6355">ω</span>
+          <div style="position:absolute;left:-3px;top:35px;width:11px;height:2px;background:rgba(107,99,85,.55);border-radius:2px;transform:rotate(-8deg)"></div>
+          <div style="position:absolute;left:-3px;top:41px;width:11px;height:2px;background:rgba(107,99,85,.55);border-radius:2px;transform:rotate(6deg)"></div>
+          <div style="position:absolute;left:56px;top:35px;width:11px;height:2px;background:rgba(107,99,85,.55);border-radius:2px;transform:rotate(8deg)"></div>
+          <div style="position:absolute;left:56px;top:41px;width:11px;height:2px;background:rgba(107,99,85,.55);border-radius:2px;transform:rotate(-6deg)"></div>
+          <div style="position:absolute;left:16px;bottom:9px;width:12px;height:8px;background:#CFC4B4;border-radius:50%"></div>
+          <div style="position:absolute;left:32px;bottom:9px;width:12px;height:8px;background:#CFC4B4;border-radius:50%"></div>
+        </div>
+        <div style="font-size:13px;letter-spacing:-2px">⭐⭐⭐</div>
+      </div>
+
+      <!-- étape 4 : chat-temaki (roux tigré), EN COURS -->
+      <div style="position:absolute;left:136px;top:290px;width:106px;text-align:center;animation:mkpulse 1.8s ease-in-out infinite">
+        <div style="position:relative;width:80px;height:96px;margin:0 auto">
+          <div style="position:absolute;left:2px;bottom:0;width:76px;height:14px;background:#fff;border-radius:50%;box-shadow:0 2px 0 #E0D5BE"></div>
+          <div style="position:absolute;right:-4px;bottom:32px;width:18px;height:18px;border:5px solid #D98F55;border-radius:50%;border-left-color:transparent;border-bottom-color:transparent;transform:rotate(120deg)"></div>
+          <div style="position:absolute;left:12px;bottom:6px;width:56px;height:52px;background:#4A5545;clip-path:polygon(10% 0,90% 0,52% 100%)"></div>
+          <div style="position:absolute;left:16px;bottom:50px;width:48px;height:16px;background:#FFFDF7;border-radius:50%"></div>
+          <span style="position:absolute;right:-8px;top:-4px;font-size:16px">✨</span>
+          <div style="position:absolute;left:14px;top:0;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #F2B27E"></div>
+          <div style="position:absolute;left:18px;top:7px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+          <div style="position:absolute;left:40px;top:0;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #F2B27E"></div>
+          <div style="position:absolute;left:44px;top:7px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+          <div style="position:absolute;left:12px;top:14px;width:46px;height:36px;background:#F2B27E;border-radius:19px"></div>
+          <div style="position:absolute;left:26px;top:16px;width:3px;height:6px;background:#D98F55;border-radius:2px"></div>
+          <div style="position:absolute;left:32px;top:15px;width:3px;height:8px;background:#D98F55;border-radius:2px"></div>
+          <div style="position:absolute;left:38px;top:16px;width:3px;height:6px;background:#D98F55;border-radius:2px"></div>
+          <div style="position:absolute;left:20px;top:26px;width:9px;height:11px;background:#43322A;border-radius:50%;animation:mkblink 3.2s infinite"></div>
+          <div style="position:absolute;left:23px;top:28px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:38px;top:26px;width:9px;height:11px;background:#43322A;border-radius:50%;animation:mkblink 3.2s infinite"></div>
+          <div style="position:absolute;left:41px;top:28px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:13px;top:36px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:48px;top:36px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:31px;top:36px;width:6px;height:4px;background:#E2766B;border-radius:50%"></div>
+          <span style="position:absolute;left:26px;top:40px;width:16px;font-size:11px;line-height:1;font-weight:800;color:#7A5240">ω</span>
+          <div style="position:absolute;left:0;top:31px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-8deg)"></div>
+          <div style="position:absolute;left:0;top:37px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(6deg)"></div>
+          <div style="position:absolute;left:58px;top:31px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(8deg)"></div>
+          <div style="position:absolute;left:58px;top:37px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-6deg)"></div>
+          <div style="position:absolute;left:24px;bottom:48px;width:11px;height:7px;background:#F2B27E;border-radius:50%"></div>
+          <div style="position:absolute;left:40px;bottom:48px;width:11px;height:7px;background:#F2B27E;border-radius:50%"></div>
+        </div>
+        <div style="background:#F5DFA0;color:#6B4A0E;font-weight:800;font-size:15px;border-radius:999px;padding:2px 10px;display:inline-block;margin-top:4px;box-shadow:0 2px 0 #C0A458">✖️ La table de 2</div>
+      </div>
+
+      <!-- étape 5 : chat-onigiri ENDORMI -->
+      <div style="position:absolute;left:30px;top:414px;width:96px;text-align:center;opacity:.9">
+        <div style="position:relative;width:84px;height:76px;margin:0 auto">
+          <div style="position:absolute;left:4px;bottom:0;width:76px;height:13px;background:#F1EBDD;border-radius:50%"></div>
+          <div style="position:absolute;left:20px;top:2px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid #E3D2BC"></div>
+          <div style="position:absolute;left:44px;top:2px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid #E3D2BC"></div>
+          <div style="position:absolute;left:14px;top:12px;width:56px;height:52px;background:#EFE8D8;clip-path:polygon(50% 0,96% 78%,88% 100%,12% 100%,4% 78%)"></div>
+          <div style="position:absolute;left:30px;bottom:4px;width:24px;height:14px;background:#8B917F;border-radius:3px 3px 7px 7px"></div>
+          <div style="position:absolute;left:27px;top:32px;width:8px;height:4px;border-bottom:2px solid #6B6355;border-radius:50%"></div>
+          <div style="position:absolute;left:44px;top:32px;width:8px;height:4px;border-bottom:2px solid #6B6355;border-radius:50%"></div>
+          <div style="position:absolute;left:21px;top:38px;width:6px;height:4px;background:#E8C4BC;border-radius:50%"></div>
+          <div style="position:absolute;left:52px;top:38px;width:6px;height:4px;background:#E8C4BC;border-radius:50%"></div>
+          <div style="position:absolute;left:36px;top:37px;width:5px;height:3px;background:#C9A29A;border-radius:50%"></div>
+          <span style="position:absolute;left:31px;top:41px;width:16px;font-size:10px;line-height:1;font-weight:800;color:#8B8272">ω</span>
+          <div style="position:absolute;left:6px;top:34px;width:10px;height:2px;background:rgba(107,99,85,.45);border-radius:2px;transform:rotate(-8deg)"></div>
+          <div style="position:absolute;left:6px;top:39px;width:10px;height:2px;background:rgba(107,99,85,.45);border-radius:2px;transform:rotate(6deg)"></div>
+          <div style="position:absolute;left:63px;top:34px;width:10px;height:2px;background:rgba(107,99,85,.45);border-radius:2px;transform:rotate(8deg)"></div>
+          <div style="position:absolute;left:63px;top:39px;width:10px;height:2px;background:rgba(107,99,85,.45);border-radius:2px;transform:rotate(-6deg)"></div>
+          <span style="position:absolute;right:-6px;top:-6px;font-size:15px;color:#8B8272;font-weight:800">💤</span>
+        </div>
+      </div>
+
+      <!-- étape 6 : chat-maki ENDORMI -->
+      <div style="position:absolute;left:164px;top:494px;width:96px;text-align:center;opacity:.9">
+        <div style="position:relative;width:76px;height:78px;margin:0 auto">
+          <div style="position:absolute;left:0;bottom:0;width:76px;height:13px;background:#F1EBDD;border-radius:50%"></div>
+          <div style="position:absolute;right:2px;bottom:8px;width:5px;height:16px;background:#C4B49E;border-radius:3px"></div>
+          <div style="position:absolute;left:9px;bottom:6px;width:58px;height:32px;background:#7E8474;border-radius:12px"></div>
+          <div style="position:absolute;left:12px;bottom:30px;width:52px;height:12px;background:#F3EEE0;border-radius:50%"></div>
+          <div style="position:absolute;left:14px;top:0;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid #DFD3C0"></div>
+          <div style="position:absolute;left:40px;top:0;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid #DFD3C0"></div>
+          <div style="position:absolute;left:12px;top:11px;width:44px;height:36px;background:#DFD3C0;border-radius:18px"></div>
+          <div style="position:absolute;left:21px;top:24px;width:8px;height:4px;border-bottom:2px solid #6B6355;border-radius:50%"></div>
+          <div style="position:absolute;left:37px;top:24px;width:8px;height:4px;border-bottom:2px solid #6B6355;border-radius:50%"></div>
+          <div style="position:absolute;left:30px;top:29px;width:5px;height:3px;background:#C9A29A;border-radius:50%"></div>
+          <span style="position:absolute;left:25px;top:33px;width:16px;font-size:10px;line-height:1;font-weight:800;color:#8B8272">ω</span>
+          <div style="position:absolute;left:0;top:26px;width:10px;height:2px;background:rgba(107,99,85,.45);border-radius:2px;transform:rotate(-8deg)"></div>
+          <div style="position:absolute;left:0;top:31px;width:10px;height:2px;background:rgba(107,99,85,.45);border-radius:2px;transform:rotate(6deg)"></div>
+          <div style="position:absolute;left:57px;top:26px;width:10px;height:2px;background:rgba(107,99,85,.45);border-radius:2px;transform:rotate(8deg)"></div>
+          <div style="position:absolute;left:57px;top:31px;width:10px;height:2px;background:rgba(107,99,85,.45);border-radius:2px;transform:rotate(-6deg)"></div>
+          <span style="position:absolute;right:-8px;top:-6px;font-size:15px;color:#8B8272;font-weight:800">💤</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- chef -->
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 20px">
+      <div style="position:relative;width:84px;height:100px;flex:none">
+        <div style="position:absolute;left:26px;top:0;width:12px;height:12px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:35px;top:-3px;width:14px;height:14px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:46px;top:0;width:12px;height:12px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:26px;top:8px;width:32px;height:14px;background:#fff;border-radius:5px 5px 3px 3px;box-shadow:0 2px 0 #E0D5BE"></div>
+        <div style="position:absolute;left:26px;top:20px;width:32px;height:4px;background:#C25A38;border-radius:2px"></div>
+        <div style="position:absolute;left:8px;top:12px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:17px solid #F2B27E"></div>
+        <div style="position:absolute;left:12px;top:20px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+        <div style="position:absolute;left:58px;top:12px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:17px solid #F2B27E"></div>
+        <div style="position:absolute;left:62px;top:20px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid #F2A9A0"></div>
+        <div style="position:absolute;right:-2px;bottom:24px;width:20px;height:20px;border:5px solid #D98F55;border-radius:50%;border-left-color:transparent;border-bottom-color:transparent;transform:rotate(35deg)"></div>
+        <div style="position:absolute;left:10px;bottom:0;width:64px;height:22px;background:#FFFDF7;border-radius:10px;box-shadow:0 2px 0 #E8DCC4"></div>
+        <div style="position:absolute;left:34px;bottom:0;width:16px;height:24px;background:#4A5545;border-radius:4px"></div>
+        <div style="position:absolute;left:12px;top:26px;width:52px;height:42px;background:#F2B27E;border-radius:22px"></div>
+        <div style="position:absolute;left:28px;top:28px;width:3px;height:7px;background:#D98F55;border-radius:2px"></div>
+        <div style="position:absolute;left:35px;top:27px;width:3px;height:9px;background:#D98F55;border-radius:2px"></div>
+        <div style="position:absolute;left:42px;top:28px;width:3px;height:7px;background:#D98F55;border-radius:2px"></div>
+        <div style="position:absolute;left:22px;top:40px;width:9px;height:11px;background:#43322A;border-radius:50%;animation:mkblink 4s infinite"></div>
+        <div style="position:absolute;left:25px;top:42px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:42px;top:40px;width:9px;height:11px;background:#43322A;border-radius:50%;animation:mkblink 4s infinite"></div>
+        <div style="position:absolute;left:45px;top:42px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:14px;top:51px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:53px;top:51px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:34px;top:51px;width:6px;height:4px;background:#E2766B;border-radius:50%"></div>
+        <span style="position:absolute;left:29px;top:55px;width:16px;font-size:11px;line-height:1;font-weight:800;color:#7A5240">ω</span>
+        <div style="position:absolute;left:-1px;top:45px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-8deg)"></div>
+        <div style="position:absolute;left:-1px;top:51px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(6deg)"></div>
+        <div style="position:absolute;left:66px;top:45px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(8deg)"></div>
+        <div style="position:absolute;left:66px;top:51px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-6deg)"></div>
+        <div style="position:absolute;left:22px;bottom:15px;width:12px;height:8px;background:#F2B27E;border-radius:50%"></div>
+        <div style="position:absolute;left:48px;bottom:15px;width:12px;height:8px;background:#F2B27E;border-radius:50%"></div>
+      </div>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#4A4038;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">Miam ! Le chat-temaki t'attend pour la table de 2 !</p>
+    </div>
+  </div>
+
+  <!-- 7a Exercice -->
+  <div class="dv-card" data-screen-label="7a Exercice" style="background:#FCF7EE;padding:20px;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="zoom:.46;position:relative;width:84px;height:100px;flex:none">
+        <div style="position:absolute;left:26px;top:0;width:12px;height:12px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:35px;top:-3px;width:14px;height:14px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:46px;top:0;width:12px;height:12px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:26px;top:8px;width:32px;height:14px;background:#fff;border-radius:5px 5px 3px 3px;box-shadow:0 2px 0 #E0D5BE"></div>
+        <div style="position:absolute;left:26px;top:20px;width:32px;height:4px;background:#C25A38;border-radius:2px"></div>
+        <div style="position:absolute;left:8px;top:12px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:17px solid #F2B27E"></div>
+        <div style="position:absolute;left:58px;top:12px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:17px solid #F2B27E"></div>
+        <div style="position:absolute;left:10px;bottom:0;width:64px;height:22px;background:#FFFDF7;border-radius:10px;box-shadow:0 2px 0 #E8DCC4"></div>
+        <div style="position:absolute;left:34px;bottom:0;width:16px;height:24px;background:#4A5545;border-radius:4px"></div>
+        <div style="position:absolute;left:12px;top:26px;width:52px;height:42px;background:#F2B27E;border-radius:22px"></div>
+        <div style="position:absolute;left:35px;top:27px;width:3px;height:9px;background:#D98F55;border-radius:2px"></div>
+        <div style="position:absolute;left:22px;top:40px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:42px;top:40px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:14px;top:51px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:53px;top:51px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:34px;top:51px;width:6px;height:4px;background:#E2766B;border-radius:50%"></div>
+        <span style="position:absolute;left:29px;top:55px;width:16px;font-size:11px;line-height:1;font-weight:800;color:#7A5240">ω</span>
+        <div style="position:absolute;left:-1px;top:45px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(-8deg)"></div>
+        <div style="position:absolute;left:66px;top:45px;width:11px;height:2px;background:rgba(122,82,64,.55);border-radius:2px;transform:rotate(8deg)"></div>
+      </div>
+      <span style="font-size:20px;flex:none">🍚</span>
+      <div style="flex:1;height:18px;background:#E3D5BC;border-radius:999px;overflow:hidden;border:2px solid #D9C9A8"><div style="width:44%;height:100%;background:#FFFDF7;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A4038">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#C25A38;border-radius:50%;width:52px;height:52px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none;position:relative">
+        <span style="position:absolute;left:17px;top:20px;width:18px;height:13px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:14px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:23px;top:9px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:32px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;right:5px;top:6px;color:#fff;font-size:13px;font-weight:800">♪</span>
+      </button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A4038">Partage les 8 sushis en 2 assiettes égales !</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:18px 20px 16px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.06)">
+      <div style="font-size:44px;font-weight:800;color:#4A4038;line-height:1.1">8 ÷ 2 = ?</div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:12px">
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">4</button>
+      <button style="border:3px solid #E2A69B;background:#FAECE8;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E5C3BA;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FAECE8;border:3px solid #E2A69B;border-radius:24px;padding:12px 14px;display:flex;gap:10px;align-items:center">
+      <div style="zoom:.4;position:relative;width:84px;height:100px;flex:none">
+        <div style="position:absolute;left:26px;top:8px;width:32px;height:14px;background:#fff;border-radius:5px 5px 3px 3px"></div>
+        <div style="position:absolute;left:26px;top:20px;width:32px;height:4px;background:#C25A38;border-radius:2px"></div>
+        <div style="position:absolute;left:8px;top:12px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:17px solid #F2B27E"></div>
+        <div style="position:absolute;left:58px;top:12px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:17px solid #F2B27E"></div>
+        <div style="position:absolute;left:10px;bottom:0;width:64px;height:22px;background:#FFFDF7;border-radius:10px"></div>
+        <div style="position:absolute;left:12px;top:26px;width:52px;height:42px;background:#F2B27E;border-radius:22px"></div>
+        <div style="position:absolute;left:22px;top:40px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:42px;top:40px;width:9px;height:11px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:14px;top:51px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:53px;top:51px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:34px;top:51px;width:6px;height:4px;background:#E2766B;border-radius:50%"></div>
+        <span style="position:absolute;left:29px;top:55px;width:16px;font-size:11px;line-height:1;font-weight:800;color:#7A5240">ω</span>
+      </div>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9A5244">Presque ! Mets 4 sushis dans chaque assiette : 4 + 4 = 8 🍣</p>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;margin-top:auto">Continuer 🥢</button>
+  </div>
+  </div>
+</div>
+</div>
+<p class="dv-next">Test « masque le riz » : oreilles, moustaches, museau ω, rayures, queue et pattes sont sur chaque personnage. À essayer : « décline les 7 écrans comme <a class="dv-oid" href="#7a">7a</a> » · « montre l'avatar chat-sushi personnalisable »</p>
+</section>
+
+<section class="dv-turn" id="t6" data-screen-label="Turn 6 — Chats-sushis au cœur de l'UI">
+<div class="dv-thd"><a class="dv-tid" href="#t6">6</a><span class="dv-tname">Chats-sushis omniprésents — chaque étape EST un chat-sushi, tapis roulant, chef-guide, récompenses riz doré (base palette <a class="dv-oid" href="#5a">5a</a>)</span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="6a">
+  <div class="dv-olabel"><a class="dv-oid" href="#6a">6a</a>Étapes = chat-nigiri saumon, chat-maki, chat-tamago (réussis) · chat-temaki qui cligne des yeux (en cours) · chats endormis 💤 (verrouillés) · bouton audio = patte de chat · jauge = bol de riz 🍚</div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <!-- 6a Carte -->
+  <div class="dv-card" data-screen-label="6a Carte du monde tapis roulant" style="background:linear-gradient(#FDF3E4 0%,#FAE4D6 50%,#FDF6EA 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#4E9A5F;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍣 Monde des Makis</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🍚 145</span>
+        <span style="background:#E4EFD9;color:#3E6B24;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">⭐ 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:334px;top:8px;font-size:26px;opacity:.8">🏮</span>
+      <span style="position:absolute;left:20px;top:236px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:344px;top:330px;font-size:18px;opacity:.7">✨</span>
+      <!-- tapis roulant -->
+      <div style="position:absolute;left:112px;top:52px;width:96px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:228px;top:142px;width:92px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(62deg)"></div>
+      <div style="position:absolute;left:212px;top:282px;width:104px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:96px;top:392px;width:96px;height:20px;background:repeating-linear-gradient(90deg,#E8DFCC 0 16px,#DCD1B9 16px 32px);border-radius:10px;transform:rotate(55deg)"></div>
+      <!-- étape 1 : chat-nigiri saumon, réussi -->
+      <div style="position:absolute;left:28px;top:4px;width:96px;text-align:center">
+        <div style="position:relative;width:76px;height:64px;margin:0 auto">
+          <div style="position:absolute;left:2px;bottom:0;width:72px;height:14px;background:#fff;border-radius:50%;box-shadow:0 2px 0 #E0D5BE"></div>
+          <div style="position:absolute;left:12px;bottom:7px;width:52px;height:18px;background:#FFFDF7;border-radius:8px"></div>
+          <div style="position:absolute;left:17px;top:2px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #F0977C"></div>
+          <div style="position:absolute;left:45px;top:2px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #F0977C"></div>
+          <div style="position:absolute;left:14px;top:10px;width:48px;height:34px;background:#F0977C;border-radius:20px 20px 16px 16px"></div>
+          <div style="position:absolute;left:26px;top:20px;width:7px;height:9px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:28px;top:22px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:42px;top:20px;width:7px;height:9px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:44px;top:22px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:19px;top:30px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:50px;top:30px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:34px;top:29px;width:8px;height:5px;border-bottom:2px solid #7A5240;border-radius:50%"></div>
+        </div>
+        <div style="font-size:13px;letter-spacing:-2px;margin-top:2px">⭐⭐⭐</div>
+      </div>
+      <!-- étape 2 : chat-maki, réussi -->
+      <div style="position:absolute;left:176px;top:76px;width:96px;text-align:center">
+        <div style="position:relative;width:64px;height:66px;margin:0 auto">
+          <div style="position:absolute;left:0;bottom:0;width:64px;height:12px;background:#fff;border-radius:50%;box-shadow:0 2px 0 #E0D5BE"></div>
+          <div style="position:absolute;left:12px;top:0;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #F2B27E"></div>
+          <div style="position:absolute;left:38px;top:0;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #F2B27E"></div>
+          <div style="position:absolute;left:2px;top:7px;width:56px;height:54px;background:#4A5545;border-radius:50%"></div>
+          <div style="position:absolute;left:7px;top:12px;width:46px;height:44px;background:#FFFDF7;border-radius:50%"></div>
+          <div style="position:absolute;left:12px;top:19px;width:36px;height:32px;background:#F2B27E;border-radius:50% 50% 45% 45%"></div>
+          <div style="position:absolute;left:20px;top:29px;width:7px;height:9px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:22px;top:31px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:33px;top:29px;width:7px;height:9px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:35px;top:31px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:14px;top:39px;width:6px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:40px;top:39px;width:6px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:27px;top:38px;width:7px;height:4px;border-bottom:2px solid #7A5240;border-radius:50%"></div>
+        </div>
+        <div style="font-size:13px;letter-spacing:-2px;margin-top:2px">⭐⭐</div>
+      </div>
+      <!-- étape 3 : chat-tamago, réussi -->
+      <div style="position:absolute;left:266px;top:186px;width:96px;text-align:center">
+        <div style="position:relative;width:76px;height:64px;margin:0 auto">
+          <div style="position:absolute;left:2px;bottom:0;width:72px;height:14px;background:#fff;border-radius:50%;box-shadow:0 2px 0 #E0D5BE"></div>
+          <div style="position:absolute;left:12px;bottom:7px;width:52px;height:18px;background:#FFFDF7;border-radius:8px"></div>
+          <div style="position:absolute;left:17px;top:2px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #F2CF6B"></div>
+          <div style="position:absolute;left:45px;top:2px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #F2CF6B"></div>
+          <div style="position:absolute;left:14px;top:10px;width:48px;height:34px;background:#F2CF6B;border-radius:20px 20px 16px 16px"></div>
+          <div style="position:absolute;left:33px;top:8px;width:10px;height:40px;background:#4A5545;opacity:.9;border-radius:2px"></div>
+          <div style="position:absolute;left:22px;top:20px;width:7px;height:9px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:24px;top:22px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:47px;top:20px;width:7px;height:9px;background:#43322A;border-radius:50%"></div>
+          <div style="position:absolute;left:49px;top:22px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+          <div style="position:absolute;left:17px;top:30px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:52px;top:30px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        </div>
+        <div style="font-size:13px;letter-spacing:-2px;margin-top:2px">⭐⭐⭐</div>
+      </div>
+      <!-- étape 4 : chat-temaki, EN COURS (cligne des yeux) -->
+      <div style="position:absolute;left:142px;top:296px;width:106px;text-align:center;animation:mkpulse 1.8s ease-in-out infinite">
+        <div style="position:relative;width:64px;height:78px;margin:0 auto">
+          <div style="position:absolute;left:-4px;bottom:0;width:72px;height:14px;background:#fff;border-radius:50%;box-shadow:0 2px 0 #E0D5BE"></div>
+          <div style="position:absolute;left:4px;top:22px;width:56px;height:50px;background:#4A5545;clip-path:polygon(12% 0,88% 0,52% 100%)"></div>
+          <div style="position:absolute;left:8px;top:16px;width:48px;height:18px;background:#FFFDF7;border-radius:50%"></div>
+          <div style="position:absolute;left:14px;top:-4px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #F2B27E"></div>
+          <div style="position:absolute;left:42px;top:-4px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #F2B27E"></div>
+          <div style="position:absolute;left:14px;top:2px;width:36px;height:28px;background:#F2B27E;border-radius:16px 16px 14px 14px"></div>
+          <div style="position:absolute;left:23px;top:11px;width:7px;height:9px;background:#43322A;border-radius:50%;animation:mkblink 3.2s infinite"></div>
+          <div style="position:absolute;left:35px;top:11px;width:7px;height:9px;background:#43322A;border-radius:50%;animation:mkblink 3.2s infinite"></div>
+          <div style="position:absolute;left:16px;top:20px;width:6px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:42px;top:20px;width:6px;height:4px;background:#F0958D;border-radius:50%"></div>
+          <div style="position:absolute;left:28px;top:19px;width:7px;height:4px;border-bottom:2px solid #7A5240;border-radius:50%"></div>
+        </div>
+        <div style="background:#F5DFA0;color:#6B4A0E;font-weight:800;font-size:15px;border-radius:999px;padding:2px 10px;display:inline-block;margin-top:4px;box-shadow:0 2px 0 #C0A458">✖️ La table de 2</div>
+      </div>
+      <!-- étape 5 : chat-onigiri ENDORMI -->
+      <div style="position:absolute;left:38px;top:414px;width:96px;text-align:center;opacity:.85">
+        <div style="position:relative;width:76px;height:64px;margin:0 auto">
+          <div style="position:absolute;left:2px;bottom:0;width:72px;height:14px;background:#F1EBDD;border-radius:50%"></div>
+          <div style="position:absolute;left:12px;top:2px;width:52px;height:50px;background:#EFE8D8;clip-path:polygon(50% 0%,96% 76%,88% 100%,12% 100%,4% 76%)"></div>
+          <div style="position:absolute;left:28px;bottom:6px;width:20px;height:13px;background:#8B917F;border-radius:3px 3px 7px 7px"></div>
+          <div style="position:absolute;left:26px;top:26px;width:8px;height:4px;border-bottom:2px solid #6B6355;border-radius:50%"></div>
+          <div style="position:absolute;left:42px;top:26px;width:8px;height:4px;border-bottom:2px solid #6B6355;border-radius:50%"></div>
+          <span style="position:absolute;right:-8px;top:-4px;font-size:15px;color:#8B8272;font-weight:800">💤</span>
+        </div>
+      </div>
+      <!-- étape 6 : chat-maki ENDORMI -->
+      <div style="position:absolute;left:172px;top:496px;width:96px;text-align:center;opacity:.85">
+        <div style="position:relative;width:64px;height:62px;margin:0 auto">
+          <div style="position:absolute;left:0;bottom:0;width:64px;height:12px;background:#F1EBDD;border-radius:50%"></div>
+          <div style="position:absolute;left:2px;top:3px;width:56px;height:54px;background:#B9B3A4;border-radius:50%"></div>
+          <div style="position:absolute;left:7px;top:8px;width:46px;height:44px;background:#F3EEE0;border-radius:50%"></div>
+          <div style="position:absolute;left:12px;top:15px;width:36px;height:32px;background:#E3D2BC;border-radius:50% 50% 45% 45%"></div>
+          <div style="position:absolute;left:19px;top:28px;width:8px;height:4px;border-bottom:2px solid #6B6355;border-radius:50%"></div>
+          <div style="position:absolute;left:33px;top:28px;width:8px;height:4px;border-bottom:2px solid #6B6355;border-radius:50%"></div>
+          <span style="position:absolute;right:-10px;top:-4px;font-size:15px;color:#8B8272;font-weight:800">💤</span>
+        </div>
+      </div>
+    </div>
+    <!-- chef -->
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 20px">
+      <div style="position:relative;width:78px;height:88px;flex:none">
+        <div style="position:absolute;left:22px;top:4px;width:14px;height:14px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:32px;top:0;width:16px;height:16px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:4px;width:14px;height:14px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:20px;top:10px;width:40px;height:16px;background:#fff;border-radius:6px 6px 3px 3px;box-shadow:0 2px 0 #E0D5BE"></div>
+        <div style="position:absolute;left:20px;top:23px;width:40px;height:5px;background:#C25A38;border-radius:2px"></div>
+        <div style="position:absolute;left:8px;bottom:0;width:64px;height:24px;background:#FFFDF7;border-radius:10px;box-shadow:0 2px 0 #E8DCC4"></div>
+        <div style="position:absolute;left:33px;bottom:0;width:14px;height:26px;background:#4A5545;border-radius:4px"></div>
+        <div style="position:absolute;left:15px;top:28px;width:50px;height:40px;background:#F2B27E;border-radius:22px 22px 20px 20px"></div>
+        <div style="position:absolute;left:29px;top:41px;width:8px;height:10px;background:#43322A;border-radius:50%;animation:mkblink 4s infinite"></div>
+        <div style="position:absolute;left:31px;top:43px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:41px;width:8px;height:10px;background:#43322A;border-radius:50%;animation:mkblink 4s infinite"></div>
+        <div style="position:absolute;left:46px;top:43px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:21px;top:52px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:53px;top:52px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:37px;top:52px;width:7px;height:4px;border-bottom:2px solid #7A5240;border-radius:50%"></div>
+      </div>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#4A4038;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">Miam ! Le chat-temaki t'attend pour la table de 2 !</p>
+    </div>
+  </div>
+
+  <!-- 6a Exercice -->
+  <div class="dv-card" data-screen-label="6a Exercice" style="background:#FCF7EE;padding:20px;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="zoom:.48;position:relative;width:78px;height:88px;flex:none">
+        <div style="position:absolute;left:22px;top:4px;width:14px;height:14px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:32px;top:0;width:16px;height:16px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:4px;width:14px;height:14px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:20px;top:10px;width:40px;height:16px;background:#fff;border-radius:6px 6px 3px 3px;box-shadow:0 2px 0 #E0D5BE"></div>
+        <div style="position:absolute;left:20px;top:23px;width:40px;height:5px;background:#C25A38;border-radius:2px"></div>
+        <div style="position:absolute;left:8px;bottom:0;width:64px;height:24px;background:#FFFDF7;border-radius:10px;box-shadow:0 2px 0 #E8DCC4"></div>
+        <div style="position:absolute;left:33px;bottom:0;width:14px;height:26px;background:#4A5545;border-radius:4px"></div>
+        <div style="position:absolute;left:15px;top:28px;width:50px;height:40px;background:#F2B27E;border-radius:22px 22px 20px 20px"></div>
+        <div style="position:absolute;left:29px;top:41px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:41px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:21px;top:52px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:53px;top:52px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+      </div>
+      <span style="font-size:20px;flex:none">🍚</span>
+      <div style="flex:1;height:18px;background:#E3D5BC;border-radius:999px;overflow:hidden;border:2px solid #D9C9A8"><div style="width:44%;height:100%;background:#FFFDF7;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A4038">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#C25A38;border-radius:50%;width:52px;height:52px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none;position:relative">
+        <span style="position:absolute;left:17px;top:20px;width:18px;height:13px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:14px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:23px;top:9px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;left:32px;top:12px;width:6px;height:6px;background:#fff;border-radius:50%"></span>
+        <span style="position:absolute;right:5px;top:6px;color:#fff;font-size:13px;font-weight:800">♪</span>
+      </button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A4038">Partage les 8 sushis en 2 assiettes égales !</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:18px 20px 16px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.06)">
+      <div style="font-size:44px;font-weight:800;color:#4A4038;line-height:1.1">8 ÷ 2 = ?</div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:12px">
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+        <div style="background:#FCF7EE;border:2px solid #E8DCC4;border-radius:999px;padding:6px 12px;font-size:19px;letter-spacing:2px">🍣🍣🍣🍣</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">4</button>
+      <button style="border:3px solid #E2A69B;background:#FAECE8;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E5C3BA;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:20px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FAECE8;border:3px solid #E2A69B;border-radius:24px;padding:12px 14px;display:flex;gap:10px;align-items:center">
+      <div style="zoom:.4;position:relative;width:78px;height:88px;flex:none">
+        <div style="position:absolute;left:20px;top:10px;width:40px;height:16px;background:#fff;border-radius:6px 6px 3px 3px"></div>
+        <div style="position:absolute;left:20px;top:23px;width:40px;height:5px;background:#C25A38;border-radius:2px"></div>
+        <div style="position:absolute;left:8px;bottom:0;width:64px;height:24px;background:#FFFDF7;border-radius:10px"></div>
+        <div style="position:absolute;left:15px;top:28px;width:50px;height:40px;background:#F2B27E;border-radius:22px 22px 20px 20px"></div>
+        <div style="position:absolute;left:29px;top:41px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:41px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:21px;top:52px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:53px;top:52px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+      </div>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9A5244">Presque ! Mets 4 sushis dans chaque assiette : 4 + 4 = 8 🍣</p>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;margin-top:auto">Continuer 🥢</button>
+  </div>
+  </div>
+</div>
+</div>
+<p class="dv-next">À essayer : « décline les 7 écrans comme <a class="dv-oid" href="#6a">6a</a> » · « montre l'avatar chat-sushi personnalisable » · « le chat-temaki avec une autre garniture »</p>
+</section>
+
+<section class="dv-turn" id="t5" data-screen-label="Turn 5 — 3 déclinaisons chats-sushis">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">Pivot kawaii chats &amp; sushis — 3 mascottes neko-sushi (Carte du monde + Exercice avec erreur, 390×760)</span></div>
+<div class="dv-opts">
+
+<!-- ============ 5a NIGIRI ============ -->
+<div class="dv-opt" id="5a">
+  <div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>Comptoir nigiri — riz crème &amp; saumon pêche, mascotte <b>chat-nigiri</b> (lové sur son riz, bandeau nori)</div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:600 11px system-ui,sans-serif;color:#555">
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C25A38;display:inline-block"></i>action</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#D9704C;display:inline-block"></i>CP · bar à sushis</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#4E9A5F;display:inline-block"></i>CE1 · makis</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#8A9A2F;display:inline-block"></i>CE2 · jardin matcha</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C98A3B;display:inline-block"></i>CM1 · ramens</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C4699E;display:inline-block"></i>CM2 · grand banquet</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#E2A69B;display:inline-block"></i>erreur (gingembre rosé)</span>
+  </div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <div class="dv-card" data-screen-label="5a Carte du monde" style="background:linear-gradient(#FDF3E4 0%,#FAE4D6 50%,#FDF6EA 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#4E9A5F;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍣 Monde des Makis</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🥢 145</span>
+        <span style="background:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px;color:#4A4038">⭐ 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:24px;top:140px;font-size:30px;opacity:.75">🍣</span>
+      <span style="position:absolute;left:315px;top:70px;font-size:28px;opacity:.75">🍤</span>
+      <span style="position:absolute;left:305px;top:390px;font-size:28px;opacity:.7">🍵</span>
+      <span style="position:absolute;left:60px;top:250px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:330px;top:290px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:110px;top:70px;width:90px;border-top:5px dotted rgba(139,90,34,.35);transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:225px;top:160px;width:90px;border-top:5px dotted rgba(139,90,34,.35);transform:rotate(60deg)"></div>
+      <div style="position:absolute;left:210px;top:290px;width:100px;border-top:5px dotted rgba(139,90,34,.35);transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:95px;top:400px;width:90px;border-top:5px dotted rgba(139,90,34,.35);transform:rotate(55deg)"></div>
+      <div style="position:absolute;left:28px;top:88px;width:102px;height:22px;background:#fff;border-radius:50%;opacity:.85"></div>
+      <div style="position:absolute;left:168px;top:163px;width:102px;height:22px;background:#fff;border-radius:50%;opacity:.85"></div>
+      <div style="position:absolute;left:258px;top:278px;width:102px;height:22px;background:#fff;border-radius:50%;opacity:.85"></div>
+      <div style="position:absolute;left:133px;top:388px;width:122px;height:24px;background:#fff;border-radius:50%;opacity:.9"></div>
+      <div style="position:absolute;left:40px;top:20px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">➕<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:180px;top:95px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">➖<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐</span></div>
+      <div style="position:absolute;left:270px;top:210px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">🔢<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:150px;top:310px;width:88px;height:88px;border-radius:50%;background:#F5DFA0;color:#6B4A0E;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 6px 0 #C0A458;border:4px solid #fff;animation:mkpulse 1.6s ease-in-out infinite">✖️</div>
+      <div style="position:absolute;left:45px;top:430px;width:78px;height:78px;border-radius:50%;background:#E5DCCB;color:#847C6C;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+      <div style="position:absolute;left:170px;top:485px;width:78px;height:78px;border-radius:50%;background:#E5DCCB;color:#847C6C;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 22px">
+      <div style="position:relative;width:76px;height:72px;flex:none">
+        <div style="position:absolute;left:6px;bottom:0;width:64px;height:24px;background:#FFFDF7;border-radius:10px;box-shadow:0 2px 0 #E8DCC4"></div>
+        <div style="position:absolute;left:31px;bottom:0;width:14px;height:26px;background:#4A5545;border-radius:4px"></div>
+        <div style="position:absolute;left:16px;top:2px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #F2B27E"></div>
+        <div style="position:absolute;left:44px;top:2px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #F2B27E"></div>
+        <div style="position:absolute;left:13px;top:12px;width:50px;height:42px;background:#F2B27E;border-radius:22px 22px 20px 20px"></div>
+        <div style="position:absolute;left:27px;top:26px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:29px;top:28px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:42px;top:26px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:28px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:19px;top:37px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:51px;top:37px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:35px;top:37px;width:7px;height:4px;border-bottom:2px solid #7A5240;border-radius:50%"></div>
+      </div>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#4A4038;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">On roule vers la table de 2 ? 🍣</p>
+    </div>
+  </div>
+
+  <div class="dv-card" data-screen-label="5a Exercice" style="background:#FCF7EE;padding:20px;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="zoom:.5;position:relative;width:76px;height:72px;flex:none">
+        <div style="position:absolute;left:6px;bottom:0;width:64px;height:24px;background:#FFFDF7;border-radius:10px;box-shadow:0 2px 0 #E8DCC4"></div>
+        <div style="position:absolute;left:31px;bottom:0;width:14px;height:26px;background:#4A5545;border-radius:4px"></div>
+        <div style="position:absolute;left:16px;top:2px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #F2B27E"></div>
+        <div style="position:absolute;left:44px;top:2px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #F2B27E"></div>
+        <div style="position:absolute;left:13px;top:12px;width:50px;height:42px;background:#F2B27E;border-radius:22px 22px 20px 20px"></div>
+        <div style="position:absolute;left:27px;top:26px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:42px;top:26px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:19px;top:37px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:51px;top:37px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+      </div>
+      <div style="flex:1;height:16px;background:#EFE6D4;border-radius:999px;overflow:hidden"><div style="width:44%;height:100%;background:#4E9A5F;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A4038">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#C25A38;color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;box-shadow:0 4px 0 #8E3F24;flex:none">🔊</button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A4038">Quelle est la moitié de 8 ?</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:30px;text-align:center;font-size:48px;font-weight:800;color:#4A4038;box-shadow:0 4px 0 rgba(0,0,0,.06)">8 ÷ 2 = ?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">4</button>
+      <button style="border:3px solid #E2A69B;background:#FAECE8;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E5C3BA;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A4038;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E8DCC4;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FAECE8;border:3px solid #E2A69B;border-radius:24px;padding:14px;display:flex;gap:10px;align-items:center">
+      <span style="font-size:34px;line-height:1">🍣</span>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9A5244">Presque ! La moitié de 8, c'est 4 : regarde, 4 + 4 = 8 🍙</p>
+    </div>
+    <button style="border:none;background:#C25A38;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #8E3F24;cursor:pointer;margin-top:auto">Continuer</button>
+  </div>
+  </div>
+</div>
+
+<!-- ============ 5b MAKI ============ -->
+<div class="dv-opt" id="5b">
+  <div class="dv-olabel"><a class="dv-oid" href="#5b">5b</a>Bento pastel — avocat menthe &amp; gingembre rosé, mascotte <b>chat-maki</b> (roulé dans son nori, riz tout autour)</div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:600 11px system-ui,sans-serif;color:#555">
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#2F7D52;display:inline-block"></i>action</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#D9704C;display:inline-block"></i>CP</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#4E9A5F;display:inline-block"></i>CE1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#8A9A2F;display:inline-block"></i>CE2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C98A3B;display:inline-block"></i>CM1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C4699E;display:inline-block"></i>CM2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#E5A7B0;display:inline-block"></i>erreur</span>
+  </div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <div class="dv-card" data-screen-label="5b Carte du monde" style="background:linear-gradient(#E7F3E7 0%,#FBEAEE 50%,#FFF6E2 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#4E9A5F;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍱 Monde des Makis</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🥢 145</span>
+        <span style="background:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px;color:#3E463E">⭐ 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:24px;top:140px;font-size:28px;opacity:.75">🍙</span>
+      <span style="position:absolute;left:315px;top:70px;font-size:28px;opacity:.75">🥒</span>
+      <span style="position:absolute;left:305px;top:390px;font-size:26px;opacity:.7">🥢</span>
+      <span style="position:absolute;left:60px;top:250px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:330px;top:290px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:110px;top:70px;width:90px;border-top:5px dotted rgba(47,125,82,.35);transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:225px;top:160px;width:90px;border-top:5px dotted rgba(47,125,82,.35);transform:rotate(60deg)"></div>
+      <div style="position:absolute;left:210px;top:290px;width:100px;border-top:5px dotted rgba(47,125,82,.35);transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:95px;top:400px;width:90px;border-top:5px dotted rgba(47,125,82,.35);transform:rotate(55deg)"></div>
+      <div style="position:absolute;left:40px;top:20px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">➕<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:180px;top:95px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">➖<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐</span></div>
+      <div style="position:absolute;left:270px;top:210px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">🔢<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:150px;top:310px;width:88px;height:88px;border-radius:50%;background:#F5DFA0;color:#6B4A0E;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 6px 0 #C0A458;border:4px solid #fff;animation:mkpulse 1.6s ease-in-out infinite">✖️</div>
+      <div style="position:absolute;left:45px;top:430px;width:78px;height:78px;border-radius:50%;background:#DDE2D6;color:#7F877B;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+      <div style="position:absolute;left:170px;top:485px;width:78px;height:78px;border-radius:50%;background:#DDE2D6;color:#7F877B;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 22px">
+      <div style="position:relative;width:72px;height:72px;flex:none">
+        <div style="position:absolute;left:14px;top:0;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #F2B27E"></div>
+        <div style="position:absolute;left:42px;top:0;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #F2B27E"></div>
+        <div style="position:absolute;left:0;top:8px;width:64px;height:64px;background:#4A5545;border-radius:50%;box-shadow:0 3px 0 rgba(0,0,0,.1)"></div>
+        <div style="position:absolute;left:6px;top:14px;width:52px;height:52px;background:#FFFDF7;border-radius:50%"></div>
+        <div style="position:absolute;left:12px;top:22px;width:40px;height:36px;background:#F2B27E;border-radius:50% 50% 45% 45%"></div>
+        <div style="position:absolute;left:22px;top:34px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:24px;top:36px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:36px;top:34px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:38px;top:36px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:15px;top:44px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:44px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:30px;top:44px;width:7px;height:4px;border-bottom:2px solid #7A5240;border-radius:50%"></div>
+      </div>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#3E463E;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">On roule vers la table de 2 ? 🍱</p>
+    </div>
+  </div>
+
+  <div class="dv-card" data-screen-label="5b Exercice" style="background:#F7FAF3;padding:20px;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="zoom:.5;position:relative;width:72px;height:72px;flex:none">
+        <div style="position:absolute;left:0;top:8px;width:64px;height:64px;background:#4A5545;border-radius:50%"></div>
+        <div style="position:absolute;left:6px;top:14px;width:52px;height:52px;background:#FFFDF7;border-radius:50%"></div>
+        <div style="position:absolute;left:12px;top:22px;width:40px;height:36px;background:#F2B27E;border-radius:50% 50% 45% 45%"></div>
+        <div style="position:absolute;left:22px;top:34px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:36px;top:34px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:15px;top:44px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:44px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+      </div>
+      <div style="flex:1;height:16px;background:#E4E9DC;border-radius:999px;overflow:hidden"><div style="width:44%;height:100%;background:#4E9A5F;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#3E463E">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#2F7D52;color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;box-shadow:0 4px 0 #1F573A;flex:none">🔊</button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#3E463E">Quelle est la moitié de 8 ?</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:30px;text-align:center;font-size:48px;font-weight:800;color:#3E463E;box-shadow:0 4px 0 rgba(0,0,0,.06)">8 ÷ 2 = ?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#3E463E;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #D8DFCE;cursor:pointer">4</button>
+      <button style="border:3px solid #E5A7B0;background:#FBECEF;color:#3E463E;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #EBC5CD;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#3E463E;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #D8DFCE;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#3E463E;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #D8DFCE;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FBECEF;border:3px solid #E5A7B0;border-radius:24px;padding:14px;display:flex;gap:10px;align-items:center">
+      <span style="font-size:34px;line-height:1">🍱</span>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9C4A5E">Presque ! La moitié de 8, c'est 4 : regarde, 4 + 4 = 8 🍙</p>
+    </div>
+    <button style="border:none;background:#2F7D52;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #1F573A;cursor:pointer;margin-top:auto">Continuer</button>
+  </div>
+  </div>
+</div>
+
+<!-- ============ 5c ONIGIRI ============ -->
+<div class="dv-opt" id="5c">
+  <div class="dv-olabel"><a class="dv-oid" href="#5c">5c</a>Salon de thé — matcha latte &amp; crème, mascotte <b>chat-onigiri</b> (triangle de riz, oreilles pointues, tablier nori)</div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:600 11px system-ui,sans-serif;color:#555">
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#5E7430;display:inline-block"></i>action</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#D9704C;display:inline-block"></i>CP</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#4E9A5F;display:inline-block"></i>CE1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#8A9A2F;display:inline-block"></i>CE2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C98A3B;display:inline-block"></i>CM1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C4699E;display:inline-block"></i>CM2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#DFA08E;display:inline-block"></i>erreur</span>
+  </div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <div class="dv-card" data-screen-label="5c Carte du monde" style="background:linear-gradient(#EAF2DC 0%,#FDF6E7 50%,#FDEBE0 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#4E9A5F;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍙 Monde des Makis</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🥢 145</span>
+        <span style="background:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px;color:#45483A">⭐ 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:24px;top:140px;font-size:28px;opacity:.75">🍵</span>
+      <span style="position:absolute;left:315px;top:70px;font-size:28px;opacity:.75">🌸</span>
+      <span style="position:absolute;left:305px;top:390px;font-size:26px;opacity:.7">🍡</span>
+      <span style="position:absolute;left:60px;top:250px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:330px;top:290px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:110px;top:70px;width:90px;border-top:5px dotted rgba(94,116,48,.4);transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:225px;top:160px;width:90px;border-top:5px dotted rgba(94,116,48,.4);transform:rotate(60deg)"></div>
+      <div style="position:absolute;left:210px;top:290px;width:100px;border-top:5px dotted rgba(94,116,48,.4);transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:95px;top:400px;width:90px;border-top:5px dotted rgba(94,116,48,.4);transform:rotate(55deg)"></div>
+      <div style="position:absolute;left:40px;top:20px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">➕<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:180px;top:95px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">➖<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐</span></div>
+      <div style="position:absolute;left:270px;top:210px;width:78px;height:78px;border-radius:50%;background:#4E9A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #357043;border:4px solid #fff">🔢<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:150px;top:310px;width:88px;height:88px;border-radius:50%;background:#F5DFA0;color:#6B4A0E;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 6px 0 #C0A458;border:4px solid #fff;animation:mkpulse 1.6s ease-in-out infinite">✖️</div>
+      <div style="position:absolute;left:45px;top:430px;width:78px;height:78px;border-radius:50%;background:#DED9C8;color:#83806F;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+      <div style="position:absolute;left:170px;top:485px;width:78px;height:78px;border-radius:50%;background:#DED9C8;color:#83806F;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 22px">
+      <div style="position:relative;width:76px;height:72px;flex:none">
+        <div style="position:absolute;left:14px;top:-2px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid #FFFDF7"></div>
+        <div style="position:absolute;left:48px;top:-2px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid #FFFDF7"></div>
+        <div style="position:absolute;left:8px;top:4px;width:60px;height:60px;background:#FFFDF7;clip-path:polygon(50% 0%,96% 76%,88% 100%,12% 100%,4% 76%)"></div>
+        <div style="position:absolute;left:26px;bottom:0;width:24px;height:16px;background:#4A5545;border-radius:3px 3px 8px 8px"></div>
+        <div style="position:absolute;left:26px;top:30px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:28px;top:32px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:42px;top:30px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:44px;top:32px;width:3px;height:3px;background:#fff;border-radius:50%"></div>
+        <div style="position:absolute;left:18px;top:41px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:51px;top:41px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:34px;top:41px;width:7px;height:4px;border-bottom:2px solid #7A5240;border-radius:50%"></div>
+      </div>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#45483A;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">On roule vers la table de 2 ? 🍵</p>
+    </div>
+  </div>
+
+  <div class="dv-card" data-screen-label="5c Exercice" style="background:#FCF9EF;padding:20px;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="zoom:.5;position:relative;width:76px;height:72px;flex:none">
+        <div style="position:absolute;left:8px;top:4px;width:60px;height:60px;background:#FFFDF7;clip-path:polygon(50% 0%,96% 76%,88% 100%,12% 100%,4% 76%)"></div>
+        <div style="position:absolute;left:26px;bottom:0;width:24px;height:16px;background:#4A5545;border-radius:3px 3px 8px 8px"></div>
+        <div style="position:absolute;left:26px;top:30px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:42px;top:30px;width:8px;height:10px;background:#43322A;border-radius:50%"></div>
+        <div style="position:absolute;left:18px;top:41px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+        <div style="position:absolute;left:51px;top:41px;width:7px;height:4px;background:#F0958D;border-radius:50%"></div>
+      </div>
+      <div style="flex:1;height:16px;background:#EBE7D2;border-radius:999px;overflow:hidden"><div style="width:44%;height:100%;background:#4E9A5F;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#45483A">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#5E7430;color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;box-shadow:0 4px 0 #42531F;flex:none">🔊</button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#45483A">Quelle est la moitié de 8 ?</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:30px;text-align:center;font-size:48px;font-weight:800;color:#45483A;box-shadow:0 4px 0 rgba(0,0,0,.06)">8 ÷ 2 = ?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#45483A;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E2DBC2;cursor:pointer">4</button>
+      <button style="border:3px solid #DFA08E;background:#FAECE6;color:#45483A;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E5C1B3;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#45483A;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E2DBC2;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#45483A;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E2DBC2;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FAECE6;border:3px solid #DFA08E;border-radius:24px;padding:14px;display:flex;gap:10px;align-items:center">
+      <span style="font-size:34px;line-height:1">🍙</span>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#99523F">Presque ! La moitié de 8, c'est 4 : regarde, 4 + 4 = 8 🍵</p>
+    </div>
+    <button style="border:none;background:#5E7430;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #42531F;cursor:pointer;margin-top:auto">Continuer</button>
+  </div>
+  </div>
+</div>
+
+</div>
+<p class="dv-next">À essayer : « je choisis <a class="dv-oid" href="#5a">5a</a>, décline les 7 écrans » · « la mascotte de <a class="dv-oid" href="#5b">5b</a> avec la palette de <a class="dv-oid" href="#5a">5a</a> » · « montre les étapes sur des assiettes de tapis roulant partout »</p>
+</section>
+
+<section class="dv-turn" id="t4" data-screen-label="Turn 4 — 3 déclinaisons kawaii">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Pivot kawaii — 3 déclinaisons (Carte du monde + Exercice avec erreur, 390×760)</span></div>
+<div class="dv-opts">
+
+<!-- ============ 4a CIEL SUCRÉ ============ -->
+<div class="dv-opt" id="4a">
+  <div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>Ciel sucré — lavande &amp; menthe, monde des nuages, mascotte chat chibi 🐱</div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:600 11px system-ui,sans-serif;color:#555">
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#7C6BC9;display:inline-block"></i>action</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#4CA07A;display:inline-block"></i>CP</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#E08A5C;display:inline-block"></i>CE1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#8B79D0;display:inline-block"></i>CE2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#5CA0C8;display:inline-block"></i>CM1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#CE7AA4;display:inline-block"></i>CM2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#E5A3A0;display:inline-block"></i>erreur</span>
+  </div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <div class="dv-card" data-screen-label="4a Carte du monde" style="background:linear-gradient(#E7E1F7 0%,#DFF2EC 50%,#FDF3E3 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#E08A5C;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">☁️ Monde des Nuages</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#FCE29E;color:#7A5410;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🪙 145</span>
+        <span style="background:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px;color:#443E5E">💖 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:24px;top:130px;font-size:38px;opacity:.75">☁️</span>
+      <span style="position:absolute;left:310px;top:60px;font-size:32px;opacity:.7">☁️</span>
+      <span style="position:absolute;left:300px;top:380px;font-size:36px;opacity:.6">🌈</span>
+      <span style="position:absolute;left:60px;top:240px;font-size:20px;opacity:.7">✨</span>
+      <span style="position:absolute;left:330px;top:280px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:110px;top:70px;width:90px;border-top:5px dotted rgba(124,107,201,.4);transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:225px;top:160px;width:90px;border-top:5px dotted rgba(124,107,201,.4);transform:rotate(60deg)"></div>
+      <div style="position:absolute;left:210px;top:290px;width:100px;border-top:5px dotted rgba(124,107,201,.4);transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:95px;top:400px;width:90px;border-top:5px dotted rgba(124,107,201,.4);transform:rotate(55deg)"></div>
+      <div style="position:absolute;left:40px;top:20px;width:78px;height:78px;border-radius:50%;background:#E08A5C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #A85F38;border:4px solid #fff">➕<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:180px;top:95px;width:78px;height:78px;border-radius:50%;background:#E08A5C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #A85F38;border:4px solid #fff">➖<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐</span></div>
+      <div style="position:absolute;left:270px;top:210px;width:78px;height:78px;border-radius:50%;background:#E08A5C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #A85F38;border:4px solid #fff">🔢<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:150px;top:310px;width:88px;height:88px;border-radius:50%;background:#FCE29E;color:#7A5410;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 6px 0 #C9A552;border:4px solid #fff;animation:mkpulse 1.6s ease-in-out infinite">✖️</div>
+      <div style="position:absolute;left:45px;top:430px;width:78px;height:78px;border-radius:50%;background:#DBD6E6;color:#8A8496;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+      <div style="position:absolute;left:170px;top:485px;width:78px;height:78px;border-radius:50%;background:#DBD6E6;color:#8A8496;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 22px">
+      <span style="font-size:56px;line-height:1">🐱</span>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#443E5E;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">On apprend la table de 2 aujourd'hui ? ✨</p>
+    </div>
+  </div>
+
+  <div class="dv-card" data-screen-label="4a Exercice" style="background:#FBF8F1;padding:20px;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:26px">🐱</span>
+      <div style="flex:1;height:16px;background:#ECE7DA;border-radius:999px;overflow:hidden"><div style="width:44%;height:100%;background:#4CA07A;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#443E5E">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#7C6BC9;color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;box-shadow:0 4px 0 #5C4DA3;flex:none">🔊</button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#443E5E">Quelle est la moitié de 8 ?</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:30px;text-align:center;font-size:48px;font-weight:800;color:#443E5E;box-shadow:0 4px 0 rgba(0,0,0,.06)">8 ÷ 2 = ?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#443E5E;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E0D9E8;cursor:pointer">4</button>
+      <button style="border:3px solid #E5A3A0;background:#FBEDEC;color:#443E5E;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E8C6C4;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#443E5E;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E0D9E8;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#443E5E;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E0D9E8;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FBEDEC;border:3px solid #E5A3A0;border-radius:24px;padding:14px;display:flex;gap:10px;align-items:center">
+      <span style="font-size:34px">🐱</span>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9A5250">Presque ! La moitié de 8, c'est 4 : regarde, 4 + 4 = 8 💛</p>
+    </div>
+    <button style="border:none;background:#7C6BC9;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #5C4DA3;cursor:pointer;margin-top:auto">Continuer</button>
+  </div>
+  </div>
+</div>
+
+<!-- ============ 4b BONBONS PASTEL ============ -->
+<div class="dv-opt" id="4b">
+  <div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a>Bonbons pastel — menthe &amp; rose poudré, monde des bonbons, mascotte panda roux 🦝 (placeholder)</div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:600 11px system-ui,sans-serif;color:#555">
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#2E8C74;display:inline-block"></i>action</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#3FA06B;display:inline-block"></i>CP</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#D26E45;display:inline-block"></i>CE1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#9B6FD0;display:inline-block"></i>CE2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#4B9FC4;display:inline-block"></i>CM1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C9548A;display:inline-block"></i>CM2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#E8A7B4;display:inline-block"></i>erreur</span>
+  </div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <div class="dv-card" data-screen-label="4b Carte du monde" style="background:linear-gradient(#FBE7EE 0%,#E4F4EC 50%,#FFF6E0 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#D26E45;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍭 Monde des Bonbons</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#FCE29E;color:#7A5410;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🪙 145</span>
+        <span style="background:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px;color:#4A3D46">💖 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:24px;top:140px;font-size:32px;opacity:.75">🍬</span>
+      <span style="position:absolute;left:315px;top:70px;font-size:30px;opacity:.75">🍭</span>
+      <span style="position:absolute;left:305px;top:390px;font-size:30px;opacity:.7">🧁</span>
+      <span style="position:absolute;left:60px;top:250px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:330px;top:290px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:110px;top:70px;width:90px;border-top:5px dotted rgba(201,84,138,.35);transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:225px;top:160px;width:90px;border-top:5px dotted rgba(201,84,138,.35);transform:rotate(60deg)"></div>
+      <div style="position:absolute;left:210px;top:290px;width:100px;border-top:5px dotted rgba(201,84,138,.35);transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:95px;top:400px;width:90px;border-top:5px dotted rgba(201,84,138,.35);transform:rotate(55deg)"></div>
+      <div style="position:absolute;left:40px;top:20px;width:78px;height:78px;border-radius:50%;background:#D26E45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #9A4C2C;border:4px solid #fff">➕<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:180px;top:95px;width:78px;height:78px;border-radius:50%;background:#D26E45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #9A4C2C;border:4px solid #fff">➖<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐</span></div>
+      <div style="position:absolute;left:270px;top:210px;width:78px;height:78px;border-radius:50%;background:#D26E45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #9A4C2C;border:4px solid #fff">🔢<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:150px;top:310px;width:88px;height:88px;border-radius:50%;background:#FCE29E;color:#7A5410;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 6px 0 #C9A552;border:4px solid #fff;animation:mkpulse 1.6s ease-in-out infinite">✖️</div>
+      <div style="position:absolute;left:45px;top:430px;width:78px;height:78px;border-radius:50%;background:#E3D9DC;color:#8F8288;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+      <div style="position:absolute;left:170px;top:485px;width:78px;height:78px;border-radius:50%;background:#E3D9DC;color:#8F8288;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 22px">
+      <span style="font-size:56px;line-height:1">🦝</span>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#4A3D46;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">On apprend la table de 2 aujourd'hui ? 🍬</p>
+    </div>
+  </div>
+
+  <div class="dv-card" data-screen-label="4b Exercice" style="background:#FDF7F2;padding:20px;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:26px">🦝</span>
+      <div style="flex:1;height:16px;background:#F0E4DC;border-radius:999px;overflow:hidden"><div style="width:44%;height:100%;background:#3FA06B;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#4A3D46">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#2E8C74;color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;box-shadow:0 4px 0 #1E6152;flex:none">🔊</button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#4A3D46">Quelle est la moitié de 8 ?</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:30px;text-align:center;font-size:48px;font-weight:800;color:#4A3D46;box-shadow:0 4px 0 rgba(0,0,0,.06)">8 ÷ 2 = ?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#4A3D46;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #EBD9D0;cursor:pointer">4</button>
+      <button style="border:3px solid #E8A7B4;background:#FBECEF;color:#4A3D46;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #EBC5CD;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A3D46;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #EBD9D0;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#4A3D46;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #EBD9D0;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FBECEF;border:3px solid #E8A7B4;border-radius:24px;padding:14px;display:flex;gap:10px;align-items:center">
+      <span style="font-size:34px">🦝</span>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#9C4A5E">Presque ! La moitié de 8, c'est 4 : regarde, 4 + 4 = 8 💗</p>
+    </div>
+    <button style="border:none;background:#2E8C74;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #1E6152;cursor:pointer;margin-top:auto">Continuer</button>
+  </div>
+  </div>
+</div>
+
+<!-- ============ 4c CRÈME & MATCHA ============ -->
+<div class="dv-opt" id="4c">
+  <div class="dv-olabel"><a class="dv-oid" href="#4c">4c</a>Crème &amp; matcha — pêche, crème et vert matcha, monde des pâtisseries, mascotte onigiri 🍙</div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:600 11px system-ui,sans-serif;color:#555">
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#55803A;display:inline-block"></i>action</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#5F8F3C;display:inline-block"></i>CP</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C9823B;display:inline-block"></i>CE1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#8F72C2;display:inline-block"></i>CE2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#4A9BB5;display:inline-block"></i>CM1</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#C75D7E;display:inline-block"></i>CM2</span>
+    <span style="display:inline-flex;align-items:center;gap:4px"><i style="width:16px;height:16px;border-radius:5px;background:#DFA08E;display:inline-block"></i>erreur</span>
+  </div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+
+  <div class="dv-card" data-screen-label="4c Carte du monde" style="background:linear-gradient(#FDF6E7 0%,#EAF2DC 50%,#FDEBE0 100%)">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 6px">
+      <span style="background:#C9823B;color:#fff;font-weight:800;font-size:17px;white-space:nowrap;padding:6px 14px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.12)">🍰 Monde des Pâtisseries</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span style="background:#F5DFA0;color:#6B4A0E;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px">🪙 145</span>
+        <span style="background:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:16px;color:#45483A">💖 23</span>
+      </span>
+    </div>
+    <div style="position:relative;flex:1">
+      <span style="position:absolute;left:24px;top:140px;font-size:30px;opacity:.75">🍡</span>
+      <span style="position:absolute;left:315px;top:70px;font-size:30px;opacity:.75">🍮</span>
+      <span style="position:absolute;left:305px;top:390px;font-size:30px;opacity:.7">🍓</span>
+      <span style="position:absolute;left:60px;top:250px;font-size:18px;opacity:.7">✨</span>
+      <span style="position:absolute;left:330px;top:290px;font-size:18px;opacity:.7">✨</span>
+      <div style="position:absolute;left:110px;top:70px;width:90px;border-top:5px dotted rgba(107,74,14,.35);transform:rotate(28deg)"></div>
+      <div style="position:absolute;left:225px;top:160px;width:90px;border-top:5px dotted rgba(107,74,14,.35);transform:rotate(60deg)"></div>
+      <div style="position:absolute;left:210px;top:290px;width:100px;border-top:5px dotted rgba(107,74,14,.35);transform:rotate(150deg)"></div>
+      <div style="position:absolute;left:95px;top:400px;width:90px;border-top:5px dotted rgba(107,74,14,.35);transform:rotate(55deg)"></div>
+      <div style="position:absolute;left:40px;top:20px;width:78px;height:78px;border-radius:50%;background:#C9823B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #935B22;border:4px solid #fff">➕<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:180px;top:95px;width:78px;height:78px;border-radius:50%;background:#C9823B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #935B22;border:4px solid #fff">➖<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐</span></div>
+      <div style="position:absolute;left:270px;top:210px;width:78px;height:78px;border-radius:50%;background:#C9823B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 0 #935B22;border:4px solid #fff">🔢<span style="position:absolute;bottom:-18px;font-size:14px;letter-spacing:-2px">⭐⭐⭐</span></div>
+      <div style="position:absolute;left:150px;top:310px;width:88px;height:88px;border-radius:50%;background:#F5DFA0;color:#6B4A0E;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 6px 0 #C0A458;border:4px solid #fff;animation:mkpulse 1.6s ease-in-out infinite">✖️</div>
+      <div style="position:absolute;left:45px;top:430px;width:78px;height:78px;border-radius:50%;background:#DED9C8;color:#83806F;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+      <div style="position:absolute;left:170px;top:485px;width:78px;height:78px;border-radius:50%;background:#DED9C8;color:#83806F;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 5px 0 rgba(0,0,0,.08)">🔒</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding:0 18px 22px">
+      <span style="font-size:56px;line-height:1">🍙</span>
+      <p style="margin:0;background:#fff;border-radius:22px 22px 22px 6px;padding:12px 14px;font-size:18px;font-weight:700;color:#45483A;box-shadow:0 3px 0 rgba(0,0,0,.08);max-width:230px">On apprend la table de 2 aujourd'hui ? 🍓</p>
+    </div>
+  </div>
+
+  <div class="dv-card" data-screen-label="4c Exercice" style="background:#FCF8EE;padding:20px;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:26px">🍙</span>
+      <div style="flex:1;height:16px;background:#EDE7D2;border-radius:999px;overflow:hidden"><div style="width:44%;height:100%;background:#5F8F3C;border-radius:999px"></div></div>
+      <span style="font-weight:800;font-size:18px;color:#45483A">4/9</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button style="border:none;background:#55803A;color:#fff;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;box-shadow:0 4px 0 #3E6128;flex:none">🔊</button>
+      <p style="margin:0;font-size:21px;font-weight:800;color:#45483A">Quelle est la moitié de 8 ?</p>
+    </div>
+    <div style="background:#fff;border-radius:28px;padding:30px;text-align:center;font-size:48px;font-weight:800;color:#45483A;box-shadow:0 4px 0 rgba(0,0,0,.06)">8 ÷ 2 = ?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <button style="border:3px solid transparent;background:#fff;color:#45483A;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E2DBC2;cursor:pointer">4</button>
+      <button style="border:3px solid #DFA08E;background:#FAECE6;color:#45483A;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E5C1B3;cursor:pointer">6</button>
+      <button style="border:3px solid transparent;background:#fff;color:#45483A;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E2DBC2;cursor:pointer">2</button>
+      <button style="border:3px solid transparent;background:#fff;color:#45483A;font-family:inherit;font-size:34px;font-weight:800;padding:22px;border-radius:26px;box-shadow:0 5px 0 #E2DBC2;cursor:pointer">16</button>
+    </div>
+    <div style="background:#FAECE6;border:3px solid #DFA08E;border-radius:24px;padding:14px;display:flex;gap:10px;align-items:center">
+      <span style="font-size:34px">🍙</span>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#99523F">Presque ! La moitié de 8, c'est 4 : regarde, 4 + 4 = 8 🍀</p>
+    </div>
+    <button style="border:none;background:#55803A;color:#fff;font-family:inherit;font-size:21px;font-weight:800;padding:16px;border-radius:24px;box-shadow:0 5px 0 #3E6128;cursor:pointer;margin-top:auto">Continuer</button>
+  </div>
+  </div>
+</div>
+
+</div>
+<p class="dv-next">À essayer : « je choisis <a class="dv-oid" href="#4a">4a</a>, décline les 7 écrans » · « <a class="dv-oid" href="#4b">4b</a> mais avec la mascotte de <a class="dv-oid" href="#4a">4a</a> » · « mélange les mondes : un monde différent par niveau »</p>
+</section>
 
 <section class="dv-turn" id="t3" data-screen-label="Turn 3 — Exercice état bonne réponse">
 <div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Exercice — état « bonne réponse » (complète <a class="dv-oid" href="#2a">2a</a>)</span></div>

@@ -1,113 +1,139 @@
-# Handoff : MathKids — PWA d'apprentissage des maths (6-11 ans)
+# Handoff : MathKids — PWA d'apprentissage des maths (6-11 ans) · Univers « Chats-Sushis »
 
 ## Overview
-MathKids est une PWA d'apprentissage des maths pour enfants de 6 à 11 ans (école primaire française, CP → CM2). Univers « île d'aventure » : chaque niveau scolaire est une île, chaque notion une étape d'un chemin qui se débloque. Une mascotte renard 🦊 encourage, explique et fête les réussites. Ce handoff couvre les 7 écrans validés + l'état « bonne réponse » de l'exercice, dans la direction visuelle **Nature / aventure** (validée par le client).
+MathKids est une PWA d'apprentissage des maths pour enfants de 6 à 11 ans (école primaire française, CP → CM2). **Univers validé : les chats-sushis (neko-sushi)** — des chats chibi lovés dans des sushis (le riz est leur lit ou costume, la garniture leur couverture ou chapeau). La mascotte-guide est un **chef chat-nigiri à toque** présent sur tous les écrans. Les niveaux scolaires sont des mondes de restaurant kawaii, la progression est un **tapis roulant à sushis**, les récompenses sont des **grains de riz dorés 🍚**, étoiles ⭐ et **assiettes de collection**.
 
-Cible d'implémentation : **React + Tailwind** (souhait explicite du client). Voir aussi `docs/` du projet source (SPECIFICATIONS.md, ARCHITECTURE.md, DESIGN.md).
+Cible d'implémentation : **React + Tailwind** (souhait explicite du client).
 
 ## About the Design Files
-`MathKids Maquettes.dc.html` est une **référence design en HTML** (prototype montrant l'apparence et le comportement voulus), pas du code de production. La tâche est de **recréer ces écrans en React + Tailwind** avec les patterns du codebase cible. Le fichier contient 3 « turns » : turn 3 (état bonne réponse), turn 2 (les 7 écrans validés — c'est la référence principale), turn 1 (exploration de palettes — historique, seule la direction 1c « Nature/aventure » est retenue).
+`MathKids Maquettes.dc.html` est une **référence design HTML** (pas du code de production). Turns de référence :
+- **turn 9 (#9a)** : les 7 écrans validés — référence principale
+- **turn 10 (#10a)** : les 3 états de l'exercice (neutre / bonne réponse / erreur douce)
+- **turn 8 (#8a)** : définition des personnages SVG (symboles `<symbol>` réutilisables)
+- turns 1-7 : historique d'explorations (ne pas implémenter)
+
+`neko-sushi-sprites.svg` contient les personnages SVG extraits, prêts à convertir en composants React.
 
 ## Fidelity
-**High-fidelity** : couleurs, typographie, espacements et états finaux. Recréer fidèlement. Exceptions : la mascotte et les avatars sont des **emoji placeholders** (🦊 🐰 🐸…) à remplacer à terme par des illustrations dédiées ; les icônes d'étapes (➕ ➖ ✖️…) idem.
+**High-fidelity** : couleurs, typographie, espacements, états, personnages SVG. Recréer fidèlement. Les quelques emoji restants (🍣 supports de comptage, articles boutique, 🏮 décor) sont des placeholders acceptables en v1.
 
 ## Contraintes non négociables
-- Contrastes lisibles (AA), texte ≥ 18 px, gros chiffres ≥ 34 px dans les exercices
+- Contrastes AA, texte ≥ 18 px (16-17 px uniquement pour métadonnées secondaires), gros chiffres ≥ 34 px
 - Cibles tactiles ≥ 48 px (boutons audio 52 px, réponses ≥ 70 px de haut)
-- Erreur toujours **douce** (terracotta rosé, jamais rouge agressif), messages toujours encourageants, jamais négatifs
-- Pas de pub, pas de chrono visible, pas de classement
-- Tutoiement de l'enfant, très peu de texte, bouton audio (Web Speech API `fr-FR`) pour les non-lecteurs
-- Une couleur d'accent par niveau scolaire (l'enfant reconnaît « son île »)
+- Erreur toujours **douce** (gingembre rosé, jamais rouge), messages encourageants (« Presque ! … »), jamais négatifs ; réessai toujours possible
+- Aucune pub, aucun chrono visible, aucun classement
+- Tutoiement, très peu de texte, bouton audio (Web Speech API `fr-FR`) sur chaque consigne/leçon
+- Une couleur d'accent distincte par niveau scolaire
 
-## Design Tokens (direction « Nature / aventure »)
+## Design Tokens
 
-### Couleurs
+### Couleurs (univers chats-sushis)
 | Token | Hex | Usage |
 |---|---|---|
-| `sand` (fond app) | `#F7F1E1` | fond de tous les écrans enfant |
-| `sand-dark` (fond parent) | `#F1EAD6` | fond espace parent |
-| `card` | `#FDFAF0` | cartes, boutons réponse, bulles |
-| `card-alt` | `#FBF6E8` | bulles/pastilles sur la carte de l'île |
-| `ink` (texte) | `#2C3A2E` | texte principal |
-| `muted` | `#7C755F` | texte secondaire, liens discrets |
-| `primary` | `#2E7D5B` | boutons d'action (relief `#1D5940`) |
-| `gold` | `#E9B44C` | pièces, badge, étape en cours (texte `#5C3D0C`, relief `#B8842A`) |
-| `success` | `#5F9E38` | jauges, bonne réponse (fond `#EDF5E2`, texte `#3E6B24`, relief `#A9C487`) |
-| `error` (douce) | `#DA9078` | erreur (fond `#F9E8E0`, texte `#96513A`, relief `#E0BAA8`) |
-| `shadow-card` | `#D9CEAE` | relief 3D des cartes/boutons clairs |
-| `track` | `#E5DCC3` | fond des jauges |
-| `locked` | `#CFC7B0` | étapes verrouillées (icône `#7C755F`) |
-| `brown` | `#8F5A22` | prix, accents bruns (tarte : bordure) |
+| `bg` | `#FCF7EE` | fond des écrans enfant (riz crème) |
+| `bg-parent` | `#F6EFDD` | fond espace parent (plus sobre) |
+| `card` | `#FFFFFF` | cartes, boutons réponse, bulles |
+| `ink` | `#4A4038` | texte principal |
+| `muted` | `#847C6C` | texte secondaire, liens discrets (relief bouton `#5F594C`) |
+| `primary` | `#C25A38` (relief `#8E3F24`) | boutons d'action (saumon foncé), toque du chef |
+| `gold` | `#F5DFA0` (texte `#6B4A0E`, relief `#C0A458`) | riz doré, badges, étape en cours |
+| `success` | `#4E9A5F` (fond `#EDF5E2`, texte `#3E6B24`, relief `#A9C487`) | bonne réponse, jauges, possédé |
+| `error` | `#E2A69B` (fond `#FAECE8`, texte `#9A5244`, relief `#E5C3BA`) | erreur douce gingembre rosé |
+| `shadow-card` | `#E8DCC4` | relief 3D des cartes/boutons clairs |
+| `track` | `#E3D5BC` (bord `#D9C9A8`) | jauge bol de riz ; remplissage `#FFFDF7` (riz blanc) |
+| `belt` | rayures `#E8DFCC` / `#DCD1B9` | tapis roulant (repeating-linear-gradient 90°, pas 16 px) |
+| `nori` | dégradé `#57634F → #3F4A3B` | nori, cônes, sangles |
+| `rice` | dégradé `#FFFFFF → #F3EBD8` (grains `#E6D9BC`) | riz |
+| `prix` | `#8E5A22` | prix boutique |
 
-### Accents par niveau (île de l'enfant)
-| Niveau | Hex |
-|---|---|
-| CP | `#5F9E38` |
-| CE1 | `#C96F3B` (relief `#8F4B22`) |
-| CE2 | `#7D5BA6` |
-| CM1 | `#1E8E9E` |
-| CM2 | `#B4527A` |
+### Accents par niveau (mondes)
+| Niveau | Monde | Hex |
+|---|---|---|
+| CP | Bar à sushis | `#D9704C` |
+| CE1 | Monde des Makis | `#4E9A5F` (relief `#357043`) |
+| CE2 | Jardin à thé matcha | `#8A9A2F` |
+| CM1 | Monde des Ramens | `#C98A3B` |
+| CM2 | Grand Banquet | `#C4699E` |
 
-### Dégradés
-- Carte de l'île : `linear-gradient(#BCE3DE 0%, #D9E8C4 45%, #F3E5C3 100%)` (lagon → végétation → sable)
-- Fin de session : `linear-gradient(#F7F1E1 0%, #F3E5C3 100%)`
+### Dégradé carte du monde
+`linear-gradient(#FDF3E4 0%, #FAE4D6 50%, #FDF6EA 100%)` · fin de session : `linear-gradient(#FCF7EE 0%, #FAE4D6 100%)`
 
 ### Typographie
-- Famille unique : **Baloo 2** (Google Fonts), graisses 500/600/700/800
-- Corps : 18-19 px w700 · Consignes : 21 px w800 · Titres : 24-28 px w800
-- Grande question : 48 px w800 · Réponses : 34 px w800 · Métadonnées : 16-17 px w700 (minimum absolu)
+- Famille unique : **Baloo 2** (Google Fonts, self-héberger pour l'offline), graisses 500-800
+- Corps/bulles : 18 px w700 · Consignes : 21 px w800 · Titres : 24-28 px w800
+- Grande question : 44-48 px w800 · Réponses : 34 px w800 · Métadonnées : 16-17 px w700 (minimum)
 
-### Rayons & relief
-- Cartes/écrans : 24 px · Boutons : 20-22 px · Petites cartes : 16-18 px · Pastilles : 999 px · Étapes : cercle
-- Relief « bonbon » : `box-shadow: 0 5px 0 <couleur foncée>` (4 px pour petits éléments) ; état pressé : `translateY(3px)` + shadow 2 px
+### Rayons & relief « bonbon »
+- Cartes écran : 24-28 px · Boutons : 24-26 px · Petites cartes : 16-18 px · Pastilles : 999 px
+- Relief : `box-shadow: 0 5px 0 <couleur foncée>` (4 px petits, 3 px pastilles) ; pressé : `translateY(3px)` + shadow réduite
+- Bulles de dialogue : radius `22 22 22 6` (mascotte à gauche) / `6 22 22 22` (mascotte au-dessus)
 
-## Screens / Views (turn 2 du fichier, cartes 390×760)
+## Les personnages SVG (voir `neko-sushi-sprites.svg`)
+Construction en couches, dans cet ordre : assiette → queue → riz (+ grains en petits arcs) → garniture → oreilles (extérieur + intérieur rose `#F6B9AE`) → tête (dégradé robe) → rayures/taches → yeux → truffe `#E2766B` → bouche → joues (ellipses `#F0958D` opacity .55) → moustaches (stroke 1.6-1.8, `stroke-linecap="round"`) → pattes (2 ellipses + traits d'orteils).
+
+| Personnage | Robe | Sushi | Rôle carte |
+|---|---|---|---|
+| `ns-chef` | roux tigré | nigiri + toque blanche à bande `primary` + tablier nori | mascotte-guide (tous écrans) |
+| `ns-nigiri` | roux tigré (`#F7C494→#EFA76C`, rayures `#DE9257`) | saumon strié en couverture | étape réussie |
+| `ns-maki` | calico (blanc `#FDF8EC`, taches orange `#F0A468` + noire) | rouleau nori, cœur avocat | étape réussie + avatar Léa |
+| `ns-tamago` | gris tigré (`#D8CFC4→#C2B6A8`) | omelette `#F7D97E→#EFC75B` + sangle nori | étape réussie |
+| `ns-temaki` | noir (`#6E655F→#544C48`), yeux dorés `#F5D26B` | cône nori | étape EN COURS + avatar Tom |
+| `ns-onigiri` | crème | triangle de riz (costume, oreilles qui dépassent) + nori | étape verrouillée (endormi) |
+| `ns-maki-dodo` | gris | rouleau nori éteint `#7C8574→#636D5C` | étape verrouillée (endormi) |
+
+### Expressions (3 états réutilisables)
+- **Heureux** (étape réussie) : yeux en arcs `q4.5 -6 9 0`, bouche ouverte joyeuse (path fill `#8A5240` + langue `#F0958D`)
+- **Éveillé** (en cours, chef) : yeux ellipses avec 2 reflets blancs + **clignement** : `<animate attributeName="ry" values="6;6;.7;6" keyTimes="0;.86;.92;1" dur="3.2s" repeatCount="indefinite"/>` (chef : dur 4s)
+- **Endormi** (verrouillé) : arcs fermés vers le bas `q4 4.5 8 0`, couleurs désaturées, opacity .9, badge 💤 — pas de cadenas
+- Bouche par défaut : « ω » en path `M.. q3 4 6 0 q3 4 6 0`
+
+En React : un composant `<NekoSushi variant="nigiri|maki|tamago|temaki|onigiri" expression="happy|awake|sleep" />` avec les couches partagées et robe/garniture par variante.
+
+## Screens (turn 9 du fichier, cartes 390×760)
 
 ### 1. Choix du profil
-Fond `sand`, contenu centré verticalement. Mascotte 64 px, titre « Qui joue aujourd'hui ? » 28 px. Grille flex wrap de cartes profil 132 px de large (fond `card`, radius 24, relief `#D9CEAE`) : avatar emoji 52 px, prénom 19 px w800, chip niveau (pastille 999 px, fond = accent du niveau, texte blanc 16 px). Bouton « + » : bordure 3 px dashed `#BCB194`, texte `muted`, 44 px, même gabarit. En bas : lien discret « 🔒 Espace parent » (souligné, `muted`, 18 px, padding 12 px).
+Fond `bg`, centré. Chef 96 px, « Qui joue aujourd'hui ? » 28 px, sous-titre « Choisis ton chat-sushi ! » `muted`. Cartes profil 134 px (blanc, radius 24, relief `shadow-card`) : avatar SVG chat-sushi ~84 px, prénom 19 px w800, chip niveau (fond accent du niveau, blanc). Bouton « + » : 3 px dashed `#D3C6AC`. Lien discret « 🏮 Espace parent » souligné `muted`.
 
-### 2. Carte de l'île (CE1)
-Fond dégradé lagon→sable. Topbar : pastille « 🏝️ Île du CE1 » (fond accent CE1, blanc, 18 px), pastilles 🪙 145 (gold) et ⭐ 23 (card-alt). Chemin : conteneur `relative`, étapes positionnées en zigzag (absolues), reliées par segments pointillés `5px dotted rgba(92,61,12,.4)` rotés. Étapes 78 px (88 px pour l'étape en cours) :
-- **Faite** : fond accent niveau, icône blanche 30 px, bordure 4 px `card-alt`, relief foncé ; étoiles gagnées (1-3 ⭐) sous le cercle
-- **En cours** : fond `gold`, animation pulse `scale(1→1.09)` 1.6 s infinite
-- **Verrouillée** : fond `locked`, icône 🔒
-En bas : mascotte 56 px + bulle de dialogue (fond `card-alt`, radius `18 18 18 4`, 18 px w700, max-width 230 px).
+### 2. Carte du monde (tapis roulant)
+Fond dégradé carte. Topbar : pastille monde (accent niveau, nowrap 17 px), 🍚 145 (gold), ⭐ 23 (fond `#E4EFD9`, texte `#3E6B24`). Chemin en zigzag : 4 segments de **tapis roulant** rayés (h 20 px, radius 10, rotations ~28°/62°/150°/55°). 6 étapes = personnages SVG (~94 px) : 3 heureux avec ⭐ gagnées sous l'assiette, 1 en cours (pulse `scale 1→1.09` 1.8 s + clignement + ✨ + pastille gold « ✖️ La table de 2 »), 2 endormis 💤 (opacity .9). Décor discret : 🏮 + 2 ✨. En bas : chef 88 px + bulle blanche 18 px.
 
 ### 3. Leçon interactive (les moitiés)
-Fond `sand`, padding 20. Header : « Leçon · Les moitiés » 20 px + bouton audio rond 52 px (primary, relief). Zone d'animation : carte `card` flex-1, liseré intérieur `inset 0 0 0 3px #E5DCC3` — tarte 180 px : `conic-gradient(#E9B44C 0 50%, #F9EDD2 50% 100%)`, bordure 6 px `#8F5A22`, trait de coupe vertical 4 px ; texte explicatif 19 px centré. Puis mascotte 44 px + bulle (radius `4 18 18 18`). Bouton pleine largeur « J'ai compris ! » (primary, 21 px, relief).
+Fond `bg`. Header : « Leçon · Les moitiés » 20 px + bouton audio patte. Zone : carte blanche flex-1 (liseré `inset 0 0 0 3px #EFE4CC`) — **grand maki coupé en 2 parts égales** en SVG (2 rondelles nori/riz/avocat identiques + trait de coupe pointillé `primary`), texte 19 px avec « 2 parts égales » en `primary`. Chef 60 px + bulle. Bouton « J'ai compris ! » pleine largeur `primary`.
 
-### 4. Exercice (état neutre / erreur)
-Fond `sand`, padding 20, gap 16. Header : mascotte 26 px + jauge de session (16 px de haut, fond `track`, remplissage `success`, radius 999) + « 4/9 » 18 px. Consigne : bouton audio 52 px + « Quelle est la moitié de 8 ? » 21 px. Grande carte question « 8 ÷ 2 = ? » 48 px centrée (fond `card`, radius 24). Grille 2×2 de réponses (gap 14) : boutons `card`, 34 px w800, radius 22, relief `#D9CEAE`, bordure 3 px transparente. **État erreur** (réponse « 6 » choisie) : bordure `error`, fond `#F9E8E0`, relief `#E0BAA8` ; carte feedback en dessous (fond `#F9E8E0`, bordure 3 px `error`) : mascotte 34 px + « Presque ! La moitié de 8, c'est 4 : regarde, 4 + 4 = 8 😊 » 18 px `#96513A`. Jamais de croix rouge ni de « Faux ! ». Bouton « Continuer » collé en bas (`margin-top:auto`).
-
-### 4bis. Exercice — état bonne réponse (turn 3 du fichier)
-Réponse « 4 ✓ » : bordure `success` 3 px, fond `#EDF5E2`, relief `#A9C487`. Autres réponses : `opacity:.55`. La grande question complète le résultat : « 8 ÷ 2 = **4** » (4 en `#3E6B24`). Feedback : fond `#EDF5E2`, bordure `success`, « Bravo Léa ! 4 + 4 = 8, tu as trouvé la moitié ! » + mascotte 🦊🎉. Jauge passe à 5/9. **Confettis** : ~12 pièces 9-12 px (carrés radius 3 et ronds, couleurs des 5 accents niveaux + gold), calque absolu `pointer-events:none` ; chute `translateY(0→820px) rotate(0→360deg)` linéaire infinie, durées 2.6-3.8 s, délais négatifs échelonnés. Son joyeux court (désactivable).
+### 4. Exercice — 3 états (turn 10)
+Structure commune : header (chef 42 px + 🍚 + jauge **bol de riz** : track `track`, remplissage blanc riz, bord `#D9C9A8` + « 4/9 ») ; consigne (bouton audio **patte de chat** 52 px : 3 coussinets + pad blanc + ♪, texte 21 px « Partage les 8 sushis en 2 assiettes égales ! ») ; carte question « 8 ÷ 2 = ? » 48 px + 2 assiettes-pastilles de 4 🍣 ; grille 2×2 de réponses 34 px (blanc, radius 26, relief `shadow-card`).
+- **Neutre** : pas de feedback, invite « Touche ta réponse 🐾 » `muted`
+- **Bonne réponse** : « 4 ✓ » (bordure `success`, fond `#EDF5E2`, relief `#A9C487`), autres réponses opacity .5, équation complétée « = 4 » vert, assiettes passées en vert, confettis `mkfall` (translateY + rotate, durées 2.7-3.8 s, délais négatifs), feedback vert avec chef qui pulse + ✨ : « Miam, bravo Léa ! 4 + 4 = 8… », jauge 5/9, bouton « Continuer 🥢 »
+- **Erreur douce** : « 6 » bordure `error` fond `#FAECE8`, feedback chef : « Presque ! Mets 4 sushis dans chaque assiette : 4 + 4 = 8 🍣 », bouton « Réessayer 🐾 ». Jamais de croix, jamais « Faux ! »
 
 ### 5. Fin de session
-Fond dégradé sable, centré. Mascotte 🦊🎉 64 px, titre « Super séance, Léa ! » 28 px, 3 étoiles 64 px, carte gain « 🪙 +12 pièces » (card, 20 px), carte badge « 🏅 Nouveau badge “Reine des moitiés” » (fond `gold`, texte `#5C3D0C`, relief `#B8842A`). Bouton pleine largeur « Dépenser mes pièces » (primary) + lien discret « Retour à l'île ». Ton festif, aucun score comparatif.
+Fond dégradé, centré, confettis `mkfall` en continu. Chef 110 px qui pulse + ✨. « Miam, quelle séance, Léa ! » 28 px, 3 ⭐ 60 px, carte « 🍚 +12 grains de riz dorés », badge gold « 🍽️ Assiette de collection “Reine des moitiés” ». Bouton « Dépenser mon riz doré » + lien « Retour au monde ».
 
-### 6. Boutique d'avatar
-Fond `sand`. Header : « La boutique » 24 px + solde 🪙 157 (pastille gold, 18 px). Carte aperçu : avatar 60 px + prénom 20 px + « porte : 🎀 + 🕶️ » 16 px `muted`. Sections « Accessoires » et « Fonds d'écran » (titres 18 px) : grilles 3 colonnes (gap 12) d'articles (fond `card`, radius 18, relief) — emoji 32 px + prix « 🪙 50 » 16 px `#8F5A22` ; possédé : bordure 3 px `success` + « Possédé ✔ » `#3E6B24`. Bouton « Retour à l'île » en bas. Achat uniquement en pièces gagnées — **aucun achat réel, aucune pub**.
+### 6. Boutique « Le comptoir du chef »
+Fond `bg`. Header : titre 24 px + solde 🍚 157 (gold). Carte aperçu : avatar SVG 74 px + « Léa · chat-maki calico » + « garniture : avocat 🥑 + bandeau 🎀 ». 3 sections (titres 18 px), grilles 3 colonnes : **Garnitures** (🥑 possédé, 🍤 40, 🍳 40), **Accessoires** (🎀 possédé, cape de nori 🦸 80, wasabi rigolo 🟢 60), **Fonds d'écran** (🏮 80, 🌸 80, 🗻 100). Possédé : bordure `success` + « Possédé ✔ ». Prix en 🍚 couleur `prix`. Achat uniquement en riz gagné — aucun achat réel. Bouton « Retour au monde 🥢 ».
 
 ### 7. Tableau de bord parent
-Fond `sand-dark` (plus sobre). Titre « 👨‍👩‍👧 Espace parent — Léa (CE1) » 21 px, sous-titre « Cette semaine : 4 sessions · 52 minutes » 16 px `muted`. 4 cartes de maîtrise (Nombres 82 %, Calcul 61 %, Problèmes 38 %, Grandeurs et mesures 74 %) : nom + pourcentage (coloré : ≥70 % `#3E6B24`, 50-69 % `#8F5A22`, <50 % `#96513A`), jauge 12 px (remplissage `success` / `gold` / `error` selon seuil). Alerte douce (fond `#F9E8E0`, bordure 2 px `error`, mascotte 🦊, ton positif : « la leçon lui sera reproposée »). Bouton « Exporter la progression (JSON) » (fond `muted` `#7C755F`, relief `#5C5646`) + lien « ← Retour aux profils ». Accès protégé par code parent (voir SPECIFICATIONS.md).
+Fond `bg-parent`, plus sobre (pas de tapis roulant ni confettis). « 🏮 Espace parent — Léa (CE1) » 21 px, « Cette semaine : 4 sessions · 52 minutes » `muted`. 4 jauges de maîtrise (Nombres 82 %, Calcul 61 %, Problèmes 38 %, Grandeurs et mesures 74 %) : pourcentage coloré (≥70 % `#3E6B24`, 50-69 % `#8E5A22`, <50 % `#9A5244`), remplissage `success`/`#E9B44C`/`error`. Alerte bienveillante (fond `#FAECE8`, bordure 2 px `error`, mini-chef SVG) : « Léa bloque sur “problèmes à 2 étapes” : le chef lui reproposera la leçon… ». Bouton « Exporter la progression (JSON) » (`muted`) + lien retour. Accès protégé par code parent.
 
 ## Interactions & Behavior
-- **Navigation** : profils → carte → (leçon → exercice ×N → fin) → boutique/carte ; espace parent accessible depuis profils (code parent)
-- **Audio** : chaque consigne/leçon a un bouton 🔊 → SpeechSynthesis `fr-FR`
-- **Exercice** : tap réponse → feedback immédiat (bonne : vert + confettis + son joyeux ; erreur : état doux + explication, l'enfant peut réessayer ou continuer) ; jamais de blocage, jamais de chrono
-- **Étape en cours** : pulse 1.6 s ; étapes verrouillées inertes
-- **Transitions** : < 300 ms, jamais bloquantes ; tous les sons désactivables
-- **Boutons** : press = `translateY(3px)` + relief réduit
+- Navigation : profils → carte → (leçon → exercices ×N → fin) → boutique/carte ; espace parent depuis profils (code parent)
+- Audio : SpeechSynthesis `fr-FR` sur chaque consigne/leçon (bouton patte)
+- Exercice : tap → feedback immédiat ; bonne réponse : confettis + son joyeux (désactivable) ; erreur : réessai possible, jamais de blocage ni chrono
+- Étape en cours : pulse + clignement ; endormis inertes ; transitions < 300 ms
+- Boutons pressés : `translateY(3px)` + relief réduit
+- Étoiles de fin de session : basées sur la réussite, jamais comparées à d'autres enfants
 
 ## State Management (indicatif)
-- Profils : liste `{prénom, avatar, niveau, pièces, étoiles, possessions[]}` (localStorage/IndexedDB — PWA offline)
-- Session d'exercices : `{notionId, index, total, réponses[]}` → calcul étoiles/pièces en fin de session
-- Progression : maîtrise par domaine + par notion (alimente carte + tableau parent + export JSON)
+- Profils : `{prénom, variante de chat (robe), sushi (garniture), accessoires[], niveau, rizDoré, étoiles, assiettes[]}` — localStorage/IndexedDB (PWA offline)
+- Session : `{notionId, index, total, réponses[]}` → étoiles/riz en fin de session
+- Progression : maîtrise par domaine + notion (carte + parent + export JSON)
 
 ## Assets
-- Aucun asset binaire : emoji natifs comme placeholders (mascotte 🦊, avatars, icônes d'étapes, articles boutique) — à remplacer par des illustrations propres en phase 2
-- Police : Baloo 2 via Google Fonts (à self-héberger pour la PWA offline)
+- `neko-sushi-sprites.svg` : les 7 symboles personnages + dégradés (ids `ns-*`, `g*`)
+- Emoji placeholders v1 : 🍣 (comptage), articles boutique, 🏮 🌸 ✨ (décor)
+- Police Baloo 2 à self-héberger
 
 ## Files
-- `MathKids Maquettes.dc.html` — maquettes de référence (turn 2 = les 7 écrans validés ; turn 3 = état bonne réponse ; turn 1 = historique des palettes)
-- Docs projet source : `uploads/MathsKid/docs/` (SPECIFICATIONS.md, ARCHITECTURE.md, DESIGN.md, PLAN.md)
+- `MathKids Maquettes.dc.html` — maquettes (turns 8-10 = référence ; turns 1-7 = historique)
+- `neko-sushi-sprites.svg` — composants SVG des personnages
+- Docs projet source : `uploads/MathsKid/docs/` dans le projet d'origine

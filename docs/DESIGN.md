@@ -4,29 +4,30 @@ Deux outils possibles pour le design : **Claude Design** (Anthropic Labs, lancé
 
 ## 1. Personnalité visuelle
 
-Univers **« île d'aventure »** : chaque niveau scolaire est une île, chaque notion une étape du chemin. Ton chaleureux, encourageant, jamais scolaire-austère ni criard.
+Univers **kawaii « chats-sushis » (neko-sushi)** — validé en juillet 2026 (remplace l'univers « île d'aventure ») : des chats chibi lovés dans des sushis. Chaque niveau scolaire est un monde de restaurant kawaii (CP Bar à sushis, CE1 Monde des Makis, CE2 Jardin à thé matcha, CM1 Monde des Ramens, CM2 Grand Banquet), la progression est un tapis roulant à sushis, chaque étape EST un chat-sushi (heureux/en cours/endormi). Ton chaleureux, encourageant, jamais scolaire-austère ni criard.
 
-- Style : flat design arrondi, illustrations simples type « cartoon doux »
-- Coins très arrondis (rayon 16-24 px), ombres douces, boutons « bonbons » avec léger relief
-- Une mascotte (ex. un renard ou une chouette) qui encourage, explique les leçons et fête les réussites
+- Style : flat kawaii arrondi, personnages SVG en couches (voir `design-handoff/neko-sushi-sprites.svg`)
+- Coins très arrondis (rayon 16-28 px), ombres douces, boutons « bonbons » avec relief
+- Mascotte : **chef chat-nigiri à toque**, présente sur tous les écrans ; récompenses = grains de riz dorés, étoiles, assiettes de collection
+- Règle d'or : le thème est incarné dans chaque élément d'UI (étapes, avatars, jauge bol de riz, bouton audio patte de chat…), mais la lisibilité des maths prime toujours (fonds calmes, gros chiffres)
 
-## 2. Palette — VALIDÉE : direction « Nature / aventure » (Claude Design, juillet 2026)
+## 2. Palette — VALIDÉE : univers « Chats-Sushis » (Claude Design, juillet 2026, v2)
 
-Référence complète : `docs/design-handoff/README.md` (design tokens détaillés, reliefs, dégradés) et `docs/design-handoff/MathKids Maquettes.dc.html` (maquettes des 7 écrans — turn 2 = référence principale).
+Référence complète : `docs/design-handoff/README.md` (design tokens détaillés, specs par écran, personnages) ; maquettes dans `docs/design-handoff/MathKids Maquettes.dc.html` (turn 9 = les 7 écrans validés, turn 10 = les 3 états de l'exercice, turn 8 = personnages SVG) ; sprites dans `docs/design-handoff/neko-sushi-sprites.svg`.
 
 | Token | Hex | Usage |
 |---|---|---|
-| sand (fond) | #F7F1E1 | fond des écrans enfant (#F1EAD6 pour l'espace parent) |
-| card | #FDFAF0 | cartes, boutons réponse, bulles |
-| ink (texte) | #2C3A2E | texte principal (#7C755F secondaire) |
-| primary | #2E7D5B | boutons d'action (relief #1D5940) |
-| gold | #E9B44C | pièces, badges, étape en cours |
-| success | #5F9E38 | jauges, bonne réponse |
-| error (douce) | #DA9078 | erreur — terracotta rosé, jamais rouge agressif |
+| bg (fond) | #FCF7EE | fond des écrans enfant, riz crème (#F6EFDD pour l'espace parent) |
+| card | #FFFFFF | cartes, boutons réponse, bulles |
+| ink (texte) | #4A4038 | texte principal (#847C6C secondaire) |
+| primary | #C25A38 | boutons d'action, saumon foncé (relief #8E3F24) |
+| gold | #F5DFA0 | riz doré, badges, étape en cours (texte #6B4A0E) |
+| success | #4E9A5F | bonne réponse, jauges |
+| error (douce) | #E2A69B | erreur — gingembre rosé, jamais rouge agressif |
 
-Accents par niveau : CP #5F9E38, CE1 #C96F3B, CE2 #7D5BA6, CM1 #1E8E9E, CM2 #B4527A.
-Dégradé carte de l'île : lagon → végétation → sable (#BCE3DE → #D9E8C4 → #F3E5C3).
+Accents par niveau/monde : CP #D9704C (Bar à sushis), CE1 #4E9A5F (Makis), CE2 #8A9A2F (Thé matcha), CM1 #C98A3B (Ramens), CM2 #C4699E (Grand Banquet).
 Relief « bonbon » : `box-shadow: 0 5px 0 <couleur foncée>`, état pressé `translateY(3px)`.
+Personnages : composant React `<NekoSushi variant="chef|nigiri|maki|tamago|temaki|onigiri" expression="happy|awake|sleep" />` d'après les sprites SVG.
 
 ## 3. Typographie et lisibilité
 
