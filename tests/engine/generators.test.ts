@@ -22,16 +22,20 @@ function ints(prompt: string): number[] {
 }
 
 describe('générateurs — invariants structurels (tout le curriculum CP)', () => {
-  it('couvre bien les 4 types demandés (qcm, input, truefalse, gap)', () => {
+  it('couvre les types de gabarits attendus (les 4 de base + ordre)', () => {
+    // Les gabarits « visual » (compter, droite graduée, horloge) produisent des
+    // exercices de type « qcm » ; « dragdrop ranger » produit des « order ».
     const types = new Set(SUPPORTED_SPECS.map((s) => s.type))
-    expect(types).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap']))
+    expect(types).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap', 'visual', 'dragdrop']))
+    const exTypes = new Set(SUPPORTED_SPECS.map((s) => generateExercise(s, mulberry32(1)).type))
+    expect(exTypes).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap', 'order']))
   })
 
   it('génère, pour CHAQUE gabarit supporté et 30 tirages, un exercice valide', () => {
     for (const spec of SUPPORTED_SPECS) {
       for (let seed = 0; seed < 30; seed++) {
         const ex = generateExercise(spec, mulberry32(seed))
-        expect(ex.type).toBe(spec.type)
+        // Le type d'exercice dérive du gabarit (visual → qcm, dragdrop → order).
         expect(ex.prompt.length, `énoncé vide pour ${JSON.stringify(spec)}`).toBeGreaterThan(0)
         assertExactlyOneAnswer(ex, spec)
       }
@@ -59,6 +63,11 @@ function assertExactlyOneAnswer(ex: Exercise, spec: GeneratorSpec): void {
     expect(ex.correctIndex).toBeLessThan(ex.choices.length)
   } else if (ex.type === 'truefalse') {
     expect(typeof ex.answer).toBe('boolean')
+  } else if (ex.type === 'order') {
+    // ranger : réponse = tri croissant des valeurs proposées (distinctes).
+    expect(ex.values.length, `nb valeurs ${label}`).toBeGreaterThanOrEqual(2)
+    expect(new Set(ex.values).size).toBe(ex.values.length)
+    expect(ex.answer).toEqual([...ex.values].sort((a, b) => a - b))
   } else {
     // input / gap : réponse entière (les nombres CP sont positifs).
     expect(Number.isInteger(ex.answer), `réponse entière ${label}`).toBe(true)
@@ -225,10 +234,10 @@ describe('générateurs — correction mathématique par famille', () => {
 })
 
 describe('générateurs — gabarits non supportés', () => {
-  it('canGenerate est faux pour les types hors Phase 3 (visual, dragdrop, problem)', () => {
-    expect(canGenerate({ type: 'visual', params: { kind: 'compter', max: 5 } })).toBe(false)
-    expect(canGenerate({ type: 'dragdrop', params: { kind: 'ranger', max: 20 } })).toBe(false)
+  it('canGenerate est faux pour les gabarits encore non implémentés', () => {
     expect(canGenerate({ type: 'problem', params: { structure: 'ajout', max: 10 } })).toBe(false)
+    expect(canGenerate({ type: 'visual', params: { kind: 'grouper-dizaines', max: 29 } })).toBe(false)
+    expect(canGenerate({ type: 'dragdrop', params: { kind: 'payer-somme', max: 20 } })).toBe(false)
   })
 
   it('canGenerate est faux pour un skill non implémenté', () => {

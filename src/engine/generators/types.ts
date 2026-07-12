@@ -3,12 +3,22 @@
 // exactement une bonne réponse ; le rendu (Phase 4) et la correction s'en
 // servent sans reconstruire l'énoncé.
 
+/**
+ * Indice visuel accompagnant un QCM (manipulation visuelle CP) : compter des
+ * objets, lire une droite graduée, lire une horloge. La réponse reste un choix.
+ */
+export type VisualHint =
+  | { kind: 'count'; objects: number } // nombre d'objets à compter
+  | { kind: 'numberline'; max: number; step: number; marker: number } // repère à lire
+  | { kind: 'clock'; hour: number } // heure entière affichée
+
 /** QCM : 2 à 4 propositions, exactement une correcte (`correctIndex`). */
 export interface QcmExercise {
   type: 'qcm'
   prompt: string
   choices: string[]
   correctIndex: number
+  visual?: VisualHint // support visuel optionnel (compter, droite graduée, horloge)
 }
 
 /** Saisie numérique : l'enfant tape un entier, comparé à `answer`. */
@@ -32,14 +42,26 @@ export interface GapExercise {
   answer: number
 }
 
+/** Ranger : remettre des nombres dans l'ordre croissant (glisser-déposer / tap). */
+export interface OrderExercise {
+  type: 'order'
+  prompt: string
+  values: number[] // nombres proposés (ordre mélangé)
+  answer: number[] // les mêmes, triés dans le bon ordre
+}
+
 export type Exercise =
   | QcmExercise
   | InputExercise
   | TrueFalseExercise
   | GapExercise
+  | OrderExercise
 
 /** Réponse fournie par l'enfant selon le type d'exercice. */
-export type Answer = number | boolean
+export type Answer = number | boolean | number[]
+
+const sameOrder = (a: number[], b: number[]): boolean =>
+  a.length === b.length && a.every((v, i) => v === b[i])
 
 /** Vrai si `response` est la bonne réponse à l'exercice. */
 export function isAnswerCorrect(exercise: Exercise, response: Answer): boolean {
@@ -51,5 +73,7 @@ export function isAnswerCorrect(exercise: Exercise, response: Answer): boolean {
       return response === exercise.answer
     case 'truefalse':
       return response === exercise.answer
+    case 'order':
+      return Array.isArray(response) && sameOrder(response, exercise.answer)
   }
 }

@@ -76,3 +76,24 @@ describe('ExerciseView — saisie numérique', () => {
     expect(onContinue).toHaveBeenCalledWith(true)
   })
 })
+
+describe('ExerciseView — ranger (ordre croissant)', () => {
+  const order = { type: 'order' as const, prompt: 'Range…', values: [5, 2, 8], answer: [2, 5, 8] }
+
+  it('taper dans le bon ordre valide la réponse', () => {
+    const { onContinue } = setup(order)
+    fireEvent.click(screen.getByRole('button', { name: '2' }))
+    fireEvent.click(screen.getByRole('button', { name: '5' }))
+    fireEvent.click(screen.getByRole('button', { name: '8' }))
+    fireEvent.click(screen.getByRole('button', { name: /continuer/i }))
+    expect(onContinue).toHaveBeenCalledWith(true)
+  })
+
+  it('un mauvais ordre propose de réessayer', () => {
+    setup(order)
+    fireEvent.click(screen.getByRole('button', { name: '8' }))
+    fireEvent.click(screen.getByRole('button', { name: '5' }))
+    fireEvent.click(screen.getByRole('button', { name: '2' }))
+    expect(screen.getByRole('button', { name: /réessayer/i })).toBeInTheDocument()
+  })
+})

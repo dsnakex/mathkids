@@ -18,6 +18,7 @@ import type {
   Exercise,
   GapExercise,
   InputExercise,
+  OrderExercise,
   QcmExercise,
   TrueFalseExercise,
 } from './types'
@@ -290,6 +291,101 @@ function genDecomposition(params: Params, rng: Rng): GapExercise {
 }
 
 // ---------------------------------------------------------------------------
+// Manipulations visuelles (type visual) — QCM assorti d'un indice visuel.
+// ---------------------------------------------------------------------------
+
+function genCount(params: Params, rng: Rng): QcmExercise {
+  const max = num(params, 'max') ?? 10
+  const objects = randInt(rng, 1, max)
+  const pool = [objects + 1, objects - 1, objects + 2, objects - 2, max]
+  const { choices, correctIndex } = buildNumericChoices(rng, objects, pool, 4)
+  return {
+    type: 'qcm',
+    prompt: 'Combien vois-tu de sushis ?',
+    choices: choices.map(String),
+    correctIndex,
+    visual: { kind: 'count', objects },
+  }
+}
+
+function genNumberline(params: Params, rng: Rng): QcmExercise {
+  const max = num(params, 'max') ?? 20
+  const step = num(params, 'pas') ?? 1
+  const marker = randInt(rng, 0, Math.floor(max / step)) * step
+  const pool = [marker + step, marker - step, marker + 2 * step, marker - 2 * step, marker + 1]
+  const { choices, correctIndex } = buildNumericChoices(rng, marker, pool, 4)
+  return {
+    type: 'qcm',
+    prompt: 'Quel nombre montre la flèche ?',
+    choices: choices.map(String),
+    correctIndex,
+    visual: { kind: 'numberline', max, step, marker },
+  }
+}
+
+function genClock(params: Params, rng: Rng): QcmExercise {
+  void params // seule l'heure entière est gérée au CP
+  const hour = randInt(rng, 1, 12)
+  const distractors = sample(
+    rng,
+    rangeInclusive(1, 12).filter((h) => h !== hour),
+    3,
+  )
+  const nums = shuffleValid([hour, ...distractors], rng)
+  return {
+    type: 'qcm',
+    prompt: 'Quelle heure est-il ?',
+    choices: nums.map(String),
+    correctIndex: nums.indexOf(hour),
+    visual: { kind: 'clock', hour },
+  }
+}
+
+// Petit mélange dédié (les heures ne doivent pas passer par les valeurs de repli).
+function shuffleValid(values: number[], rng: Rng): number[] {
+  const copy = [...values]
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = randInt(rng, 0, i)
+    ;[copy[i], copy[j]] = [copy[j], copy[i]]
+  }
+  return copy
+}
+
+function genVisual(params: Params, rng: Rng): Exercise {
+  switch (str(params, 'kind')) {
+    case 'compter':
+      return genCount(params, rng)
+    case 'lire-graduation':
+      return genNumberline(params, rng)
+    case 'lire-horloge':
+      return genClock(params, rng)
+  }
+  throw new UnsupportedSpecError('visual', params)
+}
+
+// ---------------------------------------------------------------------------
+// Glisser-déposer (type dragdrop) — ranger des nombres dans l'ordre croissant.
+// ---------------------------------------------------------------------------
+
+function genOrder(params: Params, rng: Rng): OrderExercise {
+  const max = num(params, 'max') ?? 20
+  const count = Math.min(4, max + 1)
+  const values = sample(rng, rangeInclusive(0, max), count)
+  return {
+    type: 'order',
+    prompt: 'Range du plus petit au plus grand.',
+    values,
+    answer: [...values].sort((a, b) => a - b),
+  }
+}
+
+function genDragdrop(params: Params, rng: Rng): Exercise {
+  const kind = str(params, 'kind')
+  if (kind === 'ranger' || kind === 'ranger-croissant') return genOrder(params, rng)
+  throw new UnsupportedSpecError('dragdrop', params)
+}
+
+// ---------------------------------------------------------------------------
 // Dispatch par type puis par famille (op / skill).
 // ---------------------------------------------------------------------------
 
@@ -361,6 +457,10 @@ export function generateExercise(spec: GeneratorSpec, rng: Rng): Exercise {
       return genGap(spec.params, rng)
     case 'truefalse':
       return genTrueFalse(spec.params, rng)
+    case 'visual':
+      return genVisual(spec.params, rng)
+    case 'dragdrop':
+      return genDragdrop(spec.params, rng)
     default:
       throw new UnsupportedSpecError(spec.type, spec.params)
   }

@@ -141,10 +141,12 @@ describe('composition de session — assemblage complet', () => {
   })
 
   it('sans rien à réviser ni découvrir, remplit la session avec la notion en cours', () => {
-    // « nombres-jusqu-20 » (prérequis vide) est la seule notion démarrée : plus
-    // aucune découverte possible (les dépendantes exigent qu'elle soit acquise).
+    // On démarre TOUTES les notions jouables sans prérequis (« nombres-jusqu-20 »
+    // et « temps ») : plus aucune découverte possible (les dépendantes exigent
+    // que leurs prérequis soient acquis). La notion « en cours » retenue est la
+    // première dans l'ordre du curriculum, « nombres-jusqu-20 ».
     const solo: LearnerProgress = {
-      mastery: { 'nombres-jusqu-20': initialMastery() },
+      mastery: { 'nombres-jusqu-20': initialMastery(), temps: initialMastery() },
       reviews: {},
     }
     expect(discoveryNotions(cp, solo, DEFAULT_TARGET_TIER)).toHaveLength(0)

@@ -6,6 +6,8 @@ import { speak } from '@/utils/speech'
 import { consigne, correctAnswerText, spokenPrompt } from './present'
 import { AnswerGrid, type AnswerStatus } from './AnswerGrid'
 import { NumberPad } from './NumberPad'
+import { OrderPad } from './OrderPad'
+import { VisualHintView } from './VisualHintView'
 import { Confetti } from './Confetti'
 
 type ExerciseViewProps = {
@@ -24,6 +26,7 @@ export function ExerciseView({ exercise, index, total, profileName, onContinue }
   const [status, setStatus] = useState<AnswerStatus>('neutral')
   const [selected, setSelected] = useState<number | null>(null)
   const [input, setInput] = useState('')
+  const [resetKey, setResetKey] = useState(0) // remonte OrderPad à chaque essai
   const firstTry = useRef<boolean | null>(null)
 
   const commit = (correct: boolean) => {
@@ -34,6 +37,7 @@ export function ExerciseView({ exercise, index, total, profileName, onContinue }
     setStatus('neutral')
     setSelected(null)
     setInput('')
+    setResetKey((k) => k + 1)
   }
 
   const gaugePct = (index / total) * 100
@@ -70,9 +74,12 @@ export function ExerciseView({ exercise, index, total, profileName, onContinue }
         <p className="text-[21px] font-extrabold">{consigne(exercise)}</p>
       </div>
 
-      {/* Carte question : le grand énoncé. */}
-      <div className="rounded-card-lg bg-card px-5 pb-5 pt-[22px] text-center shadow-[0_4px_0_rgba(0,0,0,0.06)]">
-        <div className="text-[44px] font-extrabold leading-tight">{exercise.prompt}</div>
+      {/* Carte question : le grand énoncé (+ indice visuel éventuel). */}
+      <div className="flex flex-col items-center gap-3 rounded-card-lg bg-card px-5 pb-5 pt-[22px] text-center shadow-[0_4px_0_rgba(0,0,0,0.06)]">
+        <div className="text-[34px] font-extrabold leading-tight">{exercise.prompt}</div>
+        {exercise.type === 'qcm' && exercise.visual ? (
+          <VisualHintView hint={exercise.visual} />
+        ) : null}
       </div>
 
       {/* Zone de réponse selon le type. */}
@@ -89,6 +96,14 @@ export function ExerciseView({ exercise, index, total, profileName, onContinue }
         />
       ) : exercise.type === 'truefalse' ? (
         <TrueFalseButtons status={status} onChoose={(v) => commit(v === exercise.answer)} />
+      ) : exercise.type === 'order' ? (
+        <OrderPad
+          key={resetKey}
+          values={exercise.values}
+          answer={exercise.answer}
+          status={status}
+          onResult={commit}
+        />
       ) : (
         <NumberPad
           value={input}

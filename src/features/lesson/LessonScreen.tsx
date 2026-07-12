@@ -29,8 +29,10 @@ export function LessonScreen() {
     )
   }
 
-  const current = lesson.pages[page]
-  const isLast = page === lesson.pages.length - 1
+  // Bornage défensif de l'index de page (jamais hors limites).
+  const safePage = Math.min(Math.max(page, 0), lesson.pages.length - 1)
+  const current = lesson.pages[safePage]
+  const isLast = safePage === lesson.pages.length - 1
 
   return (
     <main className="flex min-h-full flex-col gap-4 bg-cream p-5 font-sans text-ink">

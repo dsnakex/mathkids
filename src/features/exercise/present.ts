@@ -15,6 +15,8 @@ export function consigne(exercise: Exercise): string {
       return 'Écris le bon nombre 🐾'
     case 'gap':
       return 'Trouve le nombre qui manque 🐾'
+    case 'order':
+      return 'Range du plus petit au plus grand 🐾'
   }
 }
 
@@ -28,6 +30,8 @@ export function correctAnswerText(exercise: Exercise): string {
     case 'input':
     case 'gap':
       return String(exercise.answer)
+    case 'order':
+      return exercise.answer.join(' · ')
   }
 }
 
