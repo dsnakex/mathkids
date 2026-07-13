@@ -1,0 +1,115 @@
+{
+  "level": "ce1",
+  "problems": [
+    {
+      "id": "ce1-comp-01", "structure": "comparaison", "etapes": 1, "tier": 2,
+      "template": "Léa a {a} billes. Tom en a {b} de plus qu'elle. Combien de billes Tom a-t-il ?",
+      "vars": { "a": { "min": 8, "max": 40 }, "b": { "min": 3, "max": 15 } },
+      "constraints": ["a+b<=60"],
+      "answer": "a+b", "unit": "billes", "answerFormat": "int",
+      "hints": ["Dessine un schéma en barres : la barre de Tom, c'est celle de Léa plus un petit bout de {b}.", "Tom a autant que Léa, PLUS {b} : calcule {a} + {b}."],
+      "explanation": "Tom a {a} + {b} = {answer} billes. « De plus » veut dire qu'on ajoute."
+    },
+    {
+      "id": "ce1-comp-02", "structure": "comparaison", "etapes": 1, "tier": 3,
+      "template": "Un livre coûte {a} euros. Un cahier coûte {b} euros de moins. Combien coûte le cahier ?",
+      "vars": { "a": { "min": 10, "max": 30 }, "b": { "min": 2, "max": 8 } },
+      "constraints": ["a>b"],
+      "answer": "a-b", "unit": "euros", "answerFormat": "int",
+      "hints": ["Schéma en barres : la barre du cahier est plus courte que celle du livre de {b}.", "« De moins », c'est une soustraction : {a} - {b}."],
+      "explanation": "Le cahier coûte {a} - {b} = {answer} euros. « De moins » veut dire qu'on enlève."
+    },
+    {
+      "id": "ce1-transfo-01", "structure": "transformation", "etapes": 1, "tier": 3,
+      "template": "Ce matin, Jade avait {a} images. Ce soir, elle en a {c}. Combien d'images a-t-elle gagnées dans la journée ?",
+      "vars": { "a": { "min": 10, "max": 40 }, "b": { "min": 5, "max": 20 } },
+      "derived": { "c": "a+b" },
+      "constraints": [],
+      "answer": "c-a", "unit": "images", "answerFormat": "int",
+      "hints": ["Schéma en barres : la barre du soir ({c}) est plus longue que celle du matin ({a}). Le morceau en plus, c'est ce qu'elle a gagné.", "Cherche ce qui s'est ajouté : {a} + ? = {c}."],
+      "explanation": "{a} + {answer} = {c}, donc Jade a gagné {answer} images."
+    },
+    {
+      "id": "ce1-transfo-02", "structure": "transformation", "etapes": 1, "tier": 4,
+      "template": "Après avoir donné {b} cartes à son frère, Sacha a encore {c} cartes. Combien de cartes avait-il avant ?",
+      "vars": { "b": { "min": 5, "max": 15 }, "c": { "min": 10, "max": 40 } },
+      "constraints": [],
+      "answer": "c+b", "unit": "cartes", "answerFormat": "int",
+      "hints": ["Remonte le temps : avant de donner, il avait PLUS de cartes qu'à la fin.", "Il a {c} cartes ET il en a donné {b} : ajoute-les pour retrouver le début."],
+      "explanation": "Avant, Sacha avait {c} + {b} = {answer} cartes. Pour remonter le temps, on refait l'opération à l'envers."
+    },
+    {
+      "id": "ce1-mult-01", "structure": "multiplication", "etapes": 1, "tier": 3,
+      "template": "Le chef prépare {a} plateaux avec {b} sushis sur chaque plateau. Combien de sushis prépare-t-il en tout ?",
+      "vars": { "a": { "min": 2, "max": 5 }, "b": { "min": 2, "max": 5 } },
+      "constraints": [],
+      "answer": "a*b", "unit": "sushis", "answerFormat": "int",
+      "hints": ["Dessine les {a} plateaux avec {b} sushis dessus.", "{a} paquets de {b}, c'est {a} × {b} — ou {b} + {b} + ..."],
+      "explanation": "{a} × {b} = {answer} sushis. La multiplication compte vite les paquets identiques !"
+    },
+    {
+      "id": "ce1-mult-02", "structure": "multiplication", "etapes": 1, "tier": 4,
+      "template": "Dans la classe, il y a {a} rangées de {b} tables. Combien y a-t-il de tables en tout ?",
+      "vars": { "a": { "min": 3, "max": 5 }, "b": { "min": 3, "max": 5 } },
+      "constraints": [],
+      "answer": "a*b", "unit": "tables", "answerFormat": "int",
+      "hints": ["Dessine un quadrillage : {a} lignes de {b} cases.", "C'est {a} fois {b} : utilise ta table de {b}."],
+      "explanation": "{a} × {b} = {answer} tables. Les rangées identiques, c'est une multiplication."
+    },
+    {
+      "id": "ce1-partage-01", "structure": "division", "etapes": 1, "tier": 4,
+      "template": "Tu partages {c} fraises en 2 parts égales avec ta sœur. Combien de fraises chacun aura-t-il ?",
+      "vars": { "a": { "min": 4, "max": 12 } },
+      "derived": { "c": "a*2" },
+      "constraints": [],
+      "answer": "a", "unit": "fraises", "answerFormat": "int",
+      "hints": ["Distribue les fraises une par une : une pour toi, une pour elle...", "Cherche la moitié de {c} : quel nombre fait {c} quand on le double ?"],
+      "explanation": "La moitié de {c}, c'est {answer} : {answer} + {answer} = {c}. Un partage en 2 parts égales, c'est chercher la moitié."
+    },
+    {
+      "id": "ce1-fraction-01", "structure": "fraction", "etapes": 1, "tier": 5,
+      "template": "Une pizza est coupée en 4 parts égales. Tu manges 1 part. Combien de parts reste-t-il ?",
+      "vars": {},
+      "constraints": [],
+      "answer": "3", "unit": "parts", "answerFormat": "int",
+      "hints": ["Dessine la pizza coupée en 4 parts égales et barre la part mangée.", "Chaque part est un quart de la pizza. Il y en avait 4."],
+      "explanation": "4 - 1 = 3 parts. Chaque part est un quart : la pizza entière, c'est 4 quarts."
+    },
+    {
+      "id": "ce1-2etapes-01", "structure": "deux-etapes", "etapes": 2, "tier": 4,
+      "template": "Mia avait {a} billes. Elle en gagne {b} le matin, puis elle en perd {d} l'après-midi. Combien de billes a-t-elle à la fin ?",
+      "vars": { "a": { "min": 10, "max": 30 }, "b": { "min": 5, "max": 15 }, "d": { "min": 3, "max": 10 } },
+      "constraints": ["a+b>d"],
+      "answer": "a+b-d", "unit": "billes", "answerFormat": "int",
+      "hints": ["Fais une étape à la fois : d'abord le matin ({a} + {b}), écris le résultat.", "Ensuite l'après-midi : enlève {d} au résultat du matin."],
+      "explanation": "Matin : {a} + {b}. Après-midi : on enlève {d}. Il lui reste {answer} billes. Un problème à 2 étapes se résout étape par étape !"
+    },
+    {
+      "id": "ce1-2etapes-02", "structure": "deux-etapes", "etapes": 2, "tier": 5,
+      "template": "Tu achètes un livre à {a} euros et un jeu à {b} euros. Tu paies avec un billet de 20 euros. Combien te rend-on ?",
+      "vars": { "a": { "min": 4, "max": 9 }, "b": { "min": 3, "max": 8 } },
+      "constraints": ["a+b<20"],
+      "answer": "20-(a+b)", "unit": "euros", "answerFormat": "int",
+      "hints": ["Étape 1 : combien coûtent les deux achats ensemble ?", "Étape 2 : enlève ce total de tes 20 euros."],
+      "explanation": "Les achats coûtent {a} + {b} euros. On te rend 20 moins ce total : {answer} euros."
+    },
+    {
+      "id": "ce1-longueur-01", "structure": "mesure", "etapes": 1, "tier": 3,
+      "template": "Un ruban mesure {a} cm. On en coupe un morceau de {b} cm. Quelle est la longueur du ruban restant ?",
+      "vars": { "a": { "min": 20, "max": 90 }, "b": { "min": 5, "max": 30 } },
+      "constraints": ["a>b"],
+      "answer": "a-b", "unit": "cm", "answerFormat": "int",
+      "hints": ["Dessine le ruban et le morceau coupé.", "On enlève le morceau coupé : {a} - {b}."],
+      "explanation": "{a} - {b} = {answer} cm. Couper, c'est enlever une longueur."
+    },
+    {
+      "id": "ce1-double-01", "structure": "multiplication", "etapes": 1, "tier": 2,
+      "template": "Hier, Nino a lu {a} pages. Aujourd'hui, il en a lu le double. Combien de pages a-t-il lues aujourd'hui ?",
+      "vars": { "a": { "min": 3, "max": 15 } },
+      "constraints": [],
+      "answer": "a*2", "unit": "pages", "answerFormat": "int",
+      "hints": ["Le double, c'est deux fois pareil.", "Calcule {a} + {a}, ou {a} × 2."],
+      "explanation": "Le double de {a}, c'est {a} × 2 = {answer} pages."
+    }
+  ]
+}

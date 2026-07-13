@@ -1,0 +1,138 @@
+{
+  "level": "cm1",
+  "problems": [
+    {
+      "id": "cm1-dec-01", "structure": "mesure", "etapes": 1, "tier": 2,
+      "template": "À la boulangerie, tu achètes une baguette à {a:€} et un croissant à {b:€}. Combien paies-tu en tout ?",
+      "vars": { "a": { "min": 95, "max": 150, "step": 5 }, "b": { "min": 90, "max": 140, "step": 5 } },
+      "constraints": [],
+      "answer": "a+b", "unit": "€", "answerFormat": "euros",
+      "hints": ["Pose l'addition en alignant les virgules.", "Additionne les centimes, puis les euros — attention à la retenue si les centimes dépassent 100 !"],
+      "explanation": "{a:€} + {b:€} = {answer:€}. Avec les nombres à virgule, on aligne toujours les virgules."
+    },
+    {
+      "id": "cm1-dec-02", "structure": "mesure", "etapes": 1, "tier": 3,
+      "template": "Ton achat coûte {a:€}. Tu paies avec un billet de 10 euros. Combien te rend-on ?",
+      "vars": { "a": { "min": 315, "max": 875, "step": 5 } },
+      "constraints": [],
+      "answer": "1000-a", "unit": "€", "answerFormat": "euros",
+      "hints": ["10 euros = 10,00 €. Pose la soustraction en alignant les virgules.", "Ou cherche le complément : {a:€} + ? = 10,00 €."],
+      "explanation": "10,00 € - {a:€} = {answer:€}."
+    },
+    {
+      "id": "cm1-prop-01", "structure": "proportionnalite", "etapes": 2, "tier": 3,
+      "template": "{a} croissants identiques coûtent {c} euros. Combien coûtent {d} croissants ?",
+      "vars": { "a": { "min": 2, "max": 4 }, "b": { "min": 1, "max": 3 }, "d": { "min": 5, "max": 8 } },
+      "derived": { "c": "a*b" },
+      "constraints": ["d>a"],
+      "answer": "b*d", "unit": "euros", "answerFormat": "int",
+      "hints": ["Passe par l'unité : combien coûte 1 croissant ? ({c} ÷ {a})", "Multiplie le prix d'un croissant par {d}."],
+      "explanation": "1 croissant coûte {c} ÷ {a} = {b} euros. Donc {d} croissants coûtent {b} × {d} = {answer} euros. C'est le passage par l'unité."
+    },
+    {
+      "id": "cm1-prop-02", "structure": "proportionnalite", "etapes": 1, "tier": 4,
+      "template": "Pour 4 personnes, la recette demande {a} g de riz. Quelle quantité faut-il pour 8 personnes ?",
+      "vars": { "a": { "min": 200, "max": 400, "step": 50 } },
+      "constraints": [],
+      "answer": "a*2", "unit": "g", "answerFormat": "int",
+      "hints": ["8 personnes, c'est 2 fois plus que 4 personnes.", "S'il y a 2 fois plus de personnes, il faut 2 fois plus de riz."],
+      "explanation": "8 = 4 × 2, donc il faut {a} × 2 = {answer} g. Quand une quantité double, l'autre double aussi : c'est la proportionnalité."
+    },
+    {
+      "id": "cm1-fraction-01", "structure": "fraction", "etapes": 1, "tier": 3,
+      "template": "Il y a {c} élèves dans l'école. Le quart d'entre eux mange à la cantine. Combien d'élèves mangent à la cantine ?",
+      "vars": { "a": { "min": 15, "max": 60 } },
+      "derived": { "c": "a*4" },
+      "constraints": [],
+      "answer": "a", "unit": "élèves", "answerFormat": "int",
+      "hints": ["Le quart, c'est 1 part quand on partage en 4 parts égales.", "Divise {c} par 4."],
+      "explanation": "Le quart de {c} = {c} ÷ 4 = {answer} élèves."
+    },
+    {
+      "id": "cm1-fraction-02", "structure": "fraction", "etapes": 2, "tier": 4,
+      "template": "Une tablette de chocolat a {c} carreaux. Tu en manges les trois quarts. Combien de carreaux as-tu mangés ?",
+      "vars": { "a": { "min": 3, "max": 8 } },
+      "derived": { "c": "a*4" },
+      "constraints": [],
+      "answer": "a*3", "unit": "carreaux", "answerFormat": "int",
+      "hints": ["Trouve d'abord un quart : {c} ÷ 4.", "Les trois quarts, c'est 3 fois un quart."],
+      "explanation": "Un quart de {c} = {a}. Trois quarts = {a} × 3 = {answer} carreaux."
+    },
+    {
+      "id": "cm1-2etapes-01", "structure": "deux-etapes", "etapes": 2, "tier": 3,
+      "template": "Au départ, le bus transporte {a} passagers. Au premier arrêt, {b} personnes descendent et {d} personnes montent. Combien de passagers y a-t-il maintenant ?",
+      "vars": { "a": { "min": 25, "max": 50 }, "b": { "min": 5, "max": 15 }, "d": { "min": 3, "max": 12 } },
+      "constraints": ["a>b"],
+      "answer": "a-b+d", "unit": "passagers", "answerFormat": "int",
+      "hints": ["Traite l'arrêt en 2 temps : d'abord ceux qui descendent, puis ceux qui montent.", "Calcule {a} - {b}, puis ajoute {d}."],
+      "explanation": "{a} - {b} + {d} = {answer} passagers. On enchaîne les étapes dans l'ordre."
+    },
+    {
+      "id": "cm1-2etapes-02", "structure": "deux-etapes", "etapes": 2, "tier": 4,
+      "template": "Le fleuriste prépare {a} bouquets de {b} roses. Il lui reste ensuite {d} roses. Combien de roses avait-il au départ ?",
+      "vars": { "a": { "min": 5, "max": 12 }, "b": { "min": 5, "max": 10 }, "d": { "min": 3, "max": 15 } },
+      "constraints": [],
+      "answer": "a*b+d", "unit": "roses", "answerFormat": "int",
+      "hints": ["Étape 1 : combien de roses dans les bouquets ? ({a} × {b})", "Étape 2 : ajoute les roses restantes pour retrouver le départ."],
+      "explanation": "Bouquets : {a} × {b} roses, plus les {d} restantes : {answer} roses au départ."
+    },
+    {
+      "id": "cm1-div-01", "structure": "division", "etapes": 1, "tier": 4,
+      "template": "La coopérative range {c} œufs dans des boîtes de {b}. Combien de boîtes faut-il ?",
+      "vars": { "b": { "min": 6, "max": 6 }, "a": { "min": 15, "max": 40 } },
+      "derived": { "c": "a*b" },
+      "constraints": [],
+      "answer": "a", "unit": "boîtes", "answerFormat": "int",
+      "hints": ["Combien de fois 6 dans {c} ?", "Pose la division : {c} ÷ {b}."],
+      "explanation": "{c} ÷ {b} = {answer} boîtes, car {answer} × {b} = {c}."
+    },
+    {
+      "id": "cm1-duree-01", "structure": "mesure", "etapes": 2, "tier": 5,
+      "template": "Le train part à {a} h 15 et arrive à {c} h 45. Combien de temps dure le trajet, en minutes ?",
+      "vars": { "a": { "min": 8, "max": 14 }, "b": { "min": 1, "max": 3 } },
+      "derived": { "c": "a+b" },
+      "constraints": [],
+      "answer": "b*60+30", "unit": "minutes", "answerFormat": "int",
+      "hints": ["Compte les heures pleines de {a} h 15 à {c} h 15, puis les minutes de {c} h 15 à {c} h 45.", "N'oublie pas : 1 heure = 60 minutes."],
+      "explanation": "De {a} h 15 à {c} h 15 : {b} h. Puis 30 min jusqu'à {c} h 45. Total : {answer} minutes."
+    },
+    {
+      "id": "cm1-pourcent-01", "structure": "pourcentage", "etapes": 1, "tier": 5,
+      "template": "Une école compte {c} élèves. 50 % d'entre eux viennent à vélo. Combien d'élèves viennent à vélo ?",
+      "vars": { "a": { "min": 60, "max": 200, "step": 10 } },
+      "derived": { "c": "a*2" },
+      "constraints": [],
+      "answer": "a", "unit": "élèves", "answerFormat": "int",
+      "hints": ["50 %, c'est la moitié.", "Divise {c} par 2."],
+      "explanation": "50 % de {c} = la moitié = {answer} élèves. 50 % = 1/2, 25 % = 1/4, 100 % = tout !"
+    },
+    {
+      "id": "cm1-comp-mult-01", "structure": "comparaison", "etapes": 1, "tier": 3,
+      "template": "Le chef a vendu {a} plateaux ce midi. Ce soir, il en a vendu {b} fois plus. Combien de plateaux a-t-il vendus ce soir ?",
+      "vars": { "a": { "min": 12, "max": 40 }, "b": { "min": 2, "max": 4 } },
+      "constraints": [],
+      "answer": "a*b", "unit": "plateaux", "answerFormat": "int",
+      "hints": ["Schéma en barres : la barre du soir, c'est {b} barres du midi bout à bout.", "« {b} fois plus » = multiplication."],
+      "explanation": "{a} × {b} = {answer} plateaux. « Fois plus » multiplie, « de plus » additionne."
+    },
+    {
+      "id": "cm1-grandnombre-01", "structure": "reunion", "etapes": 1, "tier": 2,
+      "template": "Une ville compte {a} habitants. La ville voisine en compte {b}. Combien d'habitants ont les deux villes réunies ?",
+      "vars": { "a": { "min": 12000, "max": 45000, "step": 500 }, "b": { "min": 8000, "max": 30000, "step": 500 } },
+      "constraints": [],
+      "answer": "a+b", "unit": "habitants", "answerFormat": "int",
+      "hints": ["Pose l'addition en alignant bien les chiffres : unités sous unités, milliers sous milliers.", "Additionne d'abord les milliers pour estimer l'ordre de grandeur."],
+      "explanation": "{a} + {b} = {answer} habitants."
+    },
+    {
+      "id": "cm1-algebre-01", "structure": "complement", "etapes": 1, "tier": 5,
+      "template": "Je pense à un nombre. Si je lui ajoute {b}, je trouve {c}. Quel est mon nombre ?",
+      "vars": { "b": { "min": 15, "max": 60 }, "a": { "min": 20, "max": 80 } },
+      "derived": { "c": "a+b" },
+      "constraints": [],
+      "answer": "a", "unit": "", "answerFormat": "int",
+      "hints": ["Écris l'égalité à trou : ? + {b} = {c}.", "Pour retrouver le nombre, fais l'opération inverse : {c} - {b}."],
+      "explanation": "? + {b} = {c}, donc ? = {c} - {b} = {answer}. Raisonner sur un nombre inconnu, c'est déjà de l'algèbre !"
+    }
+  ]
+}

@@ -141,11 +141,11 @@
           "prerequisites": ["addition-posee"],
           "lesson": "ce1.problemes-deux-etapes",
           "tiers": [
-            { "level": 1, "generators": [{ "type": "problem", "params": { "structure": "ajout", "etapes": 1, "max": 100 } }] },
-            { "level": 2, "generators": [{ "type": "problem", "params": { "structure": "retrait", "etapes": 1, "max": 100 } }] },
-            { "level": 3, "generators": [{ "type": "problem", "params": { "structure": "reunion", "etapes": 2, "max": 100 } }] },
-            { "level": 4, "generators": [{ "type": "problem", "params": { "structure": "ajout-retrait", "etapes": 2, "max": 1000 } }] },
-            { "level": 5, "generators": [{ "type": "problem", "params": { "structure": "comparaison", "etapes": 2, "max": 1000 } }] }
+            { "level": 1, "generators": [{ "type": "problem", "params": { "level": "ce1", "structure": "ajout", "etapes": 1, "max": 100 } }] },
+            { "level": 2, "generators": [{ "type": "problem", "params": { "level": "ce1", "structure": "retrait", "etapes": 1, "max": 100 } }] },
+            { "level": 3, "generators": [{ "type": "problem", "params": { "level": "ce1", "structure": "reunion", "etapes": 2, "max": 100 } }] },
+            { "level": 4, "generators": [{ "type": "problem", "params": { "level": "ce1", "structure": "ajout-retrait", "etapes": 2, "max": 1000 } }] },
+            { "level": 5, "generators": [{ "type": "problem", "params": { "level": "ce1", "structure": "comparaison", "etapes": 2, "max": 1000 } }] }
           ]
         }
       ]

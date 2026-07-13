@@ -1,0 +1,116 @@
+{
+  "level": "ce2",
+  "problems": [
+    {
+      "id": "ce2-mult-01", "structure": "multiplication", "etapes": 1, "tier": 2,
+      "template": "Un verger a {a} rangées de {b} pommiers. Combien de pommiers y a-t-il en tout ?",
+      "vars": { "a": { "min": 4, "max": 9 }, "b": { "min": 6, "max": 9 } },
+      "constraints": [],
+      "answer": "a*b", "unit": "pommiers", "answerFormat": "int",
+      "hints": ["Schéma en barres : {a} barres identiques de {b}.", "Des rangées identiques : {a} × {b}. Utilise ta table de {b}."],
+      "explanation": "{a} × {b} = {answer} pommiers."
+    },
+    {
+      "id": "ce2-div-01", "structure": "division", "etapes": 1, "tier": 3,
+      "template": "Le chef répartit {c} sushis à parts égales sur {a} plateaux. Combien de sushis met-il sur chaque plateau ?",
+      "vars": { "a": { "min": 3, "max": 8 }, "b": { "min": 4, "max": 9 } },
+      "derived": { "c": "a*b" },
+      "constraints": [],
+      "answer": "b", "unit": "sushis", "answerFormat": "int",
+      "hints": ["Distribue les sushis un par un sur chaque plateau.", "Cherche le nombre qui, multiplié par {a}, donne {c} : {a} × ? = {c}."],
+      "explanation": "{a} × {answer} = {c} : chaque plateau reçoit {answer} sushis. Partager à parts égales, c'est diviser."
+    },
+    {
+      "id": "ce2-div-02", "structure": "division", "etapes": 1, "tier": 4,
+      "template": "Tu ranges {c} œufs dans des boîtes de {b} œufs. Combien de boîtes remplis-tu ?",
+      "vars": { "b": { "min": 4, "max": 6 }, "a": { "min": 3, "max": 9 } },
+      "derived": { "c": "a*b" },
+      "constraints": [],
+      "answer": "a", "unit": "boîtes", "answerFormat": "int",
+      "hints": ["Fais des paquets de {b} avec les {c} œufs.", "Combien de fois {b} dans {c} ? C'est ? × {b} = {c}."],
+      "explanation": "{answer} × {b} = {c} : tu remplis {answer} boîtes. Faire des paquets égaux, c'est aussi diviser."
+    },
+    {
+      "id": "ce2-2etapes-01", "structure": "deux-etapes", "etapes": 2, "tier": 3,
+      "template": "La maîtresse achète {a} boîtes de {b} feutres, plus {d} feutres à l'unité. Combien de feutres a-t-elle en tout ?",
+      "vars": { "a": { "min": 3, "max": 6 }, "b": { "min": 6, "max": 10 }, "d": { "min": 2, "max": 8 } },
+      "constraints": [],
+      "answer": "a*b+d", "unit": "feutres", "answerFormat": "int",
+      "hints": ["Étape 1 : combien de feutres dans les boîtes ? ({a} × {b})", "Étape 2 : ajoute les {d} feutres à l'unité."],
+      "explanation": "Les boîtes : {a} × {b}. Plus {d} feutres seuls : {answer} feutres en tout."
+    },
+    {
+      "id": "ce2-perimetre-01", "structure": "mesure", "etapes": 2, "tier": 4,
+      "template": "Un jardin rectangulaire mesure {a} m de long et {b} m de large. Quel est son périmètre ?",
+      "vars": { "a": { "min": 8, "max": 20 }, "b": { "min": 3, "max": 7 } },
+      "constraints": ["a>b"],
+      "answer": "(a+b)*2", "unit": "m", "answerFormat": "int",
+      "hints": ["Le périmètre, c'est le tour complet : dessine le rectangle et écris la mesure des 4 côtés.", "Il y a 2 longueurs et 2 largeurs : ({a} + {b}) × 2."],
+      "explanation": "Périmètre = ({a} + {b}) × 2 = {answer} m. C'est la longueur du tour du jardin."
+    },
+    {
+      "id": "ce2-perimetre-02", "structure": "mesure", "etapes": 1, "tier": 4,
+      "template": "Un carré a des côtés de {a} cm. Quel est son périmètre ?",
+      "vars": { "a": { "min": 3, "max": 12 } },
+      "constraints": [],
+      "answer": "a*4", "unit": "cm", "answerFormat": "int",
+      "hints": ["Un carré a 4 côtés tous pareils.", "Calcule {a} × 4."],
+      "explanation": "{a} × 4 = {answer} cm. Les 4 côtés d'un carré sont égaux."
+    },
+    {
+      "id": "ce2-monnaie-01", "structure": "mesure", "etapes": 1, "tier": 3,
+      "template": "Au marché, tu achètes des fraises à {a:€} et un melon à {b:€}. Combien paies-tu en tout ?",
+      "vars": { "a": { "min": 250, "max": 550, "step": 5 }, "b": { "min": 150, "max": 350, "step": 5 } },
+      "constraints": [],
+      "answer": "a+b", "unit": "€", "answerFormat": "euros",
+      "hints": ["Additionne d'abord les euros, puis les centimes.", "Attention : 100 centimes = 1 euro !"],
+      "explanation": "{a:€} + {b:€} = {answer:€}. On additionne les centimes ensemble et les euros ensemble."
+    },
+    {
+      "id": "ce2-monnaie-02", "structure": "deux-etapes", "etapes": 2, "tier": 5,
+      "template": "Ton goûter coûte {a:€}. Tu paies avec un billet de 5 euros. Combien te rend-on ?",
+      "vars": { "a": { "min": 120, "max": 450, "step": 5 } },
+      "constraints": [],
+      "answer": "500-a", "unit": "€", "answerFormat": "euros",
+      "hints": ["5 euros, c'est 500 centimes.", "Cherche le complément : {a:€} + ? = 5,00 €."],
+      "explanation": "5,00 € - {a:€} = {answer:€}. Le rendu de monnaie, c'est un complément."
+    },
+    {
+      "id": "ce2-duree-01", "structure": "mesure", "etapes": 1, "tier": 4,
+      "template": "Le film commence à {a} h et dure {b} heures. À quelle heure se termine-t-il ? (Réponds juste avec le nombre d'heures.)",
+      "vars": { "a": { "min": 14, "max": 18 }, "b": { "min": 1, "max": 3 } },
+      "constraints": ["a+b<=21"],
+      "answer": "a+b", "unit": "h", "answerFormat": "int",
+      "hints": ["Avance sur l'horloge en partant de {a} h.", "Ajoute la durée à l'heure de début : {a} + {b}."],
+      "explanation": "{a} h + {b} h = {answer} h. Heure de fin = heure de début + durée."
+    },
+    {
+      "id": "ce2-comp-mult-01", "structure": "comparaison", "etapes": 1, "tier": 5,
+      "template": "Lou a {a} cartes. Son grand frère en a {b} fois plus. Combien de cartes a son frère ?",
+      "vars": { "a": { "min": 5, "max": 12 }, "b": { "min": 2, "max": 5 } },
+      "constraints": [],
+      "answer": "a*b", "unit": "cartes", "answerFormat": "int",
+      "hints": ["Schéma en barres : la barre du frère, c'est {b} barres de Lou mises bout à bout.", "« {b} fois plus », c'est une multiplication : {a} × {b}."],
+      "explanation": "{a} × {b} = {answer} cartes. « Fois plus » = multiplication (« de plus » = addition — c'est le piège !)."
+    },
+    {
+      "id": "ce2-fraction-01", "structure": "fraction", "etapes": 1, "tier": 5,
+      "template": "Une tablette de chocolat a {c} carreaux. Tu en manges le quart. Combien de carreaux manges-tu ?",
+      "vars": { "a": { "min": 2, "max": 6 } },
+      "derived": { "c": "a*4" },
+      "constraints": [],
+      "answer": "a", "unit": "carreaux", "answerFormat": "int",
+      "hints": ["Partage les {c} carreaux en 4 parts égales.", "Le quart de {c}, c'est {c} divisé en 4 : ? × 4 = {c}."],
+      "explanation": "Le quart de {c}, c'est {answer} : {answer} × 4 = {c}."
+    },
+    {
+      "id": "ce2-2etapes-02", "structure": "deux-etapes", "etapes": 2, "tier": 5,
+      "template": "Un car peut transporter {a} passagers. Il y a déjà {b} adultes et {d} enfants à bord. Combien de places restent libres ?",
+      "vars": { "a": { "min": 40, "max": 60 }, "b": { "min": 10, "max": 20 }, "d": { "min": 8, "max": 18 } },
+      "constraints": ["b+d<a"],
+      "answer": "a-(b+d)", "unit": "places", "answerFormat": "int",
+      "hints": ["Étape 1 : combien de personnes sont déjà à bord ?", "Étape 2 : enlève ce total des {a} places du car."],
+      "explanation": "À bord : {b} + {d} personnes. Places libres : {a} moins ce total = {answer}."
+    }
+  ]
+}

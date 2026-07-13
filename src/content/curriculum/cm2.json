@@ -159,11 +159,11 @@
           "prerequisites": [],
           "lesson": "cm2.problemes-complexes",
           "tiers": [
-            { "level": 1, "generators": [{ "type": "problem", "params": { "structure": "mixte", "etapes": 2, "max": 1000 } }] },
-            { "level": 2, "generators": [{ "type": "problem", "params": { "structure": "proportionnalite", "etapes": 2, "max": 1000 } }] },
-            { "level": 3, "generators": [{ "type": "problem", "params": { "structure": "mixte", "etapes": 3, "max": 10000 } }] },
-            { "level": 4, "generators": [{ "type": "problem", "params": { "structure": "pourcentage", "etapes": 2, "max": 1000 } }] },
-            { "level": 5, "generators": [{ "type": "problem", "params": { "structure": "mixte", "etapes": 3, "max": 100000 } }] }
+            { "level": 1, "generators": [{ "type": "problem", "params": { "level": "cm2", "structure": "mixte", "etapes": 2, "max": 1000 } }] },
+            { "level": 2, "generators": [{ "type": "problem", "params": { "level": "cm2", "structure": "proportionnalite", "etapes": 2, "max": 1000 } }] },
+            { "level": 3, "generators": [{ "type": "problem", "params": { "level": "cm2", "structure": "mixte", "etapes": 3, "max": 10000 } }] },
+            { "level": 4, "generators": [{ "type": "problem", "params": { "level": "cm2", "structure": "pourcentage", "etapes": 2, "max": 1000 } }] },
+            { "level": 5, "generators": [{ "type": "problem", "params": { "level": "cm2", "structure": "mixte", "etapes": 3, "max": 100000 } }] }
           ]
         }
       ]

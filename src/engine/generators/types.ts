@@ -73,6 +73,17 @@ export interface MoneyComposeExercise {
   cents: number // total à atteindre (plusieurs compositions valides)
 }
 
+/** Problème rédigé : énoncé, réponse, indices en 2 temps, explication. */
+export interface ProblemExercise {
+  type: 'problem'
+  prompt: string
+  answer: number // entier, ou centimes si answerFormat === 'euros'
+  answerFormat: 'int' | 'euros'
+  hints: string[]
+  explanation: string
+  unit?: string
+}
+
 export type Exercise =
   | QcmExercise
   | InputExercise
@@ -82,6 +93,7 @@ export type Exercise =
   | ClocksetExercise
   | MoneyInputExercise
   | MoneyComposeExercise
+  | ProblemExercise
 
 /** Réponse fournie par l'enfant selon le type d'exercice. */
 export type Answer = number | boolean | number[]
@@ -110,5 +122,7 @@ export function isAnswerCorrect(exercise: Exercise, response: Answer): boolean {
     case 'moneyinput':
     case 'moneycompose':
       return response === exercise.cents
+    case 'problem':
+      return response === exercise.answer
   }
 }

@@ -26,9 +26,9 @@ describe('générateurs — invariants structurels (tout le curriculum CP)', () 
     // Les gabarits « visual » (compter, droite graduée, horloge) produisent des
     // exercices de type « qcm » ; « dragdrop ranger » produit des « order ».
     const types = new Set(SUPPORTED_SPECS.map((s) => s.type))
-    expect(types).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap', 'visual', 'dragdrop']))
+    expect(types).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap', 'visual', 'dragdrop', 'problem']))
     const exTypes = new Set(SUPPORTED_SPECS.map((s) => generateExercise(s, mulberry32(1)).type))
-    expect(exTypes).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap', 'order']))
+    expect(exTypes).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap', 'order', 'problem']))
   })
 
   it('génère, pour CHAQUE gabarit supporté et 30 tirages, un exercice valide', () => {

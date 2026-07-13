@@ -25,6 +25,8 @@ export function consigne(exercise: Exercise): string {
       return 'Écris le montant en euros 🐾'
     case 'moneycompose':
       return 'Compose la bonne somme 🐾'
+    case 'problem':
+      return 'Lis bien et calcule 🐾'
   }
 }
 
@@ -45,6 +47,10 @@ export function correctAnswerText(exercise: Exercise): string {
     case 'moneyinput':
     case 'moneycompose':
       return formatEuros(exercise.cents)
+    case 'problem':
+      return exercise.answerFormat === 'euros'
+        ? formatEuros(exercise.answer)
+        : `${exercise.answer}${exercise.unit && exercise.unit !== '€' ? ` ${exercise.unit}` : ''}`
   }
 }
 

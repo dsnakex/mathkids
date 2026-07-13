@@ -11,6 +11,7 @@ import { OrderPad } from './OrderPad'
 import { ClockSetter } from './ClockSetter'
 import { MoneyPad } from './MoneyPad'
 import { MoneyTray } from './MoneyTray'
+import { ProblemAnswer } from './ProblemAnswer'
 import { VisualHintView } from './VisualHintView'
 import { parseEuros } from '@/engine/generators/money'
 import { Confetti } from './Confetti'
@@ -121,7 +122,15 @@ export function ExerciseView({
 
       {/* Carte question : le grand énoncé (+ indice visuel éventuel). */}
       <div className="flex flex-col items-center gap-3 rounded-card-lg bg-card px-5 pb-5 pt-[22px] text-center shadow-[0_4px_0_rgba(0,0,0,0.06)]">
-        <div className="text-[34px] font-extrabold leading-tight">{exercise.prompt}</div>
+        <div
+          className={
+            exercise.type === 'problem'
+              ? 'text-[20px] font-extrabold leading-snug'
+              : 'text-[34px] font-extrabold leading-tight'
+          }
+        >
+          {exercise.prompt}
+        </div>
         {exercise.type === 'qcm' && exercise.visual ? (
           <VisualHintView hint={exercise.visual} />
         ) : null}
@@ -165,6 +174,8 @@ export function ExerciseView({
         />
       ) : exercise.type === 'moneycompose' ? (
         <MoneyTray key={resetKey} targetCents={exercise.cents} status={status} onValidate={commit} />
+      ) : exercise.type === 'problem' ? (
+        <ProblemAnswer key={resetKey} exercise={exercise} status={status} onCommit={commit} />
       ) : (
         <NumberPad
           value={input}

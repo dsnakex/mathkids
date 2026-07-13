@@ -1,0 +1,147 @@
+{
+  "level": "cm2",
+  "problems": [
+    {
+      "id": "cm2-dec-01", "structure": "multiplication", "etapes": 1, "tier": 2,
+      "template": "La maîtresse achète {a} cahiers à {b:€} l'un. Combien paie-t-elle en tout ?",
+      "vars": { "a": { "min": 4, "max": 9 }, "b": { "min": 185, "max": 345, "step": 5 } },
+      "constraints": [],
+      "answer": "a*b", "unit": "€", "answerFormat": "euros",
+      "hints": ["C'est {a} fois le même prix : une multiplication.", "Astuce : multiplie comme si c'étaient des centimes, puis replace la virgule."],
+      "explanation": "{a} × {b:€} = {answer:€}. Multiplier un prix, c'est comme multiplier des centimes."
+    },
+    {
+      "id": "cm2-pourcent-01", "structure": "pourcentage", "etapes": 2, "tier": 3,
+      "template": "Un jeu coûte {c} euros. Le magasin fait une réduction de 25 %. Combien paies-tu ?",
+      "vars": { "a": { "min": 6, "max": 20 } },
+      "derived": { "c": "a*4" },
+      "constraints": [],
+      "answer": "a*3", "unit": "euros", "answerFormat": "int",
+      "hints": ["25 % = un quart. Calcule d'abord la réduction : {c} ÷ 4.", "Enlève la réduction du prix de départ."],
+      "explanation": "Réduction : 25 % de {c} = {a} euros. Tu paies {c} - {a} = {answer} euros."
+    },
+    {
+      "id": "cm2-pourcent-02", "structure": "pourcentage", "etapes": 1, "tier": 3,
+      "template": "Sur les {c} élèves de l'école, 10 % sont absents aujourd'hui. Combien d'élèves sont absents ?",
+      "vars": { "a": { "min": 12, "max": 45 } },
+      "derived": { "c": "a*10" },
+      "constraints": [],
+      "answer": "a", "unit": "élèves", "answerFormat": "int",
+      "hints": ["10 %, c'est un dixième : on partage en 10.", "Divise {c} par 10."],
+      "explanation": "10 % de {c} = {c} ÷ 10 = {answer} élèves absents."
+    },
+    {
+      "id": "cm2-prop-01", "structure": "proportionnalite", "etapes": 2, "tier": 3,
+      "template": "{a} kg de pommes coûtent {c} euros. Combien coûtent {d} kg ?",
+      "vars": { "a": { "min": 2, "max": 5 }, "b": { "min": 2, "max": 4 }, "d": { "min": 6, "max": 10 } },
+      "derived": { "c": "a*b" },
+      "constraints": ["d>a"],
+      "answer": "b*d", "unit": "euros", "answerFormat": "int",
+      "hints": ["Trouve le prix d'1 kg : {c} ÷ {a}.", "Multiplie le prix au kilo par {d}."],
+      "explanation": "1 kg coûte {b} euros, donc {d} kg coûtent {b} × {d} = {answer} euros."
+    },
+    {
+      "id": "cm2-vitesse-01", "structure": "proportionnalite", "etapes": 1, "tier": 4,
+      "template": "Un cycliste roule à {a} km par heure. Quelle distance parcourt-il en {b} heures ?",
+      "vars": { "a": { "min": 12, "max": 30 }, "b": { "min": 2, "max": 4 } },
+      "constraints": [],
+      "answer": "a*b", "unit": "km", "answerFormat": "int",
+      "hints": ["Chaque heure, il parcourt {a} km. Il roule pendant {b} heures.", "Multiplie la distance d'une heure par le nombre d'heures."],
+      "explanation": "{a} × {b} = {answer} km. À vitesse constante, la distance est proportionnelle au temps."
+    },
+    {
+      "id": "cm2-echelle-01", "structure": "proportionnalite", "etapes": 1, "tier": 5,
+      "template": "Sur le plan, 1 cm représente {a} m dans la réalité. Le couloir mesure {b} cm sur le plan. Quelle est sa longueur réelle ?",
+      "vars": { "a": { "min": 2, "max": 10 }, "b": { "min": 3, "max": 9 } },
+      "constraints": [],
+      "answer": "a*b", "unit": "m", "answerFormat": "int",
+      "hints": ["Chaque centimètre du plan vaut {a} m en vrai.", "Multiplie : {b} × {a}."],
+      "explanation": "{b} cm sur le plan = {b} × {a} = {answer} m en réalité. C'est le principe de l'échelle."
+    },
+    {
+      "id": "cm2-aire-01", "structure": "mesure", "etapes": 1, "tier": 3,
+      "template": "Un terrain rectangulaire mesure {a} m de long et {b} m de large. Quelle est son aire ?",
+      "vars": { "a": { "min": 12, "max": 40 }, "b": { "min": 5, "max": 11 } },
+      "constraints": ["a>b"],
+      "answer": "a*b", "unit": "m²", "answerFormat": "int",
+      "hints": ["L'aire, c'est la surface : imagine un quadrillage de carrés de 1 m sur le terrain.", "Aire du rectangle = longueur × largeur."],
+      "explanation": "Aire = {a} × {b} = {answer} m². Attention : le périmètre, lui, ferait ({a} + {b}) × 2 — ne pas confondre !"
+    },
+    {
+      "id": "cm2-aire-02", "structure": "mesure", "etapes": 2, "tier": 5,
+      "template": "Un triangle a une base de {c} cm et une hauteur de {b} cm. Quelle est son aire ?",
+      "vars": { "a": { "min": 3, "max": 9 }, "b": { "min": 4, "max": 10 } },
+      "derived": { "c": "a*2" },
+      "constraints": [],
+      "answer": "a*b", "unit": "cm²", "answerFormat": "int",
+      "hints": ["Un triangle, c'est la moitié d'un rectangle de mêmes base et hauteur.", "Aire = (base × hauteur) ÷ 2."],
+      "explanation": "({c} × {b}) ÷ 2 = {answer} cm²."
+    },
+    {
+      "id": "cm2-fraction-01", "structure": "fraction", "etapes": 2, "tier": 4,
+      "template": "Tom mange un quart du gâteau, et Léa en mange la moitié. Quelle fraction du gâteau reste-t-il ? (Réponds en quarts : écris juste le nombre de quarts.)",
+      "vars": {},
+      "constraints": [],
+      "answer": "1", "unit": "quart(s)", "answerFormat": "int",
+      "hints": ["Convertis tout en quarts : la moitié, c'est 2 quarts.", "1 quart + 2 quarts = 3 quarts mangés. Le gâteau entier fait 4 quarts."],
+      "explanation": "1/4 + 2/4 = 3/4 mangés ; il reste 4/4 - 3/4 = 1/4. Pour additionner des fractions, on les met au même dénominateur."
+    },
+    {
+      "id": "cm2-div-01", "structure": "division", "etapes": 1, "tier": 4,
+      "template": "{c} élèves partent en voyage dans des cars de {b} places. Combien de cars complets faut-il ?",
+      "vars": { "b": { "min": 45, "max": 55, "step": 5 }, "a": { "min": 4, "max": 9 } },
+      "derived": { "c": "a*b" },
+      "constraints": [],
+      "answer": "a", "unit": "cars", "answerFormat": "int",
+      "hints": ["Combien de fois {b} places dans {c} élèves ?", "Pose la division : {c} ÷ {b}."],
+      "explanation": "{c} ÷ {b} = {answer} cars, car {answer} × {b} = {c}."
+    },
+    {
+      "id": "cm2-budget-01", "structure": "deux-etapes", "etapes": 2, "tier": 4,
+      "template": "Pour la sortie scolaire, la classe paie {a} euros de car et {b} entrées de musée à {d} euros l'une. Quel est le coût total ?",
+      "vars": { "a": { "min": 80, "max": 200, "step": 10 }, "b": { "min": 20, "max": 28 }, "d": { "min": 3, "max": 8 } },
+      "constraints": [],
+      "answer": "a+b*d", "unit": "euros", "answerFormat": "int",
+      "hints": ["Étape 1 : combien coûtent toutes les entrées ? ({b} × {d})", "Étape 2 : ajoute le prix du car."],
+      "explanation": "Entrées : {b} × {d} euros. Plus le car : {answer} euros au total."
+    },
+    {
+      "id": "cm2-budget-02", "structure": "deux-etapes", "etapes": 2, "tier": 5,
+      "template": "Au restaurant de sushis, une famille commande {a} plateaux à {b:€} l'un. Elle paie avec {d} billets de 20 euros. Combien lui rend-on ?",
+      "vars": { "a": { "min": 2, "max": 4 }, "b": { "min": 1150, "max": 1850, "step": 50 }, "d": { "min": 3, "max": 4 } },
+      "constraints": ["d*2000>a*b"],
+      "answer": "d*2000-a*b", "unit": "€", "answerFormat": "euros",
+      "hints": ["Étape 1 : le prix des plateaux ({a} × {b:€}). Étape 2 : l'argent donné ({d} × 20 €).", "Le rendu, c'est l'argent donné moins le prix payé."],
+      "explanation": "Prix : {a} × {b:€}. Donné : {d} × 20 €. Rendu : {answer:€}."
+    },
+    {
+      "id": "cm2-algebre-01", "structure": "complement", "etapes": 2, "tier": 5,
+      "template": "Je pense à un nombre. Si je le multiplie par {b} puis j'ajoute {d}, je trouve {c}. Quel est mon nombre ?",
+      "vars": { "b": { "min": 2, "max": 5 }, "d": { "min": 3, "max": 15 }, "a": { "min": 4, "max": 12 } },
+      "derived": { "c": "a*b+d" },
+      "constraints": [],
+      "answer": "a", "unit": "", "answerFormat": "int",
+      "hints": ["Écris l'égalité : ? × {b} + {d} = {c}.", "Remonte à l'envers : enlève d'abord {d}, puis divise par {b}."],
+      "explanation": "({c} - {d}) ÷ {b} = {answer}. Pour trouver un nombre inconnu, on refait les opérations à l'envers, dans l'ordre inverse."
+    },
+    {
+      "id": "cm2-grandnombre-01", "structure": "comparaison", "etapes": 1, "tier": 2,
+      "template": "La Terre est à environ {a} millions de km du Soleil, et Mars à {c} millions de km. De combien de millions de km Mars est-elle plus loin que la Terre ?",
+      "vars": { "a": { "min": 148, "max": 152 }, "b": { "min": 60, "max": 80 } },
+      "derived": { "c": "a+b" },
+      "constraints": [],
+      "answer": "b", "unit": "millions de km", "answerFormat": "int",
+      "hints": ["C'est une comparaison : cherche l'écart entre les deux distances.", "Calcule {c} - {a}."],
+      "explanation": "{c} - {a} = {answer} millions de km. Chercher « de combien de plus », c'est soustraire."
+    },
+    {
+      "id": "cm2-duree-01", "structure": "mesure", "etapes": 2, "tier": 4,
+      "template": "Un match commence à {a} h 45 et dure {b} h 30. À quelle heure se termine-t-il ? (Réponds avec l'heure seule, sans les minutes : les minutes seront 15.)",
+      "vars": { "a": { "min": 13, "max": 18 }, "b": { "min": 1, "max": 2 } },
+      "constraints": ["a+b<=21"],
+      "answer": "a+b+1", "unit": "h", "answerFormat": "int",
+      "hints": ["Ajoute d'abord les heures ({b} h), puis les 30 minutes.", "45 min + 30 min = 75 min = 1 h 15 : l'heure augmente encore de 1 !"],
+      "explanation": "{a} h 45 + {b} h 30 : les minutes font 75 min = 1 h 15, donc le match finit à {answer} h 15."
+    }
+  ]
+}

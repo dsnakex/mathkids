@@ -26,10 +26,10 @@ describe('composeSession — notion imposée (choix depuis la carte)', () => {
       now,
       rng: mulberry32(2),
       total: 6,
-      currentNotionId: 'problemes-additifs', // non jouable (type « problem »)
+      currentNotionId: 'formes-planes', // non jouable (géométrie « contenu »)
     })
     // Pas de plantage, une session est tout de même composée.
     expect(session.length).toBe(6)
-    expect(session.every((s) => s.notionId !== 'problemes-additifs')).toBe(true)
+    expect(session.every((s) => s.notionId !== 'formes-planes')).toBe(true)
   })
 })

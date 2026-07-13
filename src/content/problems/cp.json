@@ -1,0 +1,113 @@
+{
+  "level": "cp",
+  "problems": [
+    {
+      "id": "cp-ajout-01", "structure": "ajout", "etapes": 1, "tier": 1,
+      "template": "Lina a {a} billes. Elle en gagne {b} à la récréation. Combien de billes a-t-elle maintenant ?",
+      "vars": { "a": { "min": 3, "max": 6 }, "b": { "min": 2, "max": 4 } },
+      "constraints": ["a+b<=10"],
+      "answer": "a+b", "unit": "billes", "answerFormat": "int",
+      "hints": ["Compte sur tes doigts : mets {a} doigts, puis ajoute {b} doigts.", "Elle avait {a} billes et on en ajoute {b}. C'est une addition."],
+      "explanation": "Lina a {a} + {b} = {answer} billes. Gagner, c'est ajouter !"
+    },
+    {
+      "id": "cp-ajout-02", "structure": "ajout", "etapes": 1, "tier": 2,
+      "template": "Il y a {a} enfants dans le bus. Au premier arrêt, {b} enfants montent. Combien y a-t-il d'enfants dans le bus maintenant ?",
+      "vars": { "a": { "min": 5, "max": 12 }, "b": { "min": 3, "max": 8 } },
+      "constraints": ["a+b<=20"],
+      "answer": "a+b", "unit": "enfants", "answerFormat": "int",
+      "hints": ["Dessine le bus avec {a} ronds, puis dessine les {b} enfants qui montent.", "Des enfants montent : il y en a plus qu'avant. Calcule {a} + {b}."],
+      "explanation": "{a} + {b} = {answer} enfants. Quand on monte dans le bus, on s'ajoute à ceux qui y sont déjà."
+    },
+    {
+      "id": "cp-ajout-03", "structure": "ajout", "etapes": 1, "tier": 4,
+      "template": "Le chef prépare {a} sushis le matin et {b} sushis l'après-midi. Combien de sushis a-t-il préparés en tout ?",
+      "vars": { "a": { "min": 20, "max": 50, "step": 10 }, "b": { "min": 10, "max": 40, "step": 10 } },
+      "constraints": ["a+b<=100"],
+      "answer": "a+b", "unit": "sushis", "answerFormat": "int",
+      "hints": ["Compte de 10 en 10 sur la droite graduée : pars de {a} et avance de {b}.", "Ce sont des dizaines entières : {a} + {b}, comme avec les paquets de 10."],
+      "explanation": "{a} + {b} = {answer} sushis. Compter en dizaines, c'est comme compter des paquets de 10."
+    },
+    {
+      "id": "cp-retrait-01", "structure": "retrait", "etapes": 1, "tier": 1,
+      "template": "Tu as {a} gâteaux pour le goûter. Tu en manges {b}. Combien de gâteaux reste-t-il ?",
+      "vars": { "a": { "min": 5, "max": 10 }, "b": { "min": 1, "max": 4 } },
+      "constraints": ["a>b"],
+      "answer": "a-b", "unit": "gâteaux", "answerFormat": "int",
+      "hints": ["Dessine {a} gâteaux, puis barre les {b} gâteaux mangés.", "On enlève ce qui est mangé : {a} - {b}."],
+      "explanation": "{a} - {b} = {answer} gâteaux. Manger, c'est enlever !"
+    },
+    {
+      "id": "cp-retrait-02", "structure": "retrait", "etapes": 1, "tier": 2,
+      "template": "Noah a {a} ballons. {b} ballons s'envolent. Combien de ballons lui reste-t-il ?",
+      "vars": { "a": { "min": 8, "max": 20 }, "b": { "min": 3, "max": 9 } },
+      "constraints": ["a>b"],
+      "answer": "a-b", "unit": "ballons", "answerFormat": "int",
+      "hints": ["Recule de {b} sur la droite graduée en partant de {a}.", "Les ballons s'envolent : il y en a moins. Calcule {a} - {b}."],
+      "explanation": "{a} - {b} = {answer} ballons. Quand quelque chose s'en va, on soustrait."
+    },
+    {
+      "id": "cp-retrait-03", "structure": "retrait", "etapes": 1, "tier": 3,
+      "template": "Il y a {a} élèves dans la cour. {b} élèves rentrent en classe. Combien d'élèves restent dans la cour ?",
+      "vars": { "a": { "min": 12, "max": 20 }, "b": { "min": 4, "max": 10 } },
+      "constraints": ["a>b"],
+      "answer": "a-b", "unit": "élèves", "answerFormat": "int",
+      "hints": ["Imagine la cour : {a} élèves, et {b} qui s'en vont.", "Ceux qui rentrent en classe quittent la cour : {a} - {b}."],
+      "explanation": "{a} - {b} = {answer} élèves restent dans la cour."
+    },
+    {
+      "id": "cp-reunion-01", "structure": "reunion", "etapes": 1, "tier": 1,
+      "template": "Dans le vase, il y a {a} fleurs rouges et {b} fleurs jaunes. Combien y a-t-il de fleurs en tout ?",
+      "vars": { "a": { "min": 3, "max": 6 }, "b": { "min": 2, "max": 4 } },
+      "constraints": ["a+b<=10"],
+      "answer": "a+b", "unit": "fleurs", "answerFormat": "int",
+      "hints": ["Dessine les {a} fleurs rouges et les {b} fleurs jaunes, puis compte-les toutes.", "« En tout », c'est tout ensemble : {a} + {b}."],
+      "explanation": "{a} + {b} = {answer} fleurs en tout. On réunit les rouges et les jaunes."
+    },
+    {
+      "id": "cp-reunion-02", "structure": "reunion", "etapes": 1, "tier": 2,
+      "template": "Sur le plateau, il y a {a} makis et {b} nigiris. Combien y a-t-il de sushis sur le plateau ?",
+      "vars": { "a": { "min": 6, "max": 12 }, "b": { "min": 4, "max": 8 } },
+      "constraints": ["a+b<=20"],
+      "answer": "a+b", "unit": "sushis", "answerFormat": "int",
+      "hints": ["Compte d'abord les makis, puis continue de compter avec les nigiris.", "Les makis ET les nigiris sont des sushis : {a} + {b}."],
+      "explanation": "{a} + {b} = {answer} sushis. Les deux sortes se comptent ensemble."
+    },
+    {
+      "id": "cp-complement-01", "structure": "complement", "etapes": 1, "tier": 2,
+      "template": "Ta boîte à œufs peut contenir 10 œufs. Il y a déjà {a} œufs dedans. Combien d'œufs manque-t-il pour la remplir ?",
+      "vars": { "a": { "min": 2, "max": 8 } },
+      "constraints": [],
+      "answer": "10-a", "unit": "œufs", "answerFormat": "int",
+      "hints": ["Dessine la boîte avec 10 cases et mets une croix dans {a} cases.", "Cherche le complément : {a} + ? = 10."],
+      "explanation": "{a} + {answer} = 10. Il manque {answer} œufs. C'est un complément à 10 !"
+    },
+    {
+      "id": "cp-complement-02", "structure": "complement", "etapes": 1, "tier": 3,
+      "template": "Pour ton puzzle de {b} pièces, tu as déjà posé {a} pièces. Combien de pièces reste-t-il à poser ?",
+      "vars": { "b": { "min": 12, "max": 20 }, "a": { "min": 5, "max": 10 } },
+      "constraints": ["b>a"],
+      "answer": "b-a", "unit": "pièces", "answerFormat": "int",
+      "hints": ["Pars de {a} et compte jusqu'à {b} : combien de pas fais-tu ?", "Cherche ce qui manque : {a} + ? = {b}."],
+      "explanation": "{a} + {answer} = {b}. Il reste {answer} pièces à poser."
+    },
+    {
+      "id": "cp-monnaie-01", "structure": "mesure", "etapes": 1, "tier": 3,
+      "template": "Tu achètes un jouet à {a} euros et un livre à {b} euros. Combien paies-tu en tout ?",
+      "vars": { "a": { "min": 2, "max": 6 }, "b": { "min": 2, "max": 5 } },
+      "constraints": ["a+b<=10"],
+      "answer": "a+b", "unit": "euros", "answerFormat": "int",
+      "hints": ["Compte les euros du jouet, puis ajoute ceux du livre.", "« En tout », c'est une addition : {a} + {b}."],
+      "explanation": "{a} + {b} = {answer} euros. On additionne les deux prix."
+    },
+    {
+      "id": "cp-monnaie-02", "structure": "retrait", "etapes": 1, "tier": 4,
+      "template": "Tu as {a} euros dans ta tirelire. Tu achètes un ballon à {b} euros. Combien d'euros te reste-t-il ?",
+      "vars": { "a": { "min": 8, "max": 15 }, "b": { "min": 3, "max": 7 } },
+      "constraints": ["a>b"],
+      "answer": "a-b", "unit": "euros", "answerFormat": "int",
+      "hints": ["Dessine tes {a} euros et barre les {b} euros que tu donnes.", "Payer, c'est enlever de la tirelire : {a} - {b}."],
+      "explanation": "{a} - {b} = {answer} euros. Après l'achat, il reste moins d'argent."
+    }
+  ]
+}

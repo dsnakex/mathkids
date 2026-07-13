@@ -11,8 +11,9 @@
 // (visual, dragdrop, problem, géométrie/mesures « contenu ») lèvent
 // UnsupportedSpecError ; `canGenerate` permet de les filtrer sans planter.
 
-import type { GeneratorSpec } from '@/content/schema'
+import { LEVEL_IDS, type GeneratorSpec, type LevelId } from '@/content/schema'
 import { enLettres } from './frenchNumbers'
+import { generateProblem, pickProblem } from './problem'
 import { genClockRead, genClockSet } from './clock'
 import { genMoneyCount, genMoneyConvert, genMoneyChange, genMoneyCompose } from './money'
 import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
@@ -773,6 +774,18 @@ function genGap(params: Params, rng: Rng): Exercise {
   throw new UnsupportedSpecError('gap', params)
 }
 
+function genProblem(params: Params, rng: Rng): Exercise {
+  const level = str(params, 'level')
+  const structure = str(params, 'structure') ?? ''
+  const etapes = num(params, 'etapes') ?? 1
+  if (!level || !(LEVEL_IDS as readonly string[]).includes(level)) {
+    throw new UnsupportedSpecError('problem', params)
+  }
+  const problem = pickProblem(level as LevelId, structure, etapes, rng)
+  if (!problem) throw new UnsupportedSpecError('problem', params)
+  return generateProblem(problem, rng)
+}
+
 function genTrueFalse(params: Params, rng: Rng): Exercise {
   switch (str(params, 'skill')) {
     case 'comparer':
@@ -802,6 +815,8 @@ export function generateExercise(spec: GeneratorSpec, rng: Rng): Exercise {
       return genVisual(spec.params, rng)
     case 'dragdrop':
       return genDragdrop(spec.params, rng)
+    case 'problem':
+      return genProblem(spec.params, rng)
     default:
       throw new UnsupportedSpecError(spec.type, spec.params)
   }
