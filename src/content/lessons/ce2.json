@@ -28,7 +28,7 @@
     "title": "L'écriture à virgule",
     "pages": [
       { "emoji": "💶", "text": "3 € et 50 centimes s'écrit 3,50 € : la virgule sépare les euros des centimes." },
-      { "emoji": "🪙", "text": "100 centimes font 1 euro." }
+      { "emoji": "🪙", "text": "Attention : les centimes se comptent sur 2 chiffres ! 3 € et 5 centimes, c'est 3,05 € (et non 3,5). 3,50 € c'est 3 € et 50 centimes." }
     ]
   },
   {

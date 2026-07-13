@@ -14,6 +14,7 @@
 import type { GeneratorSpec } from '@/content/schema'
 import { enLettres } from './frenchNumbers'
 import { genClockRead, genClockSet } from './clock'
+import { genMoneyCount, genMoneyConvert, genMoneyChange, genMoneyCompose } from './money'
 import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
 import type {
   Exercise,
@@ -651,6 +652,8 @@ function genVisual(params: Params, rng: Rng): Exercise {
     }
     case 'clock-set':
       return genClockSet(params, rng)
+    case 'money-compose':
+      return genMoneyCompose(params, rng)
   }
   throw new UnsupportedSpecError('visual', params)
 }
@@ -699,6 +702,10 @@ function genInput(params: Params, rng: Rng): Exercise {
       return genQuart('input', params, rng)
     case 'fraction':
       return genFraction('input', params, rng)
+    case 'money-convert':
+      return genMoneyConvert(params, rng)
+    case 'money-change':
+      return genMoneyChange(params, rng)
     case 'pourcentage':
       return genPourcentage('input', params, rng)
     case 'priorite':
@@ -743,6 +750,8 @@ function genQcm(params: Params, rng: Rng): Exercise {
       return genDecimalAdd(params, rng)
     case 'proba-vocab':
       return genProbaVocab(params, rng)
+    case 'money-count':
+      return genMoneyCount(params, rng)
     case 'clock-read':
       return genClockRead(params, rng)
     case 'lire-nombre':

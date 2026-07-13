@@ -105,6 +105,39 @@ describe('ExerciseView — régler l\'horloge (clockset)', () => {
   })
 })
 
+describe('ExerciseView — monnaie', () => {
+  const digit = (d: string) => fireEvent.click(screen.getByRole('button', { name: d }))
+
+  it('convertir : « 3,5 » est accepté pour 3,50 €', () => {
+    const { onContinue } = setup({ type: 'moneyinput', prompt: '3 € et 50 c = ? €', cents: 350 })
+    digit('3')
+    fireEvent.click(screen.getByRole('button', { name: 'virgule' }))
+    digit('5')
+    fireEvent.click(screen.getByRole('button', { name: /valider/i }))
+    fireEvent.click(screen.getByRole('button', { name: /continuer/i }))
+    expect(onContinue).toHaveBeenCalledWith(true)
+  })
+
+  it('convertir : « 3,5 » est refusé pour 3,05 € (confusion des centimes)', () => {
+    setup({ type: 'moneyinput', prompt: '3 € et 5 c = ? €', cents: 305 })
+    digit('3')
+    fireEvent.click(screen.getByRole('button', { name: 'virgule' }))
+    digit('5')
+    fireEvent.click(screen.getByRole('button', { name: /valider/i }))
+    expect(screen.getByRole('button', { name: /réessayer/i })).toBeInTheDocument()
+  })
+
+  it('composer : poser des pièces jusqu\'au total valide la réponse', () => {
+    const { onContinue } = setup({ type: 'moneycompose', prompt: 'Compose 0,35 €', cents: 35 })
+    fireEvent.click(screen.getByRole('button', { name: /poser 20 c/i }))
+    fireEvent.click(screen.getByRole('button', { name: /poser 10 c/i }))
+    fireEvent.click(screen.getByRole('button', { name: /poser 5 c/i }))
+    fireEvent.click(screen.getByRole('button', { name: /valider/i }))
+    fireEvent.click(screen.getByRole('button', { name: /continuer/i }))
+    expect(onContinue).toHaveBeenCalledWith(true)
+  })
+})
+
 describe('ExerciseView — quitter (pause)', () => {
   it('le bouton ✕ demande confirmation avant de quitter, sans quitter par accident', () => {
     const onQuit = vi.fn()

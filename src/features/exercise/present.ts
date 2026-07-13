@@ -4,6 +4,7 @@
 
 import type { Exercise } from '@/engine/generators/types'
 import { timePhrase } from '@/engine/generators/time'
+import { formatEuros } from '@/engine/generators/money'
 
 /** Consigne courte, tutoyée, adaptée au type d'exercice. */
 export function consigne(exercise: Exercise): string {
@@ -20,6 +21,10 @@ export function consigne(exercise: Exercise): string {
       return 'Range du plus petit au plus grand 🐾'
     case 'clockset':
       return "Règle l'horloge 🐾"
+    case 'moneyinput':
+      return 'Écris le montant en euros 🐾'
+    case 'moneycompose':
+      return 'Compose la bonne somme 🐾'
   }
 }
 
@@ -37,6 +42,9 @@ export function correctAnswerText(exercise: Exercise): string {
       return exercise.answer.join(' · ')
     case 'clockset':
       return timePhrase(exercise.hours, exercise.minutes)
+    case 'moneyinput':
+    case 'moneycompose':
+      return formatEuros(exercise.cents)
   }
 }
 

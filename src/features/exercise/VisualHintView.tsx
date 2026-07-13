@@ -4,6 +4,7 @@
 
 import type { VisualHint } from '@/engine/generators/types'
 import { ClockFace } from './ClockFace'
+import { MoneyCoins } from './MoneyCoins'
 
 function Count({ objects }: { objects: number }) {
   return (
@@ -53,5 +54,7 @@ export function VisualHintView({ hint }: { hint: VisualHint }) {
           minuteTicks={hint.minutes % 15 !== 0}
         />
       )
+    case 'coins':
+      return <MoneyCoins units={hint.units} />
   }
 }

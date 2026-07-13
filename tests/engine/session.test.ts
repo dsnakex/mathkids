@@ -130,6 +130,8 @@ describe('composition de session — assemblage complet', () => {
         expect(isAnswerCorrect(ex, ex.answer)).toBe(true)
       } else if (ex.type === 'clockset') {
         expect(isAnswerCorrect(ex, [ex.hours, ex.minutes])).toBe(true)
+      } else if (ex.type === 'moneyinput' || ex.type === 'moneycompose') {
+        expect(isAnswerCorrect(ex, ex.cents)).toBe(true)
       } else {
         expect(isAnswerCorrect(ex, ex.answer)).toBe(true)
       }

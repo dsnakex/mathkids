@@ -51,11 +51,11 @@
           "prerequisites": [],
           "lesson": "ce2.ecriture-virgule-monnaie",
           "tiers": [
-            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "compter-euros-centimes", "max": 10 } }] },
-            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "lire-prix-virgule" } }] },
-            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "total-euros-centimes", "max": 20 } }] },
-            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "convertir-centimes" } }] },
-            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "payer-somme-centimes", "max": 20 } }] }
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "money-count", "palier": 2 } }] },
+            { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "money-compose", "palier": 2 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "money-convert" } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "money-count", "palier": 3 } }] },
+            { "level": 5, "generators": [{ "type": "input", "params": { "skill": "money-change" } }] }
           ]
         }
       ]

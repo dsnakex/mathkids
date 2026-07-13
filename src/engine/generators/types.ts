@@ -11,6 +11,7 @@ export type VisualHint =
   | { kind: 'count'; objects: number } // nombre d'objets à compter
   | { kind: 'numberline'; max: number; step: number; marker: number } // repère à lire
   | { kind: 'clock'; hours: number; minutes: number } // heure affichée (petite aiguille continue)
+  | { kind: 'coins'; units: number[] } // pièces/billets posés (valeurs en centimes)
 
 /** QCM : 2 à 4 propositions, exactement une correcte (`correctIndex`). */
 export interface QcmExercise {
@@ -58,6 +59,20 @@ export interface ClocksetExercise {
   minutes: number // minutes cible
 }
 
+/** Saisie d'un montant en euros (pavé avec virgule) ; réponse en centimes. */
+export interface MoneyInputExercise {
+  type: 'moneyinput'
+  prompt: string
+  cents: number // montant attendu, en centimes
+}
+
+/** Composer une somme en posant des pièces/billets ; on valide le TOTAL. */
+export interface MoneyComposeExercise {
+  type: 'moneycompose'
+  prompt: string
+  cents: number // total à atteindre (plusieurs compositions valides)
+}
+
 export type Exercise =
   | QcmExercise
   | InputExercise
@@ -65,6 +80,8 @@ export type Exercise =
   | GapExercise
   | OrderExercise
   | ClocksetExercise
+  | MoneyInputExercise
+  | MoneyComposeExercise
 
 /** Réponse fournie par l'enfant selon le type d'exercice. */
 export type Answer = number | boolean | number[]
@@ -90,5 +107,8 @@ export function isAnswerCorrect(exercise: Exercise, response: Answer): boolean {
         response[0] === exercise.hours &&
         response[1] === exercise.minutes
       )
+    case 'moneyinput':
+    case 'moneycompose':
+      return response === exercise.cents
   }
 }

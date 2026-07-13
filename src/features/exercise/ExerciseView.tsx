@@ -9,7 +9,10 @@ import { AnswerGrid, type AnswerStatus } from './AnswerGrid'
 import { NumberPad } from './NumberPad'
 import { OrderPad } from './OrderPad'
 import { ClockSetter } from './ClockSetter'
+import { MoneyPad } from './MoneyPad'
+import { MoneyTray } from './MoneyTray'
 import { VisualHintView } from './VisualHintView'
+import { parseEuros } from '@/engine/generators/money'
 import { Confetti } from './Confetti'
 
 type ExerciseViewProps = {
@@ -154,6 +157,14 @@ export function ExerciseView({
           targetHours={exercise.hours}
           targetMinutes={exercise.minutes}
         />
+      ) : exercise.type === 'moneyinput' ? (
+        <MoneyPad
+          key={resetKey}
+          status={status}
+          onValidate={(text) => commit(parseEuros(text) === exercise.cents)}
+        />
+      ) : exercise.type === 'moneycompose' ? (
+        <MoneyTray key={resetKey} targetCents={exercise.cents} status={status} onValidate={commit} />
       ) : (
         <NumberPad
           value={input}
