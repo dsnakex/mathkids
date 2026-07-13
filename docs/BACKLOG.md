@@ -15,7 +15,7 @@
 ## P3 — Fond pédagogique
 
 5. **Banque de problèmes rédigés** (type « problem ») — ✅ FAIT : 65 gabarits (`src/content/problems/*.json`) + générateur (tirage sous contraintes, variables dérivées, mini-évaluateur arithmétique maison sans `eval`, substitution `{x}` / `{answer}` / `{x:€}`), indices en 2 temps sans malus, saisie au pavé (MoneyPad si euros), branchement des specs `problem` du curriculum sur la banque.
-6. **Saisie décimale au pavé** (virgule) pour les exercices de décimaux en saisie (CM1-CM2) — EN COURS (prochain).
+6. **Saisie décimale au pavé** (virgule) pour les exercices de décimaux en saisie (CM1-CM2) — ✅ FAIT : module `decimal.ts` (valeurs en entiers mis à l'échelle, « 5,9 » = « 5,90 »), générateurs `decimal-add-input` / `decimal-sub-input`, composant `DecimalPad`, branché en CM1 (calcul-decimaux) et CM2 (decimaux-millieme).
 
 ## P4 — Confort
 

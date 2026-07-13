@@ -138,6 +138,41 @@ describe('ExerciseView — monnaie', () => {
   })
 })
 
+describe('ExerciseView — saisie décimale', () => {
+  const type = (label: string) => fireEvent.click(screen.getByRole('button', { name: label }))
+
+  it('taper « 5,9 » valide la réponse (59 dixièmes)', () => {
+    const { onContinue } = setup({
+      type: 'decimalinput',
+      prompt: 'Combien font 3,5 + 2,4 ?',
+      value: 59,
+      decimals: 1,
+    })
+    type('5')
+    type('virgule')
+    type('9')
+    type('Valider 🐾')
+    fireEvent.click(screen.getByRole('button', { name: /continuer/i }))
+    expect(onContinue).toHaveBeenCalledWith(true)
+  })
+
+  it('« 5,90 » est aussi accepté (zéro de fin)', () => {
+    const { onContinue } = setup({
+      type: 'decimalinput',
+      prompt: 'Combien font 3,5 + 2,4 ?',
+      value: 59,
+      decimals: 1,
+    })
+    type('5')
+    type('virgule')
+    type('9')
+    type('0')
+    type('Valider 🐾')
+    fireEvent.click(screen.getByRole('button', { name: /continuer/i }))
+    expect(onContinue).toHaveBeenCalledWith(true)
+  })
+})
+
 describe('ExerciseView — quitter (pause)', () => {
   it('le bouton ✕ demande confirmation avant de quitter, sans quitter par accident', () => {
     const onQuit = vi.fn()

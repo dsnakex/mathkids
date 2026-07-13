@@ -11,9 +11,11 @@ import { OrderPad } from './OrderPad'
 import { ClockSetter } from './ClockSetter'
 import { MoneyPad } from './MoneyPad'
 import { MoneyTray } from './MoneyTray'
+import { DecimalPad } from './DecimalPad'
 import { ProblemAnswer } from './ProblemAnswer'
 import { VisualHintView } from './VisualHintView'
 import { parseEuros } from '@/engine/generators/money'
+import { parseDecimal } from '@/engine/generators/decimal'
 import { Confetti } from './Confetti'
 
 type ExerciseViewProps = {
@@ -174,6 +176,12 @@ export function ExerciseView({
         />
       ) : exercise.type === 'moneycompose' ? (
         <MoneyTray key={resetKey} targetCents={exercise.cents} status={status} onValidate={commit} />
+      ) : exercise.type === 'decimalinput' ? (
+        <DecimalPad
+          key={resetKey}
+          status={status}
+          onValidate={(text) => commit(parseDecimal(text, exercise.decimals) === exercise.value)}
+        />
       ) : exercise.type === 'problem' ? (
         <ProblemAnswer key={resetKey} exercise={exercise} status={status} onCommit={commit} />
       ) : (

@@ -72,9 +72,9 @@
           "tiers": [
             { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 10 } }] },
             { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 20 } }] },
-            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "decimal-compare", "max": 50 } }] },
-            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 50 } }] },
-            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "decimal-add", "max": 100 } }] }
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "decimal-add-input", "max": 10, "decimals": 1 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "decimal-sub-input", "max": 20, "decimals": 1 } }] },
+            { "level": 5, "generators": [{ "type": "input", "params": { "skill": "decimal-add-input", "max": 50, "decimals": 1 } }] }
           ]
         },
         {

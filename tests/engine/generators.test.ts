@@ -73,6 +73,10 @@ function assertExactlyOneAnswer(ex: Exercise, spec: GeneratorSpec): void {
     expect(ex.minutes).toBeGreaterThanOrEqual(0)
   } else if (ex.type === 'moneyinput' || ex.type === 'moneycompose') {
     expect(ex.cents).toBeGreaterThanOrEqual(0)
+  } else if (ex.type === 'decimalinput') {
+    expect(Number.isInteger(ex.value)).toBe(true)
+  } else if (ex.type === 'problem') {
+    expect(Number.isInteger(ex.answer)).toBe(true)
   } else {
     // input / gap : réponse entière (les nombres CP sont positifs).
     expect(Number.isInteger(ex.answer), `réponse entière ${label}`).toBe(true)

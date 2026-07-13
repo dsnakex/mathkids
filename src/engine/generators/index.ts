@@ -13,11 +13,13 @@
 
 import { LEVEL_IDS, type GeneratorSpec, type LevelId } from '@/content/schema'
 import { enLettres } from './frenchNumbers'
+import { formatDecimalFr } from './decimal'
 import { generateProblem, pickProblem } from './problem'
 import { genClockRead, genClockSet } from './clock'
 import { genMoneyCount, genMoneyConvert, genMoneyChange, genMoneyCompose } from './money'
 import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
 import type {
+  DecimalInputExercise,
   Exercise,
   GapExercise,
   InputExercise,
@@ -273,6 +275,24 @@ function genDecimalAdd(params: Params, rng: Rng): QcmExercise {
     prompt: `Combien font ${formatDec(t1)} + ${formatDec(t2)} ?`,
     choices: choices.map(formatDec),
     correctIndex,
+  }
+}
+
+// Saisie décimale (CM1-CM2) : additionner/soustraire des décimaux, réponse tapée
+// au pavé avec virgule. Manipulé en entiers mis à l'échelle (pas de flottant).
+function genDecimalInput(op: '+' | '-', params: Params, rng: Rng): DecimalInputExercise {
+  const decimals = num(params, 'decimals') ?? 1
+  const max = num(params, 'max') ?? 10
+  const unit = 10 ** decimals
+  const x = randInt(rng, 1, max * unit)
+  const y = randInt(rng, 1, max * unit)
+  const [a, b] = op === '-' ? [Math.max(x, y), Math.min(x, y)] : [x, y]
+  const value = op === '+' ? a + b : a - b
+  return {
+    type: 'decimalinput',
+    prompt: `Combien font ${formatDecimalFr(a, decimals)} ${op} ${formatDecimalFr(b, decimals)} ?`,
+    value,
+    decimals,
   }
 }
 
@@ -707,6 +727,10 @@ function genInput(params: Params, rng: Rng): Exercise {
       return genMoneyConvert(params, rng)
     case 'money-change':
       return genMoneyChange(params, rng)
+    case 'decimal-add-input':
+      return genDecimalInput('+', params, rng)
+    case 'decimal-sub-input':
+      return genDecimalInput('-', params, rng)
     case 'pourcentage':
       return genPourcentage('input', params, rng)
     case 'priorite':

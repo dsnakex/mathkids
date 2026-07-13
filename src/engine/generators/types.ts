@@ -73,6 +73,14 @@ export interface MoneyComposeExercise {
   cents: number // total à atteindre (plusieurs compositions valides)
 }
 
+/** Saisie d'un nombre décimal (pavé avec virgule) ; réponse mise à l'échelle. */
+export interface DecimalInputExercise {
+  type: 'decimalinput'
+  prompt: string
+  value: number // réponse = nombre × 10^decimals (entier, sans flottant)
+  decimals: number
+}
+
 /** Problème rédigé : énoncé, réponse, indices en 2 temps, explication. */
 export interface ProblemExercise {
   type: 'problem'
@@ -93,6 +101,7 @@ export type Exercise =
   | ClocksetExercise
   | MoneyInputExercise
   | MoneyComposeExercise
+  | DecimalInputExercise
   | ProblemExercise
 
 /** Réponse fournie par l'enfant selon le type d'exercice. */
@@ -122,6 +131,8 @@ export function isAnswerCorrect(exercise: Exercise, response: Answer): boolean {
     case 'moneyinput':
     case 'moneycompose':
       return response === exercise.cents
+    case 'decimalinput':
+      return response === exercise.value
     case 'problem':
       return response === exercise.answer
   }

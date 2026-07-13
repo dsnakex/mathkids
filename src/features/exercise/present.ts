@@ -5,6 +5,7 @@
 import type { Exercise } from '@/engine/generators/types'
 import { timePhrase } from '@/engine/generators/time'
 import { formatEuros } from '@/engine/generators/money'
+import { formatDecimalFr } from '@/engine/generators/decimal'
 
 /** Consigne courte, tutoyée, adaptée au type d'exercice. */
 export function consigne(exercise: Exercise): string {
@@ -25,6 +26,8 @@ export function consigne(exercise: Exercise): string {
       return 'Écris le montant en euros 🐾'
     case 'moneycompose':
       return 'Compose la bonne somme 🐾'
+    case 'decimalinput':
+      return 'Écris le nombre décimal 🐾'
     case 'problem':
       return 'Lis bien et calcule 🐾'
   }
@@ -47,6 +50,8 @@ export function correctAnswerText(exercise: Exercise): string {
     case 'moneyinput':
     case 'moneycompose':
       return formatEuros(exercise.cents)
+    case 'decimalinput':
+      return formatDecimalFr(exercise.value, exercise.decimals)
     case 'problem':
       return exercise.answerFormat === 'euros'
         ? formatEuros(exercise.answer)
