@@ -3,6 +3,7 @@
 // réponse pour le feedback bienveillant.
 
 import type { Exercise } from '@/engine/generators/types'
+import { timePhrase } from '@/engine/generators/time'
 
 /** Consigne courte, tutoyée, adaptée au type d'exercice. */
 export function consigne(exercise: Exercise): string {
@@ -17,6 +18,8 @@ export function consigne(exercise: Exercise): string {
       return 'Trouve le nombre qui manque 🐾'
     case 'order':
       return 'Range du plus petit au plus grand 🐾'
+    case 'clockset':
+      return "Règle l'horloge 🐾"
   }
 }
 
@@ -32,6 +35,8 @@ export function correctAnswerText(exercise: Exercise): string {
       return String(exercise.answer)
     case 'order':
       return exercise.answer.join(' · ')
+    case 'clockset':
+      return timePhrase(exercise.hours, exercise.minutes)
   }
 }
 

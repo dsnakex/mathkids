@@ -8,6 +8,7 @@ import { consigne, correctAnswerText, spokenPrompt } from './present'
 import { AnswerGrid, type AnswerStatus } from './AnswerGrid'
 import { NumberPad } from './NumberPad'
 import { OrderPad } from './OrderPad'
+import { ClockSetter } from './ClockSetter'
 import { VisualHintView } from './VisualHintView'
 import { Confetti } from './Confetti'
 
@@ -144,6 +145,14 @@ export function ExerciseView({
           answer={exercise.answer}
           status={status}
           onResult={commit}
+        />
+      ) : exercise.type === 'clockset' ? (
+        <ClockSetter
+          key={resetKey}
+          status={status}
+          onValidate={commit}
+          targetHours={exercise.hours}
+          targetMinutes={exercise.minutes}
         />
       ) : (
         <NumberPad

@@ -81,10 +81,10 @@
   },
   {
     "id": "ce2.durees-h-min",
-    "title": "Les durées",
+    "title": "L'heure au quart près",
     "pages": [
-      { "emoji": "🕐", "text": "Une heure a 60 minutes. La grande aiguille fait un tour en une heure." },
-      { "emoji": "🕜", "text": "Un quart d'heure, c'est 15 minutes ; une demi-heure, 30 minutes." }
+      { "emoji": "🕐", "text": "Un quart d'heure, c'est 15 minutes ; une demi-heure, 30 minutes." },
+      { "emoji": "🕘", "text": "« Moins le quart » veut dire qu'il manque 15 minutes pour l'heure suivante : 4 heures moins le quart, c'est 3 h 45. La petite aiguille est presque sur le 4 !" }
     ]
   },
   {

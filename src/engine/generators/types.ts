@@ -10,7 +10,7 @@
 export type VisualHint =
   | { kind: 'count'; objects: number } // nombre d'objets à compter
   | { kind: 'numberline'; max: number; step: number; marker: number } // repère à lire
-  | { kind: 'clock'; hour: number } // heure entière affichée
+  | { kind: 'clock'; hours: number; minutes: number } // heure affichée (petite aiguille continue)
 
 /** QCM : 2 à 4 propositions, exactement une correcte (`correctIndex`). */
 export interface QcmExercise {
@@ -50,12 +50,21 @@ export interface OrderExercise {
   answer: number[] // les mêmes, triés dans le bon ordre
 }
 
+/** Régler l'horloge : l'enfant place les aiguilles sur l'heure cible. */
+export interface ClocksetExercise {
+  type: 'clockset'
+  prompt: string
+  hours: number // heure cible (1..12)
+  minutes: number // minutes cible
+}
+
 export type Exercise =
   | QcmExercise
   | InputExercise
   | TrueFalseExercise
   | GapExercise
   | OrderExercise
+  | ClocksetExercise
 
 /** Réponse fournie par l'enfant selon le type d'exercice. */
 export type Answer = number | boolean | number[]
@@ -75,5 +84,11 @@ export function isAnswerCorrect(exercise: Exercise, response: Answer): boolean {
       return response === exercise.answer
     case 'order':
       return Array.isArray(response) && sameOrder(response, exercise.answer)
+    case 'clockset':
+      return (
+        Array.isArray(response) &&
+        response[0] === exercise.hours &&
+        response[1] === exercise.minutes
+      )
   }
 }

@@ -77,6 +77,34 @@ describe('ExerciseView — saisie numérique', () => {
   })
 })
 
+describe('ExerciseView — régler l\'horloge (clockset)', () => {
+  const clockset: Exercise = {
+    type: 'clockset',
+    prompt: "Mets l'horloge sur 3 heures.",
+    hours: 3,
+    minutes: 0,
+  }
+
+  it('placer les aiguilles sur la cible puis valider = bonne réponse', () => {
+    const { onContinue } = setup(clockset)
+    // Départ à 12 h : on avance de 3 heures.
+    const plusHeure = screen.getByRole('button', { name: /heure en avant/i })
+    fireEvent.click(plusHeure)
+    fireEvent.click(plusHeure)
+    fireEvent.click(plusHeure)
+    fireEvent.click(screen.getByRole('button', { name: /valider/i }))
+    fireEvent.click(screen.getByRole('button', { name: /continuer/i }))
+    expect(onContinue).toHaveBeenCalledWith(true)
+  })
+
+  it('valider une mauvaise heure propose de réessayer', () => {
+    setup(clockset)
+    // On valide sans bouger (12 h ≠ 3 h).
+    fireEvent.click(screen.getByRole('button', { name: /valider/i }))
+    expect(screen.getByRole('button', { name: /réessayer/i })).toBeInTheDocument()
+  })
+})
+
 describe('ExerciseView — quitter (pause)', () => {
   it('le bouton ✕ demande confirmation avant de quitter, sans quitter par accident', () => {
     const onQuit = vi.fn()

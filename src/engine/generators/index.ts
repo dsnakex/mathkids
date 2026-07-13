@@ -13,6 +13,7 @@
 
 import type { GeneratorSpec } from '@/content/schema'
 import { enLettres } from './frenchNumbers'
+import { genClockRead, genClockSet } from './clock'
 import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
 import type {
   Exercise,
@@ -622,7 +623,7 @@ function genClock(params: Params, rng: Rng): QcmExercise {
     prompt: 'Quelle heure est-il ?',
     choices: nums.map(String),
     correctIndex: nums.indexOf(hour),
-    visual: { kind: 'clock', hour },
+    visual: { kind: 'clock', hours: hour, minutes: 0 },
   }
 }
 
@@ -643,11 +644,13 @@ function genVisual(params: Params, rng: Rng): Exercise {
     case 'lire-graduation':
       return genNumberline(params, rng)
     case 'lire-horloge': {
-      // Seules les heures entières sont gérées (les demi-heures viendront plus tard).
+      // Heures entières (CP) ; les demies/quarts passent par clock-read/clock-set.
       const precision = str(params, 'precision')
       if (precision === undefined || precision === 'heure') return genClock(params, rng)
       break
     }
+    case 'clock-set':
+      return genClockSet(params, rng)
   }
   throw new UnsupportedSpecError('visual', params)
 }
@@ -740,6 +743,8 @@ function genQcm(params: Params, rng: Rng): Exercise {
       return genDecimalAdd(params, rng)
     case 'proba-vocab':
       return genProbaVocab(params, rng)
+    case 'clock-read':
+      return genClockRead(params, rng)
     case 'lire-nombre':
       return genLireNombre(params, rng)
     case 'dizaines-unites':

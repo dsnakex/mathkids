@@ -187,10 +187,10 @@
           "lesson": "ce1.heures-demies",
           "tiers": [
             { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "lire-horloge", "precision": "heure" } }] },
-            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "lire-heure", "precision": "heure" } }] },
-            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "lire-horloge", "precision": "demie" } }] },
-            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "lire-heure", "precision": "demie" } }] },
-            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "placer-heure", "precision": "demie" } }] }
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "clock-read", "palier": 2 } }] },
+            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "clock-set", "palier": 2 } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "clock-read", "palier": 2 } }] },
+            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "clock-set", "palier": 2 } }] }
           ]
         }
       ]

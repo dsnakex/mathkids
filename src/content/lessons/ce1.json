@@ -97,10 +97,10 @@
   },
   {
     "id": "ce1.heures-demies",
-    "title": "Lire l'heure",
+    "title": "Lire l'heure et demie",
     "pages": [
       { "emoji": "🕐", "text": "La petite aiguille montre l'heure, la grande montre les minutes." },
-      { "emoji": "🕜", "text": "Quand la grande aiguille est sur le 6, il est « et demie »." }
+      { "emoji": "🕜", "text": "À la demie, la grande aiguille est sur le 6. Attention : la petite aiguille voyage ENTRE les deux chiffres ! À 3 h et demie, elle est entre le 3 et le 4." }
     ]
   },
   {

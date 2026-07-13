@@ -68,6 +68,9 @@ function assertExactlyOneAnswer(ex: Exercise, spec: GeneratorSpec): void {
     expect(ex.values.length, `nb valeurs ${label}`).toBeGreaterThanOrEqual(2)
     expect(new Set(ex.values).size).toBe(ex.values.length)
     expect(ex.answer).toEqual([...ex.values].sort((a, b) => a - b))
+  } else if (ex.type === 'clockset') {
+    expect(ex.hours).toBeGreaterThanOrEqual(1)
+    expect(ex.minutes).toBeGreaterThanOrEqual(0)
   } else {
     // input / gap : réponse entière (les nombres CP sont positifs).
     expect(Number.isInteger(ex.answer), `réponse entière ${label}`).toBe(true)

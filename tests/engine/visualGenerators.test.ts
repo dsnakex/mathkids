@@ -38,9 +38,10 @@ describe('générateurs visuels — lire-horloge', () => {
     for (let seed = 0; seed < 40; seed++) {
       const ex = generateExercise(spec, mulberry32(seed))
       if (ex.type !== 'qcm' || ex.visual?.kind !== 'clock') throw new Error('attendu clock')
-      expect(ex.visual.hour).toBeGreaterThanOrEqual(1)
-      expect(ex.visual.hour).toBeLessThanOrEqual(12)
-      expect(Number(ex.choices[ex.correctIndex])).toBe(ex.visual.hour)
+      expect(ex.visual.hours).toBeGreaterThanOrEqual(1)
+      expect(ex.visual.hours).toBeLessThanOrEqual(12)
+      expect(ex.visual.minutes).toBe(0)
+      expect(Number(ex.choices[ex.correctIndex])).toBe(ex.visual.hours)
     }
   })
 })

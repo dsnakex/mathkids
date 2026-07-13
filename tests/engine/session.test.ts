@@ -128,6 +128,8 @@ describe('composition de session — assemblage complet', () => {
         expect(isAnswerCorrect(ex, ex.correctIndex)).toBe(true)
       } else if (ex.type === 'truefalse') {
         expect(isAnswerCorrect(ex, ex.answer)).toBe(true)
+      } else if (ex.type === 'clockset') {
+        expect(isAnswerCorrect(ex, [ex.hours, ex.minutes])).toBe(true)
       } else {
         expect(isAnswerCorrect(ex, ex.answer)).toBe(true)
       }
