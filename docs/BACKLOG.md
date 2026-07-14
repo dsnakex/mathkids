@@ -23,5 +23,5 @@
 
 ## Rappels
 
-- Phase 7bis (choix du niveau + mission découverte) : voir docs/PLAN.md — **prochain chantier**.
+- Phase 7bis (choix du niveau + mission découverte) — ✅ FAIT : choix du niveau imposé à la création (jamais CP par défaut) ; mission découverte adaptative (8-12 questions, montée/descente au niveau précédent, `engine/mission.ts`), pré-remplissage de la maîtrise (réussie→acquise, ratée→fragile), rejouable depuis l'espace parent. Limite : rappels du niveau précédent stockés mais dormants (sessions mono-niveau).
 - Piste v2 : monde Grande Section (docs/SPECIFICATIONS.md §10).

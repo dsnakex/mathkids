@@ -202,6 +202,11 @@ export function missionProgress(session: MissionSession): { asked: number; total
  * Traduit les réponses en progression : notion réussie → acquise (étape
  * débloquée), notion ratée → fragile. Les notions ratées du niveau précédent
  * rejoignent les rappels (dus immédiatement).
+ *
+ * Limite connue : la composition de session porte sur un seul curriculum, donc
+ * ces rappels du niveau précédent restent en attente tant que les sessions ne
+ * sont pas inter-niveaux (évolution future) — on les enregistre néanmoins pour
+ * ne rien perdre du diagnostic.
  */
 export function missionOutcome(session: MissionSession, now: number): MissionOutcome {
   const mastery: Record<string, MasteryState> = {}
