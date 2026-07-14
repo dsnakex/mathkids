@@ -19,7 +19,7 @@ import {
 } from '@/engine/session'
 import { recordAnswer, sessionReward, type SessionReward } from '@/features/session/runner'
 import { newlyEarnedBadges } from '@/features/rewards/badges'
-import { applyPlacement, type PlacementAnswer } from '@/features/placement/placement'
+import { applyMissionOutcome, missionOutcome, type MissionSession } from '@/engine/mission'
 import { buy } from '@/features/shop/shopModel'
 import type { ProfileRecord } from '@/db/db'
 import {
@@ -72,7 +72,7 @@ interface AppState {
   removeProfile: (id: string) => Promise<void>
   selectProfile: (id: string) => void
   startMission: (profileId: string) => void
-  finishMission: (answers: PlacementAnswer[]) => Promise<void>
+  finishMission: (session: MissionSession) => Promise<void>
   skipMission: () => Promise<void>
   selectStep: (notionId: string) => Promise<void>
   quitSession: () => Promise<void>
@@ -181,17 +181,14 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ profileId, screen: 'mission' })
   },
 
-  async finishMission(answers) {
+  async finishMission(session) {
     const { profileId } = get()
     if (!profileId) return
     // Fusionne le positionnement avec la progression existante (les notions
-    // réussies deviennent acquises).
-    const placed = applyPlacement(answers)
+    // réussies deviennent acquises, les ratées du niveau précédent → rappels).
+    const outcome = missionOutcome(session, Date.now())
     const existing = await loadLearnerProgress(profileId)
-    const merged = {
-      mastery: { ...existing.mastery, ...placed.mastery },
-      reviews: { ...existing.reviews, ...placed.reviews },
-    }
+    const merged = applyMissionOutcome(existing, outcome)
     await saveLearnerProgress(profileId, merged)
     await get().goMap()
   },

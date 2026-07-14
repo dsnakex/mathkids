@@ -1,20 +1,22 @@
 // « Mission découverte » (SPECIFICATIONS §5) : au premier lancement (ou relancée
-// depuis l'espace parent), le chef propose un court quiz pour situer l'enfant.
-// Optionnelle (« Passer »), aucune étoile en jeu, que des encouragements. À la
-// fin, le positionnement pré-remplit la progression (via le store).
+// depuis l'espace parent), le chef propose un court quiz adaptatif pour situer
+// l'enfant. Optionnelle (« Passer »), aucune étoile en jeu, que des
+// encouragements. Le moteur (engine/mission) choisit chaque question selon les
+// réponses précédentes ; à la fin, le positionnement pré-remplit la progression.
 
 import { useRef, useState } from 'react'
 import { useAppStore } from '@/app/store'
-import { curriculumFor } from '@/content/curricula'
 import { mulberry32 } from '@/engine/generators/rng'
+import {
+  answerMission,
+  isMissionComplete,
+  missionProgress,
+  startMission,
+  type MissionSession,
+} from '@/engine/mission'
 import { Button } from '@/components/Button'
 import { NekoSushi } from '@/components/NekoSushi'
 import { ExerciseView } from '@/features/exercise/ExerciseView'
-import {
-  buildPlacementQuiz,
-  type PlacementAnswer,
-  type PlacementQuestion,
-} from './placement'
 
 export function MissionScreen() {
   const profiles = useAppStore((s) => s.profiles)
@@ -25,23 +27,23 @@ export function MissionScreen() {
   const profile = profiles.find((p) => p.id === profileId)
   const name = profile?.name ?? ''
 
-  const [quiz, setQuiz] = useState<PlacementQuestion[] | null>(null)
-  const [index, setIndex] = useState(0)
-  const answers = useRef<PlacementAnswer[]>([])
+  // La mission est une machine à états mutée en place : on la garde dans un ref
+  // et on force le rendu via un compteur d'étape.
+  const session = useRef<MissionSession | null>(null)
+  const [, setStep] = useState(0)
 
   const start = () => {
-    const q = buildPlacementQuiz(curriculumFor(profile?.level ?? 'cp'), mulberry32((Date.now() >>> 0) || 1))
-    if (q.length === 0) {
+    const s = startMission(profile?.level ?? 'cp', mulberry32((Date.now() >>> 0) || 1))
+    if (isMissionComplete(s)) {
       void skipMission()
       return
     }
-    answers.current = []
-    setIndex(0)
-    setQuiz(q)
+    session.current = s
+    setStep((n) => n + 1)
   }
 
   // Intro festive.
-  if (!quiz) {
+  if (!session.current) {
     return (
       <main className="flex min-h-full flex-col items-center justify-center gap-5 bg-gradient-to-b from-[#FDF3E4] to-[#FAE4D6] p-6 text-center font-sans text-ink">
         <div className="mk-pulse">
@@ -62,21 +64,29 @@ export function MissionScreen() {
     )
   }
 
-  // Déroulé du quiz (réutilise le rendu d'exercice).
-  const question = quiz[index]
+  const current = session.current.current
+  if (!current) {
+    // Sécurité : mission terminée sans question courante → on conclut.
+    void finishMission(session.current)
+    return null
+  }
+
+  const { asked, total } = missionProgress(session.current)
   const onContinue = (firstTryCorrect: boolean) => {
-    answers.current = [...answers.current, { notionId: question.notionId, correct: firstTryCorrect }]
-    const next = index + 1
-    if (next >= quiz.length) void finishMission(answers.current)
-    else setIndex(next)
+    const s = answerMission(session.current as MissionSession, firstTryCorrect)
+    if (isMissionComplete(s)) {
+      void finishMission(s)
+      return
+    }
+    setStep((n) => n + 1)
   }
 
   return (
     <ExerciseView
-      key={index}
-      exercise={question.exercise}
-      index={index}
-      total={quiz.length}
+      key={asked}
+      exercise={current.exercise}
+      index={asked}
+      total={total}
       profileName={name}
       onContinue={onContinue}
       onQuit={skipMission}

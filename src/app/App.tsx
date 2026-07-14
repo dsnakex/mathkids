@@ -9,7 +9,7 @@ import { SessionScreen } from '@/features/session/SessionScreen'
 import { SessionEnd } from '@/features/session/SessionEnd'
 import { ShopScreen } from '@/features/shop/ShopScreen'
 import { ParentScreen } from '@/features/parent/ParentScreen'
-import { MissionScreen } from '@/features/placement/MissionScreen'
+import { MissionScreen } from '@/features/mission/MissionScreen'
 import { AboutScreen } from '@/features/about/AboutScreen'
 import { InstallPrompt } from '@/app/InstallPrompt'
 
