@@ -19,9 +19,9 @@
 
 ## P4 — Confort
 
-7. **Visuels géométriques** : symétrie à compléter, coordonnées à placer, tri de figures en glisser-déposer.
+7. **Visuels géométriques** — ✅ FAIT : figures planes, solides (emoji), symétrie axiale à compléter (grille interactive), mesures (règle, comparaison de barres, conversion m/cm), repérage sur quadrillage. Toutes les notions du programme sont désormais jouables (100 % de couverture CP→CM2).
 
 ## Rappels
 
-- Phase 7bis (mission découverte) : voir docs/PLAN.md — à faire si pas encore fait.
+- Phase 7bis (choix du niveau + mission découverte) : voir docs/PLAN.md — **prochain chantier**.
 - Piste v2 : monde Grande Section (docs/SPECIFICATIONS.md §10).
