@@ -193,6 +193,9 @@ export function ExerciseView({
           status={status}
           onChange={setInput}
           onValidate={() => input !== '' && commit(Number(input) === exercise.answer)}
+          // Cap large (nombres jusqu'au million au cycle 3) ; fixe pour ne pas
+          // révéler le nombre de chiffres attendu.
+          maxLength={8}
         />
       )}
 
