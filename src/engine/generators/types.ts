@@ -85,6 +85,16 @@ export interface DecimalInputExercise {
   decimals: number
 }
 
+/** Compléter la symétrie : une moitié est donnée, l'enfant remplit le miroir. */
+export interface SymmetryExercise {
+  type: 'symmetry'
+  prompt: string
+  cols: number
+  rows: number
+  given: number[] // cellules déjà remplies (moitié gauche), encodées r*cols + c
+  target: number[] // cellules attendues (moitié droite), encodées de même
+}
+
 /** Problème rédigé : énoncé, réponse, indices en 2 temps, explication. */
 export interface ProblemExercise {
   type: 'problem'
@@ -106,6 +116,7 @@ export type Exercise =
   | MoneyInputExercise
   | MoneyComposeExercise
   | DecimalInputExercise
+  | SymmetryExercise
   | ProblemExercise
 
 /** Réponse fournie par l'enfant selon le type d'exercice. */
@@ -137,6 +148,8 @@ export function isAnswerCorrect(exercise: Exercise, response: Answer): boolean {
       return response === exercise.cents
     case 'decimalinput':
       return response === exercise.value
+    case 'symmetry':
+      return Array.isArray(response) && sameOrder([...response].sort((a, b) => a - b), [...exercise.target].sort((a, b) => a - b))
     case 'problem':
       return response === exercise.answer
   }

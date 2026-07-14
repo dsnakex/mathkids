@@ -12,6 +12,7 @@ import { ClockSetter } from './ClockSetter'
 import { MoneyPad } from './MoneyPad'
 import { MoneyTray } from './MoneyTray'
 import { DecimalPad } from './DecimalPad'
+import { SymmetryGrid } from './SymmetryGrid'
 import { ProblemAnswer } from './ProblemAnswer'
 import { VisualHintView } from './VisualHintView'
 import { parseEuros } from '@/engine/generators/money'
@@ -182,6 +183,8 @@ export function ExerciseView({
           status={status}
           onValidate={(text) => commit(parseDecimal(text, exercise.decimals) === exercise.value)}
         />
+      ) : exercise.type === 'symmetry' ? (
+        <SymmetryGrid key={resetKey} exercise={exercise} status={status} onValidate={commit} />
       ) : exercise.type === 'problem' ? (
         <ProblemAnswer key={resetKey} exercise={exercise} status={status} onCommit={commit} />
       ) : (

@@ -29,6 +29,7 @@ import {
   genSolideVsForme,
   genFacesCube,
   genCompterFaces,
+  genSymmetry,
 } from './geometry'
 import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
 import type {
@@ -688,6 +689,9 @@ function genVisual(params: Params, rng: Rng): Exercise {
       return genClockSet(params, rng)
     case 'money-compose':
       return genMoneyCompose(params, rng)
+    case 'completer-symetrie':
+    case 'tracer-symetrique':
+      return genSymmetry(params, rng)
   }
   throw new UnsupportedSpecError('visual', params)
 }

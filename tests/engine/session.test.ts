@@ -136,6 +136,8 @@ describe('composition de session — assemblage complet', () => {
         expect(isAnswerCorrect(ex, ex.cents)).toBe(true)
       } else if (ex.type === 'decimalinput') {
         expect(isAnswerCorrect(ex, ex.value)).toBe(true)
+      } else if (ex.type === 'symmetry') {
+        expect(isAnswerCorrect(ex, ex.target)).toBe(true)
       } else {
         expect(isAnswerCorrect(ex, ex.answer)).toBe(true)
       }

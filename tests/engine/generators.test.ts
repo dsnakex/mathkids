@@ -25,10 +25,15 @@ describe('générateurs — invariants structurels (tout le curriculum CP)', () 
   it('couvre les types de gabarits attendus (les 4 de base + ordre)', () => {
     // Les gabarits « visual » (compter, droite graduée, horloge) produisent des
     // exercices de type « qcm » ; « dragdrop ranger » produit des « order ».
+    // Sur-ensemble (le CP s'enrichit : monnaie, géométrie… ajoutent des types).
     const types = new Set(SUPPORTED_SPECS.map((s) => s.type))
-    expect(types).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap', 'visual', 'dragdrop', 'problem']))
+    for (const t of ['qcm', 'input', 'truefalse', 'gap', 'visual', 'dragdrop', 'problem']) {
+      expect(types.has(t), `type de gabarit ${t}`).toBe(true)
+    }
     const exTypes = new Set(SUPPORTED_SPECS.map((s) => generateExercise(s, mulberry32(1)).type))
-    expect(exTypes).toEqual(new Set(['qcm', 'input', 'truefalse', 'gap', 'order', 'problem']))
+    for (const t of ['qcm', 'input', 'truefalse', 'gap', 'order', 'problem']) {
+      expect(exTypes.has(t), `type d'exercice ${t}`).toBe(true)
+    }
   })
 
   it('génère, pour CHAQUE gabarit supporté et 30 tirages, un exercice valide', () => {
@@ -75,6 +80,8 @@ function assertExactlyOneAnswer(ex: Exercise, spec: GeneratorSpec): void {
     expect(ex.cents).toBeGreaterThanOrEqual(0)
   } else if (ex.type === 'decimalinput') {
     expect(Number.isInteger(ex.value)).toBe(true)
+  } else if (ex.type === 'symmetry') {
+    expect(ex.target.length).toBe(ex.given.length)
   } else if (ex.type === 'problem') {
     expect(Number.isInteger(ex.answer)).toBe(true)
   } else {

@@ -3,8 +3,8 @@
 // perpendiculaires / parallèles. Les exercices s'appuient sur un indice visuel
 // (figure ou droites) rendu en SVG.
 
-import { randInt, pick, shuffle, buildNumericChoices, type Rng } from './rng'
-import type { QcmExercise, TrueFalseExercise } from './types'
+import { randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
+import type { QcmExercise, SymmetryExercise, TrueFalseExercise } from './types'
 
 export interface Shape2D {
   id: string
@@ -116,6 +116,35 @@ export function genRayonDiametre(_params: Params, rng: Rng): TrueFalseExercise {
     type: 'truefalse',
     prompt: `Si le rayon mesure ${rayon} cm, alors le diamètre mesure ${claimed} cm.`,
     answer: claimed === rayon * 2,
+  }
+}
+
+// --- Symétrie axiale (compléter le miroir) -----------------------------------
+
+/** Compléter une figure pour qu'elle soit symétrique par rapport à l'axe vertical central. */
+export function genSymmetry(params: Params, rng: Rng): SymmetryExercise {
+  const cols = 6
+  const rows = 5
+  const half = cols / 2 // colonnes 0..2 (gauche), 3..5 (droite)
+  const cellsCount = typeof params.cells === 'number' ? (params.cells as number) : 3
+
+  // Cellules possibles de la moitié gauche.
+  const leftCells: number[] = []
+  for (let r = 0; r < rows; r++) for (let c = 0; c < half; c++) leftCells.push(r * cols + c)
+
+  const given = sample(rng, leftCells, Math.min(cellsCount, leftCells.length))
+  const target = given.map((cell) => {
+    const r = Math.floor(cell / cols)
+    const c = cell % cols
+    return r * cols + (cols - 1 - c) // colonne miroir
+  })
+  return {
+    type: 'symmetry',
+    prompt: "Complète la figure pour qu'elle soit symétrique.",
+    cols,
+    rows,
+    given,
+    target,
   }
 }
 

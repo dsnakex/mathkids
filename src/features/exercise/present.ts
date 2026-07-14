@@ -28,6 +28,8 @@ export function consigne(exercise: Exercise): string {
       return 'Compose la bonne somme 🐾'
     case 'decimalinput':
       return 'Écris le nombre décimal 🐾'
+    case 'symmetry':
+      return 'Complète la symétrie 🐾'
     case 'problem':
       return 'Lis bien et calcule 🐾'
   }
@@ -52,6 +54,8 @@ export function correctAnswerText(exercise: Exercise): string {
       return formatEuros(exercise.cents)
     case 'decimalinput':
       return formatDecimalFr(exercise.value, exercise.decimals)
+    case 'symmetry':
+      return 'la figure symétrique'
     case 'problem':
       return exercise.answerFormat === 'euros'
         ? formatEuros(exercise.answer)

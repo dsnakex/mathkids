@@ -89,6 +89,24 @@ describe('géométrie — droites', () => {
   })
 })
 
+describe('géométrie — symétrie à compléter', () => {
+  it('les cellules cibles sont le miroir des cellules données', () => {
+    const spec: GeneratorSpec = { type: 'visual', params: { kind: 'completer-symetrie', cells: 4 } }
+    for (let seed = 0; seed < 40; seed++) {
+      const ex = generateExercise(spec, mulberry32(seed))
+      if (ex.type !== 'symmetry') throw new Error('attendu symmetry')
+      const half = ex.cols / 2
+      expect(ex.given.length).toBe(ex.target.length)
+      for (const cell of ex.given) {
+        const r = Math.floor(cell / ex.cols)
+        const c = cell % ex.cols
+        expect(c).toBeLessThan(half) // données à gauche
+        expect(ex.target).toContain(r * ex.cols + (ex.cols - 1 - c)) // miroir à droite
+      }
+    }
+  })
+})
+
 describe('géométrie — support', () => {
   it('canGenerate vrai pour les QCM géométrie', () => {
     for (const skill of [
