@@ -14,6 +14,7 @@ export type VisualHint =
   | { kind: 'coins'; units: number[] } // pièces/billets posés (valeurs en centimes)
   | { kind: 'shape'; shape: string } // figure plane à reconnaître
   | { kind: 'lines'; relation: 'perpendiculaires' | 'paralleles' | 'secantes' } // deux droites
+  | { kind: 'solid'; solid: string } // solide à reconnaître
 
 /** QCM : 2 à 4 propositions, exactement une correcte (`correctIndex`). */
 export interface QcmExercise {

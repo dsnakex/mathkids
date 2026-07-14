@@ -26,10 +26,10 @@ describe('composeSession — notion imposée (choix depuis la carte)', () => {
       now,
       rng: mulberry32(2),
       total: 6,
-      currentNotionId: 'solides', // non jouable (géométrie « contenu »)
+      currentNotionId: 'quadrillage', // non jouable (repérage sur quadrillage)
     })
     // Pas de plantage, une session est tout de même composée.
     expect(session.length).toBe(6)
-    expect(session.every((s) => s.notionId !== 'solides')).toBe(true)
+    expect(session.every((s) => s.notionId !== 'quadrillage')).toBe(true)
   })
 })

@@ -1,6 +1,7 @@
 // Rendu SVG des figures planes et des paires de droites (indices de géométrie).
 
 import type { ReactNode } from 'react'
+import { SOLIDS_3D } from '@/engine/generators/geometry'
 
 const FILL = '#F7D9CB'
 const STROKE = '#C25A38'
@@ -50,6 +51,15 @@ export function ShapeView({ shape }: { shape: string }) {
         </Frame>
       )
   }
+}
+
+export function SolidView({ solid }: { solid: string }) {
+  const s = SOLIDS_3D.find((x) => x.id === solid) ?? SOLIDS_3D[0]
+  return (
+    <span role="img" aria-label={s.name} className="text-[80px] leading-none">
+      {s.emoji}
+    </span>
+  )
 }
 
 export function LinesView({ relation }: { relation: 'perpendiculaires' | 'paralleles' | 'secantes' }) {

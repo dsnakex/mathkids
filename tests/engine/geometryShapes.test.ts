@@ -1,9 +1,10 @@
 import type { GeneratorSpec } from '@/content/schema'
 import { mulberry32 } from '@/engine/generators/rng'
 import { generateExercise, canGenerate } from '@/engine/generators'
-import { SHAPES_2D } from '@/engine/generators/geometry'
+import { SHAPES_2D, SOLIDS_3D } from '@/engine/generators/geometry'
 
 const shape = (id: string) => SHAPES_2D.find((s) => s.id === id)!
+const solid = (id: string) => SOLIDS_3D.find((s) => s.id === id)!
 
 describe('géométrie — reconnaître une figure', () => {
   it('la bonne réponse est le nom de la figure affichée', () => {
@@ -41,6 +42,34 @@ describe('géométrie — angle droit (vrai/faux avec figure)', () => {
     }
     expect(vrais).toBeGreaterThan(0)
     expect(faux).toBeGreaterThan(0)
+  })
+})
+
+describe('géométrie — solides', () => {
+  it('reconnaître : la bonne réponse est le nom du solide affiché', () => {
+    const spec: GeneratorSpec = { type: 'qcm', params: { skill: 'reconnaitre-solide' } }
+    for (let seed = 0; seed < 40; seed++) {
+      const ex = generateExercise(spec, mulberry32(seed))
+      if (ex.type !== 'qcm' || ex.visual?.kind !== 'solid') throw new Error('attendu qcm+solid')
+      expect(ex.choices[ex.correctIndex]).toBe(solid(ex.visual.solid).name)
+    }
+  })
+  it('compter les faces : cube/pavé = 6', () => {
+    const spec: GeneratorSpec = { type: 'qcm', params: { skill: 'compter-faces' } }
+    for (let seed = 0; seed < 40; seed++) {
+      const ex = generateExercise(spec, mulberry32(seed))
+      if (ex.type !== 'qcm' || ex.visual?.kind !== 'solid') throw new Error('attendu qcm+solid')
+      expect(Number(ex.choices[ex.correctIndex])).toBe(solid(ex.visual.solid).faces)
+    }
+  })
+  it('solide ou figure plane : la bonne réponse colle à ce qui est affiché', () => {
+    const spec: GeneratorSpec = { type: 'qcm', params: { skill: 'solide-vs-forme' } }
+    for (let seed = 0; seed < 40; seed++) {
+      const ex = generateExercise(spec, mulberry32(seed))
+      if (ex.type !== 'qcm') throw new Error('attendu qcm')
+      const expected = ex.visual?.kind === 'solid' ? 'un solide' : 'une figure plane'
+      expect(ex.choices[ex.correctIndex]).toBe(expected)
+    }
   })
 })
 

@@ -25,6 +25,10 @@ import {
   genRayonDiametre,
   genReconnaitreDroites,
   genParalleles,
+  genReconnaitreSolide,
+  genSolideVsForme,
+  genFacesCube,
+  genCompterFaces,
 } from './geometry'
 import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
 import type {
@@ -790,6 +794,12 @@ function genQcm(params: Params, rng: Rng): Exercise {
       return genReconnaitreForme(params, rng)
     case 'compter-cotes':
       return genCompterCotes(params, rng)
+    case 'reconnaitre-solide':
+      return genReconnaitreSolide(params, rng)
+    case 'solide-vs-forme':
+      return genSolideVsForme(params, rng)
+    case 'compter-faces':
+      return genCompterFaces(params, rng)
     case 'reconnaitre-perpendiculaires':
     case 'reconnaitre-droites':
       return genReconnaitreDroites(params, rng)
@@ -847,6 +857,8 @@ function genTrueFalse(params: Params, rng: Rng): Exercise {
       return genAngleDroit(params, rng)
     case 'rayon-diametre':
       return genRayonDiametre(params, rng)
+    case 'faces-cube':
+      return genFacesCube(params, rng)
     case 'paralleles':
       return genParalleles(params, rng)
   }

@@ -119,6 +119,84 @@ export function genRayonDiametre(_params: Params, rng: Rng): TrueFalseExercise {
   }
 }
 
+// --- Solides -----------------------------------------------------------------
+
+export interface Solid3D {
+  id: string
+  name: string
+  faces: number // faces planes (cube/pavé = 6 ; boule/cylindre : on ne compte pas)
+  emoji: string
+}
+
+export const SOLIDS_3D: Solid3D[] = [
+  { id: 'cube', name: 'un cube', faces: 6, emoji: '🧊' },
+  { id: 'pave', name: 'un pavé', faces: 6, emoji: '📦' },
+  { id: 'boule', name: 'une boule', faces: 0, emoji: '⚽' },
+  { id: 'cylindre', name: 'un cylindre', faces: 0, emoji: '🥫' },
+]
+
+/** Reconnaître un solide affiché. */
+export function genReconnaitreSolide(_params: Params, rng: Rng): QcmExercise {
+  const target = pick(rng, SOLIDS_3D)
+  const { choices, correctIndex } = stringChoices(
+    rng,
+    target.name,
+    SOLIDS_3D.map((s) => s.name),
+    Math.min(4, SOLIDS_3D.length),
+  )
+  return {
+    type: 'qcm',
+    prompt: 'Quel est ce solide ?',
+    choices,
+    correctIndex,
+    visual: { kind: 'solid', solid: target.id },
+  }
+}
+
+/** Solide ou figure plane ? (on affiche l'un ou l'autre). */
+export function genSolideVsForme(_params: Params, rng: Rng): QcmExercise {
+  const isSolid = rng() < 0.5
+  const visual: QcmExercise['visual'] = isSolid
+    ? { kind: 'solid', solid: pick(rng, SOLIDS_3D).id }
+    : { kind: 'shape', shape: pick(rng, SHAPES_2D).id }
+  const correct = isSolid ? 'un solide' : 'une figure plane'
+  const choices = shuffle(rng, ['un solide', 'une figure plane'])
+  return {
+    type: 'qcm',
+    prompt: 'Est-ce un solide ou une figure plane ?',
+    choices,
+    correctIndex: choices.indexOf(correct),
+    visual,
+  }
+}
+
+/** Vrai/Faux : le cube a 6 faces. */
+export function genFacesCube(_params: Params, rng: Rng): TrueFalseExercise {
+  const claimed = rng() < 0.5 ? 6 : pick(rng, [4, 5, 8])
+  return {
+    type: 'truefalse',
+    prompt: `Le cube a ${claimed} faces.`,
+    answer: claimed === 6,
+    visual: { kind: 'solid', solid: 'cube' },
+  }
+}
+
+/** Compter les faces d'un solide (cube/pavé). */
+export function genCompterFaces(_params: Params, rng: Rng): QcmExercise {
+  const target = pick(
+    rng,
+    SOLIDS_3D.filter((s) => s.faces > 0),
+  )
+  const { choices, correctIndex } = buildNumericChoices(rng, target.faces, [4, 5, 8, 12], 4)
+  return {
+    type: 'qcm',
+    prompt: 'Combien de faces a ce solide ?',
+    choices: choices.map(String),
+    correctIndex,
+    visual: { kind: 'solid', solid: target.id },
+  }
+}
+
 // --- Droites : perpendiculaires / parallèles ---------------------------------
 
 type Relation = 'perpendiculaires' | 'paralleles' | 'secantes'
