@@ -5,6 +5,7 @@
 import type { VisualHint } from '@/engine/generators/types'
 import { ClockFace } from './ClockFace'
 import { MoneyCoins } from './MoneyCoins'
+import { ShapeView, LinesView } from './ShapeView'
 
 function Count({ objects }: { objects: number }) {
   return (
@@ -56,5 +57,9 @@ export function VisualHintView({ hint }: { hint: VisualHint }) {
       )
     case 'coins':
       return <MoneyCoins units={hint.units} />
+    case 'shape':
+      return <ShapeView shape={hint.shape} />
+    case 'lines':
+      return <LinesView relation={hint.relation} />
   }
 }

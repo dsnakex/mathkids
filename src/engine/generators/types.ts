@@ -12,6 +12,8 @@ export type VisualHint =
   | { kind: 'numberline'; max: number; step: number; marker: number } // repère à lire
   | { kind: 'clock'; hours: number; minutes: number } // heure affichée (petite aiguille continue)
   | { kind: 'coins'; units: number[] } // pièces/billets posés (valeurs en centimes)
+  | { kind: 'shape'; shape: string } // figure plane à reconnaître
+  | { kind: 'lines'; relation: 'perpendiculaires' | 'paralleles' | 'secantes' } // deux droites
 
 /** QCM : 2 à 4 propositions, exactement une correcte (`correctIndex`). */
 export interface QcmExercise {
@@ -34,6 +36,7 @@ export interface TrueFalseExercise {
   type: 'truefalse'
   prompt: string
   answer: boolean
+  visual?: VisualHint // support visuel optionnel (figure, droites…)
 }
 
 /** Complète le trou : l'énoncé contient « ? », `answer` est l'entier manquant. */

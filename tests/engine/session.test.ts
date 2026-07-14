@@ -1,4 +1,5 @@
 import { cp } from '@/content/curricula'
+import { allNotions } from '@/content/graph'
 import { mulberry32 } from '@/engine/generators/rng'
 import { isAnswerCorrect } from '@/engine/generators/types'
 import { initialMastery, type MasteryState } from '@/engine/adaptive'
@@ -9,6 +10,7 @@ import {
   currentNotion,
   discoveryNotions,
   reviewNotions,
+  isNotionGeneratable,
   DEFAULT_TARGET_TIER,
   type LearnerProgress,
 } from '@/engine/session'
@@ -147,14 +149,15 @@ describe('composition de session — assemblage complet', () => {
   })
 
   it('sans rien à réviser ni découvrir, remplit la session avec la notion en cours', () => {
-    // On démarre TOUTES les notions jouables sans prérequis (« nombres-jusqu-20 »
-    // et « temps ») : plus aucune découverte possible (les dépendantes exigent
-    // que leurs prérequis soient acquis). La notion « en cours » retenue est la
-    // première dans l'ordre du curriculum, « nombres-jusqu-20 ».
-    const solo: LearnerProgress = {
-      mastery: { 'nombres-jusqu-20': initialMastery(), temps: initialMastery() },
-      reviews: {},
+    // On démarre TOUTES les notions jouables sans prérequis : plus aucune
+    // découverte possible (les dépendantes exigent que leurs prérequis soient
+    // acquis). La notion « en cours » retenue est la première du curriculum,
+    // « nombres-jusqu-20 ». (Robuste à l'ajout de nouvelles notions sans prérequis.)
+    const mastery: LearnerProgress['mastery'] = {}
+    for (const n of allNotions(cp)) {
+      if (isNotionGeneratable(n) && n.prerequisites.length === 0) mastery[n.id] = initialMastery()
     }
+    const solo: LearnerProgress = { mastery, reviews: {} }
     expect(discoveryNotions(cp, solo, DEFAULT_TARGET_TIER)).toHaveLength(0)
     const session = composeSession(cp, solo, { total: 8, now: T0, rng: mulberry32(3) })
     expect(session).toHaveLength(8)

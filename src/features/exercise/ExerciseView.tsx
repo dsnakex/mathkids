@@ -133,7 +133,7 @@ export function ExerciseView({
         >
           {exercise.prompt}
         </div>
-        {exercise.type === 'qcm' && exercise.visual ? (
+        {(exercise.type === 'qcm' || exercise.type === 'truefalse') && exercise.visual ? (
           <VisualHintView hint={exercise.visual} />
         ) : null}
       </div>

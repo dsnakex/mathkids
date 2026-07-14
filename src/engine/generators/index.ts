@@ -17,6 +17,15 @@ import { formatDecimalFr } from './decimal'
 import { generateProblem, pickProblem } from './problem'
 import { genClockRead, genClockSet } from './clock'
 import { genMoneyCount, genMoneyConvert, genMoneyChange, genMoneyCompose } from './money'
+import {
+  genReconnaitreForme,
+  genCompterCotes,
+  genProprietesForme,
+  genAngleDroit,
+  genRayonDiametre,
+  genReconnaitreDroites,
+  genParalleles,
+} from './geometry'
 import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
 import type {
   DecimalInputExercise,
@@ -775,6 +784,15 @@ function genQcm(params: Params, rng: Rng): Exercise {
       return genDecimalAdd(params, rng)
     case 'proba-vocab':
       return genProbaVocab(params, rng)
+    case 'reconnaitre-forme':
+    case 'reconnaitre-cercle':
+    case 'reconnaitre-triangle':
+      return genReconnaitreForme(params, rng)
+    case 'compter-cotes':
+      return genCompterCotes(params, rng)
+    case 'reconnaitre-perpendiculaires':
+    case 'reconnaitre-droites':
+      return genReconnaitreDroites(params, rng)
     case 'money-count':
       return genMoneyCount(params, rng)
     case 'clock-read':
@@ -820,6 +838,17 @@ function genTrueFalse(params: Params, rng: Rng): Exercise {
       return genDoubleMoitieTrueFalse(params, rng)
     case 'multiple':
       return genMultiple(params, rng)
+    case 'proprietes-forme':
+    case 'proprietes-carre-rectangle':
+    case 'proprietes-quadrilatere':
+      return genProprietesForme(params, rng)
+    case 'angle-droit':
+    case 'reconnaitre-angle-droit':
+      return genAngleDroit(params, rng)
+    case 'rayon-diametre':
+      return genRayonDiametre(params, rng)
+    case 'paralleles':
+      return genParalleles(params, rng)
   }
   throw new UnsupportedSpecError('truefalse', params)
 }

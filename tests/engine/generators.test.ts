@@ -250,7 +250,7 @@ describe('générateurs — gabarits non supportés', () => {
   })
 
   it('canGenerate est faux pour un skill non implémenté', () => {
-    expect(canGenerate({ type: 'qcm', params: { skill: 'reconnaitre-forme' } })).toBe(false)
+    expect(canGenerate({ type: 'qcm', params: { skill: 'reconnaitre-solide' } })).toBe(false)
   })
 
   it('generateExercise lève UnsupportedSpecError sur un gabarit non supporté', () => {
