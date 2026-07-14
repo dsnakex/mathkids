@@ -216,7 +216,7 @@
             { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "plus-long" } }] },
             { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "mesurer-cm", "max": 10 } }] },
             { "level": 4, "generators": [{ "type": "input", "params": { "skill": "mesurer-cm", "max": 20 } }] },
-            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger-longueurs" } }] }
+            { "level": 5, "generators": [{ "type": "input", "params": { "skill": "mesurer-cm", "max": 30 } }] }
           ]
         },
         {
@@ -259,9 +259,9 @@
           "tiers": [
             { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "positions", "vocab": ["gauche", "droite"] } }] },
             { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "positions", "vocab": ["dessus", "dessous"] } }] },
-            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "positions", "vocab": ["devant", "derriere"] } }] },
-            { "level": 4, "generators": [{ "type": "dragdrop", "params": { "kind": "placer-position" } }] },
-            { "level": 5, "generators": [{ "type": "visual", "params": { "kind": "suivre-trajet" } }] }
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "positions" } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "reperer-case", "cols": 3, "rows": 3 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "reperer-case", "cols": 4, "rows": 4 } }] }
           ]
         },
         {
@@ -296,11 +296,11 @@
           "prerequisites": ["reperage-spatial"],
           "lesson": "cp.quadrillage",
           "tiers": [
-            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "reperer-case" } }] },
-            { "level": 2, "generators": [{ "type": "dragdrop", "params": { "kind": "placer-case" } }] },
-            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "reproduire-quadrillage", "taille": 3 } }] },
-            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "reproduire-quadrillage", "taille": 4 } }] },
-            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "reproduire-trace" } }] }
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "reperer-case", "cols": 3, "rows": 3 } }] },
+            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "reperer-case", "cols": 4, "rows": 3 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "reperer-case", "cols": 4, "rows": 4 } }] },
+            { "level": 4, "generators": [{ "type": "qcm", "params": { "skill": "reperer-case", "cols": 5, "rows": 4 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "reperer-case", "cols": 6, "rows": 5 } }] }
           ]
         }
       ]

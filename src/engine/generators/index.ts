@@ -30,6 +30,11 @@ import {
   genFacesCube,
   genCompterFaces,
   genSymmetry,
+  genComparerLongueur,
+  genMesurerCm,
+  genConvertirMCm,
+  genPositions,
+  genRepererCase,
 } from './geometry'
 import { mulberry32, randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
 import type {
@@ -692,6 +697,10 @@ function genVisual(params: Params, rng: Rng): Exercise {
     case 'completer-symetrie':
     case 'tracer-symetrique':
       return genSymmetry(params, rng)
+    case 'mesurer-cm':
+      return genMesurerCm('qcm', params, rng)
+    case 'reperer-case':
+      return genRepererCase(params, rng)
   }
   throw new UnsupportedSpecError('visual', params)
 }
@@ -748,6 +757,10 @@ function genInput(params: Params, rng: Rng): Exercise {
       return genDecimalInput('+', params, rng)
     case 'decimal-sub-input':
       return genDecimalInput('-', params, rng)
+    case 'mesurer-cm':
+      return genMesurerCm('input', params, rng)
+    case 'convertir-m-cm':
+      return genConvertirMCm('input', params, rng)
     case 'pourcentage':
       return genPourcentage('input', params, rng)
     case 'priorite':
@@ -807,6 +820,17 @@ function genQcm(params: Params, rng: Rng): Exercise {
     case 'reconnaitre-perpendiculaires':
     case 'reconnaitre-droites':
       return genReconnaitreDroites(params, rng)
+    case 'comparer-longueur':
+    case 'plus-long':
+      return genComparerLongueur(params, rng)
+    case 'mesurer-cm':
+      return genMesurerCm('qcm', params, rng)
+    case 'convertir-m-cm':
+      return genConvertirMCm('qcm', params, rng)
+    case 'positions':
+      return genPositions(params, rng)
+    case 'reperer-case':
+      return genRepererCase(params, rng)
     case 'money-count':
       return genMoneyCount(params, rng)
     case 'clock-read':

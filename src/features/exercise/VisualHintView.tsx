@@ -5,7 +5,15 @@
 import type { VisualHint } from '@/engine/generators/types'
 import { ClockFace } from './ClockFace'
 import { MoneyCoins } from './MoneyCoins'
-import { ShapeView, LinesView, SolidView } from './ShapeView'
+import {
+  ShapeView,
+  LinesView,
+  SolidView,
+  RulerView,
+  BarsView,
+  PositionView,
+  GridView,
+} from './ShapeView'
 
 function Count({ objects }: { objects: number }) {
   return (
@@ -63,5 +71,13 @@ export function VisualHintView({ hint }: { hint: VisualHint }) {
       return <LinesView relation={hint.relation} />
     case 'solid':
       return <SolidView solid={hint.solid} />
+    case 'ruler':
+      return <RulerView cm={hint.cm} max={hint.max} />
+    case 'bars':
+      return <BarsView lengths={hint.lengths} />
+    case 'position':
+      return <PositionView where={hint.where} />
+    case 'grid':
+      return <GridView cols={hint.cols} rows={hint.rows} col={hint.col} row={hint.row} />
   }
 }

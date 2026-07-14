@@ -164,7 +164,7 @@
             { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "mesurer-cm", "max": 20 } }] },
             { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "convertir-m-cm" } }] },
             { "level": 4, "generators": [{ "type": "input", "params": { "skill": "mesurer-cm", "max": 30 } }] },
-            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "ranger-longueurs" } }] }
+            { "level": 5, "generators": [{ "type": "input", "params": { "skill": "convertir-m-cm" } }] }
           ]
         },
         {

@@ -15,6 +15,10 @@ export type VisualHint =
   | { kind: 'shape'; shape: string } // figure plane à reconnaître
   | { kind: 'lines'; relation: 'perpendiculaires' | 'paralleles' | 'secantes' } // deux droites
   | { kind: 'solid'; solid: string } // solide à reconnaître
+  | { kind: 'ruler'; cm: number; max: number } // trait à mesurer sur une règle
+  | { kind: 'bars'; lengths: number[] } // traits à comparer (étiquetés A, B, C…)
+  | { kind: 'position'; where: 'gauche' | 'droite' | 'dessus' | 'dessous' } // objet placé
+  | { kind: 'grid'; cols: number; rows: number; col: number; row: number } // case repérée
 
 /** QCM : 2 à 4 propositions, exactement une correcte (`correctIndex`). */
 export interface QcmExercise {

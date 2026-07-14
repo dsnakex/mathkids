@@ -26,11 +26,11 @@ describe('générateurs — invariants structurels (tout le curriculum CP)', () 
     // Les gabarits « visual » (compter, droite graduée, horloge) produisent des
     // exercices de type « qcm » ; « dragdrop ranger » produit des « order ».
     // Sur-ensemble (le CP s'enrichit : monnaie, géométrie… ajoutent des types).
-    const types = new Set(SUPPORTED_SPECS.map((s) => s.type))
+    const types: Set<string> = new Set(SUPPORTED_SPECS.map((s) => s.type))
     for (const t of ['qcm', 'input', 'truefalse', 'gap', 'visual', 'dragdrop', 'problem']) {
       expect(types.has(t), `type de gabarit ${t}`).toBe(true)
     }
-    const exTypes = new Set(SUPPORTED_SPECS.map((s) => generateExercise(s, mulberry32(1)).type))
+    const exTypes: Set<string> = new Set(SUPPORTED_SPECS.map((s) => generateExercise(s, mulberry32(1)).type))
     for (const t of ['qcm', 'input', 'truefalse', 'gap', 'order', 'problem']) {
       expect(exTypes.has(t), `type d'exercice ${t}`).toBe(true)
     }
@@ -257,7 +257,7 @@ describe('générateurs — gabarits non supportés', () => {
   })
 
   it('canGenerate est faux pour un skill non implémenté', () => {
-    expect(canGenerate({ type: 'qcm', params: { skill: 'positions' } })).toBe(false)
+    expect(canGenerate({ type: 'qcm', params: { skill: 'skill-inexistant' } })).toBe(false)
   })
 
   it('generateExercise lève UnsupportedSpecError sur un gabarit non supporté', () => {

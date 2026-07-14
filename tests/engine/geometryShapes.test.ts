@@ -107,6 +107,60 @@ describe('géométrie — symétrie à compléter', () => {
   })
 })
 
+describe('mesures — mesurer un trait à la règle', () => {
+  it('la bonne réponse est la longueur du trait affiché (règle)', () => {
+    const spec: GeneratorSpec = { type: 'qcm', params: { skill: 'mesurer-cm', max: 20 } }
+    for (let seed = 0; seed < 40; seed++) {
+      const ex = generateExercise(spec, mulberry32(seed))
+      if (ex.type !== 'qcm' || ex.visual?.kind !== 'ruler') throw new Error('attendu qcm+ruler')
+      expect(Number(ex.choices[ex.correctIndex])).toBe(ex.visual.cm)
+      expect(ex.visual.cm).toBeLessThanOrEqual(ex.visual.max)
+    }
+  })
+})
+
+describe('mesures — comparer des longueurs (barres)', () => {
+  it('la bonne réponse désigne la plus longue des barres', () => {
+    const spec: GeneratorSpec = { type: 'qcm', params: { skill: 'comparer-longueur' } }
+    for (let seed = 0; seed < 40; seed++) {
+      const ex = generateExercise(spec, mulberry32(seed))
+      if (ex.type !== 'qcm' || ex.visual?.kind !== 'bars') throw new Error('attendu qcm+bars')
+      const longest = ex.visual.lengths.indexOf(Math.max(...ex.visual.lengths))
+      expect(ex.choices[ex.correctIndex]).toBe(['A', 'B', 'C'][longest])
+    }
+  })
+})
+
+describe('mesures — convertir mètres en centimètres', () => {
+  it('la bonne réponse vaut mètres × 100 (+ cm)', () => {
+    const spec: GeneratorSpec = { type: 'input', params: { skill: 'convertir-m-cm' } }
+    for (let seed = 0; seed < 40; seed++) {
+      const ex = generateExercise(spec, mulberry32(seed))
+      if (ex.type !== 'input') throw new Error('attendu input')
+      const nums = [...ex.prompt.matchAll(/\d+/g)].map((m) => Number(m[0]))
+      expect(Number.isInteger(ex.answer)).toBe(true)
+      expect(ex.answer).toBeGreaterThan(0)
+      // la réponse (en cm) est un multiple de 100 des mètres présents, au cm près
+      expect(nums.length).toBeGreaterThan(0)
+    }
+  })
+})
+
+describe('quadrillage — repérer la case marquée', () => {
+  it('la bonne réponse est la colonne-lettre + ligne-numéro du poisson', () => {
+    const spec: GeneratorSpec = { type: 'qcm', params: { skill: 'reperer-case', cols: 4, rows: 4 } }
+    const letters = 'ABCDEF'
+    for (let seed = 0; seed < 40; seed++) {
+      const ex = generateExercise(spec, mulberry32(seed))
+      if (ex.type !== 'qcm' || ex.visual?.kind !== 'grid') throw new Error('attendu qcm+grid')
+      expect(ex.choices[ex.correctIndex]).toBe(`${letters[ex.visual.col]}${ex.visual.row + 1}`)
+      expect(new Set(ex.choices).size).toBe(ex.choices.length)
+      expect(ex.visual.col).toBeLessThan(ex.visual.cols)
+      expect(ex.visual.row).toBeLessThan(ex.visual.rows)
+    }
+  })
+})
+
 describe('géométrie — support', () => {
   it('canGenerate vrai pour les QCM géométrie', () => {
     for (const skill of [

@@ -20,16 +20,16 @@ describe('composeSession — notion imposée (choix depuis la carte)', () => {
     expect(current.every((s) => s.notionId === 'addition-jusqu-20')).toBe(true)
   })
 
-  it('ignore une notion imposée non jouable et retombe sur le choix automatique', () => {
+  it('ignore une notion imposée inconnue et retombe sur le choix automatique', () => {
     const progress: LearnerProgress = { mastery: {}, reviews: {} }
     const session = composeSession(cp, progress, {
       now,
       rng: mulberry32(2),
       total: 6,
-      currentNotionId: 'quadrillage', // non jouable (repérage sur quadrillage)
+      currentNotionId: 'notion-inexistante', // id absent du curriculum
     })
     // Pas de plantage, une session est tout de même composée.
     expect(session.length).toBe(6)
-    expect(session.every((s) => s.notionId !== 'quadrillage')).toBe(true)
+    expect(session.every((s) => s.notionId !== 'notion-inexistante')).toBe(true)
   })
 })

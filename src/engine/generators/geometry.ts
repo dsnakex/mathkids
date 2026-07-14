@@ -4,7 +4,7 @@
 // (figure ou droites) rendu en SVG.
 
 import { randInt, pick, sample, shuffle, buildNumericChoices, type Rng } from './rng'
-import type { QcmExercise, SymmetryExercise, TrueFalseExercise } from './types'
+import type { Exercise, InputExercise, QcmExercise, SymmetryExercise, TrueFalseExercise } from './types'
 
 export interface Shape2D {
   id: string
@@ -223,6 +223,97 @@ export function genCompterFaces(_params: Params, rng: Rng): QcmExercise {
     choices: choices.map(String),
     correctIndex,
     visual: { kind: 'solid', solid: target.id },
+  }
+}
+
+// --- Longueurs et repérage ---------------------------------------------------
+
+const num = (p: Params, k: string): number | undefined =>
+  typeof p[k] === 'number' ? (p[k] as number) : undefined
+
+/** Comparer des traits : lequel est le plus long ? (choix = étiquettes A, B, C). */
+export function genComparerLongueur(_params: Params, rng: Rng): QcmExercise {
+  const lengths = sample(rng, [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 3)
+  const labels = ['A', 'B', 'C']
+  const longest = labels[lengths.indexOf(Math.max(...lengths))]
+  return {
+    type: 'qcm',
+    prompt: 'Quel trait est le plus long ?',
+    choices: labels,
+    correctIndex: labels.indexOf(longest),
+    visual: { kind: 'bars', lengths },
+  }
+}
+
+/** Mesurer un trait posé sur une règle graduée (en cm). */
+export function genMesurerCm(kind: 'input' | 'qcm', params: Params, rng: Rng): Exercise {
+  const max = num(params, 'max') ?? 15
+  const cm = randInt(rng, 1, max)
+  const prompt = 'Combien mesure ce trait ? (en cm)'
+  const visual = { kind: 'ruler' as const, cm, max }
+  if (kind === 'input') return { type: 'input', prompt, answer: cm } as InputExercise
+  const { choices, correctIndex } = buildNumericChoices(rng, cm, [cm + 1, cm - 1, cm + 2, cm - 2], 4)
+  return { type: 'qcm', prompt, choices: choices.map(String), correctIndex, visual }
+}
+
+/** Convertir mètres ↔ centimètres. */
+export function genConvertirMCm(kind: 'input' | 'qcm', _params: Params, rng: Rng): Exercise {
+  const meters = randInt(rng, 1, 9)
+  const prompt = `${meters} m = ? cm`
+  const answer = meters * 100
+  if (kind === 'input') return { type: 'input', prompt, answer } as InputExercise
+  const { choices, correctIndex } = buildNumericChoices(
+    rng,
+    answer,
+    [meters * 10, answer + 100, answer - 100, meters],
+    4,
+  )
+  return { type: 'qcm', prompt, choices: choices.map(String), correctIndex }
+}
+
+/** Repérage spatial : où est l'objet par rapport au repère ? */
+const POSITION_LABEL: Record<'gauche' | 'droite' | 'dessus' | 'dessous', string> = {
+  gauche: 'à gauche',
+  droite: 'à droite',
+  dessus: 'au-dessus',
+  dessous: 'en-dessous',
+}
+export function genPositions(_params: Params, rng: Rng): QcmExercise {
+  const where = pick(rng, ['gauche', 'droite', 'dessus', 'dessous'] as const)
+  const correct = POSITION_LABEL[where]
+  const choices = shuffle(rng, Object.values(POSITION_LABEL))
+  return {
+    type: 'qcm',
+    prompt: 'Où est le poisson par rapport à la boîte ?',
+    choices,
+    correctIndex: choices.indexOf(correct),
+    visual: { kind: 'position', where },
+  }
+}
+
+/** Quadrillage : repérer la case marquée (colonne lettre + ligne numéro). */
+export function genRepererCase(params: Params, rng: Rng): QcmExercise {
+  const cols = num(params, 'cols') ?? 4
+  const rows = num(params, 'rows') ?? 4
+  const letters = 'ABCDEF'
+  const col = randInt(rng, 0, cols - 1)
+  const row = randInt(rng, 0, rows - 1)
+  const label = (c: number, r: number) => `${letters[c]}${r + 1}`
+  const correct = label(col, row)
+
+  const others = new Set<string>()
+  while (others.size < 3) {
+    const c = randInt(rng, 0, cols - 1)
+    const r = randInt(rng, 0, rows - 1)
+    if (label(c, r) !== correct) others.add(label(c, r))
+  }
+  const choices = shuffle(rng, [correct, ...others])
+  return {
+    type: 'qcm',
+    prompt: 'Dans quelle case est le poisson ?',
+    choices,
+    correctIndex: choices.indexOf(correct),
+    visual: { kind: 'grid', cols, rows, col, row },
   }
 }
 
