@@ -89,14 +89,17 @@ function moneyChoices(cents: number, rng: Rng): { choices: string[]; correctInde
   return { choices: values.map(formatEuros), correctIndex: values.indexOf(cents) }
 }
 
+// Montant tiré selon le palier : 1 = euros entiers (CP) ; 2 = centimes seuls ;
+// 3+ = euros et centimes.
+function amountForPalier(palier: number, rng: Rng): number {
+  if (palier <= 1) return randInt(rng, 1, 20) * 100
+  if (palier === 2) return randInt(rng, 1, 19) * 5
+  return randInt(rng, 1, 5) * 100 + randInt(rng, 0, 19) * 5
+}
+
 /** Compter une somme : pièces posées → choisir le total (QCM). */
 export function genMoneyCount(params: Params, rng: Rng): QcmExercise {
-  const palier = numParam(params, 'palier') ?? 2
-  // Palier 2 : centimes seuls (5..95 c). Palier 3+ : euros et centimes.
-  const cents =
-    palier <= 2
-      ? randInt(rng, 1, 19) * 5
-      : randInt(rng, 1, 5) * 100 + randInt(rng, 0, 19) * 5
+  const cents = amountForPalier(numParam(params, 'palier') ?? 2, rng)
   const { choices, correctIndex } = moneyChoices(cents, rng)
   return {
     type: 'qcm',
@@ -120,9 +123,7 @@ export function genMoneyConvert(_params: Params, rng: Rng): MoneyInputExercise {
 
 /** Composer une somme en posant des pièces/billets (plusieurs solutions valides). */
 export function genMoneyCompose(params: Params, rng: Rng): MoneyComposeExercise {
-  const palier = numParam(params, 'palier') ?? 3
-  const cents =
-    palier <= 2 ? randInt(rng, 1, 19) * 5 : randInt(rng, 1, 5) * 100 + randInt(rng, 0, 19) * 5
+  const cents = amountForPalier(numParam(params, 'palier') ?? 3, rng)
   return { type: 'moneycompose', prompt: `Compose ${formatEuros(cents)}`, cents }
 }
 

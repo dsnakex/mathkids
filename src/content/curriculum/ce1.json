@@ -173,11 +173,11 @@
           "prerequisites": [],
           "lesson": "ce1.monnaie-rendu",
           "tiers": [
-            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "compter-euros", "max": 20 } }] },
-            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-pieces" } }] },
-            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "total-euros", "max": 50 } }] },
-            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "rendre-monnaie", "max": 20 } }] },
-            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "payer-somme", "max": 50 } }] }
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "money-count", "palier": 1 } }] },
+            { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "money-compose", "palier": 1 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "money-count", "palier": 3 } }] },
+            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "money-change" } }] },
+            { "level": 5, "generators": [{ "type": "input", "params": { "skill": "money-change" } }] }
           ]
         },
         {

@@ -225,11 +225,11 @@
           "prerequisites": ["nombres-jusqu-20"],
           "lesson": "cp.monnaie",
           "tiers": [
-            { "level": 1, "generators": [{ "type": "visual", "params": { "kind": "compter-euros", "max": 10 } }] },
-            { "level": 2, "generators": [{ "type": "qcm", "params": { "skill": "reconnaitre-pieces" } }] },
-            { "level": 3, "generators": [{ "type": "visual", "params": { "kind": "compter-euros", "max": 20 } }] },
-            { "level": 4, "generators": [{ "type": "input", "params": { "skill": "total-euros", "max": 50 } }] },
-            { "level": 5, "generators": [{ "type": "dragdrop", "params": { "kind": "payer-somme", "max": 20 } }] }
+            { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "money-count", "palier": 1 } }] },
+            { "level": 2, "generators": [{ "type": "visual", "params": { "kind": "money-compose", "palier": 1 } }] },
+            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "money-count", "palier": 1 } }] },
+            { "level": 4, "generators": [{ "type": "visual", "params": { "kind": "money-compose", "palier": 1 } }] },
+            { "level": 5, "generators": [{ "type": "qcm", "params": { "skill": "money-count", "palier": 1 } }] }
           ]
         },
         {
