@@ -99,6 +99,21 @@ export interface SymmetryExercise {
   target: number[] // cellules attendues (moitié droite), encodées de même
 }
 
+/**
+ * Schéma en barres (modèle partie-partie-tout) illustrant un problème additif.
+ * Les `parts` se juxtaposent pour former le `total` ; exactement une quantité
+ * est inconnue (son `label` vaut « ? »). Les `value` servent aux largeurs.
+ */
+export interface BarPart {
+  label: string // valeur affichée, ou « ? » si c'est l'inconnue
+  value: number // valeur numérique (pour la largeur proportionnelle)
+}
+export interface BarSchema {
+  total: number
+  totalLabel: string // valeur du tout, ou « ? » si c'est lui l'inconnue
+  parts: BarPart[]
+}
+
 /** Problème rédigé : énoncé, réponse, indices en 2 temps, explication. */
 export interface ProblemExercise {
   type: 'problem'
@@ -108,6 +123,7 @@ export interface ProblemExercise {
   hints: string[]
   explanation: string
   unit?: string
+  schema?: BarSchema // schéma en barres (problèmes additifs, jamais au CP)
 }
 
 export type Exercise =

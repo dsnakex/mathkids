@@ -5,12 +5,86 @@
 
 import type { LevelId } from '@/content/schema'
 import { problemsForLevel, type ProblemSpec } from '@/content/problems'
-import type { ProblemExercise } from './types'
+import type { BarSchema, ProblemExercise } from './types'
 import { evalExpr, evalConstraint, type Scope } from './expr'
 import { formatEuros } from './money'
 import { randInt, pick, type Rng } from './rng'
 
 const MAX_ATTEMPTS = 50
+
+/** Structures dont le modèle en barres partie-partie-tout est exact et standard. */
+const ADDITIVE_STRUCTURES = new Set([
+  'ajout',
+  'reunion',
+  'retrait',
+  'transformation',
+  'comparaison',
+  'complement',
+])
+
+const isBareTerm = (s: string): boolean => /^[a-zA-Z][a-zA-Z0-9]*$|^[0-9]+$/.test(s.trim())
+
+// Découpe « x + y » ou « x − y » en (gauche, droite, opérateur) SEULEMENT si les
+// deux membres sont des termes simples (variable ou nombre). Renvoie null sinon
+// (produit, multi-étapes, parenthèses…) → pas de schéma.
+function splitAdditive(expr: string): { left: string; right: string; op: '+' | '-' } | null {
+  let depth = 0
+  for (let i = expr.length - 1; i >= 0; i--) {
+    const c = expr[i]
+    if (c === ')') depth++
+    else if (c === '(') depth--
+    else if (depth === 0 && (c === '+' || c === '-')) {
+      const before = expr.slice(0, i).trim()
+      if (before === '') continue // signe unaire
+      const last = before[before.length - 1]
+      if ('+-*/('.includes(last)) continue // opérateur unaire
+      const left = expr.slice(0, i)
+      const right = expr.slice(i + 1)
+      if (!isBareTerm(left) || !isBareTerm(right)) return null
+      return { left, right, op: c }
+    }
+  }
+  return null
+}
+
+/**
+ * Construit le schéma en barres d'un problème additif à une étape à partir des
+ * valeurs tirées. Renvoie null si la structure ne s'y prête pas (produit,
+ * partage, multi-étapes) ou si l'expression n'est pas un simple « x ± y ».
+ */
+export function buildBarSchema(
+  problem: ProblemSpec,
+  scope: Scope & { answer: number },
+): BarSchema | null {
+  if (!ADDITIVE_STRUCTURES.has(problem.structure)) return null
+  const split = splitAdditive(problem.answer)
+  if (!split) return null
+  const lv = evalExpr(split.left, scope)
+  const rv = evalExpr(split.right, scope)
+  const fmt = (n: number): string =>
+    problem.answerFormat === 'euros' ? formatEuros(n) : String(n)
+
+  if (split.op === '+') {
+    // x + y = ? : le tout est l'inconnue, les deux parts sont connues.
+    return {
+      total: scope.answer,
+      totalLabel: '?',
+      parts: [
+        { label: fmt(lv), value: lv },
+        { label: fmt(rv), value: rv },
+      ],
+    }
+  }
+  // x − y = ? : le tout (x) est connu, une part (y) connue, l'autre inconnue.
+  return {
+    total: lv,
+    totalLabel: fmt(lv),
+    parts: [
+      { label: fmt(rv), value: rv },
+      { label: '?', value: scope.answer },
+    ],
+  }
+}
 
 function drawVar(spec: { min: number; max: number; step?: number }, rng: Rng): number {
   const step = spec.step ?? 1
@@ -43,8 +117,18 @@ function substitute(text: string, scope: Scope & { answer: number }): string {
   })
 }
 
+/** Options de rendu d'un problème. `barModel` active le schéma en barres (hors CP). */
+export interface RenderOptions {
+  barModel?: boolean
+}
+
 /** Construit l'exercice à partir d'un tirage déjà réalisé (substitution). */
-export function renderProblem(problem: ProblemSpec, scope: Scope & { answer: number }): ProblemExercise {
+export function renderProblem(
+  problem: ProblemSpec,
+  scope: Scope & { answer: number },
+  opts: RenderOptions = {},
+): ProblemExercise {
+  const schema = opts.barModel ? buildBarSchema(problem, scope) : null
   return {
     type: 'problem',
     prompt: substitute(problem.template, scope),
@@ -53,12 +137,17 @@ export function renderProblem(problem: ProblemSpec, scope: Scope & { answer: num
     hints: problem.hints.map((h) => substitute(h, scope)),
     explanation: substitute(problem.explanation, scope),
     unit: problem.unit,
+    ...(schema ? { schema } : {}),
   }
 }
 
 /** Produit un exercice « problème » prêt à afficher (énoncé, indices, explication). */
-export function generateProblem(problem: ProblemSpec, rng: Rng): ProblemExercise {
-  return renderProblem(problem, drawInstance(problem, rng))
+export function generateProblem(
+  problem: ProblemSpec,
+  rng: Rng,
+  opts: RenderOptions = {},
+): ProblemExercise {
+  return renderProblem(problem, drawInstance(problem, rng), opts)
 }
 
 // --- Branchement des GeneratorSpec « problem » sur la banque -----------------

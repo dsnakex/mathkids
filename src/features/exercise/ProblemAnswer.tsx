@@ -8,6 +8,7 @@ import { parseEuros } from '@/engine/generators/money'
 import { Button } from '@/components/Button'
 import { NumberPad } from './NumberPad'
 import { MoneyPad } from './MoneyPad'
+import { BarSchemaView } from './BarSchemaView'
 
 type ProblemAnswerProps = {
   exercise: ProblemExercise
@@ -22,11 +23,16 @@ export function ProblemAnswer({ exercise, status, onCommit }: ProblemAnswerProps
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Indices déjà révélés. */}
+      {/* Indices déjà révélés : le 1er montre le schéma en barres (s'il existe). */}
       {revealed > 0 ? (
         <ul className="flex flex-col gap-1.5">
           {exercise.hints.slice(0, revealed).map((hint, i) => (
             <li key={i} className="rounded-card bg-gold/25 px-3 py-2 text-base font-bold text-ink">
+              {i === 0 && exercise.schema ? (
+                <span className="mb-1.5 flex justify-center">
+                  <BarSchemaView schema={exercise.schema} />
+                </span>
+              ) : null}
               💡 {hint}
             </li>
           ))}

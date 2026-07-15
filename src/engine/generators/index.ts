@@ -863,7 +863,8 @@ function genProblem(params: Params, rng: Rng): Exercise {
   }
   const problem = pickProblem(level as LevelId, structure, etapes, rng)
   if (!problem) throw new UnsupportedSpecError('problem', params)
-  return generateProblem(problem, rng)
+  // Schéma en barres dès le CE1 (le programme 2025 l'exclut au CP).
+  return generateProblem(problem, rng, { barModel: level !== 'cp' })
 }
 
 function genTrueFalse(params: Params, rng: Rng): Exercise {
