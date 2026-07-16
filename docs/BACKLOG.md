@@ -1,6 +1,15 @@
 # Backlog — MathKids
 
-À jour au 12/07/2026. L'app est déployée sur Vercel ; ce fichier liste ce qui reste, par priorité. Claude Code : traiter dans l'ordre, un chantier = un commit.
+À jour au 16/07/2026. L'app est déployée sur Vercel ; ce fichier liste ce qui reste, par priorité. Claude Code : traiter dans l'ordre, un chantier = un commit.
+
+## ✅ Compléments SPEC (juillet 2026) — TOUT FAIT
+
+8. **Schéma en barres visuel** — dessiné comme 1er indice des problèmes additifs (CE1+, jamais au CP) : `BarSchemaView`, moteur `buildBarSchema`.
+9. **Rappels inter-niveaux** — les notions fragiles du niveau précédent (mission découverte) remontent réellement en rappel (`reviewNotions` résout tous niveaux).
+10. **Accessibilité (SPEC §9)** — espace parent, « Affichage » : police OpenDyslexic embarquée + texte agrandi, persistés par appareil.
+11. **Mini-jeu calcul mental (SPEC §7)** — « Défi calcul » depuis la carte : zen par défaut (seul mode CP-CE1), course douce 1 min dès le CE2, banque JSON par niveau.
+
+**Il ne reste plus de chantier ouvert.** Pistes futures : v2 monde Grande Section (SPECIFICATIONS §10), retours de vrais enfants.
 
 ## P1 — Retours de test (UX)
 
