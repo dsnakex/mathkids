@@ -10,6 +10,7 @@
 // donnée (curriculum) et reste pur (rng et instant injectés).
 
 import { allNotions } from '@/content/graph'
+import { findNotion } from '@/content/curricula'
 import type { Curriculum, Notion } from '@/content/schema'
 import { isNotionAcquired, type MasteryState } from './adaptive'
 import { canGenerate, generateExercise, type Exercise } from './generators'
@@ -114,14 +115,23 @@ export function discoveryNotions(
   )
 }
 
-/** Notions « rappel » : dues à l'instant `now` et jouables. */
+/**
+ * Notions « rappel » : dues à l'instant `now` et jouables. Les notions dues qui
+ * n'appartiennent pas au curriculum courant (ex. fragiles du niveau précédent,
+ * détectées par la mission découverte) sont résolues tous niveaux confondus.
+ */
 export function reviewNotions(
   curriculum: Curriculum,
   progress: LearnerProgress,
   now: number,
 ): Notion[] {
-  const due = new Set(dueNotions(progress.reviews, now))
-  return allNotions(curriculum).filter((n) => due.has(n.id) && isNotionGeneratable(n))
+  const due = dueNotions(progress.reviews, now)
+  const inLevel = new Set(allNotions(curriculum).map((n) => n.id))
+  return due
+    .map((id) => (inLevel.has(id)
+      ? allNotions(curriculum).find((n) => n.id === id)
+      : findNotion(id)))
+    .filter((n): n is Notion => n !== undefined && isNotionGeneratable(n))
 }
 
 // --- Répartition des créneaux 60 / 25 / 15 -----------------------------------
