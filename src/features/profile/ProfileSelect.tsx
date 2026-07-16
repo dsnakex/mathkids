@@ -15,6 +15,7 @@ type ProfileSelectProps = {
   onAddProfile?: () => void
   onOpenParent?: () => void
   onAbout?: () => void
+  onLegal?: () => void
 }
 
 // Écran d'accueil de l'app : choix du profil (« Qui joue aujourd'hui ? »).
@@ -26,6 +27,7 @@ export function ProfileSelect({
   onAddProfile = () => {},
   onOpenParent = () => {},
   onAbout = () => {},
+  onLegal = () => {},
 }: ProfileSelectProps) {
   return (
     <main className="flex min-h-full flex-col items-center justify-center gap-4 bg-cream p-6 text-center font-sans text-ink">
@@ -63,6 +65,14 @@ export function ProfileSelect({
           <span aria-hidden="true">ℹ️</span> À propos
         </Button>
       </div>
+
+      {/* Mention légale discrète (pied de page d'accueil). */}
+      <p className="text-[13px] font-bold text-muted/80">
+        © 2026 Pascal D. ·{' '}
+        <button type="button" onClick={onLegal} className="underline">
+          Mentions légales
+        </button>
+      </p>
     </main>
   )
 }

@@ -35,6 +35,7 @@ const POINTS: Array<{ emoji: string; title: string; text: string }> = [
 
 export function AboutScreen() {
   const goProfiles = useAppStore((s) => s.goProfiles)
+  const goLegal = useAppStore((s) => s.goLegal)
 
   return (
     <main className="flex min-h-full flex-col items-center gap-5 bg-cream p-6 font-sans text-ink">
@@ -63,8 +64,18 @@ export function AboutScreen() {
       <div className="mt-1">
         <Button onClick={goProfiles}>Commencer 🍣</Button>
       </div>
-      <p className="pb-2 text-center text-sm font-bold text-muted">
+      <p className="text-center text-sm font-bold text-muted">
         Gratuit et sans publicité · Progression sauvegardée sur cet appareil
+      </p>
+      <p className="pb-2 text-center text-sm font-bold text-muted">
+        © 2026 Pascal D. — Tous droits réservés ·{' '}
+        <a href="mailto:mathcopain.contact@gmail.com" className="underline">
+          mathcopain.contact@gmail.com
+        </a>
+        {' · '}
+        <button type="button" onClick={goLegal} className="underline">
+          Mentions légales &amp; confidentialité
+        </button>
       </p>
     </main>
   )

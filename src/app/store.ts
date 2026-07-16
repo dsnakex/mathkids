@@ -46,6 +46,7 @@ type Screen =
   | 'parent'
   | 'mission'
   | 'about'
+  | 'legal'
   | 'minigame'
 
 interface AppState {
@@ -68,6 +69,7 @@ interface AppState {
   goShop: () => void
   goParent: () => void
   goAbout: () => void
+  goLegal: () => void
   goMinigame: () => void
   rewardMinigame: (coins: number) => Promise<void>
   refreshProfiles: () => Promise<void>
@@ -157,6 +159,10 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   goAbout() {
     set({ screen: 'about' })
+  },
+
+  goLegal() {
+    set({ screen: 'legal' })
   },
 
   goMinigame() {

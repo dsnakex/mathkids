@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "Pascal D.",
+  "license": "UNLICENSED",
   "description": "PWA d'apprentissage des mathématiques pour l'école primaire française (CP → CM2).",
   "scripts": {
     "dev": "vite",

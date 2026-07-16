@@ -1,5 +1,8 @@
 # MathKids
 
+> © 2026 Pascal D. — Tous droits réservés. Logiciel propriétaire : voir [LICENSE](LICENSE).
+> Contact : mathcopain.contact@gmail.com
+
 PWA d'apprentissage des mathématiques pour l'école primaire française (CP → CM2),
 programmes 2025-2026. 100 % locale et hors ligne : aucune donnée envoyée en ligne,
 aucune pub, aucun tracking.
@@ -62,8 +65,9 @@ Le fichier `vercel.json` gère déjà le repli SPA et le cache des assets.
 
 ## Licence
 
-[MIT](LICENSE) — © 2026 Pascal Dao. Réutilisation libre.
-Les images/sons éventuels ajoutés devront être libres de droits pour une diffusion publique.
+Logiciel **propriétaire** — © 2026 Pascal D. Tous droits réservés (voir [LICENSE](LICENSE)).
+Toute reproduction, réutilisation ou redistribution du code, des contenus pédagogiques ou des
+personnages nécessite l'accord écrit préalable de l'auteur : mathcopain.contact@gmail.com.
 
 ## Documentation
 

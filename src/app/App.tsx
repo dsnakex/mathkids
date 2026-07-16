@@ -12,6 +12,7 @@ import { ParentScreen } from '@/features/parent/ParentScreen'
 import { MissionScreen } from '@/features/mission/MissionScreen'
 import { MiniGameScreen } from '@/features/minigame/MiniGameScreen'
 import { AboutScreen } from '@/features/about/AboutScreen'
+import { LegalScreen } from '@/features/about/LegalScreen'
 import { InstallPrompt } from '@/app/InstallPrompt'
 
 // Point d'entrée de l'app. Navigation par « écran » pilotée par le store :
@@ -24,6 +25,7 @@ export default function App() {
   const goCreate = useAppStore((s) => s.goCreate)
   const goParent = useAppStore((s) => s.goParent)
   const goAbout = useAppStore((s) => s.goAbout)
+  const goLegal = useAppStore((s) => s.goLegal)
 
   useEffect(() => {
     void init()
@@ -39,6 +41,7 @@ export default function App() {
           onAddProfile={goCreate}
           onOpenParent={goParent}
           onAbout={goAbout}
+          onLegal={goLegal}
         />
       )}
       {screen === 'create' && <ProfileCreate />}
@@ -51,6 +54,7 @@ export default function App() {
       {screen === 'mission' && <MissionScreen />}
       {screen === 'minigame' && <MiniGameScreen />}
       {screen === 'about' && <AboutScreen />}
+      {screen === 'legal' && <LegalScreen />}
       <InstallPrompt />
     </>
   )
