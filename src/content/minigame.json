@@ -1,0 +1,33 @@
+{
+  "cp": [
+    { "type": "qcm", "params": { "op": "+", "max": 10 } },
+    { "type": "qcm", "params": { "op": "-", "max": 10 } },
+    { "type": "qcm", "params": { "skill": "complement", "cible": 10 } },
+    { "type": "qcm", "params": { "skill": "double", "max": 5 } }
+  ],
+  "ce1": [
+    { "type": "qcm", "params": { "op": "+", "max": 20 } },
+    { "type": "qcm", "params": { "op": "-", "max": 20 } },
+    { "type": "qcm", "params": { "op": "×", "tables": [2, 3, 4, 5] } },
+    { "type": "qcm", "params": { "skill": "double", "max": 10 } },
+    { "type": "qcm", "params": { "skill": "moitie", "max": 20 } }
+  ],
+  "ce2": [
+    { "type": "qcm", "params": { "op": "+", "max": 100 } },
+    { "type": "qcm", "params": { "op": "×", "tables": [2, 3, 4, 5, 6, 7, 8, 9] } },
+    { "type": "qcm", "params": { "op": "÷", "divisors": [2, 5, 10] } },
+    { "type": "qcm", "params": { "skill": "complement", "cible": 100 } }
+  ],
+  "cm1": [
+    { "type": "qcm", "params": { "op": "×", "tables": [3, 4, 5, 6, 7, 8, 9] } },
+    { "type": "qcm", "params": { "op": "÷", "divisors": [3, 4, 6, 7] } },
+    { "type": "qcm", "params": { "op": "+", "max": 200 } },
+    { "type": "qcm", "params": { "skill": "pourcentage", "pct": 50, "max": 100 } }
+  ],
+  "cm2": [
+    { "type": "qcm", "params": { "op": "×", "tables": [6, 7, 8, 9] } },
+    { "type": "qcm", "params": { "op": "÷", "divisors": [6, 7, 8, 9] } },
+    { "type": "qcm", "params": { "skill": "priorite", "max": 10 } },
+    { "type": "qcm", "params": { "skill": "pourcentage", "pct": 25, "max": 200 } }
+  ]
+}

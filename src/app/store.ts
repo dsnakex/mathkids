@@ -46,6 +46,7 @@ type Screen =
   | 'parent'
   | 'mission'
   | 'about'
+  | 'minigame'
 
 interface AppState {
   screen: Screen
@@ -67,6 +68,8 @@ interface AppState {
   goShop: () => void
   goParent: () => void
   goAbout: () => void
+  goMinigame: () => void
+  rewardMinigame: (coins: number) => Promise<void>
   refreshProfiles: () => Promise<void>
   addProfile: (input: NewProfile) => Promise<void>
   removeProfile: (id: string) => Promise<void>
@@ -154,6 +157,20 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   goAbout() {
     set({ screen: 'about' })
+  },
+
+  goMinigame() {
+    set({ screen: 'minigame' })
+  },
+
+  // Grains de riz gagnés au mini-jeu de calcul mental (jamais de perte).
+  async rewardMinigame(coins) {
+    const { profileId } = get()
+    if (!profileId || coins <= 0) return
+    const profile = await getProfile(profileId)
+    if (!profile) return
+    await updateProfile(profileId, { coins: (profile.coins ?? 0) + coins })
+    set({ profiles: await listProfiles() })
   },
 
   async refreshProfiles() {

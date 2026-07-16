@@ -60,6 +60,7 @@ export function MapScreen() {
   const profiles = useAppStore((s) => s.profiles)
   const selectStep = useAppStore((s) => s.selectStep)
   const goShop = useAppStore((s) => s.goShop)
+  const goMinigame = useAppStore((s) => s.goMinigame)
   const goProfiles = useAppStore((s) => s.goProfiles)
   const goParent = useAppStore((s) => s.goParent)
   const [steps, setSteps] = useState<MapStep[]>([])
@@ -107,7 +108,10 @@ export function MapScreen() {
       </ol>
 
       <div className="mt-auto flex flex-col items-center gap-2 pt-2">
-        <Button onClick={goShop}>Le comptoir du chef 🍚</Button>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Button onClick={goShop}>Le comptoir du chef 🍚</Button>
+          <Button onClick={goMinigame}>Défi calcul 🐾</Button>
+        </div>
         <div className="flex gap-4">
           <Button variant="ghost" onClick={goProfiles}>
             Changer de joueur

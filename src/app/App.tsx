@@ -10,6 +10,7 @@ import { SessionEnd } from '@/features/session/SessionEnd'
 import { ShopScreen } from '@/features/shop/ShopScreen'
 import { ParentScreen } from '@/features/parent/ParentScreen'
 import { MissionScreen } from '@/features/mission/MissionScreen'
+import { MiniGameScreen } from '@/features/minigame/MiniGameScreen'
 import { AboutScreen } from '@/features/about/AboutScreen'
 import { InstallPrompt } from '@/app/InstallPrompt'
 
@@ -48,6 +49,7 @@ export default function App() {
       {screen === 'shop' && <ShopScreen />}
       {screen === 'parent' && <ParentScreen />}
       {screen === 'mission' && <MissionScreen />}
+      {screen === 'minigame' && <MiniGameScreen />}
       {screen === 'about' && <AboutScreen />}
       <InstallPrompt />
     </>
