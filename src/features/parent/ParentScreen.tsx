@@ -5,6 +5,12 @@
 
 import { useEffect, useMemo, useState, type ChangeEvent } from 'react'
 import { useAppStore } from '@/app/store'
+import {
+  applyDisplaySettings,
+  loadDisplaySettings,
+  saveDisplaySettings,
+  type DisplaySettings,
+} from '@/app/settings'
 import { curriculumFor } from '@/content/curricula'
 import { mulberry32 } from '@/engine/generators/rng'
 import type { LearnerProgress } from '@/engine/session'
@@ -80,6 +86,46 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
         </Button>
       </div>
     </main>
+  )
+}
+
+// --- Réglages d'affichage (accessibilité, pour tout l'appareil) ----------------
+
+function DisplaySection() {
+  const [display, setDisplay] = useState<DisplaySettings>(loadDisplaySettings)
+
+  const update = (patch: Partial<DisplaySettings>) => {
+    const next = { ...display, ...patch }
+    setDisplay(next)
+    saveDisplaySettings(next)
+    applyDisplaySettings(next)
+  }
+
+  return (
+    <section className="flex flex-col gap-2 rounded-card bg-card p-4 shadow-candy-sm">
+      <h2 className="text-lg font-extrabold">Affichage (cet appareil)</h2>
+      <label className="flex min-h-[48px] cursor-pointer items-center justify-between gap-3 text-base font-bold text-ink">
+        <span>
+          Police adaptée à la dyslexie
+          <span className="block text-sm font-bold text-muted">OpenDyslexic, lettres espacées</span>
+        </span>
+        <input
+          type="checkbox"
+          checked={display.dyslexiaFont}
+          onChange={(e) => update({ dyslexiaFont: e.target.checked })}
+          className="h-7 w-7 accent-primary"
+        />
+      </label>
+      <label className="flex min-h-[48px] cursor-pointer items-center justify-between gap-3 text-base font-bold text-ink">
+        <span>Texte plus grand</span>
+        <input
+          type="checkbox"
+          checked={display.largeText}
+          onChange={(e) => update({ largeText: e.target.checked })}
+          className="h-7 w-7 accent-primary"
+        />
+      </label>
+    </section>
   )
 }
 
@@ -271,6 +317,8 @@ function Dashboard() {
       ) : (
         <p className="text-base font-bold text-muted">Aucun profil pour l'instant.</p>
       )}
+
+      <DisplaySection />
 
       <div className="mt-auto pt-2">
         <Button variant="ghost" onClick={goProfiles}>

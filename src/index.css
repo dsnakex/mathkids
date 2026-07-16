@@ -24,9 +24,44 @@
     U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* OpenDyslexic self-hostée via @fontsource/opendyslexic (option accessibilité,
+   SPECIFICATIONS §9). Sous-ensemble latin uniquement, comme Baloo 2. */
+@font-face {
+  font-family: 'OpenDyslexic';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('@fontsource/opendyslexic/files/opendyslexic-latin-400-normal.woff2')
+    format('woff2');
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('@fontsource/opendyslexic/files/opendyslexic-latin-700-normal.woff2')
+    format('woff2');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Réglage « police adaptée à la dyslexie » (classe posée sur <html> par
+   src/app/settings.ts) : remplace Baloo 2 partout où .font-sans l'applique,
+   avec un léger espacement des lettres et des mots (aide reconnue). */
+html.mk-dyslexia .font-sans {
+  font-family: 'OpenDyslexic', Verdana, system-ui, sans-serif;
+  letter-spacing: 0.01em;
+  word-spacing: 0.06em;
+}
+
+/* Réglage « texte plus grand » : agrandit toute l'interface (les tailles du
+   thème sont en px, donc on utilise zoom — supporté par tous les navigateurs
+   modernes, Firefox inclus depuis la v126). */
+html.mk-text-lg body {
+  zoom: 1.15;
+}
 
 html,
 body,
