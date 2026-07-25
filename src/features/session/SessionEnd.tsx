@@ -2,6 +2,7 @@
 // éventuellement gagnés. On repart ensuite vers la carte de l'île.
 
 import { useAppStore } from '@/app/store'
+import { CroquetteOr } from '@/components/CroquetteOr'
 import { ALL_NOTION_NAMES } from '@/content/curricula'
 import { Button } from '@/components/Button'
 import { NekoSushi } from '@/components/NekoSushi'
@@ -46,7 +47,7 @@ export function SessionEnd() {
       </p>
 
       <div className="rounded-card bg-gold px-5 py-3 text-[20px] font-extrabold text-gold-text shadow-candy-gold">
-        🐾 +{coins} croquettes d'or
+        <CroquetteOr /> +{coins} croquettes d'or
       </div>
 
       {earnedBadges.length > 0 ? (

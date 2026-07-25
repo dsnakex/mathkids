@@ -2,6 +2,7 @@
 // une notion. Les étapes se débloquent selon la maîtrise (handoff écran 2).
 
 import { useEffect, useState } from 'react'
+import { CroquetteOr } from '@/components/CroquetteOr'
 import { useAppStore } from '@/app/store'
 import { curriculumFor } from '@/content/curricula'
 import { loadLearnerProgress } from '@/db/progress'
@@ -85,7 +86,7 @@ export function MapScreen() {
       <header className="flex items-center gap-2">
         <LevelChip level={profile?.level ?? 'cp'} />
         <span className="ml-auto rounded-full bg-gold px-3 py-1 text-base font-extrabold text-gold-text">
-          🐾 {profile?.coins ?? 0}
+          <CroquetteOr /> {profile?.coins ?? 0}
         </span>
         <span className="rounded-full bg-success-soft px-3 py-1 text-base font-extrabold text-success-text">
           ⭐ {profile?.stars ?? 0}
