@@ -169,7 +169,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ screen: 'minigame' })
   },
 
-  // Grains de riz gagnés au mini-jeu de calcul mental (jamais de perte).
+  // Croquettes d'or gagnées au mini-jeu de calcul mental (jamais de perte).
   async rewardMinigame(coins) {
     const { profileId } = get()
     if (!profileId || coins <= 0) return

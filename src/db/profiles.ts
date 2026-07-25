@@ -25,7 +25,7 @@ export function getProfile(id: string): Promise<ProfileRecord | undefined> {
   return db.profiles.get(id)
 }
 
-/** Crée un profil (riz et étoiles à zéro) et renvoie l'enregistrement complet. */
+/** Crée un profil (croquettes et étoiles à zéro) et renvoie l'enregistrement complet. */
 export async function createProfile(input: NewProfile, now: number = Date.now()): Promise<ProfileRecord> {
   const record: ProfileRecord = {
     id: genId(),
@@ -40,7 +40,7 @@ export async function createProfile(input: NewProfile, now: number = Date.now())
   return record
 }
 
-/** Ajoute des grains de riz et des étoiles au solde d'un profil. */
+/** Ajoute des croquettes d'or et des étoiles au solde d'un profil. */
 export async function addRewards(id: string, coins: number, stars: number): Promise<void> {
   await db.profiles
     .where('id')

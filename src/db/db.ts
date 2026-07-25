@@ -16,7 +16,7 @@ export interface ProfileRecord {
   name: string
   character: NekoVariant // avatar chat-sushi
   level: LevelId
-  coins: number // grains de riz dorés
+  coins: number // croquettes d'or
   stars: number // étoiles cumulées
   createdAt: number
   // Champs de gamification (Phase 5). Optionnels : les anciens profils valent [].
