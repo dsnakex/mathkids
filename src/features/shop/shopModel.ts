@@ -1,6 +1,6 @@
 // Boutique « Le comptoir du chef » (SPECIFICATIONS §7, handoff écran 6).
-// Catalogue et logique d'achat, purs. Les achats se font UNIQUEMENT avec le riz
-// doré gagné en jouant — aucun achat réel, aucune monnaie réelle.
+// Catalogue et logique d'achat, purs. Les achats se font UNIQUEMENT avec la croquette
+// d'or gagnée en jouant — aucun achat réel, aucune monnaie réelle.
 
 export type ShopCategory = 'garniture' | 'accessoire' | 'fond'
 
@@ -9,7 +9,7 @@ export interface ShopItem {
   category: ShopCategory
   label: string
   emoji: string
-  price: number // en grains de riz dorés
+  price: number // en croquettes d'or
 }
 
 // Emoji placeholders acceptables en v1 (voir handoff « Fidelity »).

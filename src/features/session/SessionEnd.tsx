@@ -1,4 +1,4 @@
-// Écran de fin de séance : félicitations, étoiles, grains de riz et badges
+// Écran de fin de séance : félicitations, étoiles, croquettes d'or et badges
 // éventuellement gagnés. On repart ensuite vers la carte de l'île.
 
 import { useAppStore } from '@/app/store'
@@ -46,7 +46,7 @@ export function SessionEnd() {
       </p>
 
       <div className="rounded-card bg-gold px-5 py-3 text-[20px] font-extrabold text-gold-text shadow-candy-gold">
-        🍚 +{coins} grains de riz dorés
+        🐾 +{coins} croquettes d'or
       </div>
 
       {earnedBadges.length > 0 ? (

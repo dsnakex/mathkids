@@ -55,10 +55,10 @@ export function recordAnswer(
 
 export interface SessionReward {
   stars: number // 1 à 3, jamais 0 (pas de sanction visible)
-  coins: number // grains de riz dorés
+  coins: number // croquettes d'or
 }
 
-/** Bilan d'une série : étoiles selon la réussite, grains de riz par bonne réponse. */
+/** Bilan d'une série : étoiles selon la réussite, croquettes d'or par bonne réponse. */
 export function sessionReward(correct: number, total: number): SessionReward {
   const ratio = total > 0 ? correct / total : 0
   const stars = ratio >= 0.9 ? 3 : ratio >= 0.6 ? 2 : 1

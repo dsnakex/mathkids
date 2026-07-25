@@ -81,11 +81,11 @@ export function MapScreen() {
 
   return (
     <main className="flex min-h-full flex-col gap-4 bg-gradient-to-b from-[#FDF3E4] via-[#FAE4D6] to-[#FDF6EA] p-5 font-sans text-ink">
-      {/* Topbar : monde, riz, étoiles, boutique. */}
+      {/* Topbar : monde, croquettes, étoiles, boutique. */}
       <header className="flex items-center gap-2">
         <LevelChip level={profile?.level ?? 'cp'} />
         <span className="ml-auto rounded-full bg-gold px-3 py-1 text-base font-extrabold text-gold-text">
-          🍚 {profile?.coins ?? 0}
+          🐾 {profile?.coins ?? 0}
         </span>
         <span className="rounded-full bg-success-soft px-3 py-1 text-base font-extrabold text-success-text">
           ⭐ {profile?.stars ?? 0}
