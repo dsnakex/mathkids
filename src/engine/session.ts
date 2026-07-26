@@ -15,7 +15,7 @@ import type { Curriculum, Notion } from '@/content/schema'
 import { isNotionAcquired, type MasteryState } from './adaptive'
 import { canGenerate, generateExercise, type Exercise } from './generators'
 import { pick, type Rng } from './generators/rng'
-import { dueNotions, type ReviewState } from './spaced'
+import { dueNotions, overdueMs, DAY_MS, type ReviewState } from './spaced'
 
 /** Palier cible par défaut pour juger une notion « acquise » au CP. */
 export const DEFAULT_TARGET_TIER = 3
@@ -272,4 +272,98 @@ export function composeSession(
   }
 
   return session
+}
+
+// --- Mode Révision (chantier F) ----------------------------------------------
+
+/** Seuil (jours) au-delà duquel on considère un retour après absence. */
+export const ABSENCE_THRESHOLD_DAYS = 14
+
+/**
+ * Périmètre d'une séance de révision : notions **acquises** suivies en révision
+ * espacée **et** notions **fragiles** (démarrées mais non acquises), jouables.
+ * Triées par priorité : les plus **en retard** d'abord (échéance Leitner
+ * dépassée), puis les plus **faibles** (score bas). Notions hors curriculum
+ * courant (fragiles/acquises d'un niveau précédent) résolues tous niveaux.
+ */
+export function reviewPool(
+  curriculum: Curriculum,
+  progress: LearnerProgress,
+  now: number,
+  targetTier: number = DEFAULT_TARGET_TIER,
+): Notion[] {
+  const inLevel = new Set(allNotions(curriculum).map((n) => n.id))
+  const resolve = (id: string): Notion | undefined =>
+    inLevel.has(id) ? allNotions(curriculum).find((n) => n.id === id) : findNotion(id)
+
+  interface Candidate {
+    notion: Notion
+    overdue: number // retard de l'échéance (ms) ; 0 pour les fragiles non planifiées
+    score: number // maîtrise 0..100 (plus faible = plus prioritaire)
+  }
+  const candidates: Candidate[] = []
+  const seen = new Set<string>()
+
+  // Acquises suivies en révision (dues ou non) : priorité au retard.
+  for (const [id, review] of Object.entries(progress.reviews)) {
+    const notion = resolve(id)
+    if (!notion || seen.has(id) || !isNotionGeneratable(notion)) continue
+    seen.add(id)
+    candidates.push({ notion, overdue: overdueMs(review, now), score: progress.mastery[id]?.score ?? 0 })
+  }
+  // Fragiles : démarrées, non acquises, jouables (non déjà comptées).
+  for (const id of Object.keys(progress.mastery)) {
+    if (seen.has(id) || isAcquired(progress, id, targetTier)) continue
+    const notion = resolve(id)
+    if (!notion || !isNotionGeneratable(notion)) continue
+    seen.add(id)
+    candidates.push({ notion, overdue: 0, score: progress.mastery[id]?.score ?? 0 })
+  }
+
+  candidates.sort((a, b) => b.overdue - a.overdue || a.score - b.score)
+  return candidates.map((c) => c.notion)
+}
+
+/**
+ * Compose une séance **100 % rappels** (aucune notion en cours ni découverte) à
+ * partir du `reviewPool`, dans l'ordre de priorité. Si le vivier dépasse la
+ * taille visée, on couvre d'abord les notions les plus prioritaires (une chacune).
+ */
+export function composeReviewSession(
+  curriculum: Curriculum,
+  progress: LearnerProgress,
+  opts: ComposeOptions,
+): SessionExercise[] {
+  const total = opts.total ?? 10
+  const targetTier = opts.targetTier ?? DEFAULT_TARGET_TIER
+  const pool = reviewPool(curriculum, progress, opts.now, targetTier)
+  if (pool.length === 0) return []
+
+  const notions = pool.length > total ? pool.slice(0, total) : pool
+  const perNotion = distribute(total, notions.length)
+  const session: SessionExercise[] = []
+  notions.forEach((notion, i) => {
+    session.push(...generateFrom(notion, tierFor(notion, progress, 'review'), 'review', perNotion[i], opts.rng))
+  })
+  return session
+}
+
+/**
+ * Retour après une longue absence : ~14 jours (seuil constant) depuis la
+ * dernière activité. `lastActiveAt` absent (nouveau profil) ⇒ pas d'absence.
+ */
+export function isReturningFromAbsence(
+  lastActiveAt: number | undefined,
+  now: number,
+  thresholdDays: number = ABSENCE_THRESHOLD_DAYS,
+): boolean {
+  return lastActiveAt !== undefined && now - lastActiveAt >= thresholdDays * DAY_MS
+}
+
+/**
+ * Nombre de rappels dont l'échéance est dépassée : tant qu'il est > 0, on est en
+ * phase de « rattrapage » (l'app priorise les rappels au retour d'absence).
+ */
+export function overdueReviewCount(progress: LearnerProgress, now: number): number {
+  return dueNotions(progress.reviews, now).length
 }

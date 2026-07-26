@@ -2,7 +2,8 @@ import { useAppStore, SESSION_LENGTH } from '@/app/store'
 import { db } from '@/db/db'
 import { createProfile, getProfile } from '@/db/profiles'
 import { loadLearnerProgress, saveLearnerProgress } from '@/db/progress'
-import { initialMastery } from '@/engine/adaptive'
+import { initialMastery, type MasteryState } from '@/engine/adaptive'
+import { scheduleFirstReview } from '@/engine/spaced'
 import { saveLearningSettings } from '@/app/learningMode'
 
 beforeEach(async () => {
@@ -163,5 +164,50 @@ describe('store — parcours guidé (leçon garantie, chantier A)', () => {
     const { session } = useAppStore.getState()
     expect(session.length).toBeGreaterThan(0)
     expect(session.every((s) => s.role !== 'discovery')).toBe(true)
+  })
+})
+
+describe('store — mode révision (chantier F)', () => {
+  const acquise: MasteryState = { tier: 3, score: 90, streak: 0, errStreak: 0 }
+
+  async function setupProfile() {
+    const p = await createProfile({ name: 'Léa', character: 'maki', level: 'cp' })
+    await useAppStore.getState().refreshProfiles()
+    useAppStore.getState().selectProfile(p.id)
+    return p
+  }
+
+  it('« Révision » lance une séance 100 % rappels (acquises + fragiles)', async () => {
+    const p = await setupProfile()
+    await saveLearnerProgress(p.id, {
+      mastery: { 'nombres-jusqu-20': acquise, 'addition-jusqu-20': initialMastery() },
+      reviews: { 'nombres-jusqu-20': scheduleFirstReview(0) },
+    })
+
+    await useAppStore.getState().startReviewSession(p.id)
+    const st = useAppStore.getState()
+    expect(st.screen).toBe('session')
+    expect(st.session.length).toBeGreaterThan(0)
+    expect(st.session.every((s) => s.role === 'review')).toBe(true)
+  })
+
+  it('sans rien à réviser, « Révision » reste sur la carte', async () => {
+    const p = await setupProfile()
+    await useAppStore.getState().startReviewSession(p.id)
+    expect(useAppStore.getState().screen).toBe('map')
+  })
+
+  it('enregistre la date de dernière activité en fin de séance (détection d\'absence)', async () => {
+    const p = await createProfile({ name: 'Tom', character: 'temaki', level: 'cp' })
+    const before = await getProfile(p.id)
+    expect(before?.lastActiveAt).toBeUndefined()
+
+    await useAppStore.getState().startSession(p.id)
+    for (let i = 0; i < SESSION_LENGTH; i++) {
+      await useAppStore.getState().answerCurrent(true)
+    }
+    const after = await getProfile(p.id)
+    expect(typeof after?.lastActiveAt).toBe('number')
+    expect(after?.lastActiveAt).toBeGreaterThan(0)
   })
 })

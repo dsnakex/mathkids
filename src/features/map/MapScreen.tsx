@@ -6,6 +6,7 @@ import { CroquetteOr } from '@/components/CroquetteOr'
 import { useAppStore } from '@/app/store'
 import { loadLearningSettings } from '@/app/learningMode'
 import { curriculumFor } from '@/content/curricula'
+import { reviewPool, isReturningFromAbsence } from '@/engine/session'
 import { loadLearnerProgress } from '@/db/progress'
 import { NekoSushi, type NekoVariant } from '@/components/NekoSushi'
 import { Button } from '@/components/Button'
@@ -73,22 +74,27 @@ export function MapScreen() {
   const profileId = useAppStore((s) => s.profileId)
   const profiles = useAppStore((s) => s.profiles)
   const selectStep = useAppStore((s) => s.selectStep)
+  const startReviewSession = useAppStore((s) => s.startReviewSession)
   const goShop = useAppStore((s) => s.goShop)
   const goMinigame = useAppStore((s) => s.goMinigame)
   const goProfiles = useAppStore((s) => s.goProfiles)
   const goParent = useAppStore((s) => s.goParent)
   const [steps, setSteps] = useState<MapStep[]>([])
+  const [reviewCount, setReviewCount] = useState(0)
 
   const profile = profiles.find((p) => p.id === profileId)
   const guided = loadLearningSettings().guidedPath
   const next = guided ? nextStep(steps) : null
+  const returning = isReturningFromAbsence(profile?.lastActiveAt, Date.now())
 
   useEffect(() => {
     if (!profileId) return
     const curriculum = curriculumFor(profile?.level ?? 'cp')
     let alive = true
     loadLearnerProgress(profileId).then((progress) => {
-      if (alive) setSteps(mapSteps(curriculum, progress))
+      if (!alive) return
+      setSteps(mapSteps(curriculum, progress))
+      setReviewCount(reviewPool(curriculum, progress, Date.now()).length)
     })
     return () => {
       alive = false
@@ -107,6 +113,21 @@ export function MapScreen() {
           ⭐ {profile?.stars ?? 0}
         </span>
       </header>
+
+      {/* Retour après une longue absence : accueil doux + invitation à réviser. */}
+      {returning && reviewCount > 0 ? (
+        <section className="flex items-center gap-3 rounded-card border-[3px] border-gold bg-gold/20 p-3 shadow-candy-sm">
+          <NekoSushi variant="chef" size={44} />
+          <div className="flex-1">
+            <p className="text-base font-extrabold text-ink">Ça fait longtemps !</p>
+            <p className="text-sm font-bold text-muted">
+              On refait un petit tour de ce que tu sais ? {reviewCount} notion
+              {reviewCount > 1 ? 's' : ''} à revoir.
+            </p>
+          </div>
+          <Button onClick={() => profileId && startReviewSession(profileId)}>Réviser 🔁</Button>
+        </section>
+      ) : null}
 
       <div>
         <h1 className="text-center text-[24px] font-extrabold">Ton île 🍣</h1>
@@ -138,6 +159,11 @@ export function MapScreen() {
         <div className="flex flex-wrap justify-center gap-3">
           <Button onClick={goShop}>Le comptoir du chef 🍚</Button>
           <Button onClick={goMinigame}>Défi calcul 🐾</Button>
+          {reviewCount > 0 ? (
+            <Button variant="ghost" onClick={() => profileId && startReviewSession(profileId)}>
+              Révision 🔁
+            </Button>
+          ) : null}
         </div>
         <div className="flex gap-4">
           <Button variant="ghost" onClick={goProfiles}>
