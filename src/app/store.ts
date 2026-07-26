@@ -13,6 +13,7 @@ import { isNotionAcquired } from '@/engine/adaptive'
 import { mulberry32 } from '@/engine/generators/rng'
 import {
   composeSession,
+  composeReviewSession,
   DEFAULT_TARGET_TIER,
   type LearnerProgress,
   type SessionExercise,
@@ -84,6 +85,7 @@ interface AppState {
   quitSession: () => Promise<void>
   lessonDone: () => Promise<void>
   startSession: (profileId: string) => Promise<void>
+  startReviewSession: (profileId: string) => Promise<void>
   answerCurrent: (firstTryCorrect: boolean) => Promise<void>
   replay: () => Promise<void>
   buyItem: (itemId: string) => Promise<void>
@@ -256,6 +258,7 @@ export const useAppStore = create<AppState>((set, get) => ({
           await updateProfile(profileId, {
             coins: (profile.coins ?? 0) + reward.coins,
             stars: (profile.stars ?? 0) + reward.stars,
+            lastActiveAt: Date.now(), // dernière activité, pour la détection d'absence (chantier F)
           })
         }
       }
@@ -283,6 +286,33 @@ export const useAppStore = create<AppState>((set, get) => ({
     const progress = await loadLearnerProgress(profileId)
     const session = makeSession(curriculum, progress)
     if (session.length === 0) {
+      set({ profiles: await listProfiles(), screen: 'map' })
+      return
+    }
+    set({
+      profileId,
+      progress,
+      session,
+      index: 0,
+      correctCount: 0,
+      reward: null,
+      earnedBadges: [],
+      screen: 'session',
+      sessionStartedAt: Date.now(),
+    })
+  },
+
+  // Séance 100 % rappels (bouton « Révision » de la carte), toujours sans pénalité.
+  async startReviewSession(profileId) {
+    const curriculum = curriculumOf(get().profiles, profileId)
+    const progress = await loadLearnerProgress(profileId)
+    const session = composeReviewSession(curriculum, progress, {
+      now: Date.now(),
+      rng: mulberry32(Date.now() >>> 0),
+      total: SESSION_LENGTH,
+    })
+    if (session.length === 0) {
+      // Rien à réviser pour l'instant : on reste sur la carte.
       set({ profiles: await listProfiles(), screen: 'map' })
       return
     }
@@ -340,6 +370,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       playDays,
       sessions: (profile?.sessions ?? 0) + 1,
       totalSeconds: (profile?.totalSeconds ?? 0) + elapsedSec,
+      lastActiveAt: Date.now(), // dernière activité, pour la détection d'absence (chantier F)
     })
 
     set({

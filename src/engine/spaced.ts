@@ -50,6 +50,11 @@ export function isDue(state: ReviewState, now: number): boolean {
   return now >= state.nextReview
 }
 
+/** Retard (en ms) d'une échéance à l'instant `now` ; 0 si pas encore due. */
+export function overdueMs(state: ReviewState, now: number): number {
+  return Math.max(0, now - state.nextReview)
+}
+
 /** Ids des notions dues à l'instant `now`, parmi une table id → état de rappel. */
 export function dueNotions(reviews: Record<string, ReviewState>, now: number): string[] {
   return Object.entries(reviews)
