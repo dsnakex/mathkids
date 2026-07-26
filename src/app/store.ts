@@ -18,6 +18,7 @@ import {
   type SessionExercise,
 } from '@/engine/session'
 import { recordAnswer, sessionReward, type SessionReward } from '@/features/session/runner'
+import { loadLearningSettings, pathMode } from '@/app/learningMode'
 import { newlyEarnedBadges } from '@/features/rewards/badges'
 import { applyMissionOutcome, missionOutcome, type MissionSession } from '@/engine/mission'
 import { buy } from '@/features/shop/shopModel'
@@ -111,6 +112,7 @@ function makeSession(
     rng: mulberry32(Date.now() >>> 0),
     total: SESSION_LENGTH,
     currentNotionId,
+    mode: pathMode(loadLearningSettings()), // guidé par défaut (réglable dans l'espace parent)
   })
 }
 
@@ -225,15 +227,17 @@ export const useAppStore = create<AppState>((set, get) => ({
     if (!profileId) return
     const curriculum = curriculumOf(profiles, profileId)
     const progress = await loadLearnerProgress(profileId)
-    if (progress.mastery[notionId]) {
-      // Notion déjà commencée : on va droit à la session (leçon accessible via la carte).
-      const session = makeSession(curriculum, progress, notionId)
-      if (session.length === 0) return set({ screen: 'map' })
-      set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session', sessionStartedAt: Date.now() })
-    } else {
-      // Nouvelle notion : on montre d'abord la leçon.
-      set({ pendingNotionId: notionId, screen: 'lesson' })
+    // Leçon garantie avant la 1re pratique : on se base sur « leçon vue » (par
+    // profil), pas sur la maîtrise — une notion peut être pré-remplie par la
+    // mission découverte sans que sa leçon ait jamais été montrée.
+    const profile = await getProfile(profileId)
+    const lessonSeen = (profile?.lessonsSeen ?? []).includes(notionId)
+    if (!lessonSeen) {
+      return set({ pendingNotionId: notionId, screen: 'lesson' })
     }
+    const session = makeSession(curriculum, progress, notionId)
+    if (session.length === 0) return set({ screen: 'map' })
+    set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session', sessionStartedAt: Date.now() })
   },
 
   async quitSession() {
@@ -263,11 +267,15 @@ export const useAppStore = create<AppState>((set, get) => ({
     const { pendingNotionId, profileId, profiles } = get()
     set({ pendingNotionId: null })
     if (!pendingNotionId || !profileId) return set({ screen: 'map' })
+    // Mémorise « leçon vue » (par profil) : elle ne sera plus imposée avant la pratique.
+    const profile = await getProfile(profileId)
+    const lessonsSeen = [...new Set([...(profile?.lessonsSeen ?? []), pendingNotionId])]
+    await updateProfile(profileId, { lessonsSeen })
     const curriculum = curriculumOf(profiles, profileId)
     const progress = await loadLearnerProgress(profileId)
     const session = makeSession(curriculum, progress, pendingNotionId)
-    if (session.length === 0) return set({ screen: 'map' })
-    set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session', sessionStartedAt: Date.now() })
+    if (session.length === 0) return set({ profiles: await listProfiles(), screen: 'map' })
+    set({ progress, session, index: 0, correctCount: 0, reward: null, earnedBadges: [], screen: 'session', sessionStartedAt: Date.now(), profiles: await listProfiles() })
   },
 
   async startSession(profileId) {

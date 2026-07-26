@@ -56,3 +56,16 @@ export function mapSteps(
   }
   return steps
 }
+
+/**
+ * La « prochaine étape » à mettre en avant en parcours guidé : la première notion
+ * `current` (commencée, non acquise), sinon la première `available` (prête à
+ * démarrer), dans l'ordre du curriculum. `null` si tout est acquis/verrouillé.
+ */
+export function nextStep(steps: MapStep[]): MapStep | null {
+  return (
+    steps.find((s) => s.state === 'current') ??
+    steps.find((s) => s.state === 'available') ??
+    null
+  )
+}

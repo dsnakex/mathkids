@@ -4,12 +4,13 @@
 import { useEffect, useState } from 'react'
 import { CroquetteOr } from '@/components/CroquetteOr'
 import { useAppStore } from '@/app/store'
+import { loadLearningSettings } from '@/app/learningMode'
 import { curriculumFor } from '@/content/curricula'
 import { loadLearnerProgress } from '@/db/progress'
 import { NekoSushi, type NekoVariant } from '@/components/NekoSushi'
 import { Button } from '@/components/Button'
 import { LevelChip } from '@/components/LevelChip'
-import { mapSteps, type MapStep, type StepState } from './mapModel'
+import { mapSteps, nextStep, type MapStep, type StepState } from './mapModel'
 
 const VARIANT: Record<StepState, NekoVariant> = {
   done: 'nigiri',
@@ -27,7 +28,17 @@ function Stars({ count }: { count: number }) {
   )
 }
 
-function Step({ step, onPlay }: { step: MapStep; onPlay: (id: string) => void }) {
+function Step({
+  step,
+  onPlay,
+  emphasis = false,
+  dimmed = false,
+}: {
+  step: MapStep
+  onPlay: (id: string) => void
+  emphasis?: boolean // « Ta prochaine étape » (parcours guidé)
+  dimmed?: boolean // étape secondaire, montrée mais discrète
+}) {
   const locked = step.state === 'locked'
   return (
     <li className="flex flex-col items-center gap-1">
@@ -35,10 +46,12 @@ function Step({ step, onPlay }: { step: MapStep; onPlay: (id: string) => void })
         type="button"
         disabled={locked}
         onClick={() => onPlay(step.notion.id)}
-        aria-label={`${step.notion.name}${locked ? ' (verrouillé)' : ''}`}
+        aria-label={`${step.notion.name}${emphasis ? ' (ta prochaine étape)' : ''}${locked ? ' (verrouillé)' : ''}`}
         className={`flex w-[240px] items-center gap-3 rounded-card border-[3px] border-transparent bg-card p-3 text-left shadow-candy transition-transform focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 ${
           locked ? 'opacity-60' : 'active:translate-y-[3px] active:shadow-candy-pressed'
-        } ${step.state === 'current' ? 'border-gold' : ''}`}
+        } ${step.state === 'current' ? 'border-gold' : ''} ${
+          emphasis ? 'border-gold ring-4 ring-gold/50' : ''
+        } ${dimmed ? 'opacity-60' : ''}`}
       >
         <NekoSushi variant={VARIANT[step.state]} size={52} />
         <span className="flex-1">
@@ -67,6 +80,8 @@ export function MapScreen() {
   const [steps, setSteps] = useState<MapStep[]>([])
 
   const profile = profiles.find((p) => p.id === profileId)
+  const guided = loadLearningSettings().guidedPath
+  const next = guided ? nextStep(steps) : null
 
   useEffect(() => {
     if (!profileId) return
@@ -96,16 +111,27 @@ export function MapScreen() {
       <div>
         <h1 className="text-center text-[24px] font-extrabold">Ton île 🍣</h1>
         <p className="text-center text-base font-bold text-muted">
-          Choisis une étape, {profile?.name ?? ''} !
+          {next
+            ? `Ta prochaine étape t'attend, ${profile?.name ?? ''} !`
+            : `Choisis une étape, ${profile?.name ?? ''} !`}
         </p>
       </div>
 
       <ol className="flex flex-col items-center gap-3">
-        {steps.map((step, i) => (
-          <div key={step.notion.id} className={i % 2 === 0 ? 'self-start pl-4' : 'self-end pr-4'}>
-            <Step step={step} onPlay={selectStep} />
-          </div>
-        ))}
+        {steps.map((step, i) => {
+          const isNext = next?.notion.id === step.notion.id
+          const dimmed = next != null && !isNext && step.state !== 'locked'
+          return (
+            <div key={step.notion.id} className={i % 2 === 0 ? 'self-start pl-4' : 'self-end pr-4'}>
+              {isNext ? (
+                <p className="mb-1 text-center text-sm font-extrabold text-gold-text">
+                  ✨ Ta prochaine étape
+                </p>
+              ) : null}
+              <Step step={step} onPlay={selectStep} emphasis={isNext} dimmed={dimmed} />
+            </div>
+          )
+        })}
       </ol>
 
       <div className="mt-auto flex flex-col items-center gap-2 pt-2">

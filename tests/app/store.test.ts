@@ -1,15 +1,21 @@
 import { useAppStore, SESSION_LENGTH } from '@/app/store'
 import { db } from '@/db/db'
 import { createProfile, getProfile } from '@/db/profiles'
-import { loadLearnerProgress } from '@/db/progress'
+import { loadLearnerProgress, saveLearnerProgress } from '@/db/progress'
+import { initialMastery } from '@/engine/adaptive'
+import { saveLearningSettings } from '@/app/learningMode'
 
 beforeEach(async () => {
   await db.profiles.clear()
   await db.progress.clear()
+  // Par défaut, on fige l'EXPLORATION LIBRE : ces tests vérifient la mécanique de
+  // composition historique. Les tests du parcours guidé réactivent le mode.
+  saveLearningSettings({ guidedPath: false })
   useAppStore.setState({
     screen: 'profiles',
     profiles: [],
     profileId: null,
+    pendingNotionId: null,
     session: [],
     index: 0,
     correctCount: 0,
@@ -108,5 +114,54 @@ describe('store — orchestration d\'une session', () => {
     const st = useAppStore.getState()
     expect(st.screen).toBe('session')
     expect(Object.keys(st.progress.mastery).length).toBeGreaterThan(0)
+  })
+})
+
+describe('store — parcours guidé (leçon garantie, chantier A)', () => {
+  async function setupProfile() {
+    const p = await createProfile({ name: 'Léa', character: 'maki', level: 'cp' })
+    await useAppStore.getState().refreshProfiles()
+    useAppStore.getState().selectProfile(p.id)
+    return p
+  }
+
+  it('montre la leçon avant la 1re pratique, même si la maîtrise existe (notion pré-remplie)', async () => {
+    saveLearningSettings({ guidedPath: true })
+    const p = await setupProfile()
+    // Simule une notion pré-remplie par la mission : maîtrise présente, leçon jamais vue.
+    await saveLearnerProgress(p.id, { mastery: { 'nombres-jusqu-20': initialMastery() }, reviews: {} })
+
+    await useAppStore.getState().selectStep('nombres-jusqu-20')
+    const st = useAppStore.getState()
+    expect(st.screen).toBe('lesson')
+    expect(st.pendingNotionId).toBe('nombres-jusqu-20')
+  })
+
+  it('« J\'ai compris » mémorise la leçon vue et lance la session ; re-sélection = session directe', async () => {
+    saveLearningSettings({ guidedPath: true })
+    const p = await setupProfile()
+
+    await useAppStore.getState().selectStep('nombres-jusqu-20') // 1re fois → leçon
+    expect(useAppStore.getState().screen).toBe('lesson')
+
+    await useAppStore.getState().lessonDone() // leçon vue → session
+    expect(useAppStore.getState().screen).toBe('session')
+    const after = await getProfile(p.id)
+    expect(after?.lessonsSeen).toContain('nombres-jusqu-20')
+
+    // Retour carte puis re-sélection : la leçon n'est plus imposée.
+    await useAppStore.getState().goMap()
+    await useAppStore.getState().selectStep('nombres-jusqu-20')
+    expect(useAppStore.getState().screen).toBe('session')
+  })
+
+  it('la séance guidée ne contient aucune découverte-surprise', async () => {
+    saveLearningSettings({ guidedPath: true })
+    await setupProfile()
+    await useAppStore.getState().selectStep('nombres-jusqu-20')
+    await useAppStore.getState().lessonDone()
+    const { session } = useAppStore.getState()
+    expect(session.length).toBeGreaterThan(0)
+    expect(session.every((s) => s.role !== 'discovery')).toBe(true)
   })
 })
