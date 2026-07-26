@@ -83,6 +83,7 @@ describe('ExerciseView — régler l\'horloge (clockset)', () => {
     prompt: "Mets l'horloge sur 3 heures.",
     hours: 3,
     minutes: 0,
+    step: 30,
   }
 
   it('placer les aiguilles sur la cible puis valider = bonne réponse', () => {

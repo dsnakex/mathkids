@@ -2,7 +2,7 @@
 // Deux sens : lire (QCM en toutes lettres) et régler (placer les aiguilles).
 
 import { randInt, pick, shuffle, type Rng } from './rng'
-import { timePhrase, minutesForPalier } from './time'
+import { timePhrase, minutesForPalier, minuteStepForPalier } from './time'
 import type { ClocksetExercise, QcmExercise } from './types'
 
 type Params = Record<string, unknown>
@@ -67,5 +67,6 @@ export function genClockSet(params: Params, rng: Rng): ClocksetExercise {
     prompt: `Mets l'horloge sur ${timePhrase(hours, minutes)}.`,
     hours,
     minutes,
+    step: minuteStepForPalier(palier),
   }
 }

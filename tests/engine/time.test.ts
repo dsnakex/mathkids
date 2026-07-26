@@ -1,4 +1,10 @@
-import { timePhrase, smallHandAngle, bigHandAngle, minutesForPalier } from '@/engine/generators/time'
+import {
+  timePhrase,
+  smallHandAngle,
+  bigHandAngle,
+  minutesForPalier,
+  minuteStepForPalier,
+} from '@/engine/generators/time'
 
 describe('timePhrase — lecture en toutes lettres', () => {
   it('heures entières (singulier pour 1 heure)', () => {
@@ -50,5 +56,23 @@ describe('minutesForPalier', () => {
   })
   it('palier 4 = 5 minutes près', () => {
     expect(minutesForPalier(4)).toEqual([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55])
+  })
+})
+
+describe('minuteStepForPalier — calage de la grande aiguille', () => {
+  it('CE1 (demies) = pas de 30 min', () => {
+    expect(minuteStepForPalier(2)).toBe(30)
+  })
+  it('CE2 (quarts) = pas de 15 min', () => {
+    expect(minuteStepForPalier(3)).toBe(15)
+  })
+  it('5 minutes près = pas de 5 min', () => {
+    expect(minuteStepForPalier(4)).toBe(5)
+  })
+  it('le pas divise toutes les positions autorisées du palier', () => {
+    for (const palier of [2, 3, 4]) {
+      const step = minuteStepForPalier(palier)
+      for (const m of minutesForPalier(palier)) expect(m % step).toBe(0)
+    }
   })
 })
