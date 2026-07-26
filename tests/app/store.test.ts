@@ -74,6 +74,29 @@ describe('store — orchestration d\'une session', () => {
     expect(Object.keys(saved.mastery).length).toBeGreaterThan(0) // la progression est gardée
   })
 
+  it('quitter en cours crédite les récompenses des exercices déjà répondus (sans pénalité)', async () => {
+    const p = await createProfile({ name: 'Léa', character: 'maki', level: 'cp' })
+    await useAppStore.getState().startSession(p.id)
+    // 2 bonnes réponses puis pause avant la fin de la série.
+    await useAppStore.getState().answerCurrent(true)
+    await useAppStore.getState().answerCurrent(true)
+    await useAppStore.getState().quitSession()
+
+    const after = await getProfile(p.id)
+    expect(after?.coins).toBe(4) // 2 bonnes réponses × 2 croquettes, rien perdu à la pause
+    expect(after?.stars).toBe(3) // 2/2 = sans-faute sur la portion jouée, pas de pénalité
+  })
+
+  it('quitter sans avoir répondu ne crédite aucune récompense', async () => {
+    const p = await createProfile({ name: 'Tom', character: 'temaki', level: 'cp' })
+    await useAppStore.getState().startSession(p.id)
+    await useAppStore.getState().quitSession()
+
+    const after = await getProfile(p.id)
+    expect(after?.coins ?? 0).toBe(0)
+    expect(after?.stars ?? 0).toBe(0)
+  })
+
   it('reprend la progression sauvegardée à la session suivante (persistance)', async () => {
     const p = await createProfile({ name: 'Léa', character: 'maki', level: 'cp' })
     await useAppStore.getState().startSession(p.id)

@@ -237,10 +237,25 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   async quitSession() {
-    // Abandon sans pénalité : on GARDE les réponses déjà données (la maîtrise a
-    // été mise à jour à chaque réponse), on sauvegarde puis on revient à la carte.
-    const { profileId, progress } = get()
-    if (profileId) await saveLearnerProgress(profileId, progress)
+    // Pause / abandon SANS pénalité : on garde la maîtrise (mise à jour à chaque
+    // réponse) ET on crédite les récompenses gagnées sur les seuls exercices déjà
+    // répondus (croquettes + étoiles). Les exercices non faits ne pénalisent pas :
+    // les étoiles se calculent sur la portion jouée (`index`), pas sur la série
+    // complète. Puis retour propre à la carte.
+    const { profileId, progress, correctCount, index } = get()
+    if (profileId) {
+      await saveLearnerProgress(profileId, progress)
+      if (index > 0) {
+        const reward = sessionReward(correctCount, index) // index = nb d'exos répondus
+        const profile = await getProfile(profileId)
+        if (profile) {
+          await updateProfile(profileId, {
+            coins: (profile.coins ?? 0) + reward.coins,
+            stars: (profile.stars ?? 0) + reward.stars,
+          })
+        }
+      }
+    }
     await get().goMap()
   },
 

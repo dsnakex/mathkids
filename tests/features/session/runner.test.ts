@@ -113,6 +113,23 @@ describe('sessionReward — étoiles et grains de riz', () => {
   })
 })
 
+describe('sessionReward — séance interrompue (pause), sans pénalité', () => {
+  // À la pause, on récompense sur les SEULS exercices répondus : le total passé
+  // est le nombre d'exos répondus, pas la longueur prévue de la série.
+
+  it('un sans-faute partiel garde ses 3 étoiles (pas de pénalité pour le reste)', () => {
+    // 3 bonnes réponses sur 3 répondues avant la pause (série prévue : 10).
+    expect(sessionReward(3, 3).stars).toBe(3)
+    // Si l'on comptait à tort sur la série complète, ce serait une pénalité :
+    expect(sessionReward(3, 10).stars).toBe(1)
+  })
+
+  it('crédite les croquettes des seules bonnes réponses données', () => {
+    expect(sessionReward(2, 3).coins).toBe(sessionReward(2, 10).coins) // 2 bonnes = 4, quel que soit le reste
+    expect(sessionReward(2, 3).coins).toBe(4)
+  })
+})
+
 // Garde-fou de typage : ReviewState reste bien la forme attendue.
 const _r: ReviewState = scheduleFirstReview(0)
 void _r
