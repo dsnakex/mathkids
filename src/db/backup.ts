@@ -3,6 +3,7 @@
 
 import { buildBackup, type ProfileBackup } from '@/features/parent/backup'
 import { db, type ProfileRecord } from './db'
+import { genId } from './profiles'
 
 /** Construit la sauvegarde complète d'un profil (profil + progression). */
 export async function exportProfile(profileId: string): Promise<ProfileBackup | null> {
@@ -12,13 +13,20 @@ export async function exportProfile(profileId: string): Promise<ProfileBackup | 
   return buildBackup(profile, progress)
 }
 
-/** Restaure une sauvegarde (déjà validée) : écrase le profil et sa progression. */
+/**
+ * Restaure une sauvegarde déjà validée SANS jamais écraser un profil existant.
+ * Si l'identifiant est déjà pris (réimport sur le même appareil), on crée un
+ * NOUVEAU profil (nouvel identifiant) et on y rattache la progression ; sur un
+ * appareil vierge, l'identifiant d'origine est conservé (vraie restauration).
+ * Renvoie l'identifiant réellement utilisé.
+ */
 export async function importProfile(backup: ProfileBackup): Promise<string> {
-  const profile = backup.profile as ProfileRecord
-  await db.transaction('rw', db.profiles, db.progress, async () => {
-    await db.profiles.put(profile)
-    await db.progress.where('profileId').equals(profile.id).delete()
-    await db.progress.bulkPut(backup.progress)
+  const source = backup.profile as ProfileRecord
+  return db.transaction('rw', db.profiles, db.progress, async () => {
+    const exists = await db.profiles.get(source.id)
+    const id = exists ? genId() : source.id
+    await db.profiles.add({ ...source, id })
+    await db.progress.bulkPut(backup.progress.map((r) => ({ ...r, profileId: id })))
+    return id
   })
-  return profile.id
 }
