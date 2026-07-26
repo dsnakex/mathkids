@@ -26,6 +26,10 @@ export interface ProfileRecord {
   // Suivi pour le tableau parent (Phase 6).
   sessions?: number // nombre de séances terminées
   totalSeconds?: number // temps total passé, en secondes
+  // Parcours guidé (chantier A) : notions dont la leçon a déjà été vue, pour
+  // garantir la leçon avant la 1re pratique (indépendant de la maîtrise, qui peut
+  // être pré-remplie par la mission découverte sans passage par la leçon).
+  lessonsSeen?: string[]
 }
 
 /** Progression d'une notion pour un profil (maîtrise + rappel espacé éventuel). */

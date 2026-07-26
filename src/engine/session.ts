@@ -28,6 +28,16 @@ export interface LearnerProgress {
 
 export type SessionRole = 'current' | 'review' | 'discovery'
 
+/**
+ * Mode de parcours (chantier A) :
+ *  • `guided` (défaut produit) : parcours lisible. Aucune notion NEUVE n'est
+ *    injectée en cours de séance (pas de « découverte-surprise ») ; la découverte
+ *    passe par le choix explicite de la prochaine étape sur la carte (avec sa
+ *    leçon). Les rappels espacés des notions acquises restent présents.
+ *  • `free` : comportement historique (mélange en cours + rappels + découverte).
+ */
+export type PathMode = 'guided' | 'free'
+
 /** Un exercice de session, étiqueté par sa notion, son palier et son rôle. */
 export interface SessionExercise {
   notionId: string
@@ -42,6 +52,7 @@ export interface ComposeOptions {
   total?: number // nombre d'exercices visé (défaut 10)
   targetTier?: number
   currentNotionId?: string // impose la notion « en cours » (choix depuis la carte)
+  mode?: PathMode // parcours guidé (défaut produit) ou exploration libre
 }
 
 // --- Prédicats sur les notions -----------------------------------------------
@@ -230,7 +241,11 @@ export function composeSession(
     : null
   const current = forced ?? currentNotion(curriculum, progress, targetTier)
   const reviews = reviewNotions(curriculum, progress, now)
-  const discoveries = discoveryNotions(curriculum, progress, targetTier)
+  // En mode guidé, aucune découverte-surprise : on n'introduit pas de notion
+  // neuve en cours de séance (elle passe par le choix explicite d'une étape, avec
+  // sa leçon). Le mode libre garde le mélange historique.
+  const mode = opts.mode ?? 'free'
+  const discoveries = mode === 'guided' ? [] : discoveryNotions(curriculum, progress, targetTier)
 
   const slots = allocateSlots(total, {
     current: current !== null,

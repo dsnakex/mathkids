@@ -11,6 +11,11 @@ import {
   saveDisplaySettings,
   type DisplaySettings,
 } from '@/app/settings'
+import {
+  loadLearningSettings,
+  saveLearningSettings,
+  type LearningSettings,
+} from '@/app/learningMode'
 import { curriculumFor } from '@/content/curricula'
 import { mulberry32 } from '@/engine/generators/rng'
 import type { LearnerProgress } from '@/engine/session'
@@ -136,6 +141,38 @@ function DisplaySection() {
           type="checkbox"
           checked={display.keepScreenAwake}
           onChange={(e) => update({ keepScreenAwake: e.target.checked })}
+          className="h-7 w-7 accent-primary"
+        />
+      </label>
+    </section>
+  )
+}
+
+// --- Parcours (guidé / libre, pour tout l'appareil) ---------------------------
+
+function LearningSection() {
+  const [learning, setLearning] = useState<LearningSettings>(loadLearningSettings)
+
+  const update = (guidedPath: boolean) => {
+    const next = { guidedPath }
+    setLearning(next)
+    saveLearningSettings(next)
+  }
+
+  return (
+    <section className="flex flex-col gap-2 rounded-card bg-card p-4 shadow-candy-sm">
+      <h2 className="text-lg font-extrabold">Parcours (cet appareil)</h2>
+      <label className="flex min-h-[48px] cursor-pointer items-center justify-between gap-3 text-base font-bold text-ink">
+        <span>
+          Parcours guidé
+          <span className="block text-sm font-bold text-muted">
+            Une étape à la fois, la leçon avant chaque nouveauté. Décoche pour l'exploration libre.
+          </span>
+        </span>
+        <input
+          type="checkbox"
+          checked={learning.guidedPath}
+          onChange={(e) => update(e.target.checked)}
           className="h-7 w-7 accent-primary"
         />
       </label>
@@ -335,6 +372,8 @@ function Dashboard() {
       ) : (
         <p className="text-base font-bold text-muted">Aucun profil pour l'instant.</p>
       )}
+
+      <LearningSection />
 
       <DisplaySection />
 
