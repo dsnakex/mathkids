@@ -15,16 +15,28 @@ function memoryStorage(initial: Record<string, string> = {}) {
 }
 
 describe('réglages d\'affichage (accessibilité)', () => {
-  it('valeurs par défaut : tout désactivé', () => {
+  it('valeurs par défaut : accessibilité désactivée, écran gardé allumé', () => {
     expect(loadDisplaySettings(memoryStorage())).toEqual(DEFAULT_DISPLAY)
     expect(DEFAULT_DISPLAY.dyslexiaFont).toBe(false)
     expect(DEFAULT_DISPLAY.largeText).toBe(false)
+    expect(DEFAULT_DISPLAY.keepScreenAwake).toBe(true)
   })
 
   it('sauvegarde puis relit les réglages (aller-retour)', () => {
     const storage = memoryStorage()
-    saveDisplaySettings({ dyslexiaFont: true, largeText: true }, storage)
-    expect(loadDisplaySettings(storage)).toEqual({ dyslexiaFont: true, largeText: true })
+    const settings = { dyslexiaFont: true, largeText: true, keepScreenAwake: false }
+    saveDisplaySettings(settings, storage)
+    expect(loadDisplaySettings(storage)).toEqual(settings)
+  })
+
+  it('« garder l\'écran allumé » activé par défaut si absent du stockage', () => {
+    const storage = memoryStorage({ 'mathkids-display': JSON.stringify({ dyslexiaFont: true }) })
+    expect(loadDisplaySettings(storage).keepScreenAwake).toBe(true)
+  })
+
+  it('« garder l\'écran allumé » désactivable et persisté', () => {
+    const storage = memoryStorage({ 'mathkids-display': JSON.stringify({ keepScreenAwake: false }) })
+    expect(loadDisplaySettings(storage).keepScreenAwake).toBe(false)
   })
 
   it('résiste à un stockage corrompu', () => {

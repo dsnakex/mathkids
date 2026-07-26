@@ -5,7 +5,10 @@
 // rapporte une croquette d'or, les erreurs passent simplement à la suite.
 
 import { useEffect, useRef, useState } from 'react'
+import { CroquetteOr } from '@/components/CroquetteOr'
 import { useAppStore } from '@/app/store'
+import { loadDisplaySettings } from '@/app/settings'
+import { useWakeLock } from '@/hooks/useWakeLock'
 import { mulberry32, type Rng } from '@/engine/generators/rng'
 import type { QcmExercise } from '@/engine/generators/types'
 import {
@@ -32,6 +35,9 @@ export function MiniGameScreen() {
 
   const profile = profiles.find((p) => p.id === profileId)
   const level = profile?.level ?? 'cp'
+
+  // Garde l'écran allumé pendant le Défi calcul (réglage appareil, activé par défaut).
+  useWakeLock(loadDisplaySettings().keepScreenAwake)
 
   const [phase, setPhase] = useState<Phase>('intro')
   const [mode, setMode] = useState<Mode>('zen')
@@ -105,7 +111,7 @@ export function MiniGameScreen() {
         </div>
         <h1 className="text-[26px] font-extrabold">Défi calcul 🐾</h1>
         <p className="max-w-sm text-lg font-bold text-muted">
-          Réponds à des petits calculs de tête. Chaque bonne réponse te donne une croquette d'or 🐾 —
+          Réponds à des petits calculs de tête. Chaque bonne réponse te donne une croquette d'or <CroquetteOr /> —
           et on ne perd jamais rien !
         </p>
         <div className="flex flex-col items-center gap-2">
@@ -132,7 +138,7 @@ export function MiniGameScreen() {
         </div>
         <h1 className="text-[26px] font-extrabold">Bien joué, {profile?.name ?? ''} ! 🎉</h1>
         <p className="text-xl font-extrabold">
-          {correct} bonne{correct > 1 ? 's' : ''} réponse{correct > 1 ? 's' : ''} · 🐾 +{correct}
+          {correct} bonne{correct > 1 ? 's' : ''} réponse{correct > 1 ? 's' : ''} · <CroquetteOr /> +{correct}
         </p>
         <p className="max-w-sm text-lg font-bold text-muted">
           {correct >= asked && asked > 0
@@ -179,7 +185,7 @@ export function MiniGameScreen() {
             {asked + 1}/{MINIGAME_ZEN_QUESTIONS}
           </p>
         )}
-        <p className="text-base font-extrabold">🐾 {correct}</p>
+        <p className="text-base font-extrabold"><CroquetteOr /> {correct}</p>
       </header>
 
       <div className="flex items-center justify-center gap-2">

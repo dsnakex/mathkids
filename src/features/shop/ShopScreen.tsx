@@ -2,6 +2,7 @@
 // gagné en jouant pour personnaliser son avatar. Aucun achat réel.
 
 import { useAppStore } from '@/app/store'
+import { CroquetteOr } from '@/components/CroquetteOr'
 import { Button } from '@/components/Button'
 import { NekoSushi } from '@/components/NekoSushi'
 import { SHOP_ITEMS, type ShopCategory, type ShopItem } from './shopModel'
@@ -43,7 +44,7 @@ function ItemCard({
           onClick={() => onBuy(item.id)}
           className="rounded-btn-sm bg-gold px-3 py-1 text-sm font-extrabold text-prix shadow-candy-gold transition-transform active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 disabled:opacity-50"
         >
-          🐾 {item.price}
+          <CroquetteOr /> {item.price}
         </button>
       )}
     </div>
@@ -65,7 +66,7 @@ export function ShopScreen() {
       <header className="flex items-center gap-2">
         <h1 className="text-[22px] font-extrabold">Le comptoir du chef</h1>
         <span className="ml-auto rounded-full bg-gold px-3 py-1 text-base font-extrabold text-gold-text">
-          🐾 {coins}
+          <CroquetteOr /> {coins}
         </span>
       </header>
 
