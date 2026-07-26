@@ -65,6 +65,7 @@ export interface ClocksetExercise {
   prompt: string
   hours: number // heure cible (1..12)
   minutes: number // minutes cible
+  step: number // pas de calage de la grande aiguille : 30 (demies, CE1), 15 (quarts, CE2), 5 sinon
 }
 
 /** Saisie d'un montant en euros (pavé avec virgule) ; réponse en centimes. */

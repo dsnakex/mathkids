@@ -168,6 +168,7 @@ export function ExerciseView({
           onValidate={commit}
           targetHours={exercise.hours}
           targetMinutes={exercise.minutes}
+          step={exercise.step}
         />
       ) : exercise.type === 'moneyinput' ? (
         <MoneyPad

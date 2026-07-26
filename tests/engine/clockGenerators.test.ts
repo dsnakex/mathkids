@@ -1,7 +1,7 @@
 import type { GeneratorSpec } from '@/content/schema'
 import { mulberry32 } from '@/engine/generators/rng'
 import { generateExercise, canGenerate } from '@/engine/generators'
-import { timePhrase, minutesForPalier } from '@/engine/generators/time'
+import { timePhrase, minutesForPalier, minuteStepForPalier } from '@/engine/generators/time'
 import { timeDistractors } from '@/engine/generators/clock'
 import { isAnswerCorrect } from '@/engine/generators/types'
 
@@ -67,6 +67,9 @@ describe('clock-set — régler l\'horloge', () => {
         expect(ex.hours).toBeGreaterThanOrEqual(1)
         expect(ex.hours).toBeLessThanOrEqual(12)
         expect(allowed).toContain(ex.minutes)
+        // La grande aiguille se cale au pas du niveau (30 au CE1, 15 au CE2).
+        expect(ex.step).toBe(minuteStepForPalier(palier))
+        expect(ex.minutes % ex.step).toBe(0)
         expect(ex.prompt).toContain(timePhrase(ex.hours, ex.minutes))
         // Correction : seule l'heure cible est acceptée.
         expect(isAnswerCorrect(ex, [ex.hours, ex.minutes])).toBe(true)

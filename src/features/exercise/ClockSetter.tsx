@@ -1,7 +1,8 @@
-// Horloge interactive pour « régler l'heure ». La grande aiguille se règle en
-// glissant (aimantation à 5 min) ; l'heure via les boutons ±. La petite
-// aiguille est COUPLÉE (elle suit h ET m → position continue entre les chiffres).
-// Le parent réinitialise via `key` à chaque nouvel essai.
+// Horloge interactive pour « régler l'heure ». La grande aiguille se CALE sur les
+// positions autorisées par le niveau (`step` : 30 min au CE1, 15 min = quarts au
+// CE2, 5 min ensuite), au glisser comme aux boutons ±. L'heure via les boutons ±.
+// La petite aiguille est COUPLÉE (elle suit h ET m → position continue entre les
+// chiffres). Le parent réinitialise via `key` à chaque nouvel essai.
 
 import { useRef, useState, type PointerEvent as ReactPointerEvent } from 'react'
 import { Button } from '@/components/Button'
@@ -12,6 +13,7 @@ type ClockSetterProps = {
   onValidate: (correct: boolean) => void
   targetHours: number
   targetMinutes: number
+  step: number // pas de calage de la grande aiguille (30 / 15 / 5 selon le niveau)
 }
 
 const stepBtn =
@@ -19,16 +21,16 @@ const stepBtn =
   'shadow-candy-sm transition-transform active:translate-y-[2px] focus-visible:outline-none ' +
   'focus-visible:ring-4 focus-visible:ring-primary/40 disabled:opacity-50'
 
-export function ClockSetter({ status, onValidate, targetHours, targetMinutes }: ClockSetterProps) {
+export function ClockSetter({ status, onValidate, targetHours, targetMinutes, step }: ClockSetterProps) {
   const [hours, setHours] = useState(12)
   const [minutes, setMinutes] = useState(0)
   const wrapRef = useRef<HTMLDivElement>(null)
   const locked = status !== 'neutral'
 
   const stepHours = (d: number) => !locked && setHours((h) => ((h - 1 + d + 12) % 12) + 1)
-  const stepMinutes = (d: number) => !locked && setMinutes((m) => (m + d * 5 + 60) % 60)
+  const stepMinutes = (d: number) => !locked && setMinutes((m) => (m + d * step + 60) % 60)
 
-  // Glisser la grande aiguille : on lit l'angle du pointeur, aimanté à 5 min.
+  // Glisser la grande aiguille : on lit l'angle du pointeur, calé sur le pas du niveau.
   const dragMinute = (e: ReactPointerEvent<HTMLDivElement>) => {
     if (locked) return
     const el = wrapRef.current
@@ -38,7 +40,7 @@ export function ClockSetter({ status, onValidate, targetHours, targetMinutes }: 
     const dy = e.clientY - (r.top + r.height / 2)
     let angle = (Math.atan2(dx, -dy) * 180) / Math.PI // 0 = midi, sens horaire
     if (angle < 0) angle += 360
-    setMinutes((Math.round(angle / 6 / 5) * 5) % 60) // 6°/min, aimanté à 5 min
+    setMinutes((Math.round(angle / 6 / step) * step) % 60) // 6°/min, calé sur le pas autorisé
   }
 
   return (

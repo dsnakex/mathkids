@@ -41,3 +41,14 @@ export function minutesForPalier(palier: number): number[] {
   if (palier === 3) return [0, 15, 30, 45]
   return [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
 }
+
+/**
+ * Pas de calage de la GRANDE aiguille selon le palier : la grande aiguille ne se
+ * pose que sur les positions autorisées (30 min au CE1, 15 min = quarts au CE2,
+ * 5 min ensuite). Cohérent avec `minutesForPalier` (l'écart entre positions).
+ */
+export function minuteStepForPalier(palier: number): number {
+  if (palier <= 2) return 30
+  if (palier === 3) return 15
+  return 5
+}
