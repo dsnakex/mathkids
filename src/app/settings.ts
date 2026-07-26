@@ -7,11 +7,16 @@
 export interface DisplaySettings {
   dyslexiaFont: boolean // police OpenDyslexic + espacement des lettres/mots
   largeText: boolean // interface agrandie (~15 %)
+  keepScreenAwake: boolean // garde l'écran allumé pendant les exercices (Wake Lock)
 }
 
 const STORAGE_KEY = 'mathkids-display'
 
-export const DEFAULT_DISPLAY: DisplaySettings = { dyslexiaFont: false, largeText: false }
+export const DEFAULT_DISPLAY: DisplaySettings = {
+  dyslexiaFont: false,
+  largeText: false,
+  keepScreenAwake: true, // activé par défaut : l'écran ne s'éteint pas quand l'enfant réfléchit
+}
 
 /** Charge les réglages (valeurs sûres si le stockage est vide ou corrompu). */
 export function loadDisplaySettings(storage: Pick<Storage, 'getItem'> = localStorage): DisplaySettings {
@@ -22,6 +27,7 @@ export function loadDisplaySettings(storage: Pick<Storage, 'getItem'> = localSto
     return {
       dyslexiaFont: parsed.dyslexiaFont === true,
       largeText: parsed.largeText === true,
+      keepScreenAwake: parsed.keepScreenAwake !== false, // absent ou true ⇒ activé
     }
   } catch {
     return { ...DEFAULT_DISPLAY }

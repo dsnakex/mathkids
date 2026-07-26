@@ -125,6 +125,20 @@ function DisplaySection() {
           className="h-7 w-7 accent-primary"
         />
       </label>
+      <label className="flex min-h-[48px] cursor-pointer items-center justify-between gap-3 text-base font-bold text-ink">
+        <span>
+          Garder l'écran allumé pendant les exercices
+          <span className="block text-sm font-bold text-muted">
+            L'écran ne s'éteint pas quand l'enfant réfléchit
+          </span>
+        </span>
+        <input
+          type="checkbox"
+          checked={display.keepScreenAwake}
+          onChange={(e) => update({ keepScreenAwake: e.target.checked })}
+          className="h-7 w-7 accent-primary"
+        />
+      </label>
     </section>
   )
 }

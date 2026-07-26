@@ -7,6 +7,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { CroquetteOr } from '@/components/CroquetteOr'
 import { useAppStore } from '@/app/store'
+import { loadDisplaySettings } from '@/app/settings'
+import { useWakeLock } from '@/hooks/useWakeLock'
 import { mulberry32, type Rng } from '@/engine/generators/rng'
 import type { QcmExercise } from '@/engine/generators/types'
 import {
@@ -33,6 +35,9 @@ export function MiniGameScreen() {
 
   const profile = profiles.find((p) => p.id === profileId)
   const level = profile?.level ?? 'cp'
+
+  // Garde l'écran allumé pendant le Défi calcul (réglage appareil, activé par défaut).
+  useWakeLock(loadDisplaySettings().keepScreenAwake)
 
   const [phase, setPhase] = useState<Phase>('intro')
   const [mode, setMode] = useState<Mode>('zen')

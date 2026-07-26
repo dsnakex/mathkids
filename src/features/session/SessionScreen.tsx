@@ -3,6 +3,8 @@
 // question. À la dernière réponse, le store bascule vers l'écran de fin.
 
 import { useAppStore } from '@/app/store'
+import { loadDisplaySettings } from '@/app/settings'
+import { useWakeLock } from '@/hooks/useWakeLock'
 import { ExerciseView } from '@/features/exercise/ExerciseView'
 
 export function SessionScreen() {
@@ -12,6 +14,9 @@ export function SessionScreen() {
   const profileId = useAppStore((s) => s.profileId)
   const profiles = useAppStore((s) => s.profiles)
   const quitSession = useAppStore((s) => s.quitSession)
+
+  // Garde l'écran allumé pendant la session (réglage appareil, activé par défaut).
+  useWakeLock(loadDisplaySettings().keepScreenAwake)
 
   const item = session[index]
   if (!item) return null
