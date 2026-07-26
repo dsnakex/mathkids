@@ -9,6 +9,7 @@ import type { NekoVariant } from '@/components/NekoSushi'
 import type { LevelId } from '@/content/schema'
 import type { MasteryState } from '@/engine/adaptive'
 import type { ReviewState } from '@/engine/spaced'
+import type { FactState } from '@/engine/facts'
 
 /** Un profil enfant (fratrie : plusieurs profils sur un même appareil). */
 export interface ProfileRecord {
@@ -33,6 +34,9 @@ export interface ProfileRecord {
   // Mode Révision (chantier F) : horodatage de la dernière activité, pour
   // détecter un retour après une longue absence et proposer un accueil doux.
   lastActiveAt?: number
+  // Entraînement calcul mental (chantier G) : suivi « fait par fait » (mini-Leitner
+  // au niveau du fait, ex. « ×:7:8 »), pour reproposer plus souvent ce qui coince.
+  factStates?: Record<string, FactState>
 }
 
 /** Progression d'une notion pour un profil (maîtrise + rappel espacé éventuel). */
