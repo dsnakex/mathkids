@@ -1,0 +1,18 @@
+# Fins de ligne : tout le texte est stocké et restitué en LF, quel que soit
+# l'éditeur ou l'OS. Met fin au bruit CRLF/LF (fichiers « modifiés » à tort).
+* text=auto eol=lf
+
+# Binaires : aucune conversion de fins de ligne.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.mp3 binary
+*.wav binary
+*.pdf binary

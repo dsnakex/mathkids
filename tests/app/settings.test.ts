@@ -46,10 +46,10 @@ describe('réglages d\'affichage (accessibilité)', () => {
 
   it('applique et retire les classes sur <html>', () => {
     const root = document.createElement('html')
-    applyDisplaySettings({ dyslexiaFont: true, largeText: false }, root)
+    applyDisplaySettings({ dyslexiaFont: true, largeText: false, keepScreenAwake: false }, root)
     expect(root.classList.contains('mk-dyslexia')).toBe(true)
     expect(root.classList.contains('mk-text-lg')).toBe(false)
-    applyDisplaySettings({ dyslexiaFont: false, largeText: true }, root)
+    applyDisplaySettings({ dyslexiaFont: false, largeText: true, keepScreenAwake: false }, root)
     expect(root.classList.contains('mk-dyslexia')).toBe(false)
     expect(root.classList.contains('mk-text-lg')).toBe(true)
   })
