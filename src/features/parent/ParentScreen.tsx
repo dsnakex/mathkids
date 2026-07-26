@@ -196,10 +196,14 @@ function Dashboard() {
     if (!file) return
     try {
       const backup = parseBackup(JSON.parse(await file.text()))
-      await importProfile(backup)
+      const newId = await importProfile(backup)
       await refreshProfiles()
-      setSelectedId(backup.profile.id)
-      setMessage(`Progression de « ${backup.profile.name} » importée.`)
+      setSelectedId(newId)
+      setMessage(
+        newId === backup.profile.id
+          ? `Progression de « ${backup.profile.name} » importée.`
+          : `« ${backup.profile.name} » importé comme nouveau profil (l'existant est conservé).`,
+      )
     } catch {
       setMessage('Fichier invalide : import annulé.')
     }

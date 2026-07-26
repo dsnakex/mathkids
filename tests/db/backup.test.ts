@@ -1,5 +1,5 @@
 import { db } from '@/db/db'
-import { createProfile, getProfile } from '@/db/profiles'
+import { createProfile, getProfile, listProfiles, deleteProfile } from '@/db/profiles'
 import { saveLearnerProgress, loadLearnerProgress } from '@/db/progress'
 import { exportProfile, importProfile } from '@/db/backup'
 import { parseBackup } from '@/features/parent/backup'
@@ -37,5 +37,34 @@ describe('db/backup — export puis import', () => {
 
   it('renvoie null pour un profil inexistant', async () => {
     expect(await exportProfile('fantome')).toBeNull()
+  })
+
+  it('n\'écrase jamais un profil existant : un réimport crée un nouveau profil', async () => {
+    const p = await createProfile({ name: 'Léa', character: 'maki', level: 'cp' })
+    await saveLearnerProgress(p.id, {
+      mastery: { 'nombres-jusqu-20': initialMastery() },
+      reviews: {},
+    })
+    const backup = await exportProfile(p.id)
+
+    // Réimport SANS effacer : l'original reste intact, une copie est créée.
+    const newId = await importProfile(backup!)
+    expect(newId).not.toBe(p.id)
+    expect(await listProfiles()).toHaveLength(2)
+    expect((await getProfile(p.id))?.name).toBe('Léa') // original intact
+    const copy = await loadLearnerProgress(newId)
+    expect(copy.mastery['nombres-jusqu-20']).toEqual(initialMastery())
+  })
+
+  it('supprime le profil ET toute sa progression', async () => {
+    const p = await createProfile({ name: 'Tom', character: 'temaki', level: 'cp' })
+    await saveLearnerProgress(p.id, {
+      mastery: { 'addition-jusqu-20': initialMastery() },
+      reviews: {},
+    })
+    await deleteProfile(p.id)
+    expect(await getProfile(p.id)).toBeUndefined()
+    const leftovers = await db.progress.where('profileId').equals(p.id).toArray()
+    expect(leftovers).toHaveLength(0)
   })
 })

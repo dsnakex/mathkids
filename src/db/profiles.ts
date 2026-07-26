@@ -11,7 +11,7 @@ export interface NewProfile {
 }
 
 // Identifiant unique et stable (crypto si dispo, sinon repli suffisant en local).
-function genId(): string {
+export function genId(): string {
   if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) return crypto.randomUUID()
   return `p-${Math.random().toString(36).slice(2)}${Date.now().toString(36)}`
 }
