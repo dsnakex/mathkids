@@ -111,9 +111,9 @@
           "tiers": [
             { "level": 1, "generators": [{ "type": "qcm", "params": { "skill": "complement", "cible": 100, "max": 100 } }] },
             { "level": 2, "generators": [{ "type": "input", "params": { "skill": "double", "max": 50 } }] },
-            { "level": 3, "generators": [{ "type": "qcm", "params": { "skill": "moitie", "max": 100 } }] },
+            { "level": 3, "generators": [{ "type": "input", "params": { "skill": "moitie", "max": 100 } }] },
             { "level": 4, "generators": [{ "type": "input", "params": { "op": "×", "tables": [2, 5] } }] },
-            { "level": 5, "generators": [{ "type": "qcm", "params": { "op": "÷", "divisors": [2, 5] } }] }
+            { "level": 5, "generators": [{ "type": "gap", "params": { "op": "÷", "divisors": [2, 5] } }] }
           ]
         }
       ]

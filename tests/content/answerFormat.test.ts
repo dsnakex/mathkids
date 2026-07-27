@@ -48,3 +48,60 @@ describe('format de réponse — production plutôt que reconnaissance', () => {
     }
   })
 })
+
+describe('format de réponse — cas ambigus validés (calcul mental, opérations, décimaux)', () => {
+  it('calcul mental (CE2, CM1) : ×, ÷ et moitié ne sont plus en QCM (le complément d\'ouverture reste)', () => {
+    for (const id of ['calcul-mental-ce2', 'calcul-mental-cm1']) {
+      for (const tier of tiersOf(id)) {
+        for (const spec of tier.generators) {
+          const op = opOf(spec.params)
+          if (op === '×' || op === '÷' || spec.params.skill === 'moitie') {
+            expect(spec.type).not.toBe('qcm')
+          }
+        }
+      }
+    }
+  })
+
+  it('CM1 « opérations posées » : aucune opération en QCM', () => {
+    for (const tier of tiersOf('operations-posees')) {
+      for (const spec of tier.generators) {
+        if (opOf(spec.params) !== undefined) expect(spec.type).not.toBe('qcm')
+      }
+    }
+  })
+
+  it('décimaux : l\'ADDITION décimale passe en saisie, la COMPARAISON (conceptuelle) reste en QCM', () => {
+    for (const id of ['nombres-decimaux', 'calcul-decimaux', 'decimaux-millieme']) {
+      const specs = tiersOf(id).flatMap((t) => t.generators)
+      // Plus aucune addition décimale en QCM (on tape la réponse au pavé virgule).
+      for (const spec of specs) {
+        if (spec.params.skill === 'decimal-add') expect(spec.type).not.toBe('qcm')
+      }
+      // La comparaison décimale, elle, reste en QCM là où elle existe (concept préservé).
+      for (const spec of specs) {
+        if (spec.params.skill === 'decimal-compare') expect(spec.type).toBe('qcm')
+      }
+    }
+  })
+
+  it('les paliers corrigés produisent toujours un exercice valide', () => {
+    const ids = [
+      'calcul-mental-ce2',
+      'calcul-mental-cm1',
+      'operations-posees',
+      'nombres-decimaux',
+      'calcul-decimaux',
+      'decimaux-millieme',
+    ]
+    for (const id of ids) {
+      for (const tier of tiersOf(id)) {
+        for (const spec of tier.generators) {
+          if (!canGenerate(spec)) continue
+          const ex = generateExercise(spec, mulberry32(id.length + tier.level))
+          expect(ex.prompt.length).toBeGreaterThan(0)
+        }
+      }
+    }
+  })
+})
