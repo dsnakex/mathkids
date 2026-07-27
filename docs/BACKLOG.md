@@ -1,6 +1,18 @@
 # Backlog — MathKids
 
-À jour au 16/07/2026. L'app est déployée sur Vercel ; ce fichier liste ce qui reste, par priorité. Claude Code : traiter dans l'ordre, un chantier = un commit.
+À jour au 27/07/2026. L'app est déployée sur Vercel ; ce fichier liste ce qui reste, par priorité. Claude Code : traiter dans l'ordre, un chantier = un commit.
+
+## ✅ Série d'améliorations (juillet 2026) — TOUT FAIT
+
+Brief `docs/chantiers/AMELIORATIONS-2026-07.md`, traité dans l'ordre `B → C → D → E → A → F → G`, tout fusionné dans `main` :
+
+- **B — Veille écran** (PR #7) : Screen Wake Lock pendant session et Défi calcul ; réglage appareil « Garder l'écran allumé », activé par défaut.
+- **C — Pause sans perte** (PR #8) : bouton ✕ discret + confirmation ; à la pause, croquettes/étoiles créditées sur les exercices déjà répondus, sans pénalité.
+- **D — Suppression / import de profil** (PR #9) : suppression protégée (double confirmation + export d'abord) ; import JSON non destructif (validation, jamais d'écrasement silencieux).
+- **E — Conformité horloge** (PR #11) : la grande aiguille se cale au pas du niveau (30 min CE1, 15 min CE2). Monnaie centimes/virgule et générateurs lire/régler déjà en place.
+- **A — Parcours guidé** (PR #12) : carte met en avant une seule « prochaine étape » ; leçon garantie avant la 1re pratique (`lessonsSeen`) ; mode guidé (défaut) supprime la découverte-surprise ; réglage espace parent.
+- **F — Mode révision** (PR #14) : bouton « Révision » = séance 100 % rappels (acquises + fragiles, triées par retard/faiblesse) ; détection du retour après ~14 j d'absence + accueil doux.
+- **G — Calcul mental ciblé** (PR #15) : choix de la table (ou « au hasard »), suivi fait-par-fait (mini-Leitner par fait, `facts.ts` + `ProfileRecord.factStates`), tableau « mes tables » (vert/orange).
 
 ## ✅ Compléments SPEC (juillet 2026) — TOUT FAIT
 
@@ -13,13 +25,13 @@
 
 ## P1 — Retours de test (UX)
 
-1. **Suppression de profil dans l'espace parent** — avec garde-fous : protégée par le code parent, double confirmation explicite (« La progression de Léa sera définitivement effacée »), et proposer l'export JSON de la progression avant suppression.
-2. **Quitter / revenir en arrière pendant un exercice** — bouton discret (pour éviter les sorties accidentelles en plein exercice), confirmation adaptée à l'enfant (« Tu veux faire une pause ? Ta progression est gardée ! »), jamais de pénalité à l'abandon : la session reprend ou se clôt proprement, les réponses déjà données comptent.
+1. **Suppression de profil dans l'espace parent** — ✅ FAIT (chantier D, PR #9) : double confirmation nommant l'enfant, export JSON proposé avant, + import JSON non destructif.
+2. **Quitter / revenir en arrière pendant un exercice** — ✅ FAIT (chantier C, PR #8) : bouton ✕ discret + confirmation « Tu veux faire une pause ? », sans pénalité, les réponses déjà données comptent (récompenses créditées).
 
 ## P2 — Conformité programme (petits chantiers UI)
 
-3. **Horloge interactive** : demi-heures (CE1) et quarts d'heure (CE2) — l'horloge actuelle ne fait que les heures entières.
-4. **Monnaie avec centimes** (CE2+) — écriture à virgule dans le cadre de la monnaie (programme 2025).
+3. **Horloge interactive** : demi-heures (CE1) et quarts d'heure (CE2) — ✅ FAIT (chantier E, PR #11) : la grande aiguille se cale au pas du niveau (30 / 15 min), lire et régler.
+4. **Monnaie avec centimes** (CE2+) — ✅ FAIT : écriture à virgule, pièces centimes (composer/saisir), générateurs `money-convert` / `money-compose` branchés au curriculum.
 
 ## P3 — Fond pédagogique
 
