@@ -105,3 +105,40 @@ describe('format de réponse — cas ambigus validés (calcul mental, opération
     }
   })
 })
+
+function qcmCount(id: string): number {
+  return tiersOf(id)
+    .flatMap((t) => t.generators)
+    .filter((s) => s.type === 'qcm').length
+}
+
+describe('format de réponse — fractions & pourcentages (calcul à résultat entier → saisie)', () => {
+  const converties = ['fractions-cm1', 'fractions-cm2', 'pourcentages', 'pourcentages-echelles']
+
+  it('CM1/CM2 : un seul QCM d\'ouverture par notion, le calcul passe en production', () => {
+    for (const id of converties) {
+      expect(qcmCount(id), id).toBe(1)
+    }
+  })
+
+  it('les paliers « … d\'une quantité » convertis = saisie à réponse entière (une bonne réponse)', () => {
+    for (const id of converties) {
+      for (const tier of tiersOf(id)) {
+        for (const spec of tier.generators) {
+          const skill = spec.params.skill
+          if ((skill === 'fraction' || skill === 'pourcentage') && spec.type === 'input') {
+            const ex = generateExercise(spec, mulberry32(tier.level + 3))
+            expect(ex.type).toBe('input')
+            if (ex.type === 'input') expect(Number.isInteger(ex.answer)).toBe(true)
+          }
+        }
+      }
+    }
+  })
+
+  it('introduction du concept (CE1/CE2) et proportionnalité restent en QCM (non touchés)', () => {
+    for (const id of ['fractions-partage', 'fractions-simples', 'proportionnalite-simple']) {
+      expect(qcmCount(id), id).toBeGreaterThanOrEqual(2)
+    }
+  })
+})
