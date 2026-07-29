@@ -68,14 +68,18 @@ export function AboutScreen() {
         Gratuit et sans publicité · Progression sauvegardée sur cet appareil
       </p>
       <p className="pb-2 text-center text-sm font-bold text-muted">
-        © 2026 Pascal D. — Tous droits réservés ·{' '}
-        <a href="mailto:mathcopain.contact@gmail.com" className="underline">
-          mathcopain.contact@gmail.com
+        © 2026 Pascal D. — Tous droits réservés · Édité par MaiTao Éditions ·{' '}
+        <a href="mailto:maitao.editions@gmail.com" className="underline">
+          maitao.editions@gmail.com
         </a>
         {' · '}
         <button type="button" onClick={goLegal} className="underline">
           Mentions légales &amp; confidentialité
         </button>
+        {' · '}
+        <a href="/confidentialite.html" target="_blank" rel="noopener noreferrer" className="underline">
+          Confidentialité (page publique)
+        </a>
       </p>
     </main>
   )

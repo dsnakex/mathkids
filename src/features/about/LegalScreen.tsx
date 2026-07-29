@@ -5,7 +5,8 @@
 import { useAppStore } from '@/app/store'
 import { Button } from '@/components/Button'
 
-const CONTACT_EMAIL = 'mathcopain.contact@gmail.com'
+const CONTACT_EMAIL = 'maitao.editions@gmail.com'
+const PRIVACY_URL = '/confidentialite.html'
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -28,7 +29,7 @@ export function LegalScreen() {
 
       <Section title="Éditeur">
         <p>
-          MathKids est éditée par <strong className="text-ink">Pascal D.</strong>
+          MathKids est édité par <strong className="text-ink">MaiTao Éditions</strong>.
         </p>
         <p>
           Contact :{' '}
@@ -60,6 +61,12 @@ export function LegalScreen() {
         <p>
           Ces données peuvent être supprimées à tout moment depuis l'espace parent (suppression du
           profil), ou en effaçant les données du site dans le navigateur.
+        </p>
+        <p>
+          Version publique détaillée :{' '}
+          <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" className="text-ink underline">
+            Politique de confidentialité
+          </a>
         </p>
       </Section>
 

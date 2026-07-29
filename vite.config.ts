@@ -18,6 +18,11 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'],
         cleanupOutdatedCaches: true,
         navigateFallback: '/index.html',
+        // La page de confidentialité publique (exigée par le Play Store) est une
+        // vraie page HTML, pas une route de l'app : on l'exclut du fallback SPA
+        // pour qu'une navigation directe serve la page (depuis le precache) et non
+        // l'application. Elle reste précachée via globPatterns (**/*.html).
+        navigateFallbackDenylist: [/^\/confidentialite\.html$/],
       },
       manifest: {
         id: '/',
